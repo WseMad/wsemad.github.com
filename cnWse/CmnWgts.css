@@ -1,0 +1,473 @@
+﻿/*	公共控件
+*
+* 【注意】
+* 本文件主要包含用于指定“结构”的规则，而用于指定“表现”的规则放在各个皮肤里；
+* 本文件也含有少量用于表现的规则，颜色多用黑白，为的是应对没有皮肤时的默认情景。
+*/
+
+
+/*********************************************** tWgt ***********************************************/
+
+.cnWse_tWgt_Nml,
+.cnWse_tWgt_Tch
+{
+	color: rgb(0, 0, 0);
+	box-shadow: 0px 10px 20px rgb(51, 51, 51);
+	cursor: pointer;
+}
+
+/*********************************************** tBtn ***********************************************/
+
+.cnWse_PutTgt.cnWse_tBtn
+{
+	text-align: center;
+	border-radius: 0.5em;
+	padding: 8px;
+	/*-moz-user-select:none;*/
+}
+
+.cnWse_tWgt_Tch.cnWse_tBtn
+{
+	color: rgb(100%, 100%, 100%);
+	box-shadow: 0px 5px 10px rgb(51, 51, 51);
+}
+
+/*********************************************** tEdit ***********************************************/
+
+.cnWse_PutTgt.cnWse_tEdit
+{
+	border-radius: 0.25em;
+	padding: 0.25em;
+	cursor: default;
+}
+
+.cnWse_PutTgt.cnWse_tEdit>input[type=text],
+.cnWse_PutTgt.cnWse_tEdit>textarea
+{
+	box-sizing: border-box;
+	margin: 0;
+	/*border: 1px solid rgb(0, 0, 0);*/
+	border: none;
+	padding: 0.5em;
+
+	background-color: rgba(255, 255, 255, 0.7);
+
+	/* 辉光效果 */
+	box-shadow: inset 0px 0px 10px rgb(0, 0, 0);
+
+	-webkit-transition: box-shadow;
+	-moz-transition: box-shadow;
+	-ms-transition: box-shadow;
+	transition: box-shadow;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+.cnWse_PutTgt.cnWse_tEdit>textarea
+{
+	width: 100%;
+}
+
+/* 辉光效果 */
+.cnWse_PutTgt.cnWse_tEdit>input[type=text]:focus,
+.cnWse_PutTgt.cnWse_tEdit>textarea:focus
+{
+	/*border: 1px solid rgb(0, 255, 0);*/		/* 会改变高度 */
+	box-shadow: inset 0px 0px 10px rgb(0, 255, 0),
+				0px 0px 10px rgb(0, 255, 0);
+
+	-webkit-transition: box-shadow;
+	-moz-transition: box-shadow;
+	-ms-transition: box-shadow;
+	transition: box-shadow;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+/* OK按钮 */
+.cnWse_tEdit *[data-Wse_Ok]
+{
+	text-align: center;
+	cursor: pointer;
+}
+
+/* 占位符 */
+.cnWse_tEdit .cnWse_tEdit_Plchd
+{
+	color: rgba(0, 0, 0, 0.5);
+}
+
+/*********************************************** tList ***********************************************/
+
+.cnWse_PutTgt.cnWse_tList>ul
+{
+	/*padding: 0.25em;*/
+	overflow: auto;			/* 允许水平垂直滚动条出现 */
+}
+
+.cnWse_PutTgt.cnWse_tList>ul>li
+{
+	padding: 0.25em;
+}
+
+.cnWse_tList .cnWse_tList_Btn
+{
+	display: inline-block;
+	margin: 0px 0.5em 0px 0px;
+
+	width: 1.2em;		/* 正方形 */
+	height: 1.2em;
+
+	background-color: rgba(255, 255, 255, 0.7);
+
+	/* 辉光效果 */
+	-webkit-transition: background-color, box-shadow;
+	-moz-transition: background-color, box-shadow;
+	-ms-transition: background-color, box-shadow;
+	transition: background-color, box-shadow;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+/* 辉光效果 */
+li.cnWse_tList_Slcd .cnWse_tList_Btn
+{
+	-webkit-transition: background-color, box-shadow;
+	-moz-transition: background-color, box-shadow;
+	-ms-transition: background-color, box-shadow;
+	transition: background-color, box-shadow;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+/* 单选框是圆形，复选框是正方形 */
+.cnWse_tList.cnWse_SglSlc .cnWse_tList_Btn
+{
+	border-radius: 0.6em;	/* 恰好是宽高的一半，形成圆形 */
+}
+
+.cnWse_tList.cnWse_MltSlc .cnWse_tList_Btn
+{
+	border-radius: 0px;
+}
+
+/* 多选框的辅助按钮 */
+.cnWse_tList .cnWse_tList_SlcAll,
+.cnWse_tList .cnWse_tList_SlcRvs
+{
+	display: inline-block;
+
+	margin: 0.25em;
+	border: 2px solid rgb(128, 128, 128);
+	border-radius: 0.5em;
+	padding: 2px 4px;
+
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.7);
+	color: rgb(0, 255, 0);
+}
+
+.cnWse_tList .cnWse_tList_SlcAll:active,
+.cnWse_tList .cnWse_tList_SlcRvs:active
+{
+	background-color: rgb(128, 128, 128);
+	color: rgb(255, 255, 255);
+}
+
+/*********************************************** tSwch ***********************************************/
+
+.cnWse_PutTgt.cnWse_tSwch
+{
+	min-height: 2em;
+	border: 2px solid rgb(0, 0, 0);
+	border-radius: 1em;
+
+	background-color: rgb(128, 128, 128);
+	box-shadow: inset 0px 0px 20px rgb(0, 0, 0), 0px 10px 20px rgb(51, 51, 51);
+
+	-webkit-transition: background-color;
+	-moz-transition: background-color;
+	-ms-transition: background-color;
+	transition: background-color;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+.cnWse_tSwch.cnWse_tSwch_On
+{
+	background-color: rgb(220, 220, 220);
+}
+
+.cnWse_tSwch .cnWse_tSwch_Bar
+{
+	position: absolute;
+	width: 60%;
+	height: 0px;
+	left: 20%;		/* (100% - 60%) / 2 */
+	top: 50%;
+	border-top: 1px solid rgb(0, 0, 0);
+	border-bottom: 1px solid rgb(220, 220, 220);
+	z-index: 1;
+}
+
+.cnWse_tSwch .cnWse_tSwch_Blk
+{
+	position: absolute;
+	min-width: 2em;
+	width: 40%;
+	height: 100%;
+	border: 0.5em solid silver;
+	border-radius: 1em;
+	z-index: 2;
+}
+
+.cnWse_tSwch_Blk .cnWse_tSwch_Lgt
+{
+	width: 100%;
+	height: 100%;
+	border-radius: 1em;
+
+	-webkit-transition: background-color, box-shadow;
+	-moz-transition: background-color, box-shadow;
+	-ms-transition: background-color, box-shadow;
+	transition: background-color, box-shadow;
+
+	-webkit-transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-ms-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+
+/*********************************************** tMenu ***********************************************/
+
+/* 通用 */
+.cnWse_PutTgt.cnWse_tMenu
+{
+	border-radius: 0px 0px 0.5em 0.5em;
+}
+
+.cnWse_tMenu ul
+{
+	list-style-type: none;
+	font-size: 1em;
+}
+
+.cnWse_tMenu li
+{
+	padding: 5px 1.5em 5px 5px;
+	position: relative;
+}
+
+/* 展开式 */
+.cnWse_tMenu_Expd
+{
+	overflow: visible;		/* 各级列表总是可见，即使放置目标尺寸不够 */
+}
+
+.cnWse_tMenu_Expd ul.cnWse_tMenu_Root
+{
+	/*position: static;		*//* 扩展式的根静态定位 */
+	text-align: center;
+	z-index: 0;
+}
+
+.cnWse_tMenu_Expd ul.cnWse_tMenu_Next
+{
+	position: absolute;
+	box-shadow: 0px 10px 20px rgb(51, 51, 51);
+}
+
+.cnWse_tMenu_Expd ul.cnWse_tMenu_Root>li
+{
+	display: inline-block;
+	text-align: center;
+}
+
+.cnWse_tMenu_Expd ul.cnWse_tMenu_Next>li
+{
+	display: block;
+	text-align: left;
+}
+
+/* 层叠式 */
+.cnWse_tMenu_Ovlp
+{
+	overflow: hidden;		/* 只显示顶级列表，放置目标尺寸与之匹配 */
+}
+
+.cnWse_tMenu_Ovlp ul
+{
+	padding: 0 5px;
+}
+
+.cnWse_tMenu_Ovlp ul.cnWse_tMenu_Root
+{
+	/*position: static;		*//* 层叠式的根静态定位 */
+}
+
+.cnWse_tMenu_Ovlp ul.cnWse_tMenu_Next
+{
+	position: absolute;
+}
+
+.cnWse_tMenu_Ovlp .cnWse_tMenu_Root>li
+{
+	display: block;
+	text-align: left;
+}
+
+/* 四个箭头 */
+.cnWse_tMenu .cnWse_LtArw
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding-top: inherit;
+	padding-bottom: inherit;
+}
+
+.cnWse_tMenu .cnWse_RtArw,
+.cnWse_tMenu .cnWse_UpArw,
+.cnWse_tMenu .cnWse_DnArw
+{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	padding-top: inherit;
+	padding-bottom: inherit;
+}
+
+/* 展开式根<ul>展开的<li> */
+.cnWse_tMenu_Expd li.cnWse_tMenu_ExpdLi
+{
+	background-color: rgba(255, 255, 255, 0.7);
+	box-shadow: inset 0px 0px 10px rgb(0, 0, 0);
+}
+
+/* 层叠式返回<li> */
+.cnWse_tMenu_Ovlp li.cnWse_tMenu_BackLi
+{
+	text-align: center;
+}
+
+/* 占位<ul> */
+ul.cnWse_tMenu_Plchd
+{
+	height: 5em;
+}
+
+
+/*********************************************** tAcod ***********************************************/
+
+.cnWse_PutTgt.cnWse_tAcod
+{
+	overflow: visible;		/* 为了使最后一排的阴影显示出来 */
+	visibility: hidden;		/* 隐藏，用不到放置目标 */
+}
+
+.cnWse_PutTgt.cnWse_tAcod>*
+{
+	visibility: visible;	/* 放置目标里的东西应显示出来 */
+}
+
+.cnWse_tAcod_Tit,
+.cnWse_tAcod_Ctnt
+{
+	box-shadow: 0px 10px 20px rgb(51, 51, 51);
+}
+
+.cnWse_tAcod_Tit
+{
+	border: 1px solid black;
+	border-radius: 0.5em;
+	margin-top: 0.25em;
+	padding: 0.25em;
+	font-size: 1.2em;
+}
+
+.cnWse_tAcod_Tit:first-of-type
+{
+	margin-top: 0px;
+}
+
+.cnWse_tAcod_TitExpd
+{
+	border-radius: 0.5em 0.5em 0px 0px;
+}
+
+.cnWse_tAcod_Ctnt
+{
+	border: 1px solid black;
+	border-radius: 0px 0px 0.5em 0.5em;
+	padding: 0.5em;
+	font-size: 1em;
+	overflow: hidden;	/* 动画高度时裁剪掉内容 */
+	cursor: default;
+}
+
+/* 两个标题箭头 */
+.cnWse_tAcod .cnWse_RtArw,
+.cnWse_tAcod .cnWse_DnArw
+{
+	margin-right: 0.5em;
+}
+
+/*********************************************** tNav ***********************************************/
+
+.cnWse_PutTgt.cnWse_tNav
+{
+	position: fixed;
+	text-align: center;
+	overflow: visible;		/* 已经改成绝对定位，必须保证子元素可见 */
+	z-index: 10000;
+}
+
+.cnWse_tNav li
+{
+	list-style-type: none;
+	padding: 0px;
+	height: 100%;
+}
+
+.cnWse_tNav>*[data-Wse_Tit],
+.cnWse_tNav li>a
+{
+	display: block;					/* 令整个<li>成为可点击的按钮 */
+	padding: 20% 0px 0px 0px;		/* 和径向渐变垂直对齐 */
+	height: 100%;
+}
+
+/* 导航<a> */
+.cnWse_tNav li>a:link,
+.cnWse_tNav li>a:visited,
+.cnWse_tNav li>a:hover,
+.cnWse_tNav li>a:active
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+/* 叶片 */
+.cnWse_tNav_Leaf
+{
+	display: none;
+	position: absolute;
+	box-shadow: 0px 10px 20px rgb(51, 51, 51);
+}
+
+/*********************************************************************** Over ***********************************************************************/

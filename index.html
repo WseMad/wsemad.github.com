@@ -7,11 +7,71 @@
 
 	<title>我的主页</title>
 
+	<style type="text/css">
+		.cnApp_Lot
+		{
+			margin: 10px auto;
+			min-width: 600px;
+			width: 80%;
+		}
+
+		.cnApp_Lot>h1
+		{
+			text-align: center;
+		}
+
+		section
+		{
+			margin: 50px 0px;
+		}
+	</style>
 </head>
 <body>
-	<h1>
-		欢迎来到我的主页！
-	</h1>
+	<div class="cnApp_Lot">
+		<h1>
+			欢迎参观WseMad的主页！
+		</h1>
+
+		<h2>
+			以下是我的作品链接及简介，请使用支持HTML5和CSS3的浏览器打开，推荐Chrome 30.0以上版本：
+		</h2>
+
+		<section>
+			<h3>
+				1. Procedural Layout —— 程序化布局
+			</h3>
+			<article>
+				<h4>简介：</h4>
+				<p>传统的“Responsive Web Design”都是借助CSS驱动浏览器进行排版。</p>
+				<p>我独树一帜 —— 完全采用JavaScript实现排版算法，同时引入丰富的动画系统。</p>
+				<p>请尝试改变浏览器窗口尺寸，观察页面在不同窗口宽度下的变化！一共有三种布局（分别针对PC、平板、手机）。</p>
+				<p><a href="Bicycle.html" target="_blank">在这里</a></p>
+			</article>
+		</section>
+
+		<section>
+			<h3>
+				2. 与程序化布局协作的控件系统
+			</h3>
+			<article>
+				<h4>简介：</h4>
+				<p>我在开发程序化布局期间，逐渐形成一种全新的Web页面设计思想 —— “页面级MVC”！</p>
+				<p>所谓“页面级MVC”，是指：</p>
+				<p>M：HTML</p>
+				<p>V：CSS</p>
+				<p>C：JavaScript</p>
+				<p>简单说，我们将HTML页面划分成三大部分：模型，视图，控制器。</p>
+				<p>模型是一段HTML代码片段，他们仅用来表示用户访问的<strong>数据</strong>，
+					不涉及任何与<strong>呈现和交互</strong>有关的代码。
+					模型就像是一个“页面里的数据库”，CSS选择器作为它的“SQL”！
+				</p>
+				<p>视图是由若干 .css 文件构成的，他们负责将模型里丑陋的HTML代码片段以令人难忘的形式展现给用户！</p>
+				<p>控制器是由若干 .js 文件构成，他们是用户与页面交互的桥梁，同时驱动视图实现各种动画效果。</p>
+				<p>下面的示例将为您展示我正在开发的控件系统，该系统充分展现了“页面级MVC”思想（您可以对比着看页面源代码）。</p>
+				<p><a href="nUiWgts.html" target="_blank">在这里</a></p>
+			</article>
+		</section>
+	</div>
 
 </body>
 </html>
