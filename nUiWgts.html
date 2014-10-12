@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Blue.css" />
 	<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Purple.css" />
 	<script type="text/javascript" src="../nWse/(0)Seed.js"></script>-->
-
+	
 	<link rel="stylesheet" type="text/css" href="./cnWse/(0)Plmvc.css" />
 	<link rel="stylesheet" type="text/css" href="./cnWse/PcdrLot.css" />
 	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgts.css" />
@@ -27,9 +27,10 @@
 
 
 	<style type="text/css">
+
 		body
 		{
-			min-height: 1500px; /* 为了收起折叠框时不缩短页面 */
+			min-height: 1500px;		/* 为了收起折叠框时不缩短页面 */
 		}
 
 		#k_TestBoa
@@ -42,7 +43,7 @@
 		#k_PutTgt_Menu1
 		{
 			margin-bottom: 100px;
-			z-index: 100; /* 【重要】否则掉落的菜单会被后面的按钮覆盖 */
+			z-index: 100;	/* 【重要】否则掉落的菜单会被后面的按钮覆盖 */
 		}
 
 		#k_PutTgt_SetMode
@@ -64,20 +65,20 @@
 			text-align: center;
 		}
 
-			#k_PutTgt_Edit2 > textarea
-			{
-				min-height: 100px;
-			}
+		#k_PutTgt_Edit2>textarea
+		{
+			min-height: 100px;
+		}
 
 		#k_PutTgt_List1, #k_PutTgt_List2
 		{
 			margin-bottom: 50px;
 		}
 
-			#k_PutTgt_List1 > ul, #k_PutTgt_List2 > ul
-			{
-				/*height: 100px;*/
-			}
+		#k_PutTgt_List1>ul, #k_PutTgt_List2>ul
+		{
+			/*height: 100px;*/
+		}
 
 		#k_PutTgt_Swch
 		{
@@ -105,6 +106,7 @@
 			z-index: 2000;
 			border: 1px dotted black;
 		}
+
 	</style>
 </head>
 <body class="cnWse_Skin_Blue">
@@ -113,9 +115,10 @@
 			<span data-Wse_Tit>Btn3</span>
 		</div>
 	</div>-->
+
 	<!--<canvas id="k_Cvs" width="300" height="300"></canvas>-->
 	<!--<img src="Media/myship.png" style="cursor:pointer;border: 1px solid black;" />-->
-
+	
 	<div id="k_PutTgt_Lot" class="cnWse_PutTgt">
 
 	</div>
@@ -126,18 +129,18 @@
 		<!-- 按钮 -->
 		<!---->
 		<div id="k_BtnFirst" class="cnWse_PutSrc">
-			<span data-wse_tit>按 钮</span>
+			<span data-Wse_Tit>按 钮</span>
 		</div>
 
 		<div id="k_Srlz" class="cnWse_PutSrc">
-			<span data-wse_tit>表单序列化</span>
+			<span data-Wse_Tit>表单序列化</span>
 		</div>
 
 		<div id="k_SetMode" class="cnWse_PutSrc">
-			<span data-wse_tit>层叠式</span>
+			<span data-Wse_Tit>层叠式</span>
 		</div>
 		<div id="k_BtnSkin" class="cnWse_PutSrc">
-			<span data-wse_tit>紫色皮肤</span>
+			<span data-Wse_Tit>紫色皮肤</span>
 		</div>
 
 		<div id="k_ImgBtn" class="cnWse_PutSrc">
@@ -149,11 +152,11 @@
 		<!---->
 
 		<div id="k_Edit1" class="cnWse_PutSrc">
-			<div data-wse_ok style="padding: 0.25em;">OK</div>
+			<div data-Wse_Ok style="padding: 0.25em;">OK</div>
 		</div>
 
 		<div id="k_Edit2" class="cnWse_PutSrc">
-			<div data-wse_ok style="padding: 0.25em;">OK</div>
+			<div data-Wse_Ok style="padding: 0.25em;">OK</div>
 		</div>
 
 		<!---->
@@ -163,7 +166,7 @@
 		<div id="k_List1">
 
 			<!--<select>-->
-			<!--<option name="aa" value="AA">AAaa</option>-->
+				<!--<option name="aa" value="AA">AAaa</option>-->
 			<!--</select>-->
 
 			<ul>
@@ -196,55 +199,55 @@
 		<!---->
 
 		<div id="k_Menu1" class="cnWse_PutSrc">
-			<ul id="k_Menu1_Root" class="" data-wse_root>
-				<li data-wse_next="k_Menu1_Product">Product</li>
-				<li data-wse_next="k_Menu1_Solution">Solution</li>
-				<li data-wse_next="k_Menu1_Innovation">Innovation</li>
-				<li>Markets</li>
-				<li>Support</li>
+			<ul id="k_Menu1_Root" class="" data-Wse_Root>
+				<li data-Wse_Next="k_Menu1_Product">Product</li>
+				<li data-Wse_Next="k_Menu1_Solution">Solution</li>
+				<li data-Wse_Next="k_Menu1_Innovation">Innovation</li>
+				<li >Markets</li>
+				<li >Support</li>
 			</ul>
 
 			<ul id="k_Menu1_Product" class="">
-				<li>Desktop</li>
-				<li>Laptop</li>
-				<li data-wse_next="k_Menu1_Product_Embedded"><span>Embedded</span></li>
-				<li data-wse_next="k_Menu1_Product_Workstation">Workstation</li>
-				<li>Server</li>
+				<li >Desktop</li>
+				<li >Laptop</li>
+				<li data-Wse_Next="k_Menu1_Product_Embedded"><span>Embedded</span></li>
+				<li data-Wse_Next="k_Menu1_Product_Workstation">Workstation</li>
+				<li >Server</li>
 			</ul>
 
 			<ul id="k_Menu1_Solution" class="">
-				<li>PC</li>
-				<li>Mobile</li>
-				<li>Supercomputer</li>
+				<li >PC</li>
+				<li >Mobile</li>
+				<li >Supercomputer</li>
 			</ul>
 
 			<ul id="k_Menu1_Innovation" class="">
-				<li>AMD</li>
-				<li>nVidia</li>
-				<li>Intel</li>
+				<li >AMD</li>
+				<li >nVidia</li>
+				<li >Intel</li>
 			</ul>
 
 			<ul id="k_Menu1_Product_Embedded" class="">
-				<li data-wse_next="k_Menu1_Product_Embedded_iPhone">iPhone</li>
-				<li>iPad</li>
-				<li>Note4</li>
-				<li data-wse_next="k_Menu1_Product_Embedded_Galaxy">Galaxy</li>
+				<li data-Wse_Next="k_Menu1_Product_Embedded_iPhone">iPhone</li>
+				<li >iPad</li>
+				<li >Note4</li>
+				<li data-Wse_Next="k_Menu1_Product_Embedded_Galaxy">Galaxy</li>
 			</ul>
 
 			<ul id="k_Menu1_Product_Embedded_iPhone" class="">
-				<li>4</li>
-				<li>4s</li>
-				<li>5</li>
-				<li>5s</li>
-				<li>6</li>
-				<li>6 plus</li>
+				<li >4</li>
+				<li >4s</li>
+				<li >5</li>
+				<li >5s</li>
+				<li >6</li>
+				<li >6 plus</li>
 			</ul>
 
 			<ul id="k_Menu1_Product_Embedded_Galaxy" class="">
-				<li>S1</li>
-				<li>S2</li>
-				<li>S3</li>
-				<li>S4</li>
+				<li >S1</li>
+				<li >S2</li>
+				<li >S3</li>
+				<li >S4</li>
 			</ul>
 		</div>
 
@@ -253,12 +256,12 @@
 		<!---->
 
 		<div id="k_Acod1" class="cnWse_PutSrc">
-			<h3 data-wse_tit class="ctAcodTit">First</h3>
-			<p data-wse_ctnt>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-			<h3 data-wse_tit>Second</h3>
-			<p data-wse_ctnt>Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.</p>
-			<h3 data-wse_tit>Third</h3>
-			<p data-wse_ctnt>Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.</p>
+			<h3 data-Wse_Tit class="ctAcodTit">First</h3>
+			<p data-Wse_Ctnt >Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+			<h3 data-Wse_Tit>Second</h3>
+			<p data-Wse_Ctnt >Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.</p>
+			<h3 data-Wse_Tit>Third</h3>
+			<p data-Wse_Ctnt >Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.</p>
 		</div>
 
 		<!---->
@@ -267,12 +270,12 @@
 
 		<div id="k_Nav">
 			<ul id="k_PutTgt_Nav">
-				<h2 data-wse_tit>主导航<br />3种动画</h2>
-				<li><a href="#Home">Home</a></li>
-				<li><a href="#News">News</a></li>
-				<li><a href="#Archives">Archives</a></li>
-				<li><a href="#About">About</a></li>
-				<li><a href="#Contact">Contact</a></li>
+				<h2 data-Wse_Tit>主导航<br />3种动画</h2>
+				<li ><a href="#Home">Home</a></li>
+				<li ><a href="#News">News</a></li>
+				<li ><a href="#Archives">Archives</a></li>
+				<li ><a href="#About">About</a></li>
+				<li ><a href="#Contact">Contact</a></li>
 
 				<!--<li ><a href="#Home">Home</a></li>-->
 				<!--<li ><a href="#News">News</a></li>-->
@@ -289,7 +292,7 @@
 		<!---->
 		<!--  -->
 		<!---->
-
+		
 	</div>
 
 	<script type="text/javascript">
@@ -312,7 +315,7 @@
 						"nUi/PcdrLot.js",
 						"nUi/EfcMgr.js",
 						"nUi/Frmwk.js",
-
+						
 						"nUi/nCmnWgts/Btn.js",
 						"nUi/nCmnWgts/Edit.js",
 						"nUi/nCmnWgts/List.js",
@@ -321,7 +324,7 @@
 						"nUi/nCmnWgts/Acod.js",
 						"nUi/nCmnWgts/Nav.js"
 
-						, "nGpu/2dPath.js"
+						,"nGpu/2dPath.js"
 					]
 					,
 					fOnIcld);
@@ -347,7 +350,7 @@
 			var stFrmwk = nUi.stFrmwk;
 			var nCmnWgts = nUi.nCmnWgts;
 
-			//	console.log(nWse.stAsynIcld.cPsePath("nWse:nGpu/2dCtxt.js"));
+		//	console.log(nWse.stAsynIcld.cPsePath("nWse:nGpu/2dCtxt.js"));
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			// 静态变量
@@ -374,27 +377,27 @@
 			l_Ctxt.cMap(l_DstSara, l_Img, l_SrcSara, null);
 			//*/
 
-			//			// AJAX
-			//			var l_Ajax = new nWse.tAjax();
-			//			l_Ajax.cOpen({
-			//
-			//				c_Mthd: "GET",
-			//				c_Url: "/Abc.json",
-			//				c_Qry: [
-			//					"x", "y",
-			//					"z", "w"
-			//				],
-			//				c_fOnSucc: function (a_Ajax)
-			//				{
-			//					console.log("Ajax : " + a_Ajax.cGetResData());
-			//					console.log(a_Ajax.cGetResJson().a);
-			//				},
-			//				c_fOnFail: function (a_Ajax)
-			//				{
-			//					console.log("Ajax : " + a_Ajax.cGetResSta());
-			//				}
-			//			});
-			//			l_Ajax.cSend();
+//			// AJAX
+//			var l_Ajax = new nWse.tAjax();
+//			l_Ajax.cOpen({
+//
+//				c_Mthd: "GET",
+//				c_Url: "/Abc.json",
+//				c_Qry: [
+//					"x", "y",
+//					"z", "w"
+//				],
+//				c_fOnSucc: function (a_Ajax)
+//				{
+//					console.log("Ajax : " + a_Ajax.cGetResData());
+//					console.log(a_Ajax.cGetResJson().a);
+//				},
+//				c_fOnFail: function (a_Ajax)
+//				{
+//					console.log("Ajax : " + a_Ajax.cGetResSta());
+//				}
+//			});
+//			l_Ajax.cSend();
 
 			/////////////////////////
 
@@ -418,7 +421,7 @@
 						c_MaxWid: 2000,
 						c_MinHgt: null,	// 同window.innerHeight
 						c_BrkPnts: [0, 480, 960],
-						c_fBpc: nWse.stFctnUtil.cBindThis(l_This, l_This.cBpc)
+						c_fBpc : nWse.stFctnUtil.cBindThis(l_This, l_This.cBpc)
 					});
 
 					l_This.e_PcdrLot.cShowHideGridUi(true);
@@ -473,26 +476,26 @@
 						c_PutSrc: "k_BtnFirst",
 						c_fOnClk: function (a_Wgt)
 						{
-							//							var l_DomBody = nWse.stDomUtil.cAcsBody();
-							//							if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Blue"))
-							//							{
-							//								nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Blue", "cnWse_Skin_Purple");
-							//							//	a_Wgt.cAcsDomTit().textContent = "蓝色皮肤";
-							//							}
-							//							else
-							//							if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Purple"))
-							//							{
-							//								nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Purple", "cnWse_Skin_Blue");
-							//							//	a_Wgt.cAcsDomTit().textContent = "紫色皮肤";
-							//							}
+//							var l_DomBody = nWse.stDomUtil.cAcsBody();
+//							if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Blue"))
+//							{
+//								nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Blue", "cnWse_Skin_Purple");
+//							//	a_Wgt.cAcsDomTit().textContent = "蓝色皮肤";
+//							}
+//							else
+//							if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Purple"))
+//							{
+//								nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Purple", "cnWse_Skin_Blue");
+//							//	a_Wgt.cAcsDomTit().textContent = "紫色皮肤";
+//							}
 
-							//							console.log();
-							//							var l_AllPuts = l_This.e_PcdrLot.cGetAllPuts(null, true);
-							//							nWse.stAryUtil.cFor(l_AllPuts,
-							//							function (a_Ary, a_Idx, a_Put)
-							//							{
-							//								console.log(a_Put.id);
-							//							});
+//							console.log();
+//							var l_AllPuts = l_This.e_PcdrLot.cGetAllPuts(null, true);
+//							nWse.stAryUtil.cFor(l_AllPuts,
+//							function (a_Ary, a_Idx, a_Put)
+//							{
+//								console.log(a_Put.id);
+//							});
 						}
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
@@ -504,10 +507,10 @@
 						c_Plchd: "搜索什么？",
 						c_fOnOk: function (a_Wgt, a_Text)
 						{
-							//	console.log("文本框的内容是：" + a_Text);
+						//	console.log("文本框的内容是：" + a_Text);
 						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tEdit();	// Edit
@@ -518,10 +521,10 @@
 						c_Plchd: "搜索什么？",
 						c_fOnOk: function (a_Wgt, a_Text)
 						{
-							//	console.log("文本框的内容是：" + a_Text);
+						//	console.log("文本框的内容是：" + a_Text);
 						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tList();	// List1
@@ -530,12 +533,12 @@
 						c_PutSrc: "k_List1",
 						c_MltSlc: false,
 						c_AlwNone: false
-						//						c_fOnOk: function (a_Wgt, a_Text)
-						//						{
-						//							//	console.log("文本框的内容是：" + a_Text);
-						//						}
+//						c_fOnOk: function (a_Wgt, a_Text)
+//						{
+//							//	console.log("文本框的内容是：" + a_Text);
+//						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tList();	// List2
@@ -543,10 +546,10 @@
 						c_PutTgt: "k_PutTgt_List2",
 						c_PutSrc: "k_List2",
 						c_MltSlc: true
-						//						c_fOnOk: function (a_Wgt, a_Text)
-						//						{
-						//							//	console.log("文本框的内容是：" + a_Text);
-						//						}
+//						c_fOnOk: function (a_Wgt, a_Text)
+//						{
+//							//	console.log("文本框的内容是：" + a_Text);
+//						}
 					});
 					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
@@ -556,12 +559,12 @@
 						c_PutTgt: "k_PutTgt_Swch",
 						c_PutSrc: "k_Swch",
 						c_FxdAr: 4 / 1
-						//						c_fOnOk: function (a_Wgt, a_Text)
-						//						{
-						//							//	console.log("文本框的内容是：" + a_Text);
-						//						}
+//						c_fOnOk: function (a_Wgt, a_Text)
+//						{
+//							//	console.log("文本框的内容是：" + a_Text);
+//						}
 					});
-					//	l_Wgt.cOnOff(true);
+				//	l_Wgt.cOnOff(true);
 					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
@@ -620,11 +623,11 @@
 								a_Wgt.cAcsDomTit().textContent = "蓝色皮肤";
 							}
 							else
-								if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Purple"))
-								{
-									nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Purple", "cnWse_Skin_Blue");
-									a_Wgt.cAcsDomTit().textContent = "紫色皮肤";
-								}
+							if (nWse.stCssUtil.cHasCssc(l_DomBody, "cnWse_Skin_Purple"))
+							{
+								nWse.stCssUtil.cRplcCssc(l_DomBody, "cnWse_Skin_Purple", "cnWse_Skin_Blue");
+								a_Wgt.cAcsDomTit().textContent = "紫色皮肤";
+							}
 						}
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
@@ -649,12 +652,12 @@
 									"</ul>");
 							}, 2000)
 						},
-						c_fOnSlc: function (a_Wgt, a_Li)
+						c_fOnSlc : function (a_Wgt, a_Li)
 						{
 							console.log("触发：" + a_Li.textContent);
 						}
 					});
-					//	l_Wgt.cSetMode("Ovlp");
+				//	l_Wgt.cSetMode("Ovlp");
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tAcod();	// Acod1
@@ -663,7 +666,7 @@
 						c_PutSrc: "k_Acod1",
 						c_InitExpd: [0, 1],
 						c_InitExpdAll: true
-						//	,c_ExpdOnlyOne: true
+					//	,c_ExpdOnlyOne: true
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
 
@@ -677,14 +680,14 @@
 						c_MaxWid: 500,
 						c_PutRad: 160 * Math.PI / 180,
 						c_GapRad: 5 * Math.PI / 180,
-						//	c_AutoRandEfc : true,
+					//	c_AutoRandEfc : true,
 						c_fOnAnmtEnd_Lea: function (a_Nav)
 						{
 							a_Nav.cSetActvEfcIdx((a_Nav.cGetActvEfcIdx() + 1) % a_Nav.cGetEfcAmt());
 						}
 					});
-					//	l_Wgt.cSetActvEfcIdx(2);
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_Wgt.cSetActvEfcIdx(2);
+				//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					stFrmwk.cAcsGlbWgtSet().cAdd(l_Wgt);
 
 
@@ -702,7 +705,7 @@
 					stFrmwk.cAcsGlbWgtSet().cAdd(l_Wgt);
 					nWse.stDomUtil.cAcsBody().appendChild(l_Wgt.cAcsPutTgt());		// 加入到文档
 
-					document.getElementById("k_PutTgt_ImgBtn").style.visibility = "hidden";	// 一开始隐藏
+					document.getElementById("k_PutTgt_ImgBtn").style.display = "none";	// 一开始隐藏
 					window.addEventListener("keydown", function (a_Evt)
 					{
 						var l_WgtPutTgt;
@@ -720,12 +723,12 @@
 							}
 						}
 						else
-							if ("S".charCodeAt(0) == a_Evt.keyCode) // 飞船
-							{
-								l_WgtPutTgt = document.getElementById("k_PutTgt_ImgBtn");
-								if (l_WgtPutTgt)
-								{ l_WgtPutTgt.style.visibility = l_WgtPutTgt.style.visibility ? "" : "hidden"; }
-							}
+						if ("S".charCodeAt(0) == a_Evt.keyCode) // 飞船
+						{
+							l_WgtPutTgt = document.getElementById("k_PutTgt_ImgBtn");
+							if (l_WgtPutTgt)
+							{ l_WgtPutTgt.style.display = l_WgtPutTgt.style.display ? "" : "none"; }
+						}
 					});
 				}
 				,
@@ -738,16 +741,16 @@
 					l_This.eInit();
 
 					// 初始布局？
-					//	l_This.e_PcdrLot.cRun();
+				//	l_This.e_PcdrLot.cRun();
 					stFrmwk.cRunLot();			// 运行布局
 				}
 				,
-				cBpc: function (a_Lot)
+				cBpc : function (a_Lot)
 				{
 					var l_This = this;
 					var l_Lot = a_Lot;
 					var l_BrkPntIdx = l_Lot.cGetBrkPntIdx();
-
+					
 					l_Lot
 					.cBoa({
 						c_Id: "k_TestBoa"
@@ -756,7 +759,7 @@
 							c_GridTot: (2 == l_BrkPntIdx) ? 20 : ((1 == l_BrkPntIdx) ? 10 : 8)
 						})
 							.cPut({
-								c_NewRow: true,
+								c_NewRow : true,
 								c_Id: "k_PutTgt_BtnFirst",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 2
 							})
@@ -774,17 +777,17 @@
 							})
 							.cPut({
 								c_NewRow: true,
-								c_Id: "k_PutTgt_List1",
+								c_Id : "k_PutTgt_List1",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
 							})
 							.cPut({
-								c_Id: "k_PutTgt_List2",
+								c_Id : "k_PutTgt_List2",
 								c_GridOfst: +2,
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
 							})
 							.cPut({
 								c_NewRow: true,
-								c_Id: "k_PutTgt_Swch",
+								c_Id : "k_PutTgt_Swch",
 								c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
 							})
 							.cPut({
@@ -796,23 +799,23 @@
 
 							// 其他
 							.cPut({
-								c_NewRow: true,
+								c_NewRow : true,
 								c_Id: "k_PutTgt_Menu1",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 10 : 10
 							})
 							.cPut({
-								c_NewRow: true,
+								c_NewRow : true,
 								c_Id: "k_PutTgt_SetMode",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
 							})
 
 							.cPut({
-								c_NewRow: true,
+								c_NewRow : true,
 								c_Id: "k_PutTgt_Acod1",
 								c_GridCnt: 10
 							})
 							.cPut({
-								c_NewRow: true,
+								c_NewRow : true,
 								c_Id: "k_PutTgt_BtnSkin",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
 							})
