@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>WSE示例应用程序</title>
+
+	<!--<link rel="stylesheet" type="text/css" href="../cnWse/(0)Plmvc.css" />-->
+	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgts.css" />-->
+	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Blue.css" />-->
+	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Purple.css" />-->
+	<!--<script type="text/javascript" src="../nWse/(0)Seed.js"></script>-->
+
+	<link rel="stylesheet" type="text/css" href="./cnWse/(0)Plmvc.css" />
+	<link rel="stylesheet" type="text/css" href="./cnWse/PcdrLot.css" />
+	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgts.css" />
+	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgtsSkin_Blue.css" />
+	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgtsSkin_Purple.css" />
+	<script type="text/javascript" src="./(0)Seed.js"></script>
+	<script type="text/javascript" src="./(1)WSE_nWse.js"></script>
+	<script type="text/javascript" src="./(2)WSE_nUi.js"></script>
+	<script type="text/javascript" src="./(3)WSE_nUi_nCmnWgts.js"></script>
+	<!--<script type="text/javascript" src="./(4)WSE_nGpu.js"></script>-->
+
+
+	<style type="text/css">
+
+		/*body*/
+		/*{*/
+			/*background-color: white;*/
+
+			/*-webkit-perspective:1000px;	*//* Safari 和 Chrome */
+			/*-webkit-perspective-origin: center center;	*//* Safari 和 Chrome */
+			/*perspective:1000px;*/
+			/*perspective-origin: center center;*/
+		/*}*/
+
+		#ok_3dBody
+		{
+			background-color: transparent;
+
+			-webkit-perspective:1000px;
+			perspective:1000px;
+
+			-webkit-perspective-origin: center center;
+			perspective-origin: center center;
+		}
+
+		#k_PutTgt_Lot
+		{
+			border: 1px solid black;
+
+			-webkit-transform-style:preserve-3d;
+			transform-style:preserve-3d;
+		}
+
+		#k_TestBoa
+		{
+			padding: 20px;
+		}
+
+	</style>
+</head>
+<body class="cnWse_Skin_Blue">
+
+<div id="ok_3dBody">
+	<!--<div class="cnWse_Skin_Blue">
+	<div id="k_Btn3" class="cnWse_PutTgt">
+		<span data-Wse_Tit>Btn3</span>
+	</div>
+</div>-->
+
+	<!--<canvas id="k_Cvs" width="300" height="300"></canvas>-->
+	<!--<img src="Media/myship.png" style="cursor:pointer;border: 1px solid black;" />-->
+
+	<div id="k_PutTgt_Lot" class="cnWse_PutTgt">
+
+	</div>
+
+	<div id="k_PutSrc_Lot" class="cnWse_PutSrc">
+
+		<div id="k_Put0" style="width:200px;height: 200px;background-color: blue"></div>
+
+		<!---->
+		<!--  -->
+		<!---->
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+//@ 全局对象，同时支持页面主线程，WebWorker线程，和Node.js
+var i_InNodeJs = ("undefined" == typeof self);
+var l_Glb = i_InNodeJs ? global : self;
+
+window.addEventListener("load", function ()
+{
+	console.log("window.onload");
+//	-webkit-transform: rotateY(45deg);
+
+	nWse.stAsynIcld.cFromApp("nWse",
+	[
+		"Ajax",
+
+		"VtuCsl.js",
+		"PntIptTrkr.js",
+
+		"nUi/PcdrLot.js",
+		"nUi/EfcMgr.js",
+		"nUi/Frmwk.js",
+
+		"nUi/nCmnWgts/Btn.js",
+		"nUi/nCmnWgts/Edit.js",
+		"nUi/nCmnWgts/List.js",
+		"nUi/nCmnWgts/Swch.js",
+		"nUi/nCmnWgts/Menu.js",
+		"nUi/nCmnWgts/Acod.js",
+		"nUi/nCmnWgts/Nav.js",
+		"nUi/nCmnWgts/SignLog.js"
+
+		,"nGpu/2dPath.js"
+	]
+	,
+	fOnIcld);
+});
+
+
+function fOnIcld(a_Errs)
+{
+	"use strict";
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// using
+
+	var nWse = l_Glb.nWse;
+	var stVtuCsl = nWse.stVtuCsl;
+	//	var tFsm = nWse.tFsm;
+	var tPntIptTrkr = nWse.tPntIptTrkr;
+
+	var nUi = nWse.nUi;
+	var tEfc = nUi.tEfc;
+	var stEfcMgr = nUi.stEfcMgr;
+	var tPcdrLot = nUi.tPcdrLot;
+	var stFrmwk = nUi.stFrmwk;
+	var nCmnWgts = nUi.nCmnWgts;
+
+	//	console.log(nWse.stAsynIcld.cPsePath("nWse:nGpu/2dCtxt.js"));
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 静态变量
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 示例应用程序
+
+	/*
+	 var l_Cvs = document.getElementById("k_Cvs");
+	 var l_Ctxt = new nWse.nGpu.t2dCtxt();
+	 l_Ctxt.cBindCvs(l_Cvs);
+
+	 //			var l_Path = new nWse.nGpu.t2dCtxt.tPath();
+	 //			l_Path.cRcRect(true, 50, 50, 100, 100, [10, 20, 30, 40]);
+	 //			l_Ctxt.cSetDrawMthd(0);
+	 //			l_Ctxt.cAcs().strokeStyle = "rgb(0, 0, 255)";
+	 //			l_Ctxt.cDrawPath(l_Path);
+
+	 var l_Img = new Image();
+	 l_Img.src = "Media/myship.png";
+
+	 var l_DstSara = new nWse.tSara(50, 50, 142, 142);
+	 var l_SrcSara = new nWse.tSara(0, 0, 40, 142);
+	 l_Ctxt.cMap(l_DstSara, l_Img, l_SrcSara, null);
+	 //*/
+
+//			// AJAX
+//			var l_Ajax = new nWse.tAjax();
+//			l_Ajax.cOpen({
+//
+//				c_Mthd: "GET",
+//				c_Url: "/Abc.json",
+//				c_Qry: [
+//					"x", "y",
+//					"z", "w"
+//				],
+//				c_fOnSucc: function (a_Ajax)
+//				{
+//					console.log("Ajax : " + a_Ajax.cGetResData());
+//					console.log(a_Ajax.cGetResJson().a);
+//				},
+//				c_fOnFail: function (a_Ajax)
+//				{
+//					console.log("Ajax : " + a_Ajax.cGetResSta());
+//				}
+//			});
+//			l_Ajax.cSend();
+
+	/////////////////////////
+
+	var tExmApp = nWse.fClass(nApp,
+	function tExmApp()
+	{
+		var l_This = this;
+		l_This.e_WidPct = 100;				// 宽度百分比
+		l_This.e_PcdrLot = new tPcdrLot();	// 程序化布局
+		stFrmwk.cSetLot(l_This.e_PcdrLot);			// 框架
+	},
+	null,
+	{
+		eInit: function ()
+		{
+			var l_This = this;
+			l_This.e_PcdrLot.cPlan({
+				c_PutTgt: "k_PutTgt_Lot",
+				c_PutSrc: "k_PutSrc_Lot",
+				c_WidPct: l_This.e_WidPct,
+				c_MinWid: 256,
+				c_MaxWid: 2000,
+				c_MinHgt: null,	// 同window.innerHeight
+				c_BrkPnts: [0, 480, 960],
+				c_fBpc : nWse.stFctnUtil.cBindThis(l_This, l_This.cBpc)
+			});
+
+			l_This.e_PcdrLot.cShowHideGridUi(true);
+
+			// 自定义默认进离动画
+			var l_DftEfc = l_This.e_PcdrLot.cAcsDftEfc();
+			l_DftEfc.cSetUniDur(0);//.6);
+			l_DftEfc.cSetUniEsn(function (a_Scl)
+			{
+				//	return a_Scl;
+				return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.2, a_Scl, false);
+			});
+
+			stEfcMgr.cBind(l_This.e_PcdrLot.cAcsDftEfc())
+					.cCssEntBgn_FromRt()
+					.cCssLeaEnd_ToRt()
+					.cCssEntLea_Fade();
+
+			// 虚拟控制台
+			stVtuCsl.cHotKeyUi(true);	// F2快捷键
+
+			//======================== 其他
+
+			var l_RotRad = Math.PI / 2;	// 从轴端向原点看，顺时针为正，逆时针为负
+			var l_DsplDom = nWse.stNowLoad.cAcsDsplDom();
+		//	var l_DsplDom = document.getElementById("ok_3dBody");
+			nWse.stCssUtil.cAnmt(l_DsplDom,
+					{
+						"Wse_3dTsfm" : [
+//							{
+//								c_Name : "scale3d",
+//								c_End : { x:0.5, y:0.5, z:1 }
+//							},
+//							{
+//								c_Name : "translate3d",
+//								c_End : { x:300, y:0, z:1 }
+//							},
+							{
+								c_Name : "rotate3d",
+								c_End : nWse.stNumUtil.cCrtQtn$PaRad({}, 0, -l_RotRad, 0)
+							}
+						]
+					},
+					{
+						c_Dur : 3,
+						c_Tot: 1,
+						c_fOnEnd: function ()
+						{
+						//	return;
+							nWse.stNowLoad.cEnd();
+
+							// 初始布局？
+							stFrmwk.cRunLot();			// 运行布局
+							l_This.e_PcdrLot.cAcsDftEfc().cSetUniDur(0.6);	// 恢复动画
+
+							// 翻转
+							l_DsplDom = document.getElementById("k_PutTgt_Lot");
+							var l_3dTsfm = nWse.stCssUtil.cAcsExtdAnmt_3dTsfm(l_DsplDom);
+							l_3dTsfm.c_Rot = nWse.stNumUtil.cCrtQtn$PaRad({}, 0, +l_RotRad, 0);
+							nWse.stCssUtil.cUpdExtdAnmt_3dTsfm(l_DsplDom);
+
+							nWse.stCssUtil.cAnmt(l_DsplDom,
+									{
+										"Wse_3dTsfm" : [
+//											{
+//												c_Name : "scale3d",
+//												c_End : { x:1, y:1, z:1 }
+//											},
+											{
+												c_Name : "rotate3d",
+												c_End : nWse.stNumUtil.cUnitQtn({})
+											}
+										]
+									},
+									{
+										c_Dur : 3,
+										c_Tot: 1,
+										c_fOnEnd: function ()
+										{
+//											// 初始布局？
+//											stFrmwk.cRunLot();			// 运行布局
+										}
+									});
+						}
+					});
+		}
+		,
+		// 运行
+		cRun: function ()
+		{
+			var l_This = this;
+
+			// 初始化
+			l_This.eInit();
+
+			// 初始布局？
+			//	l_This.e_PcdrLot.cRun();
+		//	stFrmwk.cRunLot();			// 运行布局
+		}
+		,
+		cBpc : function (a_Lot)
+		{
+			var l_This = this;
+			var l_Lot = a_Lot;
+			var l_BrkPntIdx = l_Lot.cGetBrkPntIdx();
+
+			l_Lot
+					.cBoa({
+						c_Id: "k_TestBoa"
+					})
+					.cCol({
+						c_GridTot: (2 == l_BrkPntIdx) ? 20 : ((1 == l_BrkPntIdx) ? 10 : 8)
+					})
+					.cPut({
+						c_Id: "k_Put0",
+						c_GridCnt: 4
+					})
+			;
+		}
+	});
+
+	var zzz = 0;
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Over
+
+	// 示例应用程序
+	var e_App = new nApp.tExmApp();
+	e_App.cRun();
+}
+
+</script>
+
+</body>
+</html>
