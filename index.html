@@ -20,9 +20,34 @@
 			text-align: center;
 		}
 
-		section
+		article
 		{
 			margin: 50px 0px;
+		}
+
+		p
+		{
+			line-height: 1.5;
+		}
+
+		pre
+		{
+			font-size: 1.5em;
+		}
+
+		.cnApp_Kwd
+		{
+			color: rgb(0, 0, 255);
+		}
+
+		.cnApp_Cmt
+		{
+			color: rgb(0, 180, 0);
+		}
+
+		.cnApp_StrLtrl
+		{
+			color: rgb(180, 0, 0);
 		}
 	</style>
 </head>
@@ -30,18 +55,18 @@
 	<div class="cnApp_Lot">
 		<h1>
 			欢迎参观米加的主页！<br />
-			<a href="mybio.docx" style="font-size:16px">下载我的简历：mybio.docx</a>
+			<a href="Mijia.docx" style="font-size:16px">下载我的简历：Mijia.docx</a>
 		</h1>
 
-		<h2>
-			以下是我的作品链接及简介，请使用支持HTML5和CSS3的浏览器打开，推荐Chrome 30.0以上版本：
-		</h2>
-
 		<section>
-			<h3>
-				1. Procedural Layout —— 程序化布局
-			</h3>
+			<h2>
+				以下是我的作品链接及简介，请使用支持HTML5和CSS3的浏览器打开，推荐Chrome 30.0以上版本：
+			</h2>
+
 			<article>
+				<h3>
+					1. Procedural Layout —— 程序化布局
+				</h3>
 				<h4>简介：</h4>
 				<p>传统的“Responsive Web Design”都是借助CSS驱动浏览器进行排版。</p>
 				<p>我独树一帜 —— 完全采用JavaScript实现排版算法，同时引入丰富的动画系统。</p>
@@ -50,20 +75,18 @@
 					为什么很多人都没有注意到这句话呢？！第一个示例不是展示页面内容，而是展示页面布局！自适应三种设备的屏幕宽度！</p>
 				<p><a href="Bicycle.html" target="_blank">Bicycle.html</a></p>
 			</article>
-		</section>
 
-		<section>
-			<h3>
-				2. 与程序化布局协作的控件系统
-			</h3>
 			<article>
+				<h3>
+					2. 与程序化布局协作的控件系统
+				</h3>
 				<h4>简介：</h4>
 				<p>我采用CSS3的新效果制作自己的控件库，目前虽然数量不多，却也包含了一些最常用的控件，请试试操作他们的感觉！</p>
 				<p><a href="nUiWgts.html" target="_blank">nUiWgts.html</a></p>
 				<div style="font-size:1.2em; font-weight:bold;">
-					<h5 style="font-size: 2em;">最新技术展示（2014/10/12） —— 精确拾取</h5>
+					<h5 style="font-size: 1.5em;">技术展示（2014/10/12） —— 精确拾取</h5>
 					
-					<p>进入示例页面后，请按键盘“S”键，会出现一张卡通宇宙飞船的图片，
+					<p>进入上述页面后，请按键盘“S”键，会出现一张卡通宇宙飞船的图片，
 					请拖动页面的垂直滚动条，使这张图片近似位于下图所示的位置，黑色虚线框表示图像的覆盖区域：
 						<img src="./PickShowcase.png" style="display:block;" />
 					然后请在上图红色阴影区域内单击（我是说单击示例页面的对应位置，不是上面这个图！），
@@ -79,28 +102,51 @@
 					</p>
 				</div>
 			</article>
-		</section>
 
-		<section>
-			<h3>
-				3. 海量JavaScript文件的依赖管理、压缩、合并
-			</h3>
 			<article>
+				<h3>
+					3. 我翻译的JavaScript标准——《ECMA-262》——前十四章
+				</h3>
 				<h4>简介：</h4>
-				<p>Web程序的规模和复杂度持续增长，还在手工把 .js 文件一个一个的嵌入到页面里吗？
-					显然，手工嵌入100个文件并记住他们彼此间的依赖关系是不可能的（愚公移山精神）。</p>
-				<p>我为冬至引擎设计了一整套文件依赖管理机制，模拟了C语言的“#include”预处理指令，
-					使得我们可以花费较低的代价、以异步并发的方式请求大量 .js 文件，同时维护文件间的依赖关系。</p>
-				<p>另一方面，对于建站、外包为主要盈利方式的公司，肯定不希望自己的产品短期内就被竞争对手仿制出来吧？
-					这就要用到JavaScript源代码的压缩和混淆技术。</p>
-				<p>作为冬至引擎的伴随项目之一，我用C#开发了JavaScript压缩合并器；上面的两个示例虽然需要数十个 .js 文件，
-					但其实只加载了四个文件，而且其中三个都被压缩混淆过。如果您也是程序员，请按F12，
-					在浏览器内置的开发者工具里分别进入“控制台”和“网络”这两个标签页，前者记录了示例页面需要的每个 .js 文件，
-					而后者展示了实际发出的HTTP请求（如果为空请立即刷新一下页面），您可以看到两者在数量上有巨大差距，这就是合并的威力！
+				<p>JavaScript标准是由ECMA（欧洲计算机制造商联合会）制订的，我翻译的是2011年6月颁布的5.1版，这也是HTML5主要使用的版本。</p>
+				<a href="Ecma-262 中文版.docx">Ecma-262 中文版.docx</a>
+				<br/><br/>
+				<a href="Ecma-262.pdf">对照阅读 Ecma-262 英文原版.pdf</a>
+				<p>
+					恳请各位面试官注意，笔者好歹是读过标准的人，您在面试时考我几道JavaScript题我很高兴，但拜托您问得要有难度可以吗？
+					像原型链、闭包、怎么实现面向对象编程（封装、继承、多态）、函数的this指针在赋值时会丢失因此需要绑定……
+					这些问题，我都快被问吐了；我为您提供几道例题以供参考，我希望您问得题的难度至少能与下面第一道题相当(^_^)：
+				</p>
+				<p>
+					①【难度：小】请解释一下这段代码alert()的输出：
+				</p>
+				<pre>
+<span class="cnApp_Kwd">function</span> tClass() { }
+tClass.prototype = { s_C : 0 };
+<span class="cnApp_Kwd">var</span> o = <span class="cnApp_Kwd">new</span> tClass();
+alert(<span class="cnApp_StrLtrl">"tClass.prototype.s_C = "</span> + tClass.prototype.s_C + <span class="cnApp_StrLtrl">", o.s_C = "</span> + o.s_C);	<span class="cnApp_Cmt">// 0, 0</span>
+++ o.s_C;
+alert(<span class="cnApp_StrLtrl">"tClass.prototype.s_C = "</span> + tClass.prototype.s_C + <span class="cnApp_StrLtrl">", o.s_C = "</span> + o.s_C);	<span class="cnApp_Cmt">// 0, 1</span>
+				</pre>
+
+				<p>
+					②【难度：中】请解释一下这个（有点变态的）表达式的结果为什么是字符串"10,1"，希望没有吓到您：
+				</p>
+				<pre>
+++[[0]][+[0]]+[[0,1]][+[0]]
+				</pre>
+
+				<p>
+					③【难度：大】请问在JavaScript里，如何正确实现“深拷贝”？
+					请注意，这道题绝非您一开始想象得那么简单，jQuery的extend函数并不正确！——也许吓了您一跳——
+					但是，jQuery的extend函数采用的是“贪心算法”，然而贪心算法用来执行深拷贝是错误的！
+					答案绝对出乎您的意料，这也是为什么难度被标为“大”的原因。
+				</p>
+				<p>
+					答案是：办不到。O(∩_∩)O哈哈~，<strong>因为在JavaScript里，无法正确深拷贝一个函数！</strong>
 				</p>
 			</article>
 		</section>
 	</div>
-
 </body>
 </html>
