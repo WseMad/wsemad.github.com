@@ -6,13 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>UI</title>
-
-	<!--<link rel="stylesheet" type="text/css" href="../cnWse/(0)Plmvc.css" />-->
-	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgts.css" />-->
-	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Blue.css" />-->
-	<!--<link rel="stylesheet" type="text/css" href="../cnWse/CmnWgtsSkin_Purple.css" />-->
-	<!--<script type="text/javascript" src="../nWse/(0)Seed.js"></script>-->
-
+	
 	<link rel="stylesheet" type="text/css" href="./cnWse/(0)Plmvc.css" />
 	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgts.css" />
 	<link rel="stylesheet" type="text/css" href="./cnWse/CmnWgtsSkin_Blue.css" />
@@ -69,7 +63,7 @@
 			text-align: center;
 		}
 
-		#k_PutTgt_Edit2>textarea
+		#k_PutTgt_Edit2 textarea
 		{
 			min-height: 100px;
 		}
@@ -94,7 +88,7 @@
 			z-index: 10;
 		}
 
-		#k_PutTgt_Srlz, #k_PutTgt_LogIn, #k_PutTgt_SignIn
+		#k_PutTgt_FormSbmt, #k_PutTgt_LogIn, #k_PutTgt_SignIn
 		{
 			margin: 0px 10px 50px 10px;
 		}
@@ -119,327 +113,328 @@
 	</style>
 </head>
 <body class="cnWse_Skin_Blue">
-<!--<div class="cnWse_Skin_Blue">
-	<div id="k_Btn3" class="cnWse_PutTgt">
-		<span data-Wse_Tit>Btn3</span>
+	<!--<div class="cnWse_Skin_Blue">
+		<div id="k_Btn3" class="cnWse_PutTgt">
+			<span data-Wse_Tit>Btn3</span>
+		</div>
+	</div>-->
+
+	<!--<canvas id="k_Cvs" width="300" height="300"></canvas>-->
+	<!--<img src="Media/myship.png" style="cursor:pointer;border: 1px solid black;" />-->
+	
+	<div id="k_PutTgt_Lot" class="cnWse_PutTgt">
+
 	</div>
-</div>-->
 
-<!--<canvas id="k_Cvs" width="300" height="300"></canvas>-->
-<!--<img src="Media/myship.png" style="cursor:pointer;border: 1px solid black;" />-->
+	<div id="k_PutSrc_Lot" class="cnWse_PutSrc">
 
-<div id="k_PutTgt_Lot" class="cnWse_PutTgt">
+		<!---->
+		<!-- 按钮 -->
+		<!---->
+		<div id="k_Btn1st" class="cnWse_PutSrc">
+			<span data-Wse_Tit>矩形按钮</span>
+		</div>
+		<div id="k_Btn2nd" class="cnWse_PutSrc">
+			<span data-Wse_Tit>圆形金属按钮</span>
+		</div>
+		<div id="k_Btn3rd" class="cnWse_PutSrc">
+			<span data-Wse_Tit>椭圆按钮</span>
+		</div>
+		<div id="k_Btn4th" class="cnWse_PutSrc">
+			<span data-Wse_Tit>囊形按钮</span>
+		</div>
 
-</div>
+		<div id="k_FormSbmt" class="cnWse_PutSrc">
+			<span data-Wse_Tit>表单提交</span>
+		</div>
+		<div id="k_LogIn" class="cnWse_PutSrc">
+			<span data-Wse_Tit>登录</span>
+		</div>
+		<div id="k_SignIn" class="cnWse_PutSrc">
+			<span data-Wse_Tit>注册</span>
+		</div>
 
-<div id="k_PutSrc_Lot" class="cnWse_PutSrc">
+		<div id="k_SetMode" class="cnWse_PutSrc">
+			<span data-Wse_Tit>层叠式</span>
+		</div>
+		<div id="k_BtnSkin" class="cnWse_PutSrc">
+			<span data-Wse_Tit>紫色皮肤</span>
+		</div>
 
-<!---->
-<!-- 按钮 -->
-<!---->
-<div id="k_Btn1st" class="cnWse_PutSrc">
-	<span data-Wse_Tit>矩形按钮</span>
-</div>
-<div id="k_Btn2nd" class="cnWse_PutSrc">
-	<span data-Wse_Tit>圆形金属按钮</span>
-</div>
-<div id="k_Btn3rd" class="cnWse_PutSrc">
-	<span data-Wse_Tit>椭圆按钮</span>
-</div>
-<div id="k_Btn4th" class="cnWse_PutSrc">
-	<span data-Wse_Tit>囊形按钮</span>
-</div>
+		<div id="k_ImgBtn" class="cnWse_PutSrc">
+			<img src="Media/myship.png" />
+		</div>
 
-<div id="k_Srlz" class="cnWse_PutSrc">
-	<span data-Wse_Tit>表单序列化</span>
-</div>
-<div id="k_LogIn" class="cnWse_PutSrc">
-	<span data-Wse_Tit>登录</span>
-</div>
-<div id="k_SignIn" class="cnWse_PutSrc">
-	<span data-Wse_Tit>注册</span>
-</div>
+		<!---->
+		<!-- 编辑 -->
+		<!---->
 
-<div id="k_SetMode" class="cnWse_PutSrc">
-	<span data-Wse_Tit>层叠式</span>
-</div>
-<div id="k_BtnSkin" class="cnWse_PutSrc">
-	<span data-Wse_Tit>紫色皮肤</span>
-</div>
+		<div id="k_Edit1" class="cnWse_PutSrc">
+			<!--<div data-Wse_Ok style="padding: 0.25em; background-color: yellow; width: 4em;"></div>-->
+			<span data-Wse_Ok style="padding: 0.25em;">OK</span>
+			<!--<span data-Wse_Pfx style="padding: 0.25em;">Pfx</span>-->
+			<!--<span data-Wse_Sfx style="padding: 0.25em;">Sfx</span>-->
+		</div>
 
-<div id="k_ImgBtn" class="cnWse_PutSrc">
-	<img src="Media/myship.png" />
-</div>
+		<div id="k_Edit2" class="cnWse_PutSrc">
+			<div data-Wse_Ok style="padding: 0.25em;">OK</div>
+		</div>
 
-<!---->
-<!-- 编辑 -->
-<!---->
+		<!---->
+		<!-- 列表 -->
+		<!---->
 
-<div id="k_Edit1" class="cnWse_PutSrc">
-	<!--<div data-Wse_Ok style="padding: 0.25em; background-color: yellow; width: 4em;"></div>-->
-	<span data-Wse_Ok style="padding: 0.25em;">OK</span>
-	<!--<span data-Wse_Pfx style="padding: 0.25em;">Pfx</span>-->
-	<!--<span data-Wse_Sfx style="padding: 0.25em;">Sfx</span>-->
-</div>
+		<div id="k_List1">
 
-<div id="k_Edit2" class="cnWse_PutSrc">
-	<div data-Wse_Ok style="padding: 0.25em;">OK</div>
-</div>
+			<!--<select>-->
+				<!--<option name="aa" value="AA">AAaa</option>-->
+			<!--</select>-->
 
-<!---->
-<!-- 列表 -->
-<!---->
+			<ul>
+				<li value="V_Aa"><span>Aa</span></li>
+				<li>Bb</li>
+				<li>Cc</li>
+				<!--<li><span>CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc</span></li>-->
+				<li>Dd</li>
+			</ul>
+		</div>
 
-<div id="k_List1">
+		<div id="k_List2">
+			<ul>
+				<li value="V_Aa"><span>Aa</span></li>
+				<li>Bb</li>
+				<li>Cc</li>
+				<li>Dd</li>
+			</ul>
+		</div>
 
-	<!--<select>-->
-	<!--<option name="aa" value="AA">AAaa</option>-->
-	<!--</select>-->
+		<!---->
+		<!-- 开关 -->
+		<!---->
 
-	<ul>
-		<li value="V_Aa"><span>Aa</span></li>
-		<li>Bb</li>
-		<li>Cc</li>
-		<!--<li><span>CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc</span></li>-->
-		<li>Dd</li>
-	</ul>
-</div>
+		<div id="k_Swch">
+		</div>
 
-<div id="k_List2">
-	<ul>
-		<li value="V_Aa"><span>Aa</span></li>
-		<li>Bb</li>
-		<li>Cc</li>
-		<li>Dd</li>
-	</ul>
-</div>
+		<!---->
+		<!-- 组合框 -->
+		<!---->
 
-<!---->
-<!-- 开关 -->
-<!---->
+		<div id="k_Cmb1">
+			<ul>
+				<li><span data-Wse_Text>Option1</span></li>
+				<li value="optn2">Option2</li>
+				<li>Option3</li>
+				<li>Option4</li>
+			</ul>
+		</div>
 
-<div id="k_Swch">
-</div>
+		<div id="k_Cmb2" data-Wse_Name="Cmb2">
+			<ul>
+				<li>Option1</li>
+				<li value="optn2">Option2</li>
+				<li>Option3</li>
+				<li>Option4</li>
+			</ul>
+		</div>
 
-<!---->
-<!-- 组合框 -->
-<!---->
+		<!---->
+		<!-- 菜单 -->
+		<!---->
 
-<div id="k_Cmb1">
-	<ul>
-		<li><span data-Wse_Text>Option1</span></li>
-		<li value="optn2">Option2</li>
-		<li>Option3</li>
-		<li>Option4</li>
-	</ul>
-</div>
+		<div id="k_Menu1" class="cnWse_PutSrc">
+			<ul id="k_Menu1_Root" class="" data-Wse_Root>
+				<li data-Wse_Next="k_Menu1_Product">Product</li>
+				<li data-Wse_Next="k_Menu1_Solution">Solution</li>
+				<li data-Wse_Next="k_Menu1_Innovation">Innovation</li>
+				<li >Markets</li>
+				<li >Support</li>
+			</ul>
 
-<div id="k_Cmb2" data-Wse_Name="Cmb2">
-	<ul>
-		<li>Option1</li>
-		<li value="optn2">Option2</li>
-		<li>Option3</li>
-		<li>Option4</li>
-	</ul>
-</div>
+			<ul id="k_Menu1_Product" class="">
+				<li >Desktop</li>
+				<li >Laptop</li>
+				<li data-Wse_Next="k_Menu1_Product_Embedded"><span>Embedded</span></li>
+				<li data-Wse_Next="k_Menu1_Product_Workstation">Workstation</li>
+				<li >Server</li>
+			</ul>
 
-<!---->
-<!-- 菜单 -->
-<!---->
+			<ul id="k_Menu1_Solution" class="">
+				<li >PC</li>
+				<li >Mobile</li>
+				<li >Supercomputer</li>
+			</ul>
 
-<div id="k_Menu1" class="cnWse_PutSrc">
-	<ul id="k_Menu1_Root" class="" data-Wse_Root>
-		<li data-Wse_Next="k_Menu1_Product">Product</li>
-		<li data-Wse_Next="k_Menu1_Solution">Solution</li>
-		<li data-Wse_Next="k_Menu1_Innovation">Innovation</li>
-		<li >Markets</li>
-		<li >Support</li>
-	</ul>
+			<ul id="k_Menu1_Innovation" class="">
+				<li >AMD</li>
+				<li >nVidia</li>
+				<li >Intel</li>
+			</ul>
 
-	<ul id="k_Menu1_Product" class="">
-		<li >Desktop</li>
-		<li >Laptop</li>
-		<li data-Wse_Next="k_Menu1_Product_Embedded"><span>Embedded</span></li>
-		<li data-Wse_Next="k_Menu1_Product_Workstation">Workstation</li>
-		<li >Server</li>
-	</ul>
+			<ul id="k_Menu1_Product_Embedded" class="">
+				<li data-Wse_Next="k_Menu1_Product_Embedded_iPhone">iPhone</li>
+				<li >iPad</li>
+				<li >Note4</li>
+				<li data-Wse_Next="k_Menu1_Product_Embedded_Galaxy">Galaxy</li>
+			</ul>
 
-	<ul id="k_Menu1_Solution" class="">
-		<li >PC</li>
-		<li >Mobile</li>
-		<li >Supercomputer</li>
-	</ul>
+			<ul id="k_Menu1_Product_Embedded_iPhone" class="">
+				<li >4</li>
+				<li >4s</li>
+				<li >5</li>
+				<li >5s</li>
+				<li >6</li>
+				<li >6 plus</li>
+			</ul>
 
-	<ul id="k_Menu1_Innovation" class="">
-		<li >AMD</li>
-		<li >nVidia</li>
-		<li >Intel</li>
-	</ul>
+			<ul id="k_Menu1_Product_Embedded_Galaxy" class="">
+				<li >S1</li>
+				<li >S2</li>
+				<li >S3</li>
+				<li >S4</li>
+			</ul>
+		</div>
 
-	<ul id="k_Menu1_Product_Embedded" class="">
-		<li data-Wse_Next="k_Menu1_Product_Embedded_iPhone">iPhone</li>
-		<li >iPad</li>
-		<li >Note4</li>
-		<li data-Wse_Next="k_Menu1_Product_Embedded_Galaxy">Galaxy</li>
-	</ul>
+		<!---->
+		<!-- 折叠框 tAcod -->
+		<!---->
 
-	<ul id="k_Menu1_Product_Embedded_iPhone" class="">
-		<li >4</li>
-		<li >4s</li>
-		<li >5</li>
-		<li >5s</li>
-		<li >6</li>
-		<li >6 plus</li>
-	</ul>
+		<div id="k_Acod1" class="cnWse_PutSrc">
+			<h3 data-Wse_Tit class="ctAcodTit">First</h3>
+			<p data-Wse_Ctnt >Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+			<h3 data-Wse_Tit>Second</h3>
+			<p data-Wse_Ctnt >Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.</p>
+			<h3 data-Wse_Tit>Third</h3>
+			<p data-Wse_Ctnt >Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.</p>
+		</div>
 
-	<ul id="k_Menu1_Product_Embedded_Galaxy" class="">
-		<li >S1</li>
-		<li >S2</li>
-		<li >S3</li>
-		<li >S4</li>
-	</ul>
-</div>
+		<!---->
+		<!-- 导航 -->
+		<!---->
 
-<!---->
-<!-- 折叠框 tAcod -->
-<!---->
+		<div id="k_Nav">
+			<ul id="k_PutTgt_Nav">
+				<h2 data-Wse_Tit>主导航<br />3种动画</h2>
+				<li ><a href="#Home">Home</a></li>
+				<li ><a href="#News">News</a></li>
+				<li ><a href="#Archives">Archives</a></li>
+				<li ><a href="#About">About</a></li>
+				<li ><a href="#Contact">Contact</a></li>
 
-<div id="k_Acod1" class="cnWse_PutSrc">
-	<h3 data-Wse_Tit class="ctAcodTit">First</h3>
-	<p data-Wse_Ctnt >Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-	<h3 data-Wse_Tit>Second</h3>
-	<p data-Wse_Ctnt >Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.<br />Phasellus mattis tincidunt nibh.</p>
-	<h3 data-Wse_Tit>Third</h3>
-	<p data-Wse_Ctnt >Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.<br />Nam dui erat, auctor a, dignissim quis.</p>
-</div>
+				<!--<li ><a href="#666">Home</a></li>-->
+				<!--<li ><a href="#777">News</a></li>-->
+				<!--<li ><a href="#888">Archives</a></li>-->
+				<!--<li ><a href="#Home">Home</a></li>-->
+				<!--<li ><a href="#News">News</a></li>-->
+				<!--<li ><a href="#Archives">Archives</a></li>-->
+				<!--<li ><a href="#About">About</a></li>-->
+				<!--<li ><a href="#Contact">Contact</a></li>-->
+			</ul>
+		</div>
 
-<!---->
-<!-- 导航 -->
-<!---->
+		<!---->
+		<!-- 注册登录 -->
+		<!---->
 
-<div id="k_Nav">
-	<ul id="k_PutTgt_Nav">
-		<h2 data-Wse_Tit>主导航<br />3种动画</h2>
-		<li ><a href="#Home">Home</a></li>
-		<li ><a href="#News">News</a></li>
-		<li ><a href="#Archives">Archives</a></li>
-		<li ><a href="#About">About</a></li>
-		<li ><a href="#Contact">Contact</a></li>
+		<div id="k_SignLog">
 
-		<!--<li ><a href="#666">Home</a></li>-->
-		<!--<li ><a href="#777">News</a></li>-->
-		<!--<li ><a href="#888">Archives</a></li>-->
-		<!--<li ><a href="#Home">Home</a></li>-->
-		<!--<li ><a href="#News">News</a></li>-->
-		<!--<li ><a href="#Archives">Archives</a></li>-->
-		<!--<li ><a href="#About">About</a></li>-->
-		<!--<li ><a href="#Contact">Contact</a></li>-->
-	</ul>
-</div>
-
-<!---->
-<!-- 注册登录 -->
-<!---->
-
-<div id="k_SignLog">
-
-	<!--<div id="" class="cnWse_PutSrc"  >-->
-	<!--<div data-Wse_Ok style="padding: 0.25em;">OK</div>-->
-	<!--</div>-->
-</div>
+			<!--<div id="" class="cnWse_PutSrc"  >-->
+				<!--<div data-Wse_Ok style="padding: 0.25em;">OK</div>-->
+			<!--</div>-->
+		</div>
 
 
-<!---->
-<!--  -->
-<!---->
+		<!---->
+		<!--  -->
+		<!---->
+		
+	</div>
 
-</div>
+	<script type="text/javascript">
 
-<script type="text/javascript">
+		//@ 全局对象，同时支持页面主线程，WebWorker线程，和Node.js
+		var i_InNodeJs = ("undefined" == typeof self);
+		var l_Glb = i_InNodeJs ? global : self;
 
-//@ 全局对象，同时支持页面主线程，WebWorker线程，和Node.js
-var i_InNodeJs = ("undefined" == typeof self);
-var l_Glb = i_InNodeJs ? global : self;
+		window.addEventListener("load", function ()
+		{
+			console.log("window.onload");
+			nWse.stNowLoad.cEnd(null);	// 结束
 
-window.addEventListener("load", function ()
-{
-	console.log("window.onload");
-	nWse.stNowLoad.cEnd(null);	// 结束
+			nWse.stAsynIcld.cFromApp("nWse",
+					[
+						"Ajax",
 
-	nWse.stAsynIcld.cFromApp("nWse",
-			[
-				"Ajax",
+						"VtuCsl.js",
+						"PntIptTrkr.js",
 
-				"VtuCsl.js",
-				"PntIptTrkr.js",
+						"nUi/PcdrLot.js",
+						"nUi/EfcMgr.js",
+						"nUi/Form.js",
+						"nUi/Frmwk.js",
+						
+						"nUi/nCmnWgts/Btn.js",
+						"nUi/nCmnWgts/Edit.js",
+						"nUi/nCmnWgts/List.js",
+						"nUi/nCmnWgts/Swch.js",
+						"nUi/nCmnWgts/Cmb.js",
+						"nUi/nCmnWgts/Menu.js",
+						"nUi/nCmnWgts/Acod.js",
+						"nUi/nCmnWgts/Nav.js",
+						"nUi/nCmnWgts/SignLog.js"
 
-				"nUi/PcdrLot.js",
-				"nUi/EfcMgr.js",
-				"nUi/Frmwk.js",
-
-				"nUi/nCmnWgts/Btn.js",
-				"nUi/nCmnWgts/Edit.js",
-				"nUi/nCmnWgts/List.js",
-				"nUi/nCmnWgts/Swch.js",
-				"nUi/nCmnWgts/Cmb.js",
-				"nUi/nCmnWgts/Menu.js",
-				"nUi/nCmnWgts/Acod.js",
-				"nUi/nCmnWgts/Nav.js",
-				"nUi/nCmnWgts/SignLog.js"
-
-				,"nGpu/2dPath.js"
-			]
-			,
-			fOnIcld);
-});
+						,"nGpu/2dPath.js"
+					]
+					,
+					fOnIcld);
+		});
 
 
-function fOnIcld(a_Errs)
-{
-	"use strict";
+		function fOnIcld(a_Errs)
+		{
+			"use strict";
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// using
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// using
 
-	var nWse = l_Glb.nWse;
-	var stVtuCsl = nWse.stVtuCsl;
-	//	var tFsm = nWse.tFsm;
-	var tPntIptTrkr = nWse.tPntIptTrkr;
+			var nWse = l_Glb.nWse;
+			var stVtuCsl = nWse.stVtuCsl;
+			//	var tFsm = nWse.tFsm;
+			var tPntIptTrkr = nWse.tPntIptTrkr;
 
-	var nUi = nWse.nUi;
-	var tEfc = nUi.tEfc;
-	var stEfcMgr = nUi.stEfcMgr;
-	var tPcdrLot = nUi.tPcdrLot;
-	var stFrmwk = nUi.stFrmwk;
-	var nCmnWgts = nUi.nCmnWgts;
+			var nUi = nWse.nUi;
+			var tEfc = nUi.tEfc;
+			var stEfcMgr = nUi.stEfcMgr;
+			var tPcdrLot = nUi.tPcdrLot;
+			var stFrmwk = nUi.stFrmwk;
+			var nCmnWgts = nUi.nCmnWgts;
 
-	//	console.log(nWse.stAsynIcld.cPsePath("nWse:nGpu/2dCtxt.js"));
+		//	console.log(nWse.stAsynIcld.cPsePath("nWse:nGpu/2dCtxt.js"));
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// 静态变量
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// 静态变量
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// 示例应用程序
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// 示例应用程序
 
-	/*
-	 var l_Cvs = document.getElementById("k_Cvs");
-	 var l_Ctxt = new nWse.nGpu.t2dCtxt();
-	 l_Ctxt.cBindCvs(l_Cvs);
+			/*
+			var l_Cvs = document.getElementById("k_Cvs");
+			var l_Ctxt = new nWse.nGpu.t2dCtxt();
+			l_Ctxt.cBindCvs(l_Cvs);
 
-	 var l_Path = new nWse.nGpu.t2dCtxt.tPath();
-	 //	l_Path.cRcRect(true, 50, 50, 100, 100, [10, 20, 30, 40]);
-	 //	l_Path.cEcRect(true, 50, 50, -100, +100, 30, 20);
-	 l_Path.cEcRect(true, 50, 50, +100, +100, [10, 20, 30, 40], [40, 30, 20, 10]);
-	 l_Ctxt.cSetDrawMthd(0);
-	 l_Ctxt.cAcs().strokeStyle = "rgb(0, 0, 255)";
-	 l_Ctxt.cDrawPath(l_Path);
+			var l_Path = new nWse.nGpu.t2dCtxt.tPath();
+		//	l_Path.cRcRect(true, 50, 50, 100, 100, [10, 20, 30, 40]);
+		//	l_Path.cEcRect(true, 50, 50, -100, +100, 30, 20);
+			l_Path.cEcRect(true, 50, 50, +100, +100, [10, 20, 30, 40], [40, 30, 20, 10]);
+			l_Ctxt.cSetDrawMthd(0);
+			l_Ctxt.cAcs().strokeStyle = "rgb(0, 0, 255)";
+			l_Ctxt.cDrawPath(l_Path);
 
-	 //			var l_Img = new Image();
-	 //			l_Img.src = "Media/myship.png";
-	 //			var l_DstSara = new nWse.tSara(50, 50, 142, 142);
-	 //			var l_SrcSara = new nWse.tSara(0, 0, 40, 142);
-	 //			l_Ctxt.cMap(l_DstSara, l_Img, l_SrcSara, null);
-	 //*/
+//			var l_Img = new Image();
+//			l_Img.src = "Media/myship.png";
+//			var l_DstSara = new nWse.tSara(50, 50, 142, 142);
+//			var l_SrcSara = new nWse.tSara(0, 0, 40, 142);
+//			l_Ctxt.cMap(l_DstSara, l_Img, l_SrcSara, null);
+			//*/
 
 //			// AJAX
 //			var l_Ajax = new nWse.tAjax();
@@ -463,15 +458,17 @@ function fOnIcld(a_Errs)
 //			});
 //			l_Ajax.cSend();
 
-	/////////////////////////
+			/////////////////////////
 
-	var tExmApp = nWse.fClass(nApp,
+			var tExmApp = nWse.fClass(nApp,
 			function tExmApp()
 			{
 				var l_This = this;
 				l_This.e_WidPct = 100;				// 宽度百分比
 				l_This.e_PcdrLot = new tPcdrLot();	// 程序化布局
 				stFrmwk.cSetLot(l_This.e_PcdrLot);			// 框架
+
+				l_This.e_Sta = 0;		// 状态：0=控件展示；1=表单提交
 			},
 			null,
 			{
@@ -532,16 +529,15 @@ function fOnIcld(a_Errs)
 
 
 					var l_Form = new nUi.tForm();			// 表单
-					l_This.e_Form = l_Form;
 					l_This.e_StaWgtSet.cAdd(l_Form);
 
 					l_Wgt = new nCmnWgts.tBtn();	// Btn1st
 					l_Wgt.vcBind({
 						c_PutTgt: "k_PutTgt_Btn1st",
 						c_PutSrc: "k_Btn1st",
-						//	c_UpDown: true,
+					//	c_UpDown: true,
 						c_Shp : nCmnWgts.tBtn.tShp.i_Rect,
-						//	c_FxdAr: 2 / 1,
+					//	c_FxdAr: 2 / 1,
 						c_fOnClk: function (a_Wgt)
 						{
 //							var l_DomBody = nWse.stDomUtil.cAcsBody();
@@ -566,7 +562,7 @@ function fOnIcld(a_Errs)
 //							});
 						}
 					});
-					//	l_Wgt.cUpDown(false);
+				//	l_Wgt.cUpDown(false);
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tBtn();	// Btn2nd
@@ -575,7 +571,7 @@ function fOnIcld(a_Errs)
 						c_PutSrc: "k_Btn2nd",
 						c_Shp : nCmnWgts.tBtn.tShp.i_Cir,
 						c_TitVcen: true
-						//	,c_FxdAr: 2 / 1
+					//	,c_FxdAr: 2 / 1
 						,c_TxtrLyr : 1		// 纹理层
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
@@ -605,13 +601,17 @@ function fOnIcld(a_Errs)
 					l_Wgt.vcBind({
 						c_PutTgt: "k_PutTgt_Edit1",
 						c_PutSrc: "k_Edit1",
-						c_Plchd: "搜索什么？",
+						c_Plchd: "占位符",
+						c_fOnType: function (a_Wgt, a_NewText, a_OldText)
+						{
+							console.log("<c_fOnType>文本框的内容是：" + a_NewText + ", Old =" + a_OldText);
+						},
 						c_fOnOk: function (a_Wgt, a_NewText, a_OldText)
 						{
-							console.log("文本框的内容是：" + a_NewText + ", Old =" + a_OldText);
+							console.log("<c_fOnOk>文本框的内容是：" + a_NewText + ", Old =" + a_OldText);
 						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tEdit();	// Edit
@@ -619,13 +619,13 @@ function fOnIcld(a_Errs)
 						c_PutTgt: "k_PutTgt_Edit2",
 						c_PutSrc: "k_Edit2",
 						c_Kind: 2,
-						c_Plchd: "搜索什么？",
+						c_Plchd: "占位符",
 						c_fOnOk: function (a_Wgt, a_NewText, a_OldText)
 						{
-							//	console.log("文本框的内容是：" + a_NewText);
+						//	console.log("文本框的内容是：" + a_NewText);
 						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tList();	// List1
@@ -639,7 +639,7 @@ function fOnIcld(a_Errs)
 //							//	console.log("文本框的内容是：" + a_Text);
 //						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tList();	// List2
@@ -652,7 +652,7 @@ function fOnIcld(a_Errs)
 //							//	console.log("文本框的内容是：" + a_Text);
 //						}
 					});
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tSwch();	// Swch
@@ -665,8 +665,8 @@ function fOnIcld(a_Errs)
 //							//	console.log("文本框的内容是：" + a_Text);
 //						}
 					});
-					//	l_Wgt.cOnOff(true);
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_Wgt.cOnOff(true);
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tCmb();	// Cmb1
@@ -676,9 +676,10 @@ function fOnIcld(a_Errs)
 						,c_Plchd: "可编辑"
 						,c_fOnOk : function (a_Wgt, a_Text)
 						{
-							console.log(a_Text);
+						//	console.log(a_Text);
 						}
 					});
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tCmb();	// Cmb2
@@ -686,27 +687,41 @@ function fOnIcld(a_Errs)
 						c_PutTgt: "k_PutTgt_Cmb2",
 						c_PutSrc: "k_Cmb2"
 						,c_SlcOnly : true
-						//	,c_Plchd: "只选"
-						//	,c_InitSlc: 0
+					//	,c_Plchd: "只选"
+					//	,c_InitSlc: 0
 						,c_fOnOk : function (a_Wgt, a_Text)
 						{
-							console.log(a_Text);
+						//	console.log(a_Text);
 						}
 					});
+					l_This.e_StaWgtSet.cAdd(l_Wgt);
 					l_Form.cAcsWgtSet().cAdd(l_Wgt);
 
-					l_Wgt = new nCmnWgts.tBtn();	// Srlz
+					l_Wgt = new nCmnWgts.tBtn();	// FormSbmt
 					l_Wgt.vcBind({
-						c_PutTgt: "k_PutTgt_Srlz",
-						c_PutSrc: "k_Srlz",
+						c_PutTgt: "k_PutTgt_FormSbmt",
+						c_PutSrc: "k_FormSbmt",
 						c_fOnClk: function (a_Wgt)
 						{
-							var l_Kvo = l_This.e_Form.cSrlz(null);
-							var l_Ueq = nWse.tAjax.scUrlEcdQry(null, l_Kvo);
-							console.log("表单序列化：");
-							console.log("<UEQ> = " + l_Ueq);
-							console.log("<JSON> = " + JSON.stringify(l_Kvo));
-							console.log();
+//							var l_Kvo = l_Form.cSrlz(null);
+//							var l_Ueq = nWse.tAjax.scUrlEcdQry(null, l_Kvo);
+//							console.log("表单序列化：");
+//							console.log("<UEQ> = " + l_Ueq);
+//							console.log("<JSON> = " + JSON.stringify(l_Kvo));
+//							console.log();
+
+//							// 转换状态
+//							if (1 == l_This.e_Sta)
+//							{
+//								l_This.e_Sta = 0;
+//								a_Wgt.cAcsTit().textContent = "表单提交";
+//							}
+//							else
+//							{
+//								l_This.e_Sta = 1;
+//								a_Wgt.cAcsTit().textContent = "控件展示";
+//							}
+//							stFrmwk.cRunLot();	// 运行布局
 						}
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
@@ -790,15 +805,15 @@ function fOnIcld(a_Errs)
 							setTimeout(function ()
 							{
 								a_fOnCplt(null,//"Failed To Load!",	// 用来测试失败
-												"<ul id='k_无所谓'>" +
-												"<li data-Wse_Next='k_MoreApple'>Apple</li>" +
-												"<li>Dell</li>" +
-												"<li>Lenovo</li>" +
-												"</ul>" +
-												"<ul id='k_MoreApple'>" +
-												"<li>Graphics</li>" +
-												"<li>Computation</li>" +
-												"</ul>");
+									"<ul id='k_无所谓'>" +
+										"<li data-Wse_Next='k_MoreApple'>Apple</li>" +
+										"<li>Dell</li>" +
+										"<li>Lenovo</li>" +
+									"</ul>" +
+									"<ul id='k_MoreApple'>" +
+									"<li>Graphics</li>" +
+									"<li>Computation</li>" +
+									"</ul>");
 							}, 2000)
 						},
 						c_fOnSlc : function (a_Wgt, a_Li)
@@ -806,7 +821,7 @@ function fOnIcld(a_Errs)
 							console.log("触发：" + a_Li.textContent);
 						}
 					});
-					//	l_Wgt.cSetMode("Ovlp");
+				//	l_Wgt.cSetMode("Ovlp");
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
 
 					l_Wgt = new nCmnWgts.tAcod();	// Acod1
@@ -815,7 +830,7 @@ function fOnIcld(a_Errs)
 						c_PutSrc: "k_Acod1",
 						c_InitExpd: [0, 1],
 						c_InitExpdAll: true
-						//	,c_ExpdOnlyOne: true
+					//	,c_ExpdOnlyOne: true
 					});
 					l_This.e_StaWgtSet.cAdd(l_Wgt);
 
@@ -824,14 +839,14 @@ function fOnIcld(a_Errs)
 					l_Wgt.vcBind({
 						c_PutTgt: "k_PutTgt_Nav",
 						c_PutSrc: "k_Nav",
-						//	c_AutoRandEfc : true,
+					//	c_AutoRandEfc : true,
 						c_fOnAnmtEnd_Lea: function (a_Nav)
 						{
 							a_Nav.cSetActvEfcIdx((a_Nav.cGetActvEfcIdx() + 1) % a_Nav.cGetEfcAmt());
 						}
 					});
-					//	l_Wgt.cSetActvEfcIdx(2);
-					//	l_This.e_StaWgtSet.cAdd(l_Wgt);
+				//	l_Wgt.cSetActvEfcIdx(2);
+				//	l_This.e_StaWgtSet.cAdd(l_Wgt);
 					stFrmwk.cAcsGlbWgtSet().cAdd(l_Wgt);
 
 
@@ -886,29 +901,29 @@ function fOnIcld(a_Errs)
 						// 测试cClnPutTgt和vcUbnd
 						var l_PutSrcId = "k_Cmb1";
 						var l_KWgt;
-						//	var l_WgtSet = stFrmwk.cAcsStaWgtSet();
-						var l_WgtSet = l_Form.cAcsWgtSet();
-						if ("K".charCodeAt(0) == a_Evt.keyCode)
-						{
-							l_KWgt = l_WgtSet.cAcsByPutSrcId(l_PutSrcId);
-							if (l_KWgt && l_KWgt.cHasBnd())
-							{
-								l_KWgt.cClnPutTgt();
-								l_KWgt.vcUbnd();
-								l_WgtSet.cRmvByPutSrcId(l_PutSrcId);
-							}
-							else
-							{
-								l_KWgt = new nCmnWgts.tCmb();
-								l_KWgt.vcBind({
-									c_PutTgt: l_PutSrcId.replace("k_", "k_PutTgt_"),
-									c_PutSrc: l_PutSrcId
-									,c_Plchd: "可编辑"
-								});
-								l_WgtSet.cAdd(l_KWgt);
-								l_KWgt.cRfsh();
-							}
-						}
+						var l_WgtSet = stFrmwk.cAcsStaWgtSet();
+					//	var l_WgtSet = l_Form.cAcsWgtSet();
+//						if ("K".charCodeAt(0) == a_Evt.keyCode)
+//						{
+//							l_KWgt = l_WgtSet.cAcsByPutSrcId(l_PutSrcId);
+//							if (l_KWgt && l_KWgt.cHasBnd())
+//							{
+//								l_KWgt.cClnPutTgt();
+//								l_KWgt.vcUbnd();
+//								l_WgtSet.cRmvByPutSrcId(l_PutSrcId);
+//							}
+//							else
+//							{
+//								l_KWgt = new nCmnWgts.tCmb();
+//								l_KWgt.vcBind({
+//									c_PutTgt: l_PutSrcId.replace("k_", "k_PutTgt_"),
+//									c_PutSrc: l_PutSrcId
+//									,c_Plchd: "可编辑"
+//								});
+//								l_WgtSet.cAdd(l_KWgt);
+//								l_KWgt.cRfsh();
+//							}
+//						}
 
 					});
 				}
@@ -922,8 +937,22 @@ function fOnIcld(a_Errs)
 					l_This.eInit();
 
 					// 初始布局？
-					//	l_This.e_PcdrLot.cRun();
+				//	l_This.e_PcdrLot.cRun();
 					stFrmwk.cRunLot();			// 运行布局
+				}
+				,
+				eBpc_Base : function (a_Lot)
+				{
+					var l_This = this;
+					var l_Lot = a_Lot;
+					var l_BrkPntIdx = l_Lot.cGetBrkPntIdx();
+					l_Lot
+							.cBoa({
+								c_Id: "k_TestBoa"
+							})
+							.cCol({
+								c_GridTot: (2 == l_BrkPntIdx) ? 20 : ((1 == l_BrkPntIdx) ? 10 : 8)
+							});
 				}
 				,
 				cBpc : function (a_Lot)
@@ -932,33 +961,36 @@ function fOnIcld(a_Errs)
 					var l_Lot = a_Lot;
 					var l_BrkPntIdx = l_Lot.cGetBrkPntIdx();
 
-					l_Lot
-							.cBoa({
-								c_Id: "k_TestBoa"
-							})
-							.cCol({
-								c_GridTot: (2 == l_BrkPntIdx) ? 20 : ((1 == l_BrkPntIdx) ? 10 : 8)
-							})
-							.cPut({
-								c_NewRow : true,
-								c_Id: "k_PutTgt_Btn1st",
-								c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
-							})
-							.cPut({
-								c_Id: "k_PutTgt_Btn2nd",
-								c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
-							})
-							.cPut({
-								c_NewRow : (0 == l_BrkPntIdx),
-								c_Id: "k_PutTgt_Btn3rd",
-								c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
-							})
-							.cPut({
-								c_Id: "k_PutTgt_Btn4th",
-								c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
-							})
+					l_This.eBpc_Base(a_Lot);
 
-						// 表单
+					// 状态机 - 表单提交
+					if (1 == l_This.e_Sta)
+					{
+						return this.eBpc_FormSbmt(a_Lot);
+					}
+
+					// 状态机 - 控件展示
+					l_Lot.cPut({
+						c_NewRow : true,
+						c_Id: "k_PutTgt_Btn1st",
+						c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
+					})
+					.cPut({
+						c_Id: "k_PutTgt_Btn2nd",
+						c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
+					})
+					.cPut({
+						c_NewRow : (0 == l_BrkPntIdx),
+						c_Id: "k_PutTgt_Btn3rd",
+						c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
+					})
+					.cPut({
+						c_Id: "k_PutTgt_Btn4th",
+						c_GridCnt: (1 == l_BrkPntIdx) ? 2 : 3
+					});
+
+					// 表单
+					l_Lot
 							.cPut({
 								c_NewRow : true,
 								c_Id: "k_PutTgt_Edit1",
@@ -997,56 +1029,66 @@ function fOnIcld(a_Errs)
 							})
 							.cPut({
 								c_NewRow: true,
-								c_Id: "k_PutTgt_Srlz",
-								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
-							})
-							.cPut({
-								c_Id: "k_PutTgt_LogIn",
-								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
-							})
-							.cPut({
-								c_Id: "k_PutTgt_SignIn",
-								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
-							})
-
-
-						// 其他
-							.cPut({
-								c_NewRow : true,
-								c_Id: "k_PutTgt_Menu1",
-								c_GridCnt: (2 == l_BrkPntIdx) ? 10 : 10
-							})
-							.cPut({
-								c_NewRow : true,
-								c_Id: "k_PutTgt_SetMode",
-								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
-							})
-
-							.cPut({
-								c_NewRow : true,
-								c_Id: "k_PutTgt_Acod1",
-								c_GridCnt: 10
-							})
-							.cPut({
-								c_NewRow : true,
-								c_Id: "k_PutTgt_BtnSkin",
+								c_Id: "k_PutTgt_FormSbmt",
 								c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
 							})
 					;
+
+					l_Lot.cPut({
+						c_Id: "k_PutTgt_LogIn",
+						c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
+					})
+					.cPut({
+						c_Id: "k_PutTgt_SignIn",
+						c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
+					});
+
+					// 其他
+					l_Lot.cPut({
+						c_NewRow : true,
+						c_Id: "k_PutTgt_Menu1",
+						c_GridCnt: (2 == l_BrkPntIdx) ? 10 : 10
+					})
+					.cPut({
+						c_NewRow : true,
+						c_Id: "k_PutTgt_SetMode",
+						c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
+					})
+
+					.cPut({
+						c_NewRow : true,
+						c_Id: "k_PutTgt_Acod1",
+						c_GridCnt: 10
+					})
+					.cPut({
+						c_NewRow : true,
+						c_Id: "k_PutTgt_BtnSkin",
+						c_GridCnt: (2 == l_BrkPntIdx) ? 4 : 3
+					})
+					;
+				}
+				,
+				eBpc_FormSbmt : function (a_Lot)
+				{
+					var l_This = this;
+					var l_Lot = a_Lot;
+					var l_BrkPntIdx = l_Lot.cGetBrkPntIdx();
+
+
 				}
 			});
 
-	var zzz = 0;
+			var zzz = 0;
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Over
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Over
 
-	// 示例应用程序
-	var e_App = new nApp.tExmApp();
-	e_App.cRun();
-}
+			// 示例应用程序
+			var e_App = new nApp.tExmApp();
+			e_App.cRun();
+		}
 
-</script>
+	</script>
 
 </body>
 </html>
