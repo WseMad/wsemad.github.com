@@ -36,6 +36,12 @@
 			line-height: 1.5;
 		}
 
+		ol>li
+		{
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+
 		pre {
 			font-size: 1.5em;
 		}
@@ -63,9 +69,9 @@
 
 		<section>
 			<h2>
-				以下是我的作品链接及简介，请使用支持HTML5和CSS3的浏览器打开，推荐Chrome 30.0以上版本！<br /><br />
+				以下是我的作品链接及简介，Web作品请使用支持HTML5和CSS3的浏览器打开，推荐Chrome 30.0以上版本！<br /><br />
 				作品涉及：HTML5，CSS3，JavaScript，Responsive Web Design；C++，Direct3D11<br /><br />
-				特别注意：前三个、关于Web的作品，尤其欢迎您使用“各种设备”访问，事实上笔者已经在PC、iPad和安卓手机上实机测试过！
+				特别注意：前三个、关于Web的作品，尤其欢迎您使用“各种设备”访问，事实上笔者已经在PC、iPad和一部安卓4的手机上实机测试过！
 			</h2>
 			<figure>
 				<img class="cnApp_Logo" src="html5+css3+javascript+responsive+icon-logo.png" />
@@ -90,6 +96,7 @@
 						观察页面在不同窗口宽度下的变化！一共有三种布局（分别针对PC、平板、手机）。如果您能直接使用平板或手机访问那就更好了！（流量费自理☺）
 					</strong><br />
 					为什么很多人都没有注意到这句话呢？！第一个示例不是展示页面内容，而是展示页面布局！自适应三种设备的屏幕宽度！
+					我特意挑了个简单的页面，为了使您能看清当窗口宽度变化时，各个页面元素的动向。
 				</p>
 				<p><a href="Bicycle.html" target="_blank">Bicycle.html</a></p>
 			</article>
@@ -100,6 +107,7 @@
 				</h3>
 				<h4>简介：</h4>
 				<p>我采用CSS3的新效果制作自己的控件库，目前虽然数量不多，却也包含了一些最常用的控件，请试试操作他们的感觉！</p>
+				<p>顺便一提，我的控件系统还支持多点触摸，对于平板和手机用户，试着同时把第一排的四个按钮按下去！（某些浏览器可能无法同时报告多个触点）</p>
 				<p><a href="nUiWgts.html" target="_blank">nUiWgts.html</a></p>
 				<div style="font-size:1.2em; font-weight:bold;">
 					<h5 style="font-size: 1.5em;">PC用户看过来：高级技术展示（2014/10/12） —— 精确拾取</h5>
@@ -131,6 +139,7 @@
 				<p>
 					实现多幅图像轮流播放效果，在各个网站随处可见，但是千万不要以为我的作品会和其他人的一样——
 					和其他人不同是笔者永恒的追求！我不说用法，看您是否能自己领悟！
+					（再次提醒，我做的东西都是自适应宽度变化的，试着缩小窗口，看到的将是另一组正方形图片）
 				</p>
 				<p><a href="CvsWgts.html" target="_blank">CvsWgts.html</a></p>
 			</article>
@@ -141,42 +150,13 @@
 				</h3>
 				<h4>简介：</h4>
 				<p>JavaScript标准是由ECMA（欧洲计算机制造商联合会）制订的，我翻译的是2011年6月颁布的5.1版，这也是HTML5主要使用的版本。</p>
+				<p>
+					你问为什么翻译标准？因为我想把这门语言学好，学好就必须读标准，标准是这门语言的法律，
+					为了读得认真，读得仔细，甚至不放过哪怕一个标点，我选择翻译！（有一定自虐倾向☻）
+				</p>
 				<a href="Ecma-262 中文版.docx">Ecma-262 中文版.docx</a>
 				<br /><br />
 				<a href="Ecma-262.pdf" target="_blank">对照阅读 Ecma-262 英文原版.pdf</a>
-				<p>
-					恳请各位面试官注意，笔者好歹是读过标准的人，您在面试时考我几道JavaScript题我很高兴，但拜托您问得要有难度可以吗？
-					像原型链、闭包、怎么实现面向对象编程（封装、继承、多态）、函数的this指针在赋值时会丢失因此需要绑定……
-					这些问题，我都快被问吐了；我为您提供几道例题以供参考，我希望您问得题的难度至少能与下面第一道题相当(^_^)：
-				</p>
-				<p>
-					①【难度：小】请解释一下这段代码alert()的输出：
-				</p>
-				<pre>
-<span class="cnApp_Kwd">function</span> tClass() { }
-tClass.prototype = { s_C : 0 };
-<span class="cnApp_Kwd">var</span> o = <span class="cnApp_Kwd">new</span> tClass();
-alert(<span class="cnApp_StrLtrl">"tClass.prototype.s_C = "</span> + tClass.prototype.s_C + <span class="cnApp_StrLtrl">", o.s_C = "</span> + o.s_C);	<span class="cnApp_Cmt">// 0, 0</span>
-++ o.s_C;
-alert(<span class="cnApp_StrLtrl">"tClass.prototype.s_C = "</span> + tClass.prototype.s_C + <span class="cnApp_StrLtrl">", o.s_C = "</span> + o.s_C);	<span class="cnApp_Cmt">// 0, 1</span>
-				</pre>
-
-				<p>
-					②【难度：中】请解释一下这个（有点变态的）表达式的结果为什么是字符串"10,1"，希望没有吓到您：
-				</p>
-				<pre>
-++[[0]][+[0]]+[[0,1]][+[0]]
-				</pre>
-
-				<p>
-					③【难度：大】请问在JavaScript里，如何正确实现“深拷贝”？
-					请注意，这道题绝非您一开始想象得那么简单，jQuery的extend函数并不正确！——也许吓了您一跳——
-					但是，jQuery的extend函数采用的是“贪心算法”，然而贪心算法用来执行深拷贝是错误的！
-					答案绝对出乎您的意料，这也是为什么难度被标为“大”的原因。
-				</p>
-				<p>
-					答案是：办不到。O(∩_∩)O哈哈~，<strong>因为在JavaScript里，无法正确深拷贝一个函数！</strong>
-				</p>
 			</article>
 
 			<article>
@@ -210,20 +190,66 @@ alert(<span class="cnApp_StrLtrl">"tClass.prototype.s_C = "</span> + tClass.prot
 			<h2>
 				关于本人富有传奇色彩的履历的FAQ：
 			</h2>
-			<p>
-				<span>Q：你个高中生，也会写程序？</span><br />
-				<span>A：比尔·盖茨，史蒂夫·乔布斯，还有笔者最为崇拜的程序员——约翰·卡马克，都是高中生。</span>
-			</p>
-			<p>
-				<span>Q：他们都是百年难遇的天才，那么你算个鸟？</span><br />
-				<span>A：如果他们是老鹰，那我就是黄雀——我们都会飞！事实上，高二的计算机课就已经开始学QBASIC了。</span>
-			</p>
-			<p>
-				<span>Q：那好，那你怎么证明你会写程序，写段代码给我看可以吗？</span><br />
-				<span>A：当然，不写则已一写惊人，我要写就写一段一般人儿看不懂的，听说过C++的“模板元编程”吗？
-				以下是一份利用元编程求闭区间[2, 100]内素数的程序，您恐怕要花些力气读了……</span><br />
-				<a href="元编程求素数.txt">元编程求素数.txt</a>
-			</p>
+			<ol>
+				<li>
+					<span>Q：听说你的计算机知识和技术都是自学的？</span><br />
+					<span>A：是的，我喜欢自学，我自学的效果比坐在教室里听人讲课要好。</span>
+				</li>
+				<li>
+					<span>Q：那你是不是很崇拜比尔·盖茨和史蒂夫·乔布斯，非要把他们的事迹模仿一遍？</span><br />
+					<span>A：非也，我最崇拜的程序员是——约翰·卡马克，3D游戏之父；只是碰巧我们四个做了同样的事。</span>
+				</li>
+				<li>
+					<span>Q：人家仨都是百年难遇的天才，那么你算个鸟？</span><br />
+					<span>A：如果他们是老鹰，那我就是黄雀——我们都会飞，飞上天和太阳肩并肩~♫！</span>
+				</li>
+				<li>
+					<span>Q：那好，那你怎么证明你会写程序，写段代码给我看可以吗？</span><br />
+					<span>
+						A：当然，不写则已一写惊人，我要写就写一段一般人儿看不懂的，听说过C++的“模板元编程”吗？
+						以下是一份利用元编程求闭区间[2, 100]内素数的程序，恐怕贵公司最好的C++程序员也要花些力气读了……
+					</span><br />
+					<a href="元编程求素数.txt" target="_blank">元编程求素数.txt</a>
+				</li>
+				<li>
+					<span>Q：你一会C++，一会Web，那么接下来你到底想做什么？</span><br />
+					<span>A：……哎，您算问到点儿上了，我也不知道，这不正在犹豫、纠结么；
+					其实我想的是到离家近一点的公司上班，做什么都行！（所以才学了很多东西）</span>
+				</li>
+				<li>
+					<span>Q：现在移动开发人员需求量很大，你会做移动程序吗？</span><br />
+					<span>
+						A：我用JavaScript开发Web应用，理论上，做出来的程序可以在“任何拥有HTML5浏览器的设备”上运行，我前三个作品就是证明；
+						当然，和移动设备上的原生程序相比，HTML5还是弱了一些，比如无法访问麦克风、摄像头等，但也不是每个程序都要用的，对吧？
+					</span>
+				</li>
+				<li>
+					<span>Q：你的意思是，只做一套程序，用遍所有设备，当然包括PC、平板、手机？</span><br />
+					<span>
+						A：是的，为什么不呢？只要我们的程序不需要访问HTML5尚无法访问的设备功能，我们就能“一箭N雕”。
+					</span>
+				</li>
+				<li>
+					<span>Q：听起来倒是振奋人心，那你的薪资期望？</span><br />
+					<span>
+						A：这和距离有很大关系，我家住在辽宁路电子信息城附近，以此为圆心，若步行可达，3500；
+						远至山东路，4000；远至软件园，4500；李沧和崂山，5000以上吧，再远就算了。
+					</span>
+				</li>
+				<li>
+					<span>Q：最后一个问题，感觉你这个人不是很安分，你不是打算要把我们公司当跳板，干两年就跳槽吧？</span><br />
+					<span>
+						A：非但不会，恰恰相反；我打算下一份工作一直干到40岁（还有12年），然后我就退居二线，不再像现在这样冲锋陷阵了。
+						当然当然，我们谁都无法预知未来，所以我不会做出保证，我能保证的是在其位谋其职，尽力而为。
+					</span>
+				</li>
+			</ol>
+		</section>
+
+		<hr />
+
+		<section>
+			The End
 		</section>
 	</div>
 </body>

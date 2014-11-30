@@ -111,7 +111,7 @@ struct tFindPrime
 int main()
 {
 	static int const i_Max = 100;
-	tFindPrime<i_Max>(); cout << "¹²¼Æ = " << g_PA.size() << "¸ö£º" << endl;
+	tFindPrime<i_Max>(); cout << "Total = " << g_PA.size() << " :" << endl;
 
 	for (size_t i = 0; i < g_PA.size(); ++i)
 		cout << g_PA[i] << ", ";
