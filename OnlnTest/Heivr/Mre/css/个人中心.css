@@ -1,0 +1,195 @@
+﻿/*	
+*
+*/
+
+
+/******************************************* PC版的 *******************************************/
+
+.uc-icon {
+	background: url('http://static.ffdujia.com/mre/home/uc-menu-icon.png');
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+
+	.uc-icon.uci-edit {
+		background-position: 0px 0px;
+	}
+
+	.uc-icon.uci-lock {
+		background-position: 60px 0px;
+	}
+
+	.uc-icon.uci-consumption {
+		background-position: 40px 0px;
+	}
+
+	.uc-icon.uci-order {
+		background-position: 20px 0px;
+	}
+
+	.uc-icon.uci-score {
+		background-position: 0px -20px;
+	}
+
+	.uc-icon.uci-collection {
+		background-position: 60px -20px;
+	}
+
+	.uc-icon.uci-comment {
+		background-position: 40px -20px;
+	}
+
+	.uc-icon.uci-share {
+		background-position: 20px -20px;
+	}
+
+	.uc-icon.uci-line {
+		background-position: 0px 20px;
+	}
+
+	.uc-icon.uci-photo {
+		background-position: 60px 20px;
+	}
+
+	.uc-icon.uci-invite {
+		background-position: 40px 20px;
+	}
+
+/******************************************* 手机版 *******************************************/
+
+.cnApp_PageFlip .cnApp_Cptn {
+	background-color: rgb(243, 243, 243);
+}
+
+	.cnApp_PageFlip .cnApp_Cptn .cnApp_List {
+		/*padding: 10px 0px;*/
+		/*border-bottom: 1px solid rgb(200, 200, 200);*/
+	}
+
+		.cnApp_PageFlip .cnApp_Cptn .cnApp_List > li {
+			position: relative;
+			left: 0px;
+			top: 0px;
+			border-bottom: 1px dashed rgb(200, 200, 200);
+		}
+
+			.cnApp_PageFlip .cnApp_Cptn .cnApp_List > li:last-of-type {
+				border-bottom: 1px solid rgb(200, 200, 200);
+			}
+
+		.cnApp_PageFlip .cnApp_Cptn .cnApp_List > li,
+		.cnApp_PageFlip .cnApp_Cptn .cnApp_RtArw,
+		.cnApp_PageFlip .cnApp_Page .cnApp_Btn {
+			padding: 10px;
+		}
+
+.cnApp_PageFlip .uc-icon {
+	margin-right: 5px;
+	vertical-align: sub;
+}
+
+.cnApp_PageFlip .cnApp_Cptn .cnApp_Text {
+	margin-right: 5px;
+}
+
+.cnApp_PageFlip .cnApp_Cptn .cnApp_RtArw {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.cnApp_PageFlip .cnApp_Page {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	/*min-height: 100%;*/ /*改为使用JS控制*/
+	background-color: rgb(255, 255, 255);
+}
+
+	.cnApp_PageFlip .cnApp_Page .cnApp_TopBtns
+	{
+		background-color: rgb(243, 243, 243);
+		border-bottom: 1px solid rgb(4, 35, 117);
+	}
+
+	.cnApp_PageFlip .cnApp_Page .cnApp_TopBtns .cnApp_Btn.cnApp_LtBtn
+	{
+		width: 50%;
+		float: left;
+		border-right: 1px solid rgb(4, 35, 117);
+	}
+
+	.cnApp_PageFlip .cnApp_Page .cnApp_TopBtns .cnApp_Btn.cnApp_RtBtn
+	{
+		width: 50%;
+		float: left;
+		/*border-left: 1px solid rgb(4, 35, 117);*/
+		text-align: right;
+	}
+
+	.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt {
+		margin-top: 10px;
+	}
+
+		.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form {
+			padding: 5px;
+			padding-right: 10px;
+			font-size: 1em;
+		}
+
+			.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld {
+				margin-bottom: 10px;
+			}
+
+				.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Lab {
+					display: inline-block;
+					width: 30%;
+					float: left;
+					padding: 5px;
+					vertical-align: super;	/*为什么没有用？*/
+
+					padding-right: 10px;
+					text-align: right;
+				}
+
+				.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt {
+					display: inline-block;
+					width: 70%;
+					float: left;
+					padding: 5px;
+				}
+
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt input[type=text],
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt input[type=password],
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt select,
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt textarea {
+						width: 100%;
+					}
+
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt textarea
+					{
+						height: 5em;
+					}
+
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt input[type=radio],
+					.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt input[type=checkbox]
+					{
+						width: 1em;
+						height: 1em;
+						margin-right: 5px;
+						vertical-align: bottom;
+					}
+
+				.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Bdr {
+					border: 1px solid rgb(4, 35, 117);
+				}
+
+				.cnApp_PageFlip .cnApp_Page .cnApp_Ctnt form .cnApp_Fld .cnApp_Ipt .cnApp_OptnCptn {
+					margin-right: 1em;
+				}
+
+
+/*********************************************************************** Over ***********************************************************************/

@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>分分商城</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/(0)Rset.css" />
+	<link rel="stylesheet" type="text/css" href="./css/(100)MreCmn.css" />
+	<link rel="stylesheet" type="text/css" href="./css/分分商城.css" />
+
+	<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="./js/(0)Seed.js"></script>
+	<script type="text/javascript" src="./js/(10)WSE_nWse.js"></script>
+	<script type="text/javascript" src="./js/(100)MreCmn.js"></script>
+	<script type="text/javascript" src="./js/分分商城.js"></script>
+
+</head>
+<body>
+
+	<div class="cnApp_Env cnApp_StdFont cnWse_ClearFix cnApp_PC">
+		<!-- 页头 -->
+		<div id="k_Header" class="cnApp_Header cnApp_MblOnly">
+			<div class="cnApp_Board cnApp_MainBkgdClo cnWse_ClearFix">
+				<div class="cnApp_NavBtnDiv">
+					<span class="cnApp_ImgWrap"><img src="images/NavBtn.png" /></span>
+				</div>
+				<div class="cnApp_LogoDiv">
+					<span class="cnApp_ImgWrap"><img src="images/Logo.png" /></span>
+				</div>
+				<div class="cnApp_UserDiv">
+					<span class="cnApp_ImgWrap"><img src="images/User.png"></span>
+				</div>
+			</div>
+			<div class="cnApp_Menu cnWse_ClearFix">
+				<div class="cnApp_Col cnApp_1st">
+					<ul>
+						<li>分权宝</li>
+						<li>热销产品</li>
+						<li>优选酒店</li>
+						<li>分分商城</li>
+						<li>热点公告</li>
+						<li>加盟我们</li>
+					</ul>
+				</div>
+				<div class="cnApp_Col cnApp_2nd">
+					<ul>
+						<li><a href="#" class="">分权宝1</a></li>
+						<li><a href="#" class="">分权宝2</a></li>
+						<li><a href="#" class="">分权宝3</a></li>
+						<li><a href="#" class="">分权宝4</a></li>
+					</ul>
+					<ul>
+						<li><a href="#" class="">热销产品1</a></li>
+						<li><a href="#" class="">热销产品2</a></li>
+						<li><a href="#" class="">热销产品3</a></li>
+						<li><a href="#" class="">热销产品4</a></li>
+						<li><a href="#" class="">热销产品5</a></li>
+						<li><a href="#" class="">热销产品6</a></li>
+						<li><a href="#" class="">热销产品7</a></li>
+						<li><a href="#" class="">热销产品8</a></li>
+					</ul>
+					<ul>
+						<li><a href="#" class="">优选酒店1</a></li>
+						<li><a href="#" class="">优选酒店2</a></li>
+					</ul>
+					<ul>
+						<li><a href="#" class="">分分商城1</a></li>
+						<li><a href="#" class="">分分商城2</a></li>
+					</ul>
+					<ul>
+						<li><a href="#" class="">热点公告1</a></li>
+						<li><a href="#" class="">热点公告2</a></li>
+					</ul>
+					<ul>
+						<li><a href="#" class="">加盟我们1</a></li>
+						<li><a href="#" class="">加盟我们2</a></li>
+						<li><a href="#" class="">加盟我们3</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- 页体 -->
+
+		<div class="cnApp_MainBody">
+
+			<form class="cnApp_SrchForm cnApp_Sect">
+				<div class="cnApp_Fld cnWse_ClearFix">
+					<!--<div class="cnApp_Lab"><label for="k_SlcCity">选择城市</label></div>-->
+					<div class="cnApp_Ipt">
+						<select id="k_SlcCity" name="select_city">
+							<option class="cnApp_VoidOptn">选择城市</option>
+							<option>北京</option>
+							<option>上海</option>
+							<option>广州</option>
+						</select>
+					</div>
+				</div>
+
+				<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
+
+				<div class="cnApp_Fld cnWse_ClearFix">
+					<!--<div class="cnApp_Lab"><label for="k_ProductName">产品名称</label></div>-->
+					<div class="cnApp_Ipt">
+						<input id="k_ProductName" type="text" placeholder="产品名称" />
+					</div>
+				</div>
+
+				<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
+
+				<div class="cnApp_Fld cnWse_ClearFix">
+					<div class="cnApp_Lab"><!--<label for="k_ConsumeTime">消费时间</label>--></div>
+					<div class="cnApp_Ipt">
+						<select id="k_ConsumeTime" name="select_city">
+							<option class="cnApp_VoidOptn">消费时间</option>
+							<option>白天</option>
+							<option>晚上</option>
+						</select>
+					</div>
+				</div>
+
+				<!--<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+					<button type="submit"><span class="cnApp_Text">搜索</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+				</div>-->
+				<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+					<button type="submit"><span class="cnApp_Text cnApp_MblOnly">搜索</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+				</div>
+
+				<div class="cnApp_ShtCutSrch">
+					<div class="cnApp_Row cnWse_ClearFix">
+						<div class="cnApp_Cptn">分类：</div>
+						<div class="cnApp_Ctnt">
+							<a href="#" class="cnApp_Item">酒店</a><a href="#" class="cnApp_Item">票务</a><a href="#" class="cnApp_Item">租车</a><a href="#" class="cnApp_Item">游轮</a><a href="#" class="cnApp_Item">其他</a>
+						</div>
+					</div>
+
+					<div class="cnApp_Row cnWse_ClearFix">
+						<div class="cnApp_Cptn">主题：</div>
+						<div class="cnApp_Ctnt">
+							<a href="#" class="cnApp_Item">运动</a><a href="#" class="cnApp_Item">疗养</a><a href="#" class="cnApp_Item">养老</a><a href="#" class="cnApp_Item">婚姻</a>
+						</div>
+					</div>
+
+					<div class="cnApp_Row cnWse_ClearFix">
+						<div class="cnApp_Cptn">季节：</div>
+						<div class="cnApp_Ctnt">
+							<a href="#" class="cnApp_Item">春</a><a href="#" class="cnApp_Item">夏</a><a href="#" class="cnApp_Item">秋</a><a href="#" class="cnApp_Item">冬</a>
+						</div>
+					</div>
+
+					<div class="cnApp_Row cnWse_ClearFix">
+						<div class="cnApp_Cptn">价格：</div>
+						<div class="cnApp_Ctnt">
+							<a href="#" class="cnApp_Item">200以下</a><a href="#" class="cnApp_Item">200-300</a><a href="#" class="cnApp_Item">301-400</a><a href="#" class="cnApp_Item">500以上</a>
+						</div>
+					</div>
+
+					<div class="cnApp_Row cnWse_ClearFix">
+						<div class="cnApp_Cptn">景区：</div>
+						<div class="cnApp_Ctnt">
+							<a href="#" class="cnApp_Item">黑龙潭</a><a href="#" class="cnApp_Item">九寨沟</a>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="cnApp_Sect cnApp_ItemList">
+				<h3 class="cnApp_Cptn">全新体验</h3>
+				<ul class="cnApp_List cnWse_ClearFix">
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="cnApp_Sect cnApp_TicketRsrv">
+				<h3 class="cnApp_Cptn">票务预订</h3>
+				<div class="cnApp_Label"><img src="images/分分商城/SC_icon02.png" /></div>
+				<form class="cnApp_SrchForm">
+					<div class="cnApp_Boa cnWse_ClearFix">
+						<div class="cnApp_Col">
+							<div class="cnApp_Fld cnWse_ClearFix">
+								<!--<div class="cnApp_Lab"><label for="k_StartOffCity">出发城市</label></div>-->
+								<div class="cnApp_Ipt">
+									<select id="k_StartOffCity" name="startoff_city" class="cnApp_Swap1">
+										<option class="cnApp_VoidOptn">出发城市</option>
+										<option>北京</option>
+										<option>上海</option>
+										<option>广州</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="cnApp_Btn cnApp_SwapBtn">
+								<div class="cnApp_RtTpBdr"></div>
+								交换
+								<div class="cnApp_RtBmBdr"></div>
+							</div>
+
+							<div class="cnApp_Fld cnWse_ClearFix">
+								<!--<div class="cnApp_Lab"><label for="k_ArriveCity">到达城市</label></div>-->
+								<div class="cnApp_Ipt">
+									<select id="k_ArriveCity" name="arrive_city" class="cnApp_Swap2">
+										<option class="cnApp_VoidOptn">到达城市</option>
+										<option>北京</option>
+										<option>上海</option>
+										<option>广州</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="cnApp_Col">
+							<div class="cnApp_Fld cnWse_ClearFix">
+								<!--<div class="cnApp_Lab"><label for="k_StartOffDate">出发日期</label></div>-->
+								<div class="cnApp_Ipt">
+									<select id="k_StartOffDate" name="startoff_city">
+										<option class="cnApp_VoidOptn">出发日期</option>
+										<option>日期1</option>
+										<option>日期2</option>
+										<option>日期3</option>
+									</select>
+								</div>
+							</div>
+
+							<div class=" cnApp_SwapBtn cnApp_PCOnly cnApp_Hide">交换</div>
+
+							<div class="cnApp_Fld cnWse_ClearFix">
+								<!--<div class="cnApp_Lab"><label for="k_ArriveDate">到达日期</label></div>-->
+								<div class="cnApp_Ipt">
+									<select id="k_ArriveDate" name="arrive_city">
+										<option class="cnApp_VoidOptn">到达日期</option>
+										<option>日期1</option>
+										<option>日期2</option>
+										<option>日期3</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+						<button type="submit"><span class="cnApp_Text">查询</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+					</div>
+				</form>
+
+				<div class="cnApp_Label"><img src="images/分分商城/SC_icon03.png" /></div>
+				<form class="cnApp_SrchForm">
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<!--<div class="cnApp_Lab"><label for="k_GetCarPlace">取车地点</label></div>-->
+						<div class="cnApp_Ipt">
+							<select id="k_GetCarPlace" name="get_char_place">
+								<option class="cnApp_VoidOptn">取车地点</option>
+								<option>北京</option>
+								<option>上海</option>
+								<option>广州</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<!--<div class="cnApp_Lab"><label for="k_GetCarTime">取车时间</label></div>-->
+						<div class="cnApp_Ipt">
+							<select id="k_GetCarTime" name="get_car_time">
+								<option class="cnApp_VoidOptn">取车时间</option>
+								<option>日期1</option>
+								<option>日期2</option>
+								<option>日期3</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<!--<div class="cnApp_Lab"><label for="k_RtnCarTime">还车时间</label></div>-->
+						<div class="cnApp_Ipt">
+							<select id="k_RtnCarTime" name="return_car_time">
+								<option value="" style="display: none">还车时间</option>
+								<option>日期1</option>
+								<option>日期2</option>
+								<option>日期3</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+						<button type="submit"><span class="cnApp_Text">查询</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+					</div>
+				</form>
+			</div>
+
+			<div class="cnApp_Sect cnApp_ItemList">
+				<h3 class="cnApp_Cptn">包价度假产品</h3>
+				<ul class="cnApp_List cnWse_ClearFix">
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="cnApp_Sect cnApp_ItemList">
+				<h3 class="cnApp_Cptn">游轮度假产品</h3>
+				<ul class="cnApp_List cnWse_ClearFix">
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="cnApp_Sect cnApp_ItemList">
+				<h3 class="cnApp_Cptn">其他专项服务</h3>
+				<ul class="cnApp_List cnWse_ClearFix">
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+					<li class="cnWse_ClearFix">
+						<img src="images/分分商城/ff_01.png" class=" cnApp_FullWidImg" />
+
+						<div class="cnApp_TextBlk"><span class="cnApp_Points">16980</span><span class="cnApp_Text"> 积分</span></div><div class="cnApp_TextBlk"><span class="cnApp_Price">￥20000</span><span class="cnApp_Text"> 市场价</span></div>
+						<div class="cnApp_TextBlk cnApp_Broad"><h4 class="cnApp_Cptn">亚龙湾国际度假谷</h4><p class="cnApp_Ctnt">运动休闲</p></div><div class="cnApp_TextBlk cnApp_Narrow">已售 <span class="cnApp_Text">10</span></div>
+					</li>
+				</ul>
+			</div>
+		</div> <!--MainBody-->
+
+		<!--SideBar-->
+		<div class="cnApp_SideBar cnApp_PCOnly">
+			<div class="products-slide">
+				<p>你做的<pre>&lt;div class="products-slide"&gt;</pre>部分</p>
+				<p>我这里的宽度是400px(左外距20，其余380)，左边是800px，合计1200px</p>
+			</div>
+		</div>
+	</div> <!-- cnApp_Env -->
+
+</body>
+</html>

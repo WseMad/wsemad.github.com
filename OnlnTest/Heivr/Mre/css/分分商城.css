@@ -1,0 +1,268 @@
+﻿/*	
+*
+*/
+
+
+
+/******************************************* 分分商城 *******************************************/
+
+.cnApp_Sect {
+	margin-bottom: 20px;
+}
+
+.cnApp_Sect > .cnApp_Cptn {
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.cnApp_ItemList li {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed rgb(200, 200, 200);
+}
+
+.cnApp_PC .cnApp_ItemList li {
+	float: left;
+	width: 256px;
+	margin: 0px 5px 10px;
+	border: 1px solid rgb(200, 200, 200);
+}
+
+.cnApp_TextBlk {
+	display: inline-block;
+	width: 50%;
+	margin-bottom: 5px;
+	font-size: 1em;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+.cnApp_PC .cnApp_TextBlk.cnApp_Broad {
+	width: 70%;
+}
+
+.cnApp_PC .cnApp_TextBlk.cnApp_Narrow {
+	width: 30%;
+}
+
+.cnApp_TextBlk .cnApp_Price {
+	color: rgb(128, 128, 128);
+}
+
+.cnApp_TextBlk .cnApp_Cptn {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* 车票查询表单 */
+
+.cnApp_TicketRsrv .cnApp_Label {
+	padding-top: 10px;
+	background-color: rgb(243, 243, 243);
+}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Label img {
+		position: relative;
+		left: -6px;
+	}
+
+.cnApp_SrchForm .cnApp_SwapBtn {
+	width: 4em;
+	margin-bottom: 10px;
+	border: 1px solid rgb(200, 200, 200);
+	padding: 5px;
+	text-align: center;
+	background-color: rgb(22, 90, 159);
+	color: white;
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm {
+	text-align: center;
+}
+
+.cnApp_TicketRsrv .cnApp_SbmtBtnDiv {
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SbmtBtnDiv
+{
+	width: 10em;
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_Col {
+	width: 380px;
+	float: left;
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_Fld {
+	width: 16em;
+	/*margin-bottom: 0px;*/
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn {
+	position: relative;
+	left: 16em;
+	/*margin-bottom: 0px;*/
+}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtTpBdr,
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtBmBdr {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		border-right: 1px dashed rgb(64, 64, 64);
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtTpBdr {
+		border-top: 1px dashed rgb(64, 64, 64);
+		top: -30px;
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtBmBdr {
+		border-bottom: 1px dashed rgb(64, 64, 64);
+		top: 30px;
+	}
+
+/******************************************* 详情 *******************************************/
+
+.cnApp_Heading, .cnApp_Sect {
+	margin-bottom: 20px;
+	/*padding: 10px 10px 0px 10px;*/
+}
+
+.cnApp_PC .cnApp_Heading, .cnApp_PC .cnApp_Sect {
+}
+
+.cnApp_Heading .cnApp_Cptn {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.cnApp_Heading .cnApp_Ctnt {
+	margin-bottom: 10px;
+}
+
+.cnApp_Heading .cnApp_PntsAndAdrs {
+}
+
+	.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Icon {
+		margin-right: 0.5em;
+	}
+
+	.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Ctnt {
+		vertical-align: super;
+	}
+
+.cnApp_PC .cnApp_Heading .cnApp_Ctnt.cnApp_Adrs {
+	float: left;
+}
+
+.cnApp_PC .cnApp_Heading .cnApp_PntsAndAdrs {
+	width: 300px;
+	float: right;
+}
+
+.cnApp_PC .cnApp_Heading .cnApp_TextBlk .cnApp_Ctnt {
+	/*vertical-align: super;*/
+}
+
+.cnApp_PC .cnApp_Heading .cnApp_TextBlk .cnApp_Icon {
+	margin-right: 0.5em;
+}
+
+.cnApp_Heading .cnApp_TextBlk.cnApp_Map {
+	position: relative;
+	top: 5px;
+}
+
+
+.cnApp_Sect > .cnApp_TabCptn {
+}
+
+.cnApp_Sect .cnApp_TabLink {
+	display: inline-block;
+	width: 25%;
+	padding: 4px;
+	border-right: 1px solid white;
+	border-radius: 5px 5px 0px 0px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+	color: white;
+}
+
+.cnApp_PC .cnApp_Sect .cnApp_TabLink {
+	width: auto;
+	font-size: 16px;
+	padding: 5px 10px;
+}
+
+.cnApp_Sect .cnApp_TabLink:last-of-type {
+	border-right: none;
+}
+
+.cnApp_Sect .cnApp_TabLink.cnApp_Crnt {
+}
+
+#k_UserReview > .cnApp_TabCptn {
+	margin-bottom: 10px;
+}
+
+#k_UserReview > .cnApp_TabCtnt {
+	margin-bottom: 10px;
+	padding: 0px 10px;
+}
+
+#k_UserReview img.cnApp_FloatToLt {
+	margin: 0 1em 10px 0;
+}
+
+#k_UserReview .cnApp_TabCtnt .cnApp_Para {
+	margin-bottom: 10px;
+}
+
+#k_UserReview .cnApp_Point {
+	display: inline-block;
+	text-decoration: none;
+	margin: 0px 8px 0px 0px;
+}
+
+	#k_UserReview .cnApp_Point:last-of-type {
+		margin: 0px;
+	}
+
+#k_UserReview .cnApp_List {
+	clear: both;
+	margin-top: 10px;
+}
+
+	#k_UserReview .cnApp_List > li {
+		padding-bottom: 5px;
+		border-bottom: 1px dashed rgb(200, 200, 200);
+		margin-bottom: 10px;
+	}
+
+#k_UserReview .cnApp_Score {
+}
+
+	#k_UserReview .cnApp_Score .cnApp_Text {
+		margin-left: 1em;
+		vertical-align: top;
+	}
+
+#k_UserReview .cnApp_Desc {
+}
+
+#k_UserReview .cnApp_Detail {
+	color: rgb(128, 128, 128);
+}
+
+	#k_UserReview .cnApp_Detail .cnApp_Text {
+		display: inline-block;
+		margin: 0px 1em 0px 0px;
+	}
+
+/*********************************************************************** Over ***********************************************************************/

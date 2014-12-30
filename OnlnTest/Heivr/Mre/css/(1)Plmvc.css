@@ -1,0 +1,128 @@
+﻿/*	全局
+*
+*/
+
+
+@import url("(0)Rset.css");
+
+/************************************************* nUi *************************************************/
+
+/* 从IE8开始支持，全部按照border-box计算！ */
+*, .cnWse_PutTgt, .cnWse_PutTgt *, .cnWse_PutSrc, .cnWse_PutSrc *
+{
+	box-sizing: border-box;
+}
+
+.cnWse_PutTgt,
+.cnWse_PutSrc
+{
+	margin: 0;
+	border: none;
+	padding: 0;
+}
+
+.cnWse_PutTgt
+{
+	display: block;
+	position: relative;		/* 相对定位（为绝对定位建立新的参照点），可能会被覆盖成绝对定位 */
+	left: 0px;
+	top: 0px;
+	height: auto;
+	overflow: hidden;		/*【重点】正在动画的元素溢出时导致滚动条出现，隐藏就能避免*/
+}
+
+.cnWse_PutSrc
+{
+	display: none;
+}
+
+/*
+.cnWse_PutSrc > *
+{
+	display: block;
+	position: absolute;
+	height: auto;
+}
+*/
+
+/*********************************************** tPcdrLot ***********************************************/
+
+.cnWse_tPcdrLot_FlowZone, .cnWse_tPcdrLot_CstmZone, .cnWse_tPcdrLot_RmvdZone,
+.cnWse_tPcdrLot_Boa, .cnWse_tPcdrLot_Col
+{
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	padding: 0;
+}
+
+.cnWse_tPcdrLot_FlowZone
+{
+	display: block;
+	position: static;
+	width: 100%;
+	height: auto;
+}
+
+.cnWse_tPcdrLot_CstmZone, .cnWse_tPcdrLot_RmvdZone
+{
+	display: block;
+	position: static;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.cnWse_tPcdrLot_CstmZone>*, .cnWse_tPcdrLot_RmvdZone>*
+{
+	visibility: visible;
+}
+
+.cnWse_tPcdrLot_Boa
+{
+	display: block;
+	position: static;
+}
+
+.cnWse_tPcdrLot_Col
+{
+	display: block;
+	position: static;
+	height: 100%;
+	float: left;
+}
+
+.cnWse_tPcdrLot_Put
+{
+	display: block;
+	position: absolute;
+	z-index: 0;
+}
+
+/* 栅格 */
+
+.cnWse_tPcdrLot_GridBar
+{
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	padding: 0;
+	position: fixed;
+	background-clip: padding-box;
+}
+
+#ok_ShowGrid
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 999999;
+}
+
+#ok_ShowGridChkBox
+{
+	width: 20px;
+	height: 20px;
+}
+
+/*********************************************************************** Over ***********************************************************************/

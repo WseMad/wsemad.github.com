@@ -1,0 +1,70 @@
+﻿/*	
+*
+*/
+
+
+
+/******************************************* 热销产品 *******************************************/
+
+ul.cnApp_AlternativeList {
+	margin: 0px 20px 20px 20px;
+	list-style-type: none;
+}
+
+	ul.cnApp_AlternativeList > li {
+		position: relative;
+		left: 0px;
+		top: 0px;
+
+		margin-bottom: 20px;
+		background-color: rgb(243, 243, 243);
+	}
+
+li.cnApp_Product > img {
+	margin-bottom: 10px;
+}
+
+li.cnApp_Product .cnApp_Cptn {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+li.cnApp_Product .cnApp_Ctnt {
+	margin-bottom: 20px;
+	line-height: 1.2;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+li.cnApp_Product .cnApp_ProductSumr {
+	padding: 10px;
+}
+
+li.cnApp_Product .cnApp_Cptn,
+li.cnApp_Product .cnApp_Ctnt {
+	padding: 0px 10px;
+}
+
+li.cnApp_Product .cnApp_ClkForLearn
+{
+	padding-bottom: 10px;
+}
+
+li.cnApp_Product .cnApp_Label
+{
+	position: absolute;
+	top: 10px;
+}
+
+li:nth-of-type(odd).cnApp_Product .cnApp_Label
+{
+	right: -5px;
+}
+
+li:nth-of-type(even).cnApp_Product .cnApp_Label
+{
+	left: -5px;
+}
+
+/*********************************************************************** Over ***********************************************************************/

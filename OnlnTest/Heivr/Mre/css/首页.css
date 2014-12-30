@@ -1,0 +1,180 @@
+﻿/*	
+*
+*/
+
+
+/******************************************* 首页 *******************************************/
+
+.cnApp_Boa {
+	margin-bottom: 20px;
+	background-color: rgb(243, 243, 243);
+}
+
+	.cnApp_Boa > .cnApp_Cptn {
+		padding-top: 20px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid rgb(201, 201, 201);
+		font-size: 1.2em;
+	}
+
+	.cnApp_Boa > .cnApp_SubCptn {
+		position: relative;
+		top: -0.5em;
+		margin-bottom: 10px;
+	}
+
+	.cnApp_Boa > .cnApp_Cptn, .cnApp_Boa > .cnApp_SubCptn {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.cnApp_Boa .cnApp_SubCptn .cnApp_Text {
+		padding: 0px 5px;
+		font-size: 1em;
+		background-color: rgb(243, 243, 243);
+	}
+
+	.cnApp_Boa .cnApp_SlideSlot {
+		margin-bottom: 20px;
+	}
+
+.cnApp_FigAry {
+	/*注意水平方向不要加任何边距、边框*/
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+.cnApp_Fig {
+	/*注意不要加外边距，为使js代码方便地计算总宽度*/
+	padding: 0px 0px 0px 50px;
+	/*width: 80%;*/ /*设置初值，JS会以此为基础进行修改*/
+	height: auto; /*自动计算，受图像宽高比影响*/
+	float: left;
+}
+
+.cnApp_Fig:last-of-type
+{
+	padding-right: 50px;
+}
+
+.cnApp_HAD .cnApp_Fig img.cnApp_FigImg {
+	width: 150px;
+	height: 170px;
+}
+
+.cnApp_BnsVctn .cnApp_Fig img.cnApp_FigImg {
+	width: 87px;
+	height: 87px;
+}
+
+.cnApp_HSP .cnApp_Fig img.cnApp_FigImg {
+	width: 150px;
+	height: 170px;
+}
+
+.cnApp_StarConsultant .cnApp_Fig img.cnApp_FigImg {
+	width: 142px;
+	height: 128px;
+}
+
+
+.cnApp_AU .cnApp_FigAry {
+	text-align: center;
+}
+
+.cnApp_AU img.cnApp_FigImg {
+	width: 90px;
+	height: 38px;
+	margin: 0px 2px;
+}
+
+.cnApp_LabelDiv {
+	padding: 0px 10px;
+	-webkit-transform: scale(0.5, 0.5);
+	-webkit-transform-origin: left center;
+}
+
+
+
+.cnApp_Fig img.cnApp_FigImg, .cnApp_Fig .cnAppFigImgDiv {
+	margin-bottom: 10px;
+}
+
+	.cnApp_Fig .cnAppFigImgDiv > img.cnApp_FigImg {
+		margin-bottom: 0px;
+	}
+
+.cnApp_Fig figcaption a {
+	text-decoration: none;
+	color: black;
+}
+
+.cnApp_Fig figcaption .cnApp_Text {
+	vertical-align: super;
+}
+
+.cnApp_Fig figcaption .cnApp_Icon {
+	margin: 0em 0.5em;
+}
+
+.cnApp_Fig figcaption .cnApp_Points {
+	font-size: 14px;
+	color: rgb(146, 146, 146);
+}
+
+.cnApp_VidDiv {
+	margin-bottom: 20px;
+}
+
+
+.cnApp_GuessYouLike {
+	margin-bottom: 20px;
+	background-color: rgb(243, 243, 243);
+}
+
+	.cnApp_GuessYouLike .cnAppFigImgDiv {
+		margin: 0px 10px;
+	}
+
+	.cnApp_GuessYouLike .cnApp_tTabs {
+		padding: 0px 10px;
+	}
+
+		.cnApp_GuessYouLike .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+			width: 25%;
+		}
+
+	.cnApp_GuessYouLike ul {
+		/*不能加边距，因为没有动画他们！*/
+	}
+
+		.cnApp_GuessYouLike ul > li {
+			display: inline-block;
+			width: 40%;
+			margin: 0px;
+			padding: 5px 10px;
+			color: black;
+			list-style-type: circle;
+			list-style-position: inside;
+		}
+
+			.cnApp_GuessYouLike ul > li > a {
+				text-decoration: none;
+				color: black;
+			}
+
+.cnApp_AU .cnApp_StarConsultant .cnApp_Fig {
+	/*width: 80%;*/ /*一排要显示三个，令第三个稍微露出点*/
+}
+
+.cnApp_StarConsultant .cnApp_Icon {
+	width: 1em;
+	height: 1em;
+	margin: 0px 5px;
+}
+
+.cnApp_StarConsultant figcaption .cnApp_Text {
+	vertical-align: text-top;
+}
+
+/*********************************************************************** Over ***********************************************************************/

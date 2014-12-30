@@ -1,0 +1,61 @@
+﻿/*	
+*
+*/
+
+
+
+/******************************************* 酒店与目的地 *******************************************/
+
+.cnApp_TabsDiv {
+	margin: 20px 0px;
+	background-color: rgb(243, 243, 243);
+}
+
+	.cnApp_PC .cnApp_TabsDiv
+	{
+		margin-top: 0px;
+	}
+
+	.cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+		width: 25%;
+		padding: 4px;
+		font-size: 14px;
+	}
+
+.cnApp_PC .cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+	width: 8em;
+	padding: 5px;
+}
+
+.cnApp_TabsDiv .cnApp_TabPage {
+	padding: 10px;
+	background-color: white;
+}
+
+.cnApp_TabPage > .cnApp_Sect {
+	margin-bottom: 20px;
+}
+
+.cnApp_Sect > .cnApp_Cptn {
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed rgb(200, 200, 200);
+}
+
+	.cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li a {
+		text-decoration: none;
+	}
+
+	.cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li .cnApp_AbsPos_RtBm {
+		bottom: 10px;
+	}
+
+
+
+/*********************************************************************** Over ***********************************************************************/
