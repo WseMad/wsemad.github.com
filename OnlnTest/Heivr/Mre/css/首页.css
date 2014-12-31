@@ -35,7 +35,7 @@
 	}
 
 	.cnApp_Boa .cnApp_SlideSlot {
-		margin-bottom: 20px;
+		/*margin-bottom: 20px;*/
 	}
 
 .cnApp_FigAry {
@@ -91,7 +91,15 @@
 .cnApp_LabelDiv {
 	padding: 0px 10px;
 	-webkit-transform: scale(0.5, 0.5);
-	-webkit-transform-origin: left center;
+	-moz-transform: scale(0.5, 0.5);
+	-ms-transform: scale(0.5, 0.5);
+	-o-transform: scale(0.5, 0.5);
+	transform: scale(0.5, 0.5);
+	-webkit-transform-origin: left bottom;
+	-moz-transform-origin: left bottom;
+	-ms-transform-origin: left bottom;
+	-o-transform-origin: left bottom;
+	transform-origin: left bottom;
 }
 
 
