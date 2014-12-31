@@ -329,7 +329,7 @@
 
 		.cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
 			display: inline-block;
-			padding: 10px;
+			padding: 5px;
 			/*margin: 0px 5px;*/ /*不要加外边距，由使用者决定*/
 			border: 1px solid white;
 			border-radius: 0px 0px 0.5em 0.5em;
@@ -513,7 +513,7 @@ a.cnApp_NoUdrLine {
 }
 
 .cnApp_Banner {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .cnApp_List {

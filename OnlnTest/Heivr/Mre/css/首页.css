@@ -6,7 +6,7 @@
 /******************************************* 首页 *******************************************/
 
 .cnApp_Boa {
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	background-color: rgb(243, 243, 243);
 }
 
@@ -35,7 +35,6 @@
 	}
 
 	.cnApp_Boa .cnApp_SlideSlot {
-		/*margin-bottom: 20px;*/
 	}
 
 .cnApp_FigAry {
@@ -52,10 +51,9 @@
 	float: left;
 }
 
-.cnApp_Fig:last-of-type
-{
-	padding-right: 50px;
-}
+	.cnApp_Fig:last-of-type {
+		padding-right: 50px;
+	}
 
 .cnApp_HAD .cnApp_Fig img.cnApp_FigImg {
 	width: 150px;
@@ -115,12 +113,12 @@
 }
 
 .cnApp_VidDiv {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 
 .cnApp_GuessYouLike {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	background-color: rgb(243, 243, 243);
 }
 
@@ -154,6 +152,23 @@
 				text-decoration: none;
 				color: black;
 			}
+
+	.cnApp_GuessYouLike .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+		border: none;
+		border-radius: 0px;
+		background-color: rgb(4, 35, 117);
+	}
+
+		.cnApp_GuessYouLike .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn.cnApp_Crnt {
+			background-image: none;
+			background-color: rgb(247, 249, 252);
+			box-shadow: none;
+			color: black;
+		}
+
+		.cnApp_GuessYouLike .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn:hover {
+			cursor: pointer;
+		}
 
 .cnApp_AU .cnApp_StarConsultant .cnApp_Fig {
 	/*width: 80%;*/ /*一排要显示三个，令第三个稍微露出点*/
