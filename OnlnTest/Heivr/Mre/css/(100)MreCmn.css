@@ -571,6 +571,12 @@ ul.cnApp_AlternativeList {
 .cnApp_Mbl .cnApp_LabelDiv
 {
 	height: 30px;
+	text-align: left;
+}
+
+.cnApp_Mbl .cnApp_LabelDiv.cnApp_LabelDiv_Rt
+{
+	text-align: right;
 }
 
 .cnApp_Mbl .cnApp_LabelDiv img {
