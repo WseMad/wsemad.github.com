@@ -12,6 +12,7 @@
 
 .cnApp_Sect > .cnApp_Cptn {
 	margin-bottom: 10px;
+	padding-left: 10px;
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -57,12 +58,12 @@
 
 /* 车票查询表单 */
 
-.cnApp_TicketRsrv .cnApp_Label {
+.cnApp_TicketRsrv .cnApp_LabelDiv {
 	padding-top: 10px;
 	background-color: rgb(243, 243, 243);
 }
 
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_Label img {
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_LabelDiv img {
 		position: relative;
 		left: -6px;
 	}
@@ -135,7 +136,7 @@
 }
 
 .cnApp_Heading .cnApp_Cptn {
-	margin-bottom: 10px;
+	margin: 10px 0px;
 	font-size: 1.2em;
 	font-weight: bold;
 }

@@ -9,7 +9,7 @@
 /******************************************* 分权卡详情列表 *******************************************/
 
 .cnApp_AlternativeListDiv, .cnApp_HotRcmdDiv {
-	margin: 0px 20px 20px 20px;
+	margin: 0px 10px;
 	background-color: rgb(243, 243, 243);
 }
 
@@ -72,11 +72,10 @@ li.cnApp_Details .cnApp_Ctnt {
 	padding-top: 20px;
 }
 
-	.cnApp_HotRcmdDiv .cnApp_Label {
-		margin-bottom: 10px;
+	.cnApp_HotRcmdDiv .cnApp_LabelDiv {
 	}
 
-		.cnApp_HotRcmdDiv .cnApp_Label > img {
+		.cnApp_HotRcmdDiv .cnApp_LabelDiv > img {
 			position: relative;
 			left: 10px;
 		}
@@ -104,6 +103,11 @@ ul.cnApp_AlternativeList.cnApp_RcmdList {
 	margin-bottom: 20px;
 	padding: 10px;
 }
+
+	.cnApp_Sect .cnApp_Sect
+	{
+		padding: 10px 0px;
+	}
 
 	.cnApp_Sect > .cnApp_Cptn {
 		margin-bottom: 10px;
