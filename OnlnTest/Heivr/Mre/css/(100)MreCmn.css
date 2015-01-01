@@ -3,49 +3,185 @@
 */
 
 
-/******************************************* 环境 *******************************************/
+/***************************** (0)Rset.css *****************************/
 
-.cnApp_Env.cnApp_Mbl {
-	/*max-width: 640px;*/
-	margin: 0px auto;
+/* clear fix */
+.cnApp_PC .cnWse_ClearFix {
+	*zoom: 1;
 }
 
-.cnApp_Env.cnApp_PC {
-	width: 1200px;
+	.cnApp_PC .cnWse_ClearFix:before, .cnWse_ClearFix:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+
+	.cnApp_PC .cnWse_ClearFix:after {
+		clear: both;
+	}
+
+/* 所有元素 */
+.cnApp_PC, .cnApp_PC * {
+	box-sizing: border-box;
+	margin: 0px;
+	border: none;
+	padding: 0px;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	color: inherit;
+	outline: none;
+}
+
+.cnApp_PC
+{
+	font-size: 16px;
+}
+
+/***************************** 图标 *****************************/
+
+.cnApp_Icon {
+	background-image: url("../images/MreIcon.png");
+	display: inline-block;
+}
+
+	.cnApp_Icon.cnApp_0 {
+		background-position: 0px 0px;
+		width: 18px;
+		height: 18px;
+	}
+
+	.cnApp_Icon.cnApp_1 {
+		background-position: 18px 0px;
+		width: 25px;
+		height: 25px;
+	}
+
+	.cnApp_Icon.cnApp_2 {
+		background-position: 43px 0px;
+		width: 27px;
+		height: 27px;
+	}
+
+	.cnApp_Icon.cnApp_3 {
+		background-position: 70px 0px;
+		width: 27px;
+		height: 27px;
+	}
+
+	.cnApp_Icon.cnApp_4 {
+		background-position: 97px 0px;
+		width: 19px;
+		height: 19px;
+	}
+
+	.cnApp_Icon.cnApp_5 {
+		background-position: 118px 0px;
+		width: 8px;
+		height: 6px;
+	}
+
+	.cnApp_Icon.cnApp_6 {
+		background-position: 128px 0px;
+		width: 8px;
+		height: 6px;
+	}
+
+	.cnApp_Icon.cnApp_7 {
+		background-position: 118px 10px;
+		width: 8px;
+		height: 6px;
+	}
+
+	.cnApp_Icon.cnApp_8 {
+		background-position: 128px 10px;
+		width: 8px;
+		height: 6px;
+	}
+
+	.cnApp_Icon.cnApp_9 {
+		background-position: 138px 0px;
+		width: 17px;
+		height: 17px;
+	}
+
+	.cnApp_Icon.cnApp_10 {
+		background-position: 156px 0px;
+		width: 27px;
+		height: 27px;
+	}
+
+	.cnApp_Icon.cnApp_11 {
+		background-position: 184px 0px;
+		width: 30px;
+		height: 36px;
+	}
+
+	.cnApp_Icon.cnApp_12 {
+		background-position: 215px 0px;
+		width: 40px;
+		height: 38px;
+	}
+
+	.cnApp_Icon.cnApp_13 {
+		background-position: 256px 0px;
+		width: 38px;
+		height: 36px;
+	}
+
+	.cnApp_Icon.cnApp_14 {
+		background-position: 296px 0px;
+		width: 14px;
+		height: 11px;
+	}
+
+	.cnApp_Icon.cnApp_15 {
+		background-position: 296px 15px;
+		width: 14px;
+		height: 11px;
+	}
+
+	.cnApp_Icon.cnApp_16 {
+		background-position: 312px 0px;
+		width: 23px;
+		height: 23px;
+	}
+
+	.cnApp_Icon.cnApp_17 {
+		background-position: 337px 0px;
+		width: 24px;
+		height: 23px;
+	}
+
+	.cnApp_Icon.cnApp_18 {
+		background-position: 363px 0px;
+		width: 32px;
+		height: 48px;
+	}
+
+	.cnApp_Icon.cnApp_19 {
+		background-position: 397px 0px;
+		width: 40px;
+		height: 48px;
+	}
+
+/***************************** 环境 *****************************/
+
+.cnApp_Env {
 	margin: 0px auto;
+	font-family: 微软雅黑;
 	cursor: default;
 }
 
-	.cnApp_Env.cnApp_Mbl .cnApp_PCOnly, .cnApp_Env.cnApp_PC .cnApp_MblOnly {
-		display: none;
+	.cnApp_Env.cnApp_Mbl {
 	}
 
-.cnApp_Hide {
-	visibility: hidden;
-}
+	.cnApp_Env.cnApp_PC {
+		width: 800px;
+		float: left;
+	}
 
-
-
-.cnApp_Env.cnApp_PC .cnApp_MainBody {
-	float: left;
-	width: 800px;
-}
-
-.cnApp_Env.cnApp_PC .cnApp_SideBar {
-	float: left;
-	width: 380px;
-	margin: 0px 0px 0px 20px;
-	border: 2px solid black;
-	padding: 0px;
-}
-
-/******************************************* 字体 *******************************************/
-
-.cnApp_StdFont {
-	font-family: 微软雅黑;
-}
-
-/******************************************* 颜色 *******************************************/
+/***************************** OOCSS *****************************/
 
 .cnApp_MainBkgdClo {
 	background-image: none;
@@ -74,8 +210,6 @@
 	color: rgb(255, 127, 0);
 }
 
-/******************************************* 对齐 *******************************************/
-
 .cnApp_TextAln_Lt {
 	text-align: left;
 }
@@ -88,8 +222,42 @@
 	text-align: right;
 }
 
+.cnApp_DsplNone
+{
+	display: none;
+}
 
-/******************************************* 页头 *******************************************/
+/***************************** 标签栏 *****************************/
+
+.cnApp_tTabs {
+}
+
+	.cnApp_tTabs > .cnApp_CptnGrp {
+		margin-bottom: 10px;
+	}
+
+		.cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+			display: inline-block;
+			padding: 5px;
+			/*margin: 0px 5px;*/ /*不要加外边距，由使用者决定*/
+			border: 1px solid white;
+			border-radius: 0px 0px 0.5em 0.5em;
+			text-align: center;
+			color: white;
+		}
+
+			.cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn.cnApp_Crnt {
+				background-image: none;
+				background-color: rgb(255, 127, 0);
+				box-shadow: 0px 0px 20px rgb(255, 127, 0);
+			}
+
+			.cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn:hover {
+				cursor: pointer;
+			}
+
+
+/***************************** 页头 *****************************/
 
 .cnApp_Header {
 	position: relative;
@@ -199,7 +367,7 @@
 	text-decoration: none;
 }
 
-/******************************************* 页脚 *******************************************/
+/***************************** 页脚 *****************************/
 
 .cnApp_Footer {
 	padding-bottom: 30px;
@@ -231,7 +399,6 @@
 	.cnApp_Footer .cnApp_CompanyInfo {
 	}
 
-
 .cnApp_SlideSlot {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -252,21 +419,6 @@
 		text-decoration: none;
 		color: white;
 	}
-
-/*.cnApp_AphMask
-{
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-
-	background-image: -webkit-linear-gradient(left, rgba(4, 35, 117,1) 0%, rgba(4, 35, 117,0) 40%, rgba(4, 35, 117,0) 60%, rgba(4, 35, 117, 1) 100%);
-	background-image: -moz-linear-gradient(left, rgba(4, 35, 117,1) 0%, rgba(4, 35, 117,0) 40%, rgba(4, 35, 117,0) 60%, rgba(4, 35, 117, 1) 100%);
-	background-image: -ms-linear-gradient(left, rgba(4, 35, 117,1) 0%, rgba(4, 35, 117,0) 40%, rgba(4, 35, 117,0) 60%, rgba(4, 35, 117, 1) 100%);
-	background-image: -o-linear-gradient(left, rgba(4, 35, 117,1) 0%, rgba(4, 35, 117,0) 40%, rgba(4, 35, 117,0) 60%, rgba(4, 35, 117, 1) 100%);
-	background-image: linear-gradient(left, rgba(4, 35, 117,1) 0%, rgba(4, 35, 117,0) 40%, rgba(4, 35, 117,0) 60%, rgba(4, 35, 117, 1) 100%);
-}*/
 
 /******************************************* 折叠框 *******************************************/
 
@@ -310,13 +462,13 @@
 			border: 1px solid rgb(210, 218, 233);
 		}
 
-		.cnApp_tAcod > ul > li > .cnApp_Cptn {
+		/*.cnApp_tAcod > ul > li > .cnApp_Cptn {
 			font-size: 14px;
 		}
 
 		.cnApp_tAcod > ul > li > .cnApp_Ctnt {
 			font-size: 12px;
-		}
+		}*/
 
 /******************************************* 标签栏 *******************************************/
 
@@ -350,23 +502,27 @@
 /******************************************* 搜索 *******************************************/
 
 .cnApp_SrchForm {
-	padding: 10px;
+	padding: 0px;
 	background-color: rgb(243, 243, 243);
 }
 
 	.cnApp_SrchForm .cnApp_Fld {
-		margin-bottom: 10px;
 		border: 1px solid rgb(200, 200, 200);
 	}
 
+	.cnApp_Mbl .cnApp_SrchForm .cnApp_Fld {
+		margin-bottom: 5px;
+	}
+
 .cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld {
-	width: 9em;
+	width: 8em;
 	display: inline-block;
 }
 
-	.cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld.cnApp_HotelName {
-		width: 12em;
-	}
+.cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld.cnApp_DateTime
+{
+	width: 12em;
+}
 
 .cnApp_SrchForm .cnApp_RtArw {
 	/*vertical-align: middle;*/
@@ -389,8 +545,8 @@
 
 .cnApp_PC .cnApp_SrchForm .cnApp_SbmtBtnDiv {
 	display: inline-block;
-	width: 4em;
-	padding: 6px;
+	width: 3em;
+	padding: 5px 0px;
 }
 
 .cnApp_SrchForm .cnApp_SbmtBtnDiv [type=submit] {
@@ -402,7 +558,7 @@
 .cnApp_SrchForm .cnApp_SbmtBtnDiv .cnApp_Icon {
 	width: 1em;
 	height: 1em;
-	margin-left: 0.25em;
+	/*margin-left: 0.25em;*/
 }
 
 .cnApp_SrchForm .cnApp_SbmtBtnDiv .cnApp_Text {
@@ -414,10 +570,32 @@
 }
 
 	.cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_Row {
-		margin-bottom: 10px;
+		/*margin-bottom: 10px;*/
 		border-bottom: 1px solid rgb(200, 200, 200);
-		padding-bottom: 5px;
+		padding: 5px 0px;
 		line-height: 1.5;
+	}
+
+	.cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_Row:last-of-type
+	{
+		margin-bottom: 0px;
+	}
+
+	.cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_More
+	{
+		background-color: white;
+	}
+
+	.cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_More>.cnApp_Text
+	{
+		position: relative;
+		top: -1px;
+
+		display: inline-block;
+		padding: 5px 4em;
+		border: 1px solid rgb(200, 200, 200);
+		border-top: none;
+		background-color: rgb(243, 243, 243);
 	}
 
 	.cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_Cptn, .cnApp_SrchForm .cnApp_ShtCutSrch .cnApp_Ctnt {
@@ -484,7 +662,7 @@ table {
 			font-size: 14px;
 		}
 
-/******************************************* 其他 *******************************************/
+/***************************** 其他  *****************************/
 
 /* 鼠标光标 */
 a:hover, select:hover, [type=submit]:hover,
@@ -547,11 +725,6 @@ ul.cnApp_AlternativeList {
 	list-style-type: none;
 }
 
-/*.cnApp_Icon {
-	width: 1.5em;
-	height: 1.5em;
-}*/
-
 .cnAppFigImgDiv {
 	position: relative;
 	left: 0px;
@@ -568,38 +741,37 @@ ul.cnApp_AlternativeList {
 		text-align: left;
 	}
 
-.cnApp_Mbl .cnApp_LabelDiv
-{
+.cnApp_Mbl .cnApp_LabelDiv {
 	height: 30px;
 	text-align: left;
 }
 
-.cnApp_Mbl .cnApp_LabelDiv.cnApp_LabelDiv_Rt
-{
-	text-align: right;
-}
+	.cnApp_Mbl .cnApp_LabelDiv.cnApp_LabelDiv_Rt {
+		text-align: right;
+	}
 
-.cnApp_Mbl .cnApp_LabelDiv img {
-	padding: 0px 10px;
-	-webkit-transform: scale(0.5, 0.5);
-	-moz-transform: scale(0.5, 0.5);
-	-ms-transform: scale(0.5, 0.5);
-	-o-transform: scale(0.5, 0.5);
-	transform: scale(0.5, 0.5);
-	-webkit-transform-origin: left top;
-	-moz-transform-origin: left top;
-	-ms-transform-origin: left top;
-	-o-transform-origin: left top;
-	transform-origin: left top;
-}
+	.cnApp_Mbl .cnApp_LabelDiv img {
+		padding: 0px 10px;
+		-webkit-transform: scale(0.5, 0.5);
+		-moz-transform: scale(0.5, 0.5);
+		-ms-transform: scale(0.5, 0.5);
+		-o-transform: scale(0.5, 0.5);
+		transform: scale(0.5, 0.5);
+		-webkit-transform-origin: left top;
+		-moz-transform-origin: left top;
+		-ms-transform-origin: left top;
+		-o-transform-origin: left top;
+		transform-origin: left top;
+	}
 
-.cnApp_Mbl .cnApp_LabelDiv.cnApp_LabelDiv_Rt img
-{
-	-webkit-transform-origin: right top;
-	-moz-transform-origin: right top;
-	-ms-transform-origin: right top;
-	-o-transform-origin: right top;
-	transform-origin: right top;
-}
+	.cnApp_Mbl .cnApp_LabelDiv.cnApp_LabelDiv_Rt img {
+		-webkit-transform-origin: right top;
+		-moz-transform-origin: right top;
+		-ms-transform-origin: right top;
+		-o-transform-origin: right top;
+		transform-origin: right top;
+	}
+
+/*****************************  *****************************/
 
 /*********************************************************************** Over ***********************************************************************/

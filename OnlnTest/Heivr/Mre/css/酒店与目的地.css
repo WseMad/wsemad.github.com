@@ -11,16 +11,26 @@
 	background-color: rgb(243, 243, 243);
 }
 
-	.cnApp_PC .cnApp_TabsDiv
-	{
-		margin-top: 0px;
-	}
+.cnApp_PC .cnApp_TabsDiv {
+	margin-top: 0px;
+}
 
-	.cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
-		width: 25%;
-		padding: 4px;
-		font-size: 14px;
-	}
+.cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+	width: 25%;
+	padding: 4px;
+	font-size: 1em;
+}
+
+.cnApp_Mbl .cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
+	width: 25%;
+	padding: 2px;
+	font-size: 14px;
+}
+
+.cnApp_Mbl .cnApp_SrchForm
+{
+	padding: 0px 5px;
+}
 
 .cnApp_PC .cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
 	width: 8em;
@@ -42,6 +52,12 @@
 	font-weight: bold;
 }
 
+.cnApp_PC .cnApp_Sect > .cnApp_Ctnt > .cnApp_List
+{
+	padding: 10px;
+	background-color: rgb(243, 243, 243);
+}
+
 .cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li {
 	margin-bottom: 10px;
 	padding-bottom: 10px;
@@ -53,9 +69,42 @@
 	}
 
 	.cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li .cnApp_AbsPos_RtBm {
+		right: 0px;
 		bottom: 10px;
 	}
 
+	.cnApp_PC .cnApp_Sect.cnApp_NewExpe > .cnApp_Ctnt > .cnApp_List > li .cnApp_Fig
+	{
+		display: inline-block;
+		margin: 10px 15px 0px 15px;
+		color: black;
+	}
+
+.cnApp_List > li > .cnApp_Cptn {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld.cnApp_HotelName {
+	width: 8em;
+}
+
+.cnApp_SrchForm input.cnApp_RgeIpt
+{
+	width: 4em;
+	border: 1px solid rgb(200, 200, 200);
+	padding: 0px 4px;
+}
+
+.cnApp_Mbl .cnApp_Fld .cnApp_Ipt .cnApp_DateTime
+{
+	width: 70%;
+}
+
+.cnApp_Mbl .cnApp_SbmtBtnDiv .cnApp_Icon
+{
+	margin-left: 0.5em;
+}
 
 
 /*********************************************************************** Over ***********************************************************************/

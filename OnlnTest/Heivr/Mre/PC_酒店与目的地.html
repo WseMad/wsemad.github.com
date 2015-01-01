@@ -1,0 +1,643 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="分权宝">
+	<meta name="description" content="一地置业 终身度假 全球换住 私顾服务">
+	<title>酒店与目的地</title>
+	<link href="http://static.ffdujia.com/css/css.css" type="text/css" rel="stylesheet">
+	<link href="http://static.ffdujia.com/js/art.5/ui-dialog.css" type="text/css" rel="stylesheet">
+	<link href="http://static.ffdujia.com/font.awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+	<script src="http://static.ffdujia.com/js/jquery-1.11.1.min.js"></script>
+	<!--<script src="http://static.ffdujia.com/js/art.5/dialog-min.js"></script>
+	<script src="http://static.ffdujia.com/js/art.template/template.js"></script>
+	<script src="http://static.ffdujia.com/js/core.js"></script>
+	<script>$(D.init);</script>-->
+	<!--@Mi-->
+	<link rel="stylesheet" type="text/css" href="./css/(100)MreCmn.css" />
+	<link rel="stylesheet" type="text/css" href="./css/酒店与目的地.css" />
+	<script type="text/javascript" src="./js/(0)Seed.js"></script>
+	<script type="text/javascript" src="./js/(10)WSE_nWse.js"></script>
+	<script type="text/javascript" src="./js/(100)MreCmn.js"></script>
+</head>
+
+<body>
+	<header class="app-header">
+		<div class="app-header-mast-nav">
+			<div class="app-header-mast-nav-inner w-960">
+				<ul class="mast-nav-inner-basic-info">
+					<li>您好，欢迎来到分权宝</li>
+					<li><a href="/web/account/index/login.html" class="login-link">登陆</a></li>
+					<li><a href="/web/account/index/register.html">注册</a></li>
+				</ul>
+				<ul class="mast-nav-inner-user-info">
+					<li><a href="">分分充值</a></li>
+					<li><a href="/web/account/">我的分分</a></li>
+					<li><a href="">收藏</a></li>
+					<li><a href="">论坛</a></li>
+					<li><a href="">人才招聘</a></li>
+					<li><a href="">手机APP</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="app-header-mast-brand w-960 cf">
+			<a href="http://www.ffdujia.com/" class="app-logo">分权宝</a>
+			<div class="brand-service-tips">终身度假 分分搞定</div>
+			<div class="app-header-mast-brand-service">
+				<div class="brand-service-tel"><i class="fa fa-phone fa-1x"></i> 热线电话：</div>
+				<a href="javascript:void(0);">400-919-8000</a>
+			</div>
+		</div>
+		<div class="app-header-mast-menu">
+			<div class="app-menu-inner w-960">
+				<ul class="app-menus">
+					<li class="menu-item"><a href="http://www.ffdujia.com/" class="selected"><i class="fa fa-home"></i> 首页</a></li>
+					<li class="menu-item">
+						<a href="http://www.ffdujia.com/" target="_blank">分权宝</a>
+						<ul class="app-menus-submenu">
+							<li><a href="http://www.ffdujia.com/" target="_blank"> 分权度假模式</a></li>
+							<li><a href="" target="_blank"> 公司介绍</a></li>
+							<li><a href="" target="_blank"> 分权宝介绍</a></li>
+						</ul>
+					</li>
+					<li class="menu-item">
+						<a href="/web/index/index/hots.html" target="_blank">热销产品</a>
+						<ul class="app-menus-submenu">
+							<li><a href="/web/index/index/hots.html" target="_blank"> 分权度假卡</a></li>
+							<li><a href="" target="_blank"> 分时度假卡</a></li>
+							<li><a href="" target="_blank"> 分分充值</a></li>
+							<li><a href="" target="_blank"> 度假体验卡</a></li>
+						</ul>
+					</li>
+					<li class="menu-item">
+						<a href="/web/hotels/" target="_blank">酒店与目的地</a>
+						<ul class="app-menus-submenu">
+							<li><a href="" target="_blank"> 京郊微度假</a></li>
+							<li><a href="" target="_blank"> 国内度假</a></li>
+							<li><a href="" target="_blank"> 国际度假</a></li>
+							<li><a href="" target="_blank"> 红利假期</a></li>
+						</ul>
+					</li>
+					<li class="menu-item">
+						<a href="/web/shops/" target="_blank">分分商城</a>
+						<ul class="app-menus-submenu">
+							<li><a href="" target="_blank"> 酒店预订</a></li>
+							<li><a href="" target="_blank"> 票务预订</a></li>
+							<li><a href="" target="_blank"> 租车服务</a></li>
+							<li><a href="" target="_blank"> 包价度假产品</a></li>
+							<li><a href="" target="_blank"> 邮轮度假</a></li>
+							<li><a href="" target="_blank"> 其他专项服务</a></li>
+						</ul>
+					</li>
+					<li class="menu-item">
+						<a href="" target="_blank">热点公告</a>
+					</li>
+					<li class="menu-item">
+						<a href="" target="_blank">会员俱乐部</a>
+					</li>
+					<li class="menu-item">
+						<a href="" target="_blank">加盟我们</a>
+					</li>
+					<li class="menu-item">
+						<a href="" target="_blank">众筹平台</a>
+					</li>
+				</ul>
+				<div class="app-search-view"></div>
+			</div>
+		</div>
+	</header>
+	<script>
+		$(function () {
+			$('.app-menus .menu-item').hover(function () {
+				$(this).children('.app-menus-submenu').show();
+			}, function () {
+				$(this).children('.app-menus-submenu').hide();
+			});
+		});
+	</script>
+	<style>
+		.hotels-list {
+			float: left;
+			width: 800px;
+		}
+
+			.hotels-list .hotels-types ul li {
+				float: left;
+			}
+
+				.hotels-list .hotels-types ul li a {
+					width: 6em;
+					padding: 5px;
+					border: 1px solid white;
+					border-radius: 0px 0px 0.5em 0.5em;
+					text-align: center;
+					color: white;
+					background-color: rgb(4, 35, 117);
+					background-image: -webkit-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
+					background-image: -moz-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
+					background-image: -ms-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
+					background-image: -o-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
+					background-image: linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
+				}
+
+				.hotels-list .hotels-types ul li.selected a {
+					background-image: none;
+					background-color: rgb(255, 127, 0);
+					box-shadow: 0px 0px 20px rgb(255, 127, 0);
+				}
+
+				.hotels-list .hotels-types ul li a {
+					color: white;
+					display: block;
+				}
+
+					.hotels-list .hotels-types ul li a:hover {
+						text-decoration: none;
+					}
+
+		.hotels-search {
+			background: rgb(243, 243, 243);
+		}
+
+		.hotels-search-filter {
+			padding: 10px;
+		}
+
+			.hotels-search-filter .filter-form .form-inline {
+				float: left;
+				margin-right: 8px;
+			}
+
+			.hotels-search-filter .filter-form label {
+				color: black;
+			}
+
+			.hotels-search-filter .filter-form select {
+				padding: 5px;
+				outline: none;
+				border-color: #c8c8c8;
+				width: 142px;
+			}
+
+			.hotels-search-filter .filter-form input {
+				padding: 5px;
+				outline: none;
+				width: 142px;
+				margin-top: 2px;
+			}
+
+		.search-hotel-name {
+			width: 500px !important;
+		}
+
+		.hotels-search-spec {
+			padding: 10px;
+			color: black;
+		}
+
+			.hotels-search-spec .spec-list {
+				border-bottom: 1px dashed #dbdbdb;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				cursor: default;
+			}
+
+				.hotels-search-spec .spec-list .spec-label {
+					float: left;
+				}
+
+				.hotels-search-spec .spec-list ul {
+					padding-left: 50px;
+				}
+
+					.hotels-search-spec .spec-list ul li {
+						display: inline-block;
+						margin-right: 8px;
+						margin-bottom: 2px;
+					}
+
+						.hotels-search-spec .spec-list ul li a {
+							text-decoration: none;
+							color: rgb(22, 90, 159);
+							padding: 0 4px;
+						}
+
+							.hotels-search-spec .spec-list ul li.selected a, .hotels-search-spec .spec-list ul li a:hover {
+								border-radius: 2px;
+								text-decoration: none;
+								color: #FFF;
+								background-color: #0069ca;
+							}
+
+		.hotels-sections {
+			margin-top: 8px;
+		}
+
+		.section-title h1 {
+			font-size: 20px;
+			margin-bottom: 8px;
+		}
+
+		.section-item {
+			margin-bottom: 10px;
+			position: relative;
+			padding-bottom: 10px;
+			border-bottom: 1px dashed rgb(200, 200, 200);
+		}
+
+			.section-item .item-preview {
+				float: left;
+			}
+
+			.section-item .item-content {
+				margin-left: 8px;
+				float: left;
+				width: 440px;
+			}
+
+			.section-item .content-more {
+				text-align: right;
+			}
+
+				.section-item .content-more a {
+					text-decoration: none;
+					color: rgb(255, 127, 0);
+					position: absolute;
+					right: 0;
+					bottom: 10px;
+				}
+	</style>
+
+
+	<div class="app-wrapper w-960">
+		<div class="app-products">
+
+			<!--@Mi-->
+			<div class="hotels-list cnApp_Env cnApp_PC">
+				<div class="cnApp_TabsDiv">
+					<div class="cnApp_tTabs">
+						<div class="cnApp_CptnGrp">
+							<span class="cnApp_Cptn cnApp_Crnt cnApp_MainBkgdGrad">京郊微度假</span><span class="cnApp_Cptn cnApp_MainBkgdGrad">国内度假</span><span class="cnApp_Cptn cnApp_MainBkgdGrad">国际度假</span><span class="cnApp_Cptn cnApp_MainBkgdGrad">红利度假</span>
+						</div>
+
+						<form class="cnApp_SrchForm cnApp_Sect cnWse_ClearFix">
+							<div class="cnApp_TextAln_Cen">
+								<div class="cnApp_Fld cnWse_ClearFix">
+									<!--<div class="cnApp_Lab"><label for="k_SlcCity">选择城市</label></div>-->
+									<div class="cnApp_Ipt">
+										<select id="k_SlcCity" name="select_city">
+											<option class="cnApp_VoidOptn">选择城市</option>
+											<option>北京</option>
+											<option>上海</option>
+											<option>广州</option>
+										</select>
+									</div>
+								</div>
+
+								<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
+
+								<div class="cnApp_Fld cnApp_HotelName cnWse_ClearFix">
+									<!--<div class="cnApp_Lab"><label for="k_HotelName">酒店名称</label></div>-->
+									<div class="cnApp_Ipt">
+										<input id="k_HotelName" type="text" placeholder="酒店名称" />
+									</div>
+								</div>
+
+								<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
+
+								<div class="cnApp_Fld cnApp_DateTime cnWse_ClearFix">
+									<!--<div class="cnApp_Lab"><label for="k_CheckInTime">入住时间</label></div>-->
+									<div class="cnApp_Ipt">
+										<input id="k_CheckInTime" type="datetime-local" title="入住时间" />
+									</div>
+								</div>
+
+								<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
+
+								<div class="cnApp_Fld cnApp_DateTime cnWse_ClearFix">
+									<!--<div class="cnApp_Lab"><label for="k_CheckOutTime">离店时间</label></div>-->
+									<div class="cnApp_Ipt">
+										<input id="k_CheckOutTime" type="datetime-local" title="离店时间" />
+									</div>
+								</div>
+
+								<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+									<button type="submit" class="cnApp_Icon cnApp_0"><!--<img src="images/SC_icon01.png" class="cnApp_Icon" />--></button>
+								</div>
+
+							</div>
+
+							<div class="cnApp_ShtCutSrch cnApp_SlideSlot">
+								<div class="cnApp_Row cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">主题：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">运动</a><a href="#" class="cnApp_Item">疗养</a><a href="#" class="cnApp_Item">养老</a><a href="#" class="cnApp_Item">婚姻</a>
+									</div>
+								</div>
+
+								<div class="cnApp_Row cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">季节：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">春</a><a href="#" class="cnApp_Item">夏</a><a href="#" class="cnApp_Item">秋</a><a href="#" class="cnApp_Item">冬</a>
+									</div>
+								</div>
+
+								<div class="cnApp_Row cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">价格：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">200以下</a><a href="#" class="cnApp_Item">201-300</a><a href="#" class="cnApp_Item">301-400</a><a href="#" class="cnApp_Item">401-500</a><a href="#" class="cnApp_Item">500以上</a>
+										<span class="cnApp_Text">自定义：</span><input type="text" class="cnApp_RgeIpt" /> - <input type="text" class="cnApp_RgeIpt" />
+									</div>
+								</div>
+
+								<div class="cnApp_Row cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">景区：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">黑龙潭</a><a href="#" class="cnApp_Item">九寨沟</a>
+									</div>
+								</div>
+
+								<div id="k_MoreClassify" class="cnApp_More cnApp_TextAln_Cen">
+									<span class="cnApp_Text">更多分类 ∨</span>
+								</div>
+
+								<div class="cnApp_Row cnApp_DsplNone cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">更多1：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">分类1</a><a href="#" class="cnApp_Item">分类2</a>
+									</div>
+								</div>
+								<div class="cnApp_Row cnApp_DsplNone cnWse_ClearFix">
+									<div class="cnApp_Cptn cnApp_TextAln_Cen">更多2：</div>
+									<div class="cnApp_Ctnt">
+										<a href="#" class="cnApp_Item">分类1</a><a href="#" class="cnApp_Item">分类2</a><a href="#" class="cnApp_Item">分类3</a>
+									</div>
+								</div>
+
+							</div>
+						</form>
+
+						<div class="cnApp_TabPage">
+							<div class="cnApp_Sect cnApp_NewExpe">
+								<h3 class="cnApp_Cptn">全新体验</h3>
+								<div class="cnApp_Ctnt">
+									<ul class="cnApp_List">
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">天鹅湖1</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly">
+												<div class="cnApp_TextAln_Rt"><a href="#">[点击了解详情]</a></div>
+												<div class="cnApp_TextAln_Cen">
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验1</a></div>
+													</div>
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验2</a></div>
+													</div>
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验3</a></div>
+													</div>
+												</div>
+
+											</div>
+										</li>
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">天鹅湖2</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly">
+												<div class="cnApp_TextAln_Rt"><a href="#">[点击了解详情]</a></div>
+												<div class="cnApp_TextAln_Cen">
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验1</a></div>
+													</div>
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验2</a></div>
+													</div>
+													<div class="cnApp_Fig">
+														<img src="images/酒店与目的地/体验1.jpg" />
+														<div class="cnApp_TextAln_Cen"><a href="#">体验3</a></div>
+													</div>
+												</div>
+
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cnApp_Sect">
+								<h3 class="cnApp_Cptn">酒店故事</h3>
+								<div class="cnApp_Ctnt">
+									<ul class="cnApp_List">
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">故事1</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">故事2</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="cnApp_Sect">
+								<h3 class="cnApp_Cptn">特卖产品</h3>
+								<div class="cnApp_Ctnt">
+									<ul class="cnApp_List">
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">产品1</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">产品2</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="cnApp_Sect">
+								<h3 class="cnApp_Cptn">热门活动</h3>
+								<div class="cnApp_Ctnt">
+									<ul class="cnApp_List">
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">活动1</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">活动2</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="cnApp_Sect">
+								<h3 class="cnApp_Cptn">度假攻略</h3>
+								<div class="cnApp_Ctnt">
+									<ul class="cnApp_List">
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">攻略1</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+										<li class="cnApp_RelPos cnWse_ClearFix">
+											<img src="images/酒店与目的地/MDD_image01.png" class="cnApp_PCOnly cnApp_FloatToLt" />
+
+											<h4 class="cnApp_Cptn">攻略2</h4>
+											<p class="cnApp_Ctnt">
+												天鹅湖温泉度假村位于古运河边、天鹅湖畔。相传，乾隆下江南时，曾在此下榻小憩，康熙御迹“导流济运”至今仍存留在度假村“知菊堂”内。
+											</p>
+
+											<div class="cnApp_HgltTextClo cnApp_AbsPos_RtBm cnApp_PCOnly"><a href="#">[点击了解详情]</a></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="cnApp_TabPage">
+							第二页
+						</div>
+
+						<div class="cnApp_TabPage">
+							第三页
+						</div>
+
+						<div class="cnApp_TabPage">
+							第四页
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--侧边栏-->
+			<div class="products-slide">
+				<div class="slide-block slide-blue">
+					<div class="slide-title"><h1>位置查询</h1></div>
+					<div class="slide-content"></div>
+				</div>
+				<div class="slide-block slide-orange">
+					<div class="slide-title"><h1>热门推荐</h1></div>
+					<div class="slide-content">
+						<div class="slide-hot-sales">
+							<div class="hot-sale-preview"><img src="http://static.ffdujia.com/mre/products/hots.jpg" width="320" height="220" /></div>
+							<div class="hot-sale-title">名称</div>
+						</div>
+						<div class="slide-hot-sales">
+							<div class="hot-sale-preview"><img src="http://static.ffdujia.com/mre/products/hots.jpg" width="320" height="220" /></div>
+							<div class="hot-sale-title">名称</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="app-space space-48"></div>
+	<link href="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/css/flickerplate.css" type="text/css" rel="stylesheet">
+	<script src="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/js/min/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
+	<script src="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/js/min/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+	<script src="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/js/min/flickerplate.min.js" type="text/javascript"></script>
+	<script>
+		window.D = window.D || {};
+		D.TeamsPage = {
+			init: function () {
+				$('.flicker-example').flicker();
+			}
+		};
+	</script>
+	<div class="app-links">
+		<div class="app-links-info w-960">
+			<h3>友情链接</h3>
+			<div class="app-links-info-links">
+				<a href="http://www.baidu.com" target="_blank">百度</a> |
+			</div>
+		</div>
+	</div>
+	<footer class="app-footer">
+		<div class="app-footer-info w-960">
+			<section class="footer-info-item">
+				<h3>公司信息</h3>
+				<ul>
+					<li><a href="" target="_blank"> 关于我们</a></li>
+				</ul>
+			</section>
+			<section class="footer-info-item">
+				<h3>关注我们</h3>
+				<div class="footer-qrcode"><img src="http://static.ffdujia.com/qrcode.jpg" /></div>
+			</section>
+		</div>
+	</footer>
+	<style>
+		.error-load-img {
+			background: url('http://static.ffdujia.com/error-load-img.jpg') center center no-repeat;
+		}
+	</style>
+</body>
+</html>
+<!--Array
+(
+	[time] => 0.013066
+	[queries] => 3
+	[memory] => 1.21
+)
+-->
