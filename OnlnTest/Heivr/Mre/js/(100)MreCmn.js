@@ -21,7 +21,7 @@
 			cInit: function () {
 				var l_This = this;
 				l_This.e_Menu = nWse.stDomUtil.cQryOne(".cnApp_Menu");
-				if (! l_This.e_Menu) // PC版，立即返回
+				if (!l_This.e_Menu) // PC版，立即返回
 				{ return this; }
 
 				l_This.e_MenuHgt = 0;
@@ -100,13 +100,11 @@
 
 				// 来一个动画效果
 				l_This.e_Menu.style.display = "block";	// 先设置
-				if (l_This.e_MenuHgt < l_This.e_Menu.offsetHeight)
-				{ 
+				if (l_This.e_MenuHgt < l_This.e_Menu.offsetHeight) {
 					l_This.e_MenuHgt = l_This.e_Menu.offsetHeight;	// 后读取（只有当显示出来后，几何数据才是正确的）
 				}
-				
-				if (l_This.e_Menu.offsetHeight == l_This.e_MenuHgt)
-				{
+
+				if (l_This.e_Menu.offsetHeight == l_This.e_MenuHgt) {
 					nWse.stCssUtil.cSetDimHgt(l_This.e_Menu, 0);
 				}
 
@@ -333,23 +331,43 @@
 		};
 
 		// 更多分类
-		(function ()
-		{
+		(function () {
 			var l_Dom = document.getElementById("k_MoreClassify");
-			if (! l_Dom)
+			if (!l_Dom)
 			{ return; }
 
 			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "click",
-				function ()
-				{
+				function () {
 					l_Dom.parentNode.removeChild(l_Dom);	// 删除这个节点
 					var l_All = nWse.stDomUtil.cGetElmtsByCssc("cnApp_DsplNone");
 					nWse.stAryUtil.cFor(l_All,
-						function (a_Ary, a_Idx, a_Elmt)
-						{
+						function (a_Ary, a_Idx, a_Elmt) {
 							nWse.stCssUtil.cRmvCssc(a_Elmt, "cnApp_DsplNone");
 						});
 				});
+		})();
+
+		// 交换按钮
+		(function () {
+			$(".cnApp_Btn.cnApp_SwapBtn").click(function () {
+
+				var l_Swap1 = $(".cnApp_Swap1").get(0);
+				var l_Swap2 = $(".cnApp_Swap2").get(0);
+				if ((! l_Swap1) || (! l_Swap2))
+				{ return; }
+
+				var l_Idx1 = l_Swap1.selectedIndex;
+				var l_Idx2 = l_Swap2.selectedIndex;
+
+				// 不能选中占位项
+				var l_Opt1 = l_Swap1.options[l_Idx1];
+				var l_Opt2 = l_Swap2.options[l_Idx2];
+				if ($(l_Opt1).hasClass("cnApp_VoidOptn") || $(l_Opt2).hasClass("cnApp_VoidOptn"))
+				{ return; }
+
+				l_Swap1.options[l_Idx2].selected = true;
+				l_Swap2.options[l_Idx1].selected = true;
+			});
 		})();
 
 

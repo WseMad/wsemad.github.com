@@ -6,16 +6,20 @@
 
 /******************************************* 分分商城 *******************************************/
 
+.cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld.cnApp_ProductName {
+	width: 10em;
+}
+
 .cnApp_Sect {
 	margin-bottom: 20px;
 }
 
-.cnApp_Sect > .cnApp_Cptn {
-	margin-bottom: 10px;
-	padding-left: 10px;
-	font-size: 20px;
-	font-weight: bold;
-}
+	.cnApp_Sect > .cnApp_Cptn {
+		margin-bottom: 10px;
+		padding-left: 10px;
+		font-size: 20px;
+		font-weight: bold;
+	}
 
 .cnApp_ItemList li {
 	margin-bottom: 10px;
@@ -59,14 +63,8 @@
 /* 车票查询表单 */
 
 .cnApp_TicketRsrv .cnApp_LabelDiv {
-	padding-top: 10px;
-	background-color: rgb(243, 243, 243);
+	background-color: rgb(247, 249, 252);
 }
-
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_LabelDiv img {
-		position: relative;
-		left: -6px;
-	}
 
 .cnApp_SrchForm .cnApp_SwapBtn {
 	width: 4em;
@@ -83,52 +81,131 @@
 }
 
 .cnApp_TicketRsrv .cnApp_SbmtBtnDiv {
+	background-color: rgb(247, 249, 252);
 }
 
-.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SbmtBtnDiv
-{
-	width: 10em;
+.cnApp_PC .cnApp_Boa {
 }
 
-.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_Col {
-	width: 380px;
-	float: left;
+	.cnApp_PC .cnApp_Boa > .cnApp_Col {
+		width: 50%;
+	}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_Label {
+	width: 192px;
+	padding: 5px 10px;
+	border-radius: 0px 5px 5px 0px;
 }
 
-.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_Fld {
-	width: 16em;
-	/*margin-bottom: 0px;*/
+.cnApp_PC .cnApp_TicketRsrv form {
+	color: black;
+	padding: 10px 5px;
+	text-align: right;
+	background-color: rgb(247, 249, 252);
 }
 
-.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn {
+.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld {
+}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld .cnApp_Lab {
+		width: 30%;
+		float: left;
+		font-size: 14px;
+		position: relative;
+		top: 2px;
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld .cnApp_Ipt {
+		float: left;
+		border: 1px solid rgb(200, 200, 200);
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld.cnApp_City .cnApp_Ipt {
+		width: 50%;
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld.cnApp_DateTime .cnApp_Ipt {
+		width: 70%;
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld .cnApp_Ipt input,
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld .cnApp_Ipt select {
+		width: 100%;
+	}
+
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_Fld.cnApp_Mgn {
+		margin-bottom: 20px;
+	}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SwapBtn {
 	position: relative;
-	left: 16em;
-	/*margin-bottom: 0px;*/
+	left: 158px;
+	width: 2em;
+	text-align: center;
 }
 
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtTpBdr,
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtBmBdr {
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SwapBtn .cnApp_RtTpBdr,
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SwapBtn .cnApp_RtBmBdr {
 		position: absolute;
-		width: 30px;
-		height: 30px;
+		width: 10px;
+		height: 10px;
 		left: 0px;
 		border-right: 1px dashed rgb(64, 64, 64);
 	}
 
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtTpBdr {
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SwapBtn .cnApp_RtTpBdr {
 		border-top: 1px dashed rgb(64, 64, 64);
-		top: -30px;
+		top: -10px;
 	}
 
-	.cnApp_PC .cnApp_TicketRsrv .cnApp_SrchForm .cnApp_SwapBtn .cnApp_RtBmBdr {
+	.cnApp_PC .cnApp_TicketRsrv .cnApp_SwapBtn .cnApp_RtBmBdr {
 		border-bottom: 1px dashed rgb(64, 64, 64);
-		top: 30px;
+		top: 25px;
 	}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_SbmtBtnDiv {
+	display: inline-block;
+	width: 3em;
+	margin-top: 5px;
+	padding-top: 5px;
+}
+
+.cnApp_PC .cnWse_CarForm .cnApp_Col.cnApp_0 {
+	width: 38%;
+}
+
+.cnApp_PC .cnWse_CarForm .cnApp_Col.cnApp_1 {
+	width: 62%;
+}
+
+.cnApp_PC .cnWse_CarForm .cnApp_Col.cnApp_0 .cnApp_Lab {
+	width: 40%;
+}
+
+.cnApp_PC .cnWse_CarForm .cnApp_Col.cnApp_0 .cnApp_Ipt {
+	width: 60%;
+}
+
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_LabelDiv
+{
+	margin-bottom: 10px;
+}
+
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Label
+{
+	width: 50%;
+	padding: 5px;
+}
+
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Mgn
+{
+	margin-bottom: 10px;
+}
 
 /******************************************* 详情 *******************************************/
 
 .cnApp_Heading, .cnApp_Sect {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	/*padding: 10px 10px 0px 10px;*/
 }
 

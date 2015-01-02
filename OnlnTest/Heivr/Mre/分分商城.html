@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="./js/(0)Seed.js"></script>
 	<script type="text/javascript" src="./js/(10)WSE_nWse.js"></script>
 	<script type="text/javascript" src="./js/(100)MreCmn.js"></script>
-	<script type="text/javascript" src="./js/分分商城.js"></script>
 
 </head>
 <body>
@@ -87,7 +86,7 @@
 
 		<div class="cnApp_MainBody">
 
-			<form class="cnApp_SrchForm cnApp_Sect">
+			<form class="cnApp_SrchForm cnApp_Sect cnWse_ClearFix">
 				<div class="cnApp_Fld cnWse_ClearFix">
 					<!--<div class="cnApp_Lab"><label for="k_SlcCity">选择城市</label></div>-->
 					<div class="cnApp_Ipt">
@@ -100,40 +99,36 @@
 					</div>
 				</div>
 
-				<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
-
-				<div class="cnApp_Fld cnWse_ClearFix">
-					<!--<div class="cnApp_Lab"><label for="k_ProductName">产品名称</label></div>-->
+				<div class="cnApp_Fld cnApp_HotelName cnWse_ClearFix">
+					<!--<div class="cnApp_Lab"><label for="k_HotelName">酒店名称</label></div>-->
 					<div class="cnApp_Ipt">
-						<input id="k_ProductName" type="text" placeholder="产品名称" />
+						<input id="k_HotelName" type="text" placeholder="酒店名称" />
 					</div>
 				</div>
 
-				<span class="cnApp_RtArw cnApp_PCOnly">＞</span>
-
 				<div class="cnApp_Fld cnWse_ClearFix">
-					<div class="cnApp_Lab"><!--<label for="k_ConsumeTime">消费时间</label>--></div>
+					<!--<div class="cnApp_Lab"><label for="k_CheckInTime">入住时间</label></div>-->
 					<div class="cnApp_Ipt">
-						<select id="k_ConsumeTime" name="select_city">
-							<option class="cnApp_VoidOptn">消费时间</option>
-							<option>白天</option>
-							<option>晚上</option>
-						</select>
+						入住时间&nbsp;<input id="k_CheckInTime" type="datetime-local" class="cnApp_DateTime" title="入住时间" />
 					</div>
 				</div>
 
-				<!--<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
-					<button type="submit"><span class="cnApp_Text">搜索</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
-				</div>-->
+				<div class="cnApp_Fld cnWse_ClearFix">
+					<!--<div class="cnApp_Lab"><label for="k_CheckOutTime">离店时间</label></div>-->
+					<div class="cnApp_Ipt">
+						离店时间&nbsp;<input id="k_CheckOutTime" type="datetime-local" class="cnApp_DateTime" title="离店时间" />
+					</div>
+				</div>
+
 				<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
-					<button type="submit"><span class="cnApp_Text cnApp_MblOnly">搜索</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+					<button type="submit"><span class="cnApp_Text cnApp_MblOnly">搜&nbsp;索</span><i class="cnApp_Icon cnApp_0"></i></button>
 				</div>
 
-				<div class="cnApp_ShtCutSrch">
+				<div class="cnApp_ShtCutSrch cnApp_SlideSlot">
 					<div class="cnApp_Row cnWse_ClearFix">
-						<div class="cnApp_Cptn">分类：</div>
+						<div class="cnApp_Cptn cnApp_TextAln_Cen">分类：</div>
 						<div class="cnApp_Ctnt">
-							<a href="#" class="cnApp_Item">酒店</a><a href="#" class="cnApp_Item">票务</a><a href="#" class="cnApp_Item">租车</a><a href="#" class="cnApp_Item">游轮</a><a href="#" class="cnApp_Item">其他</a>
+							<a href="#" class="cnApp_Item">酒店</a><a href="#" class="cnApp_Item">票务</a><a href="#" class="cnApp_Item">租车</a><a href="#" class="cnApp_Item">包价度假产品</a><a href="#" class="cnApp_Item">游轮度假</a>
 						</div>
 					</div>
 
@@ -154,7 +149,8 @@
 					<div class="cnApp_Row cnWse_ClearFix">
 						<div class="cnApp_Cptn">价格：</div>
 						<div class="cnApp_Ctnt">
-							<a href="#" class="cnApp_Item">200以下</a><a href="#" class="cnApp_Item">200-300</a><a href="#" class="cnApp_Item">301-400</a><a href="#" class="cnApp_Item">500以上</a>
+							<a href="#" class="cnApp_Item">200以下</a><a href="#" class="cnApp_Item">201-300</a><a href="#" class="cnApp_Item">301-400</a><a href="#" class="cnApp_Item">401-500</a><a href="#" class="cnApp_Item">500以上</a>
+							<br /><span class="cnApp_Text">自定义：</span><input type="text" class="cnApp_RgeIpt" /> - <input type="text" class="cnApp_RgeIpt" />
 						</div>
 					</div>
 
@@ -193,75 +189,65 @@
 
 			<div class="cnApp_Sect cnApp_TicketRsrv">
 				<h3 class="cnApp_Cptn">票务预订</h3>
-				<div class="cnApp_LabelDiv"><img src="images/分分商城/SC_icon02.png" /></div>
-				<form class="cnApp_SrchForm">
-					<div class="cnApp_Boa cnWse_ClearFix">
-						<div class="cnApp_Col">
-							<div class="cnApp_Fld cnWse_ClearFix">
-								<!--<div class="cnApp_Lab"><label for="k_StartOffCity">出发城市</label></div>-->
-								<div class="cnApp_Ipt">
-									<select id="k_StartOffCity" name="startoff_city" class="cnApp_Swap1">
-										<option class="cnApp_VoidOptn">出发城市</option>
-										<option>北京</option>
-										<option>上海</option>
-										<option>广州</option>
-									</select>
-								</div>
-							</div>
 
-							<div class="cnApp_Btn cnApp_SwapBtn">
-								<div class="cnApp_RtTpBdr"></div>
-								交换
-								<div class="cnApp_RtBmBdr"></div>
-							</div>
-
-							<div class="cnApp_Fld cnWse_ClearFix">
-								<!--<div class="cnApp_Lab"><label for="k_ArriveCity">到达城市</label></div>-->
-								<div class="cnApp_Ipt">
-									<select id="k_ArriveCity" name="arrive_city" class="cnApp_Swap2">
-										<option class="cnApp_VoidOptn">到达城市</option>
-										<option>北京</option>
-										<option>上海</option>
-										<option>广州</option>
-									</select>
-								</div>
-							</div>
+				<!--<div class="cnApp_LabelDiv"><img src="images/分分商城/SC_icon02.png" /></div>-->
+				<div class="cnApp_LabelDiv">
+					<div class="cnApp_Label cnApp_WhiteText cnApp_MainBkgdGrad">
+						<span>机票</span><span class="cnApp_FloatToRt">＞</span>
+						<div class="cnApp_Icon cnApp_5"></div>
+					</div>
+				</div>
+				<form class="cnApp_SrchForm cnApp_Mgn">
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<div class="cnApp_Ipt">
+							<select id="k_StartOffPlace" name="get_char_place" class="cnApp_Swap1">
+								<option class="cnApp_VoidOptn">出发城市</option>
+								<option>北京</option>
+								<option>上海</option>
+								<option>广州</option>
+							</select>
 						</div>
-						<div class="cnApp_Col">
-							<div class="cnApp_Fld cnWse_ClearFix">
-								<!--<div class="cnApp_Lab"><label for="k_StartOffDate">出发日期</label></div>-->
-								<div class="cnApp_Ipt">
-									<select id="k_StartOffDate" name="startoff_city">
-										<option class="cnApp_VoidOptn">出发日期</option>
-										<option>日期1</option>
-										<option>日期2</option>
-										<option>日期3</option>
-									</select>
-								</div>
-							</div>
+					</div>
 
-							<div class=" cnApp_SwapBtn cnApp_PCOnly cnApp_Hide">交换</div>
+					<div class="cnApp_Btn cnApp_SwapBtn cnApp_WhiteText cnApp_MainBkgdGrad cnApp_TextAln_Cen">
+						交换
+					</div>
 
-							<div class="cnApp_Fld cnWse_ClearFix">
-								<!--<div class="cnApp_Lab"><label for="k_ArriveDate">到达日期</label></div>-->
-								<div class="cnApp_Ipt">
-									<select id="k_ArriveDate" name="arrive_city">
-										<option class="cnApp_VoidOptn">到达日期</option>
-										<option>日期1</option>
-										<option>日期2</option>
-										<option>日期3</option>
-									</select>
-								</div>
-							</div>
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<div class="cnApp_Ipt">
+							<select id="k_ArrivePlace" name="get_char_place" class="cnApp_Swap2">
+								<option class="cnApp_VoidOptn">到达城市</option>
+								<option>北京</option>
+								<option>上海</option>
+								<option>广州</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<div class="cnApp_Ipt">
+							出发日期&nbsp;<input id="k_StartOffDate" type="datetime-local" class="cnApp_DateTime" />
+						</div>
+					</div>
+
+					<div class="cnApp_Fld cnWse_ClearFix">
+						<div class="cnApp_Ipt">
+							到达日期&nbsp;<input id="k_ArriveDate" type="datetime-local" class="cnApp_DateTime" />
 						</div>
 					</div>
 
 					<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
-						<button type="submit"><span class="cnApp_Text">查询</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+						<button type="submit"><span class="cnApp_Text cnApp_MblOnly">查&nbsp;询</span><i class="cnApp_Icon cnApp_0"></i></button>
 					</div>
 				</form>
 
-				<div class="cnApp_LabelDiv"><img src="images/分分商城/SC_icon03.png" /></div>
+				<!--<div class="cnApp_LabelDiv"><img src="images/分分商城/SC_icon03.png" /></div>-->
+				<div class="cnApp_LabelDiv">
+					<div class="cnApp_Label cnApp_WhiteText cnApp_MainBkgdGrad">
+						<span>用车</span><span class="cnApp_FloatToRt">＞</span>
+						<div class="cnApp_Icon cnApp_5"></div>
+					</div>
+				</div>
 				<form class="cnApp_SrchForm">
 					<div class="cnApp_Fld cnWse_ClearFix">
 						<!--<div class="cnApp_Lab"><label for="k_GetCarPlace">取车地点</label></div>-->
@@ -276,31 +262,19 @@
 					</div>
 
 					<div class="cnApp_Fld cnWse_ClearFix">
-						<!--<div class="cnApp_Lab"><label for="k_GetCarTime">取车时间</label></div>-->
 						<div class="cnApp_Ipt">
-							<select id="k_GetCarTime" name="get_car_time">
-								<option class="cnApp_VoidOptn">取车时间</option>
-								<option>日期1</option>
-								<option>日期2</option>
-								<option>日期3</option>
-							</select>
+							取车时间&nbsp;<input id="k_GetCarDate" type="datetime-local" class="cnApp_DateTime" />
 						</div>
 					</div>
 
 					<div class="cnApp_Fld cnWse_ClearFix">
-						<!--<div class="cnApp_Lab"><label for="k_RtnCarTime">还车时间</label></div>-->
 						<div class="cnApp_Ipt">
-							<select id="k_RtnCarTime" name="return_car_time">
-								<option value="" style="display: none">还车时间</option>
-								<option>日期1</option>
-								<option>日期2</option>
-								<option>日期3</option>
-							</select>
+							还车时间&nbsp;<input id="k_RtnCarDate" type="datetime-local" class="cnApp_DateTime" />
 						</div>
 					</div>
 
 					<div class="cnApp_SbmtBtnDiv cnApp_MainBkgdGrad cnApp_TextAln_Cen">
-						<button type="submit"><span class="cnApp_Text">查询</span><img src="images/SC_icon01.png" class="cnApp_Icon" /></button>
+						<button type="submit"><span class="cnApp_Text cnApp_MblOnly">查&nbsp;询</span><i class="cnApp_Icon cnApp_0"></i></button>
 					</div>
 				</form>
 			</div>
@@ -377,14 +351,6 @@
 				</ul>
 			</div>
 		</div> <!--MainBody-->
-
-		<!--SideBar-->
-		<div class="cnApp_SideBar cnApp_PCOnly">
-			<div class="products-slide">
-				<p>你做的<pre>&lt;div class="products-slide"&gt;</pre>部分</p>
-				<p>我这里的宽度是400px(左外距20，其余380)，左边是800px，合计1200px</p>
-			</div>
-		</div>
 	</div> <!-- cnApp_Env -->
 
 </body>

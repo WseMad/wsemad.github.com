@@ -27,11 +27,6 @@
 	font-size: 14px;
 }
 
-.cnApp_Mbl .cnApp_SrchForm
-{
-	padding: 0px 5px;
-}
-
 .cnApp_PC .cnApp_TabsDiv .cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
 	width: 8em;
 	padding: 5px;
@@ -86,24 +81,7 @@
 }
 
 .cnApp_PC .cnApp_SrchForm.cnApp_Sect .cnApp_Fld.cnApp_HotelName {
-	width: 8em;
-}
-
-.cnApp_SrchForm input.cnApp_RgeIpt
-{
-	width: 4em;
-	border: 1px solid rgb(200, 200, 200);
-	padding: 0px 4px;
-}
-
-.cnApp_Mbl .cnApp_Fld .cnApp_Ipt .cnApp_DateTime
-{
-	width: 70%;
-}
-
-.cnApp_Mbl .cnApp_SbmtBtnDiv .cnApp_Icon
-{
-	margin-left: 0.5em;
+	width: 10em;
 }
 
 
