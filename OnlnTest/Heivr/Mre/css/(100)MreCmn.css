@@ -28,8 +28,8 @@
 	padding: 0px;
 	font: inherit;
 	font-size: 100%;
-	vertical-align: baseline;
-	color: inherit;
+	/*vertical-align: baseline;*/
+	/*color: inherit;*/
 	outline: none;
 }
 
@@ -485,7 +485,6 @@
 }
 
 	.cnApp_tTabs > .cnApp_CptnGrp {
-		
 	}
 
 		.cnApp_tTabs > .cnApp_CptnGrp > .cnApp_Cptn {
@@ -656,32 +655,32 @@
 .cnApp_TableDiv {
 }
 
-table {
+.cnApp_Env table {
 	width: 100%;
 	font-size: 1em;
 }
 
-	table tr.cnApp_TableRowEnd {
+	.cnApp_Env table tr.cnApp_TableRowEnd {
 		margin-bottom: 5px;
 		padding-bottom: 5px;
 		border-bottom: 1px solid rgb(200, 200, 200);
 	}
 
-	table th, table td {
+	.cnApp_Env table th, .cnApp_Env table td {
 		padding: 5px 10px;
 		text-align: left;
 		vertical-align: middle;
 	}
 
-	table th {
+	.cnApp_Env table th {
 		color: white;
 	}
 
-	table td {
+	.cnApp_Env table td {
 		color: black;
 	}
 
-		table td .cnApp_Btn {
+		.cnApp_Env table td .cnApp_Btn {
 			display: inline-block;
 			color: white;
 			padding: 5px;
@@ -702,6 +701,12 @@ a.cnApp_NoUdrLine {
 
 .cnApp_RelPos {
 	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
+.cnApp_FxdPos {
+	position: fixed;
 	left: 0px;
 	top: 0px;
 }

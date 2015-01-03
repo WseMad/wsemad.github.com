@@ -186,23 +186,26 @@
 	width: 60%;
 }
 
-.cnApp_Mbl .cnApp_TicketRsrv .cnApp_LabelDiv
-{
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_LabelDiv {
 	margin-bottom: 10px;
 }
 
-.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Label
-{
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Label {
 	width: 50%;
 	padding: 5px;
 }
 
-.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Mgn
-{
+.cnApp_Mbl .cnApp_TicketRsrv .cnApp_Mgn {
 	margin-bottom: 10px;
 }
 
 /******************************************* 详情 *******************************************/
+
+.cnApp_Heading .cnApp_Cptn .cnApp_Icon
+{
+	margin-left: 5px;
+	vertical-align: middle;
+}
 
 .cnApp_Heading, .cnApp_Sect {
 	margin-bottom: 10px;
@@ -256,12 +259,16 @@
 }
 
 
+.cnApp_Sect.cnApp_FloatingSect
+{
+	/*margin-top: 34px;*/	/*硬编码？*/
+}
+
 .cnApp_Sect > .cnApp_TabCptn {
 }
 
-.cnApp_Sect .cnApp_TabLink {
+.cnApp_FloatingTabsDiv .cnApp_TabLink {
 	display: inline-block;
-	width: 25%;
 	padding: 4px;
 	border-right: 1px solid white;
 	border-radius: 5px 5px 0px 0px;
@@ -272,18 +279,47 @@
 	color: white;
 }
 
-.cnApp_PC .cnApp_Sect .cnApp_TabLink {
-	width: auto;
-	font-size: 16px;
-	padding: 5px 10px;
+.cnApp_Sect .cnApp_FloatingTabsDiv
+{
+	visibility: hidden;
 }
 
-.cnApp_Sect .cnApp_TabLink:last-of-type {
+.cnApp_FloatingTabsDiv .cnApp_TabLink {
+	width: auto;
+	font-size: 16px;
+	padding: 5px 5px;
+}
+
+.cnApp_FloatingTabsDiv .cnApp_TabLink:last-of-type {
 	border-right: none;
 }
 
-.cnApp_Sect .cnApp_TabLink.cnApp_Crnt {
+.cnApp_FloatingTabsDiv .cnApp_TabLink.cnApp_Crnt {
+	background-color: rgb(255, 127, 0);
+	background-image: none;
 }
+
+#k_UserReview
+{
+	padding-top: 0px;
+}
+
+#k_UserReview .cnApp_Col.cnApp_0 {
+	width: 30%;
+	padding-right: 20px;
+}
+
+#k_UserReview .cnApp_Col.cnApp_1 {
+	width: 70%;
+}
+
+	#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnRt {
+		margin-right: 1em;
+	}
+
+	#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnLt {
+		margin-left: 3em;
+	}
 
 #k_UserReview > .cnApp_TabCptn {
 	margin-bottom: 10px;
@@ -308,9 +344,13 @@
 	margin: 0px 8px 0px 0px;
 }
 
-	#k_UserReview .cnApp_Point:last-of-type {
-		margin: 0px;
-	}
+.cnApp_PC #k_UserReview .cnApp_Point {
+	margin-right: 1em;
+}
+
+#k_UserReview .cnApp_Point:last-of-type {
+	margin: 0px;
+}
 
 #k_UserReview .cnApp_List {
 	clear: both;
@@ -338,9 +378,14 @@
 	color: rgb(128, 128, 128);
 }
 
-	#k_UserReview .cnApp_Detail .cnApp_Text {
-		display: inline-block;
-		margin: 0px 1em 0px 0px;
-	}
+.cnApp_PC #k_UserReview .cnApp_Desc {
+	color: black;
+}
+
+
+#k_UserReview .cnApp_Detail .cnApp_Text {
+	display: inline-block;
+	margin: 0px 1em 0px 0px;
+}
 
 /*********************************************************************** Over ***********************************************************************/

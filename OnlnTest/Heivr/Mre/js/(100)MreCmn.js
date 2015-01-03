@@ -353,7 +353,7 @@
 
 				var l_Swap1 = $(".cnApp_Swap1").get(0);
 				var l_Swap2 = $(".cnApp_Swap2").get(0);
-				if ((! l_Swap1) || (! l_Swap2))
+				if ((!l_Swap1) || (!l_Swap2))
 				{ return; }
 
 				var l_Idx1 = l_Swap1.selectedIndex;
@@ -368,6 +368,83 @@
 				l_Swap1.options[l_Idx2].selected = true;
 				l_Swap2.options[l_Idx1].selected = true;
 			});
+		})();
+
+		// 浮动标签栏
+		(function () {
+			var l_FloatingTabs = document.getElementById("k_FloatingTabs");
+			if (!l_FloatingTabs)
+			{ return; }
+
+			var s_CrntIdx = 0; // 当前索引
+
+			function fRglt() {
+				// 取得当前滚动位置
+				var l_Body = document.getElementsByTagName("body")[0];
+				var l_ST = l_Body.scrollTop;	// IE8可能没有window.scrollY
+				var l_VwptHgt = nWse.stDomUtil.cGetVwptHgt();
+				var l_PageY = l_ST;
+				var l_WhichY = l_PageY + (l_VwptHgt * 0.5);
+				//	l_PageY = l_WhichY;
+
+				// 取得各个cnApp_Sect的包围盒，并判断当前滚动到哪
+				var l_Sects = nWse.stDomUtil.cGetElmtsByCssc("cnApp_Sect");
+				var l_Bboxs = new Array(l_Sects.length);
+				var l_Links = nWse.stDomUtil.cQryAll(".cnApp_TabLink", l_FloatingTabs);
+
+				function fCalcPageY(a_CbrY) {
+					return a_CbrY - (0) + l_ST;	//cnApp_FloatingTabsDiv
+				}
+
+				nWse.stAryUtil.cFor(l_Sects,
+					function (a_Sects, a_Idx, a_Sect) {
+						l_Bboxs[a_Idx] = a_Sect.getBoundingClientRect();
+
+						// 更改样式类
+						if ((fCalcPageY(l_Bboxs[a_Idx].top) <= l_WhichY) &&
+							(l_WhichY < fCalcPageY(l_Bboxs[a_Idx].bottom))) {
+							s_CrntIdx = a_Idx;
+						}
+					});
+
+				if (l_WhichY < fCalcPageY(l_Bboxs[0].top))
+				{ s_CrntIdx = 0; }
+				else
+					if (l_WhichY > fCalcPageY(l_Bboxs[l_Bboxs.length - 1].top))
+					{ s_CrntIdx = l_Bboxs.length - 1; }
+
+				if (s_CrntIdx >= 0) {
+					nWse.stAryUtil.cFor(l_Links,
+						function (a_Links, a_Idx, a_Link) {
+							if (a_Idx == s_CrntIdx) {
+								nWse.stCssUtil.cAddCssc(a_Link, "cnApp_Crnt");
+							}
+							else {
+								nWse.stCssUtil.cRmvCssc(a_Link, "cnApp_Crnt");
+							}
+						});
+				}
+
+				// 设置位置
+				if (l_Bboxs[s_CrntIdx].top < 0) //cnApp_FloatingTabsDiv
+				{
+					l_PageY = l_ST;
+				}
+				else {
+					l_PageY = fCalcPageY(l_Bboxs[s_CrntIdx].top);
+				}
+
+				l_PageY = nWse.stNumUtil.cClmOnNum(l_PageY,
+						fCalcPageY(l_Bboxs[0].top),
+						fCalcPageY(l_Bboxs[l_Bboxs.length - 1].top));
+				nWse.stCssUtil.cSetPos(l_FloatingTabs, l_Bboxs[0].left, l_PageY - l_ST);
+				//	console.log(l_PageY + ", " + l_Bboxs[0].top + ", " + l_Bboxs[l_Bboxs.length-1].top);
+			}
+
+			// 一开始校准一次，此后每当滚动时校准
+			fRglt();
+			//	nWse.stDomUtil.cAddEvtHdlr_WndScrl(function () { fRglt(); }, 1 / 60);
+			nWse.stDomUtil.cAddEvtHdlr(window, "scroll", function () { fRglt(); });
 		})();
 
 
