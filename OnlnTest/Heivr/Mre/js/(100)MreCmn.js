@@ -172,6 +172,10 @@
 				{ throw new Error("tAcod：容器里没有CSS类“cnApp_Cptn”的元素！"); }
 
 				this.e_IdctArw = nWse.stDomUtil.cQryOne(".cnApp_IdctArw", this.e_Cptn);
+				if (this.e_IdctArw)
+				{
+					this.e_IdctArw.textContent = a_InitExpd ? "∨" : "＞";
+				}
 
 				var l_This = this;
 				$(l_This.e_Cptn).click(function () {
@@ -455,7 +459,7 @@
 		nApp.g_AcodAry = [];
 		nWse.stAryUtil.cFor(l_Acods,
 			function (a_Ary, a_Idx, a_Acod) {
-				nApp.g_AcodAry.push(new nApp.tAcod(l_Acods[a_Idx], false));
+				nApp.g_AcodAry.push(new nApp.tAcod(l_Acods[a_Idx], ("1" == l_Acods[a_Idx].getAttribute("data-nApp_InitExpd"))));
 			});
 
 		// 标签栏

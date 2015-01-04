@@ -34,7 +34,28 @@
 		background-color: rgb(243, 243, 243);
 	}
 
-	.cnApp_Boa .cnApp_SlideSlot {
+	.cnApp_Boa .cnApp_FigAry {
+		text-align: center;
+		padding: 0px 5px;
+	}
+
+	.cnApp_Boa .cnApp_FigAry figure {
+		display: inline-block;
+		width: 33%;
+		margin-bottom: 10px;
+	}
+
+	.cnApp_StarConsultant .cnApp_FigAry figure {
+		width: 50%;
+	}
+
+	.cnApp_Boa .cnApp_FigAry figure figcaption {
+		font-size: 12px;
+	}
+
+	.cnApp_TextBlkAry
+	{
+		margin-bottom: 10px;
 	}
 
 .cnApp_FigAry {
@@ -45,36 +66,11 @@
 
 .cnApp_Fig {
 	/*注意不要加外边距，为使js代码方便地计算总宽度*/
-	padding: 0px 0px 0px 50px;
+	padding: 0px 2px;
 	/*width: 80%;*/ /*设置初值，JS会以此为基础进行修改*/
 	height: auto; /*自动计算，受图像宽高比影响*/
 	float: left;
 }
-
-	.cnApp_Fig:last-of-type {
-		padding-right: 50px;
-	}
-
-.cnApp_HAD .cnApp_Fig img.cnApp_FigImg {
-	width: 150px;
-	height: 170px;
-}
-
-.cnApp_BnsVctn .cnApp_Fig img.cnApp_FigImg {
-	width: 87px;
-	height: 87px;
-}
-
-.cnApp_HSP .cnApp_Fig img.cnApp_FigImg {
-	width: 150px;
-	height: 170px;
-}
-
-.cnApp_StarConsultant .cnApp_Fig img.cnApp_FigImg {
-	width: 142px;
-	height: 128px;
-}
-
 
 .cnApp_AU .cnApp_FigAry {
 	text-align: center;
@@ -92,12 +88,6 @@
 	/*background-size: 15px 18px;*/
 }
 
-.cnApp_AU img.cnApp_FigImg {
-	width: 90px;
-	height: 38px;
-	margin: 0px;
-}
-
 .cnApp_AU .cnApp_tAcod > ul > li .cnApp_Cptn {
 	font-weight: bold;
 	font-size: 14px;
@@ -108,7 +98,7 @@
 }
 
 .cnApp_Fig img.cnApp_FigImg, .cnApp_Fig .cnAppFigImgDiv {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 	.cnApp_Fig .cnAppFigImgDiv > img.cnApp_FigImg {
@@ -129,7 +119,7 @@
 }
 
 .cnApp_Fig figcaption .cnApp_Points {
-	font-size: 14px;
+	font-size: inherit;
 	color: rgb(146, 146, 146);
 }
 
