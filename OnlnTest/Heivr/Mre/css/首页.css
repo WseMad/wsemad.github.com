@@ -7,7 +7,7 @@
 
 .cnApp_Boa {
 	margin-bottom: 5px;
-	background-color: rgb(243, 243, 243);
+	background-color: rgb(255, 255, 255);
 }
 
 	.cnApp_Boa > .cnApp_Cptn {
@@ -15,6 +15,11 @@
 		padding-bottom: 10px;
 		border-bottom: 1px solid rgb(201, 201, 201);
 		font-size: 1.2em;
+	}
+
+	.cnApp_AcodGrp
+	{
+		background-color: rgb(247, 249, 252);
 	}
 
 	.cnApp_Boa > .cnApp_SubCptn {
@@ -31,7 +36,7 @@
 	.cnApp_Boa .cnApp_SubCptn .cnApp_Text {
 		padding: 0px 5px;
 		font-size: 1em;
-		background-color: rgb(243, 243, 243);
+		background-color: rgb(255, 255, 255);
 	}
 
 	.cnApp_Boa .cnApp_FigAry {
@@ -43,6 +48,12 @@
 		display: inline-block;
 		width: 33%;
 		margin-bottom: 10px;
+	}
+
+	.cnApp_GuessYouLike, .cnApp_StarConsultant
+	{
+		padding-top: 5px;
+		background-color: rgb(247, 249, 252);
 	}
 
 	.cnApp_StarConsultant .cnApp_FigAry figure {
@@ -130,7 +141,7 @@
 
 .cnApp_GuessYouLike {
 	margin-bottom: 10px;
-	background-color: rgb(243, 243, 243);
+	background-color: rgb(247, 249, 252);
 }
 
 	.cnApp_GuessYouLike .cnAppFigImgDiv {
