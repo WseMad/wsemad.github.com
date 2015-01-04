@@ -736,7 +736,7 @@ a.cnApp_NoUdrLine {
 }
 
 .cnApp_Label {
-	position: relative;
+	position: absolute;
 	left: 0px;
 	top: 0px;
 }
@@ -748,6 +748,16 @@ a.cnApp_NoUdrLine {
 		width: 8px;
 		height: 6px;
 	}
+
+	.cnApp_Label.cnApp_Rt {
+		left: auto;
+		right: 0px;
+	}
+
+		.cnApp_Label.cnApp_Rt > .cnApp_Icon {
+			left: auto;
+			right: 0px;
+		}
 
 .cnApp_Sect {
 	clear: both;
@@ -808,6 +818,12 @@ ul.cnApp_AlternativeList {
 		text-align: left;
 	}
 
+.cnApp_LabelDiv {
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
 .cnApp_Mbl .cnApp_LabelDiv {
 	height: 30px;
 	text-align: left;
@@ -844,9 +860,14 @@ ul.cnApp_AlternativeList {
 }
 
 	.cnApp_Mbl .cnApp_LabelDiv .cnApp_Label {
-		width: 40%;
-		padding: 5px;
+		width: 50%;
+		padding: 5px 10px;
+		border-radius: 0px 5px 5px 0px;
 	}
+
+		.cnApp_Mbl .cnApp_LabelDiv .cnApp_Label.cnApp_Rt {
+			border-radius: 5px 0px 0px 5px;
+		}
 
 /*****************************  *****************************/
 

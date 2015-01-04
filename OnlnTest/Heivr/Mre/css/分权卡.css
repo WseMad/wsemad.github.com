@@ -21,7 +21,7 @@ ul.cnApp_AlternativeList {
 	}
 
 li.cnApp_Details {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	background-color: rgb(243, 243, 243);
 }
 
@@ -36,7 +36,7 @@ li.cnApp_Details {
 	}
 
 	li.cnApp_Details .cnApp_Ctnt {
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		line-height: 1.2;
 		font-size: 1em;
 		font-weight: normal;
@@ -73,6 +73,8 @@ li.cnApp_Details .cnApp_Ctnt {
 }
 
 	.cnApp_HotRcmdDiv .cnApp_LabelDiv {
+		left: auto;
+		right: -8px;
 	}
 
 		.cnApp_HotRcmdDiv .cnApp_LabelDiv > img {
@@ -84,7 +86,7 @@ ul.cnApp_AlternativeList.cnApp_RcmdList {
 }
 
 .cnApp_Rcmd {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 	.cnApp_Rcmd > img {
@@ -100,7 +102,7 @@ ul.cnApp_AlternativeList.cnApp_RcmdList {
 
 .cnApp_Sect {
 	background-color: rgb(243, 243, 243);
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	padding: 10px;
 }
 
@@ -178,7 +180,7 @@ ul.cnApp_AlternativeList.cnApp_RcmdList {
 }
 
 .cnApp_ImdtBuy li.cnApp_Product {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 	.cnApp_ImdtBuy li.cnApp_Product > .cnApp_Cptn {
