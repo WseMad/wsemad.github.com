@@ -821,6 +821,7 @@ ul.cnApp_AlternativeList {
 .cnApp_LabelDiv {
 	position: relative;
 	left: 0px;
+	right: 0px;	/*占据屏幕全宽*/
 	top: 0px;
 }
 

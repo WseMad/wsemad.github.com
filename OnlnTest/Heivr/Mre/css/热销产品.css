@@ -16,7 +16,7 @@ ul.cnApp_AlternativeList {
 		left: 0px;
 		top: 0px;
 
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		background-color: rgb(243, 243, 243);
 	}
 
@@ -31,7 +31,7 @@ li.cnApp_Product .cnApp_Cptn {
 }
 
 li.cnApp_Product .cnApp_Ctnt {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	line-height: 1.2;
 	font-size: 1em;
 	font-weight: normal;
@@ -39,6 +39,11 @@ li.cnApp_Product .cnApp_Ctnt {
 
 li.cnApp_Product .cnApp_ProductSumr {
 	padding: 10px;
+}
+
+li.cnApp_Product a
+{
+	text-decoration: none;
 }
 
 li.cnApp_Product .cnApp_Cptn,
