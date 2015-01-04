@@ -68,6 +68,10 @@
 		bottom: 10px;
 	}
 
+	.cnApp_Sect > .cnApp_Ctnt > .cnApp_List > li .cnApp_AbsPos_RtBm a {
+		color: inherit;
+	}
+
 	.cnApp_PC .cnApp_Sect.cnApp_NewExpe > .cnApp_Ctnt > .cnApp_List > li .cnApp_Fig
 	{
 		display: inline-block;

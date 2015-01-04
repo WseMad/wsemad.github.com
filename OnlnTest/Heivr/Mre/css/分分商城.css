@@ -201,8 +201,7 @@
 
 /******************************************* 详情 *******************************************/
 
-.cnApp_Heading .cnApp_Cptn .cnApp_Icon
-{
+.cnApp_Heading .cnApp_Cptn .cnApp_Icon {
 	margin-left: 5px;
 	vertical-align: middle;
 }
@@ -217,24 +216,23 @@
 
 .cnApp_Heading .cnApp_Cptn {
 	margin: 10px 0px;
+	padding: 0px 5px;
 	font-size: 1.2em;
 	font-weight: bold;
 }
 
 .cnApp_Heading .cnApp_Ctnt {
 	margin-bottom: 10px;
+	padding: 0px 5px;
 }
 
-.cnApp_Heading .cnApp_PntsAndAdrs {
+.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Icon {
+	margin-right: 0.5em;
 }
 
-	.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Icon {
-		margin-right: 0.5em;
-	}
-
-	.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Ctnt {
-		vertical-align: super;
-	}
+.cnApp_Heading .cnApp_PntsAndAdrs .cnApp_Ctnt {
+	vertical-align: super;
+}
 
 .cnApp_PC .cnApp_Heading .cnApp_Ctnt.cnApp_Adrs {
 	float: left;
@@ -242,7 +240,9 @@
 
 .cnApp_PC .cnApp_Heading .cnApp_PntsAndAdrs {
 	width: 300px;
-	float: right;
+	position: absolute;
+	right: 0px;
+	top: -12px;
 }
 
 .cnApp_PC .cnApp_Heading .cnApp_TextBlk .cnApp_Ctnt {
@@ -259,9 +259,12 @@
 }
 
 
-.cnApp_Sect.cnApp_FloatingSect
-{
-	/*margin-top: 34px;*/	/*硬编码？*/
+.cnApp_Map {
+	margin-top: 10px;
+}
+
+.cnApp_Sect.cnApp_FloatingSect {
+	/*margin-top: 34px;*/ /*硬编码？*/
 }
 
 .cnApp_Sect > .cnApp_TabCptn {
@@ -279,8 +282,7 @@
 	color: white;
 }
 
-.cnApp_Sect .cnApp_FloatingTabsDiv
-{
+.cnApp_Sect .cnApp_FloatingTabsDiv {
 	visibility: hidden;
 }
 
@@ -290,59 +292,58 @@
 	padding: 5px 5px;
 }
 
-.cnApp_FloatingTabsDiv .cnApp_TabLink:last-of-type {
-	border-right: none;
-}
+	.cnApp_FloatingTabsDiv .cnApp_TabLink:last-of-type {
+		border-right: none;
+	}
 
-.cnApp_FloatingTabsDiv .cnApp_TabLink.cnApp_Crnt {
-	background-color: rgb(255, 127, 0);
-	background-image: none;
-}
+	.cnApp_FloatingTabsDiv .cnApp_TabLink.cnApp_Crnt {
+		background-color: rgb(255, 127, 0);
+		background-image: none;
+	}
 
-#k_UserReview
-{
+#k_UserReview {
 	padding-top: 0px;
 }
 
-#k_UserReview .cnApp_Col.cnApp_0 {
-	width: 30%;
-	padding-right: 20px;
-}
-
-#k_UserReview .cnApp_Col.cnApp_1 {
-	width: 70%;
-}
-
-	#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnRt {
-		margin-right: 1em;
+	#k_UserReview .cnApp_Col.cnApp_0 {
+		width: 30%;
+		padding-right: 20px;
 	}
 
-	#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnLt {
-		margin-left: 3em;
+	#k_UserReview .cnApp_Col.cnApp_1 {
+		width: 70%;
 	}
 
-#k_UserReview > .cnApp_TabCptn {
-	margin-bottom: 10px;
-}
+		#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnRt {
+			margin-right: 1em;
+		}
 
-#k_UserReview > .cnApp_TabCtnt {
-	margin-bottom: 10px;
-	padding: 0px 10px;
-}
+		#k_UserReview .cnApp_Col.cnApp_1 .cnApp_MgnLt {
+			margin-left: 3em;
+		}
 
-#k_UserReview img.cnApp_FloatToLt {
-	margin: 0 1em 10px 0;
-}
+	#k_UserReview > .cnApp_TabCptn {
+		margin-bottom: 10px;
+	}
 
-#k_UserReview .cnApp_TabCtnt .cnApp_Para {
-	margin-bottom: 10px;
-}
+	#k_UserReview > .cnApp_TabCtnt {
+		margin-bottom: 10px;
+		padding: 0px 10px;
+	}
 
-#k_UserReview .cnApp_Point {
-	display: inline-block;
-	text-decoration: none;
-	margin: 0px 8px 0px 0px;
-}
+	#k_UserReview img.cnApp_FloatToLt {
+		margin: 0 1em 10px 0;
+	}
+
+	#k_UserReview .cnApp_TabCtnt .cnApp_Para {
+		margin-bottom: 10px;
+	}
+
+	#k_UserReview .cnApp_Point {
+		display: inline-block;
+		text-decoration: none;
+		margin: 0px 8px 0px 0px;
+	}
 
 .cnApp_PC #k_UserReview .cnApp_Point {
 	margin-right: 1em;
