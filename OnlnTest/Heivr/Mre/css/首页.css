@@ -80,10 +80,31 @@
 	text-align: center;
 }
 
+.cnApp_AU .cnApp_TextBlk {
+	display: inline-block;
+	width: 8em;
+	padding: 5px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+.cnApp_Icon.cnApp_11 {
+	/*background-size: 15px 18px;*/
+}
+
 .cnApp_AU img.cnApp_FigImg {
 	width: 90px;
 	height: 38px;
 	margin: 0px;
+}
+
+.cnApp_AU .cnApp_tAcod > ul > li .cnApp_Cptn {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.cnApp_AU .cnApp_tAcod > ul > li .cnApp_Ctnt {
+	font-size: 14px;
 }
 
 .cnApp_Fig img.cnApp_FigImg, .cnApp_Fig .cnAppFigImgDiv {
@@ -174,11 +195,6 @@
 	/*width: 80%;*/ /*一排要显示三个，令第三个稍微露出点*/
 }
 
-.cnApp_StarConsultant .cnApp_Icon {
-	width: 1em;
-	height: 1em;
-	margin: 0px 5px;
-}
 
 .cnApp_StarConsultant figcaption .cnApp_Text {
 	vertical-align: text-top;

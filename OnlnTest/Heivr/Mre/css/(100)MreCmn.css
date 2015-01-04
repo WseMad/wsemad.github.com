@@ -115,20 +115,20 @@
 
 	.cnApp_Icon.cnApp_11 {
 		background-position: -184px 0px;
-		width: 30px;
-		height: 36px;
+		width: 24px;
+		height: 30px;
 	}
 
 	.cnApp_Icon.cnApp_12 {
 		background-position: -215px 0px;
-		width: 40px;
-		height: 38px;
+		width: 32px;
+		height: 30px;
 	}
 
 	.cnApp_Icon.cnApp_13 {
 		background-position: -256px 0px;
-		width: 38px;
-		height: 36px;
+		width: 32px;
+		height: 30px;
 	}
 
 	.cnApp_Icon.cnApp_14 {
@@ -163,7 +163,7 @@
 
 	.cnApp_Icon.cnApp_19 {
 		background-position: -397px 0px;
-		width: 40px;
+		width: 30px;
 		height: 48px;
 	}
 
@@ -203,6 +203,15 @@
 	background-image: linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
 }
 
+.cnApp_HgltBkgdGrad {
+	background-color: rgb(255, 127, 0); /*若不支持渐变，使用这个*/
+	background-image: -webkit-linear-gradient(top, rgba(255, 153, 0,1) 0%, rgba(255, 127, 0,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255, 153, 0,1) 0%, rgba(255, 127, 0,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255, 153, 0,1) 0%, rgba(255, 127, 0,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255, 153, 0,1) 0%, rgba(255, 127, 0,1) 100%);
+	background-image: linear-gradient(top, rgba(255, 153, 0,1) 0%, rgba(255, 127, 0,1) 100%);
+}
+
 .cnApp_HgltBkgdClo {
 	background-image: none;
 	background-color: rgb(255, 127, 0);
@@ -234,6 +243,10 @@
 
 .cnApp_Boa > .cnApp_Col {
 	float: left;
+}
+
+.cnApp_DsplInlnBlk {
+	display: inline-block;
 }
 
 /***************************** 标签栏 *****************************/
@@ -824,6 +837,15 @@ ul.cnApp_AlternativeList {
 		-ms-transform-origin: right top;
 		-o-transform-origin: right top;
 		transform-origin: right top;
+	}
+
+.cnApp_Mbl .cnApp_LabelDiv {
+	margin-bottom: 10px;
+}
+
+	.cnApp_Mbl .cnApp_LabelDiv .cnApp_Label {
+		width: 50%;
+		padding: 5px;
 	}
 
 /*****************************  *****************************/
