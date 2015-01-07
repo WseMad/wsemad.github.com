@@ -179,8 +179,8 @@
 	}
 
 	.cnApp_Env.cnApp_PC {
-		width: 800px;
-		float: left;
+		/*width: 800px;
+		float: left;*/
 	}
 
 /***************************** OOCSS *****************************/
@@ -726,6 +726,24 @@ a.cnApp_NoUdrLine {
 .cnApp_FxdPos {
 	position: fixed;
 	left: 0px;
+	top: 0px;
+}
+
+.cnApp_AbsPos {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.cnApp_AbsPos_LtBm {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+
+.cnApp_AbsPos_RtTp {
+	position: absolute;
+	right: 0px;
 	top: 0px;
 }
 
