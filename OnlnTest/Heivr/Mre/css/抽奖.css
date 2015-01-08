@@ -310,7 +310,11 @@
 
 /* 头和环境 */
 
-.cnApp_Header {
+.cnApp_DrawHeader {
+	position: relative;
+	left: 0px;
+	top: 0px;
+
 	background-color: transparent;
 	background-image: url("../images/抽奖/BG.jpg");
 	background-repeat: no-repeat;
@@ -319,7 +323,7 @@
 	height: 635px;
 }
 
-	.cnApp_Header .cnApp_EarthDiv {
+	.cnApp_DrawHeader .cnApp_EarthDiv {
 		position: absolute;
 		left: 0px;
 		top: 50px;
@@ -329,7 +333,7 @@
 		z-index: 1;
 	}
 
-	.cnApp_Header .cnApp_CptnDiv {
+	.cnApp_DrawHeader .cnApp_CptnDiv {
 		position: absolute;
 		left: 0px;
 		top: 160px;
@@ -339,7 +343,7 @@
 		z-index: 2;
 	}
 
-	.cnApp_Header .cnApp_Join {
+	.cnApp_DrawHeader .cnApp_Join {
 		position: absolute;
 		left: 0px;
 		bottom: 0px;
@@ -349,7 +353,7 @@
 		font-weight: bold;
 	}
 
-	.cnApp_Header .cnApp_BtnDiv.cnApp_Draw {
+	.cnApp_DrawHeader .cnApp_BtnDiv.cnApp_Draw {
 		display: inline-block;
 		padding: 10px 80px;
 		border-radius: 5px;
@@ -359,14 +363,14 @@
 		cursor: pointer;
 	}
 
-	.cnApp_Header .cnApp_People {
+	.cnApp_DrawHeader .cnApp_People {
 		margin-top: 30px;
 		text-align: center;
 		font-size: 16px;
 		color: rgb(255, 203, 0);
 	}
 
-	.cnApp_Header .cnApp_Num {
+	.cnApp_DrawHeader .cnApp_Num {
 		background-color: rgb(255, 203, 0);
 		color: rgb(236, 48, 47);
 		padding: 0px 10px;
