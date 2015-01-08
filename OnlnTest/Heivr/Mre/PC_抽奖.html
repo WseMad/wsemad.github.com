@@ -274,7 +274,7 @@
 	<div class="cnApp_Header">
 		头
 	</div>
-	<div class="cnApp_Bkgd">
+	<div class="cnApp_RedBkgd">
 		<div class="app-wrapper w-960">
 			<div class="cnApp_Env cnApp_PC">
 
@@ -434,12 +434,12 @@
 				</div>
 			</div><!--cnApp_Env-->
 		</div>
-	</div><!--cnApp_Bkgd cnApp_InitDsplNone-->
+	</div><!--cnApp_RedBkgd-->
 
 	<div class="cnApp_FullScrnDiv ">
 	</div>
 
-	<div id="k_CalcMethodsDlg" class="cnApp_DlgDiv cnApp_Bkgd cnApp_InitDsplNone">
+	<div id="k_CalcMethodsDlg" class="cnApp_DlgDiv cnApp_RedBkgd cnApp_InitDsplNone">
 		<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
 		<h2 class="cnApp_Cptn">具体计算方式如下</h2>
 		<p class="cnApp_Ctnt">
@@ -464,18 +464,62 @@
 		</div>
 	</div>
 
-	<div id="k_SuccessDlg" class="cnApp_DlgDiv cnApp_Bkgd">
+	<div id="k_SuccessDlg" class="cnApp_DlgDiv cnApp_RedBkgd cnApp_InitDsplNone">
 		<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
 		<div class="cnApp_Congratulations cnApp_Sprite cnApp_20"></div>
+
+		<div class="cnApp_Ctnt">
+			<p>
+				您的抽奖号码为：<span class="cnApp_Num">1234</span>
+			</p>
+			<div class="cnApp_BtnDiv">
+				<span class="cnApp_Btn">分享好友</span>
+			</div>
+			<p>
+				分享好友，给自己加码！
+			</p>
+		</div>
+
+		<div id="k_Monster" class="cnApp_AbsPos_LtTp cnApp_HrztMir">
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_11"></div>
+		</div>
+	</div>
+
+	<div id="k_FailedDlg" class="cnApp_DlgDiv ">
+		<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
+		<div class="cnApp_Sorry cnApp_Sprite cnApp_21"></div>
+
+		<div class="cnApp_Ctnt">
+			<p>
+				您本期已领过抽奖号码！
+			</p>
+			<p>
+				【纷纷】告诉您，邀请好友更多机会哦！
+			</p>
+			<div class="cnApp_BtnDiv">
+				<span class="cnApp_Btn">分享好友</span>
+			</div>
+			<p>
+				分享好友，给自己加码！
+			</p>
+		</div>
 
 		<div id="k_Monster" class="cnApp_AbsPos_LtTp cnApp_HrztMir">
 			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
 			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
 			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_10"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L1"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L2"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L3"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R1"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R2"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R3"></div>
 		</div>
 	</div>
 
-	<!--<div class="clear"></div>
+	<!--<div class="clear"cnApp_HrztMir></div>
 	<div class="app-space space-48"></div>-->
 	<link href="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/css/flickerplate.css" type="text/css" rel="stylesheet">
 	<script src="http://static.ffdujia.com/js/jquery.plugins/jquery.finger/js/min/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>

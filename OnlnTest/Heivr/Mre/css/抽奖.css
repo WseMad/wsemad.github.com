@@ -111,59 +111,58 @@
 		height: 127px;
 	}
 
+	.cnApp_Sprite.cnApp_21 {
+		background-position: 0px -450px;
+		width: 420px;
+		height: 85px;
+	}
+
 /***************** 内容 ******************/
 
 .cnApp_InitDsplNone {
 	display: none;
 }
 
-.cnApp_DlgDiv .cnApp_ClsDiv
-{
+.cnApp_DlgDiv .cnApp_ClsDiv {
 	text-align: right;
 	font-size: 24px;
 	padding-top: 0px;
 	padding-right: 30px;
 }
 
-.cnApp_DlgDiv .cnApp_ClsDiv .cnApp_Btn {
-	padding: 5px 10px;
-}
+	.cnApp_DlgDiv .cnApp_ClsDiv .cnApp_Btn {
+		padding: 5px 10px;
+	}
 
 #k_CalcMethodsDlg {
-
 	position: fixed;
-
 	width: 716px;
 	height: 480px;
 	left: 0px;
 	top: 0px;
-
 	color: white;
 	z-index: 10000;
 }
 
-#k_CalcMethodsDlg .cnApp_Cptn, #k_CalcMethodsDlg .cnApp_Ctnt {
-	padding-left: 30px;
-	color: white;
-}
+	#k_CalcMethodsDlg .cnApp_Cptn, #k_CalcMethodsDlg .cnApp_Ctnt {
+		padding-left: 30px;
+		color: white;
+	}
 
-#k_CalcMethodsDlg .cnApp_Cptn {
-	font-size: 18px;
-	margin-bottom: 10px;
-}
+	#k_CalcMethodsDlg .cnApp_Cptn {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
 
 #k_SuccessDlg {
-
 	position: fixed;
-
 	width: 672px;
 	height: 458px;
 	left: 0px;
 	top: 0px;
-
 	box-shadow: 4px 4px 0px rgb(168, 5, 5);
-
 	color: white;
+	text-align: center;
 	z-index: 10000;
 }
 
@@ -181,9 +180,9 @@
 	top: -76px;
 }
 
-#k_MonsterHead.cnApp_Lt {
-	left: 66px;
-}
+	#k_MonsterHead.cnApp_Lt {
+		left: 66px;
+	}
 
 #k_CalcMethodsDlg #k_Monster {
 	left: 480px;
@@ -202,15 +201,99 @@
 #k_SuccessDlg .cnApp_Congratulations {
 	position: absolute;
 	left: 240px;
-	top: 100px;
+	top: 80px;
 }
+
+#k_SuccessDlg .cnApp_Ctnt {
+	position: absolute;
+	left: 200px;
+	top: 210px;
+	font-size: 24px;
+	text-align: left;
+}
+
+.cnApp_DlgDiv .cnApp_Ctnt .cnApp_BtnDiv {
+	text-align: left;
+	margin: 20px 0px;
+}
+
+.cnApp_DlgDiv .cnApp_Ctnt .cnApp_Btn {
+	display: inline-block;
+	padding: 10px 40px;
+	border-radius: 5px;
+	background-color: rgb(255, 203, 0);
+	color: rgb(236, 48, 47);
+	box-shadow: 0px 5px 0px rgb(146, 117, 2), 0px 5px 10px rgb(0, 0, 0);
+	margin-left: 50px;
+}
+
+#k_SuccessDlg .cnApp_Num {
+	font-size: 48px;
+}
+
+#k_FailedDlg {
+	position: fixed;
+	width: 672px;
+	height: 458px;
+	left: 0px;
+	top: 0px;
+	box-shadow: 4px 4px 0px rgb(0, 0, 0);
+	color: white;
+	z-index: 10000;
+	background-color: rgb(64, 64, 64);
+}
+
+	#k_FailedDlg .cnApp_Sorry {
+		position: absolute;
+		left: 220px;
+		top: 80px;
+	}
+
+	#k_FailedDlg .cnApp_Ctnt {
+		position: absolute;
+		left: 200px;
+		top: 200px;
+		font-size: 24px;
+	}
+
+	#k_FailedDlg #k_Monster {
+		left: 35px;
+		right: auto;
+		top: 31px;
+		bottom: auto;
+	}
+
+		#k_FailedDlg #k_Monster .cnApp_L1, #k_FailedDlg #k_Monster .cnApp_L2, #k_FailedDlg #k_Monster .cnApp_L3 {
+			left: 35px;
+		}
+
+		#k_FailedDlg #k_Monster .cnApp_R1, #k_FailedDlg #k_Monster .cnApp_R2, #k_FailedDlg #k_Monster .cnApp_R3 {
+			left: 95px;
+		}
+
+		#k_FailedDlg #k_Monster .cnApp_L1, #k_FailedDlg #k_Monster .cnApp_R1 {
+			top: 88px;
+		}
+
+		#k_FailedDlg #k_Monster .cnApp_L2, #k_FailedDlg #k_Monster .cnApp_R2 {
+			top: 112px;
+		}
+
+		#k_FailedDlg #k_Monster .cnApp_L3, #k_FailedDlg #k_Monster .cnApp_R3 {
+			top: 138px;
+		}
+
+
+
+
+/* 头和环境 */
 
 .cnApp_Header {
 	border: 1px solid black;
 	color: black;
 }
 
-.cnApp_Bkgd {
+.cnApp_RedBkgd {
 	background-color: rgb(236, 48, 47);
 }
 
@@ -269,9 +352,9 @@
 	margin-top: 1em;
 }
 
-.cnApp_Env .cnApp_hn:first-of-type {
-	margin-top: 0px;
-}
+	.cnApp_Env .cnApp_hn:first-of-type {
+		margin-top: 0px;
+	}
 
 .cnApp_Env .cnApp_WhiteSpc {
 	display: inline-block;
@@ -344,7 +427,6 @@
 	border-right: none;
 	border-bottom: none;
 	border-radius: 24px 0px 0px 0px;
-
 	width: 50%;
 	margin-left: 50%;
 }
@@ -391,13 +473,13 @@
 		box-shadow: 0px 2px 2px rgb(51, 51, 51);
 	}
 
-	.cnApp_Env .cnApp_Sect.cnApp_Rules .cnApp_Btn {
-		display: inline-block;
-		background-color: rgb(89, 3, 3);
-		color: white;
-		margin-left: 0.5em;
-		padding: 0px 10px;
-	}
+.cnApp_Env .cnApp_Sect.cnApp_Rules .cnApp_Btn {
+	display: inline-block;
+	background-color: rgb(89, 3, 3);
+	color: white;
+	margin-left: 0.5em;
+	padding: 0px 10px;
+}
 
 
 /*********************************************************************** Over ***********************************************************************/

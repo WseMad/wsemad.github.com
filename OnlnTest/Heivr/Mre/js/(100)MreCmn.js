@@ -451,6 +451,10 @@
 			nWse.stDomUtil.cAddEvtHdlr(window, "scroll", function () { fRglt(); });
 		})();
 
+		// 按钮禁选文本
+		(function (){
+			$(".cnApp_BtnDiv").bind("selectstart", function() {return false;});
+		})();
 
 		//============================================================== 生成控件
 
