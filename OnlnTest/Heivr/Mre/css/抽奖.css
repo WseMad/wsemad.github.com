@@ -22,20 +22,188 @@
 	}
 
 	.cnApp_Sprite.cnApp_1 {
-		background-position: 0px -92px;
+		background-position: 0px -90px;
+		width: 221px;
+		height: 76px;
+		top: -67px;
+	}
+
+	.cnApp_Sprite.cnApp_2 {
+		background-position: 0px -166px;
+		width: 221px;
+		height: 43px;
+		top: -45px;
+	}
+
+	.cnApp_Sprite.cnApp_3 {
+		background-position: 0px -209px;
+		width: 221px;
+		height: 35px;
+		top: -37px;
+	}
+
+	.cnApp_Sprite.cnApp_4 {
+		background-position: 0px -245px;
 		width: 48px;
 		height: 44px;
 		right: -24px;
 	}
 
-	.cnApp_Sprite.cnApp_2 {
+	.cnApp_Sprite.cnApp_5 {
+		background-position: -50px -245px;
+		width: 48px;
+		height: 44px;
+		left: -24px;
+	}
+
+	.cnApp_Sprite.cnApp_6 {
+		background-position: -98px -245px;
+		width: 48px;
+		height: 44px;
+		right: -24px;
+	}
+
+	.cnApp_Sprite.cnApp_7 {
+		background-position: -147px -245px;
+		width: 48px;
+		height: 44px;
+		left: -24px;
+	}
+
+	.cnApp_Sprite.cnApp_8 {
 		background-position: -220px 0px;
 		width: 156px;
 		height: 178px;
-		right: 56px;
-		top: -76px;
 	}
 
+	.cnApp_Sprite.cnApp_9 {
+		background-position: -221px -179px;
+		width: 156px;
+		height: 104px;
+		top: 124px;
+	}
+
+	.cnApp_Sprite.cnApp_10 {
+		background-position: -1px -291px;
+		width: 20px;
+		height: 20px;
+		left: 58px;
+		top: 81px;
+	}
+
+	.cnApp_Sprite.cnApp_11 {
+		background-position: -22px -291px;
+		width: 20px;
+		height: 20px;
+		left: 58px;
+		top: 81px;
+	}
+
+	.cnApp_Sprite.cnApp_12 {
+		background-position: -44px -290px;
+		width: 12px;
+		height: 22px;
+	}
+
+	.cnApp_Sprite.cnApp_20 {
+		background-position: 0px -323px;
+		width: 306px;
+		height: 127px;
+	}
+
+/***************** 内容 ******************/
+
+.cnApp_InitDsplNone {
+	display: none;
+}
+
+.cnApp_DlgDiv .cnApp_ClsDiv
+{
+	text-align: right;
+	font-size: 24px;
+	padding-top: 0px;
+	padding-right: 30px;
+}
+
+.cnApp_DlgDiv .cnApp_ClsDiv .cnApp_Btn {
+	padding: 5px 10px;
+}
+
+#k_CalcMethodsDlg {
+
+	position: fixed;
+
+	width: 716px;
+	height: 480px;
+	left: 0px;
+	top: 0px;
+
+	color: white;
+	z-index: 10000;
+}
+
+#k_CalcMethodsDlg .cnApp_Cptn, #k_CalcMethodsDlg .cnApp_Ctnt {
+	padding-left: 30px;
+	color: white;
+}
+
+#k_CalcMethodsDlg .cnApp_Cptn {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+#k_SuccessDlg {
+
+	position: fixed;
+
+	width: 672px;
+	height: 458px;
+	left: 0px;
+	top: 0px;
+
+	box-shadow: 4px 4px 0px rgb(168, 5, 5);
+
+	color: white;
+	z-index: 10000;
+}
+
+#k_Monster {
+	position: absolute;
+	width: 156px;
+	height: 228px;
+}
+
+#k_MonsterHead {
+	position: absolute;
+	width: 156px;
+	height: 178px;
+	left: 826px;
+	top: -76px;
+}
+
+#k_MonsterHead.cnApp_Lt {
+	left: 66px;
+}
+
+#k_CalcMethodsDlg #k_Monster {
+	left: 480px;
+	right: auto;
+	top: 206px;
+	bottom: auto;
+}
+
+#k_SuccessDlg #k_Monster {
+	left: 60px;
+	right: auto;
+	top: 30px;
+	bottom: auto;
+}
+
+#k_SuccessDlg .cnApp_Congratulations {
+	position: absolute;
+	left: 240px;
+	top: 100px;
+}
 
 .cnApp_Header {
 	border: 1px solid black;
@@ -48,6 +216,10 @@
 
 .cnApp_Env * {
 	color: inherit;
+}
+
+.cnApp_Env strong {
+	font-weight: bold;
 }
 
 .cnApp_Env .cnApp_Sect {
@@ -74,11 +246,11 @@
 	.cnApp_Env .cnApp_TabDiv table {
 	}
 
-	.cnApp_Env .cnApp_TabDiv tr:first-of-type>td {
+	.cnApp_Env .cnApp_TabDiv tr:first-of-type > td {
 		padding-top: 20px;
 	}
 
-	.cnApp_Env .cnApp_TabDiv tr:last-of-type>td {
+	.cnApp_Env .cnApp_TabDiv tr:last-of-type > td {
 		padding-bottom: 20px;
 	}
 
@@ -93,51 +265,138 @@
 		text-align: center;
 	}
 
+.cnApp_Env .cnApp_hn {
+	margin-top: 1em;
+}
+
+.cnApp_Env .cnApp_hn:first-of-type {
+	margin-top: 0px;
+}
+
+.cnApp_Env .cnApp_WhiteSpc {
+	display: inline-block;
+	width: 64px;
+}
+
+.cnApp_Env .cnApp_Rules .cnApp_WhiteSpc {
+	width: 26px;
+}
+
 .cnApp_Env .cnApp_Declaration {
 	color: rgb(89, 3, 3);
 	text-align: center;
 	padding: 40px 0px 40px 0px;
 }
 
-.cnApp_Env .cnApp_Introduction {
+.cnApp_Env .cnApp_Sect.cnApp_Introduction {
 	margin-top: 115px;
 }
 
-	.cnApp_Env .cnApp_Introduction .cnApp_BdrZone {
-		position: relative;
-		left: 0px;
-		top: 0px;
-		width: 1086px;
-		height: 180px;
-		border: 3px solid rgb(255, 235, 47);
-		border-left: none;
-		border-bottom: none;
-		border-radius: 0px 24px 0px 0px;
+.cnApp_Env .cnApp_Sect.cnApp_Details {
+	margin-top: 50px;
+}
 
-		color: rgb(89, 3, 3);
-		padding: 30px 20px 0px 20px;
-		line-height: 1.8;
-	}
+.cnApp_Env .cnApp_Sect.cnApp_Rules {
+	margin-top: 60px;
+}
 
-	.cnApp_Env .cnApp_Introduction .cnApp_BdrZone .cnApp_Cptn {
-		font-size: 24px;
-		color: rgb(255, 235, 47);
-		right: 45px;
-		top: -35px;
-	}
+.cnApp_Env .cnApp_Sect.cnApp_Methods {
+	margin-top: 30px;
+}
 
-	.cnApp_Env .cnApp_Introduction .cnApp_BtnDiv {
-		margin-top: 20px;
-		padding-left: 20px;
-	}
+.cnApp_Env .cnApp_Sect.cnApp_Accomplished {
+	margin-top: 0px;
+}
 
-	.cnApp_Env .cnApp_Introduction .cnApp_Btn {
+.cnApp_Env .cnApp_Sect .cnApp_BdrZone {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 1086px;
+	padding: 30px 30px 0px 30px;
+	color: rgb(89, 3, 3);
+	line-height: 1.8;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Introduction .cnApp_BdrZone {
+	border: 3px solid rgb(255, 235, 47);
+	border-left: none;
+	border-bottom: none;
+	border-radius: 0px 24px 0px 0px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Details .cnApp_BdrZone {
+	border: 3px solid rgb(5, 208, 255);
+	border-right: none;
+	border-bottom: none;
+	border-radius: 24px 0px 0px 0px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Rules .cnApp_BdrZone {
+	border: 3px solid rgb(78, 48, 112);
+	border-left: none;
+	border-bottom: none;
+	border-radius: 0px 24px 0px 0px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Methods .cnApp_BdrZone {
+	border: 3px solid rgb(200, 218, 43);
+	border-right: none;
+	border-bottom: none;
+	border-radius: 24px 0px 0px 0px;
+
+	width: 50%;
+	margin-left: 50%;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Introduction .cnApp_BdrZone .cnApp_Cptn {
+	font-size: 24px;
+	color: rgb(255, 235, 47);
+	right: 45px;
+	top: -35px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Details .cnApp_BdrZone .cnApp_Cptn {
+	font-size: 24px;
+	color: rgb(5, 208, 255);
+	left: 45px;
+	top: -35px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Rules .cnApp_BdrZone .cnApp_Cptn {
+	font-size: 24px;
+	color: rgb(78, 48, 112);
+	right: 45px;
+	top: -35px;
+}
+
+.cnApp_Env .cnApp_Sect.cnApp_Methods .cnApp_BdrZone .cnApp_Cptn {
+	font-size: 24px;
+	color: rgb(200, 218, 43);
+	left: 45px;
+	top: -35px;
+}
+
+.cnApp_Env .cnApp_BtnDiv {
+	margin-top: 20px;
+	padding-left: 30px;
+}
+
+	.cnApp_Env .cnApp_BtnDiv .cnApp_Btn {
 		background-color: rgb(255, 235, 47);
 		padding: 5px 10px;
 		color: rgb(220, 30, 30);
 		border-radius: 4px;
 		font-weight: bold;
 		box-shadow: 0px 2px 2px rgb(51, 51, 51);
+	}
+
+	.cnApp_Env .cnApp_Sect.cnApp_Rules .cnApp_Btn {
+		display: inline-block;
+		background-color: rgb(89, 3, 3);
+		color: white;
+		margin-left: 0.5em;
+		padding: 0px 10px;
 	}
 
 

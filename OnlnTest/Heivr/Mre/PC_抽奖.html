@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="./js/(0)Seed.js"></script>
 	<script type="text/javascript" src="./js/(10)WSE_nWse.js"></script>
 	<script type="text/javascript" src="./js/(100)MreCmn.js"></script>
+	<script type="text/javascript" src="./js/抽奖.js"></script>
 </head>
 
 <body>
@@ -299,7 +300,7 @@
 					<div class="cnApp_BdrZone">
 						<div class="cnApp_AbsPos cnApp_Sprite cnApp_0"></div>
 						<div class="cnApp_AbsPos_RtTp cnApp_Cptn">活动介绍</div>
-						<div class="cnApp_AbsPos_RtBm cnApp_Sprite cnApp_1"></div>
+						<div class="cnApp_AbsPos_RtBm cnApp_Sprite cnApp_4"></div>
 						<p>
 							分权宝“注册抽大奖，送房游全球”活动于2015年1月10日正式开启！
 						</p>
@@ -316,36 +317,161 @@
 							还等什么，赶紧加入我们，体验“注册抽大奖，送房游全球”的快感吧！
 						</p>
 					</div>
-					<div class="cnApp_BtnDiv">
+					<div id="k_ViewDetails" class="cnApp_Sect cnApp_BtnDiv">
 						<span class="cnApp_Btn">查看活动详情</span>
+					</div>
+				</div>
+
+				<div class="cnApp_Sect cnApp_Details cnApp_InitDsplNone">
+					<div class="cnApp_BdrZone">
+						<div class="cnApp_AbsPos_RtTp cnApp_Sprite cnApp_1"></div>
+						<div class="cnApp_AbsPos cnApp_Cptn">活动详情</div>
+						<div class="cnApp_AbsPos_LtBm cnApp_Sprite cnApp_5"></div>
+						<h3 class="cnApp_hn">
+							<strong>活动日期：</strong>
+						</h3>
+						<p>
+							2015年1月10日至3月16日。每期活动时间为前一天14:00:00至当日13:59:59。
+						</p>
+						<p>
+							(其中，第一期活动时间为1月10日0:00:00至17:59:59，第二期活动时间为1月10日18:00:00至1月11日14:29:59)
+						</p>
+						<h3 class="cnApp_hn">
+							<strong>奖品内容:</strong>
+						</h3>
+						<p>
+							工作日奖品为价值21058元的分权宝全球度假卡。
+						</p>
+						<p>
+							节假日奖品为价值43545元分权宝全球度假卡。
+						</p>
+						<h3 class="cnApp_hn">
+							<strong>参与方法：</strong>
+						</h3>
+						<p>
+							第一步：注册成为分权宝网站会员。（注册时手机号码、身份证号必填！）
+						</p>
+						<p>
+							第二步：登陆分权宝网站，在活动专题页领取抽奖资格编号，编号由系统有序发出，并获得一个个人专属推广活动链接。
+						</p>
+						<p>
+							<span class="cnApp_WhiteSpc"></span>每人每天登陆分权宝网站都可以领取一个抽奖资格编号，抽奖资格编号当天有效！
+						</p>
+						<p>
+							第三步：将您的个人专属链接分享到朋友圈、微博、QQ群、论坛等处，您的朋友可以通过专属链接注册成为分权宝会员。
+						</p>
+						<p>
+							<span class="cnApp_WhiteSpc"></span>每通过您的专属链接注册成功一个分权宝会员，系统就会自动发送一个抽奖资格编号给您，即获得多一次抽奖资格。
+						</p>
+						<p>
+							<span class="cnApp_WhiteSpc"></span><strong>不限制数量！</strong>
+						</p>
+					</div>
+				</div>
+
+				<div class="cnApp_Sect cnApp_Rules cnApp_InitDsplNone">
+					<div class="cnApp_BdrZone">
+						<div class="cnApp_AbsPos cnApp_Sprite cnApp_2"></div>
+						<div class="cnApp_AbsPos_RtTp cnApp_Cptn">中奖规则</div>
+						<div class="cnApp_AbsPos_RtBm cnApp_Sprite cnApp_6"></div>
+						<p>
+							1．当日中奖号码与您的抽奖资格编号一致，即为中奖。
+						</p>
+						<p>
+							2．工作日以当天沪深股市收盘指数为基础，按照固定公式计算产生。
+						</p>
+						<p>
+							3．节假日在北京三里屯SOHO会员俱乐部以现场摇出的4位数和6位数为基础，按照固定公式计算产生。
+						</p>
+						<p>
+							<span class="cnApp_WhiteSpc"></span>具体计算方式请点击<span id="k_CalcDetails" class="cnApp_Btn">详情</span>
+						</p>
+						<p>
+							4．中奖号码以及中奖名单于每日活动第二天15:30公布。
+						</p>
+					</div>
+				</div>
+
+				<div class="cnApp_Sect cnApp_Methods cnApp_InitDsplNone">
+					<div class="cnApp_BdrZone">
+						<div class="cnApp_AbsPos_RtTp cnApp_Sprite cnApp_3"></div>
+						<div class="cnApp_AbsPos cnApp_Cptn">领取方式</div>
+						<div class="cnApp_AbsPos_LtBm cnApp_Sprite cnApp_7"></div>
+						<p>
+							分权宝度假私人顾问将主动联系中奖者，
+						</p>
+						<p>
+							领奖时凭中奖号、手机号、身份证到三里屯体验店领奖。
+						</p>
 					</div>
 				</div>
 
 				<div class="cnApp_Sect cnApp_List cnApp_Accomplished">
 					<div class="cnApp_TabDiv cnApp_RelPos">
-						<div class="cnApp_AbsPos_RtTp cnApp_Sprite cnApp_2"></div>
+						<div id="k_MonsterHead" class="cnApp_AbsPos_LtTp ">
+							<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+							<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_10"></div>
+						</div>
 						<h2 class="cnApp_Cptn ">分享达人榜</h2>
 						<table>
 							<thead>
 								<!--故意增加一些空单元，以把表格整体向左推-->
-								<tr><th>排名</th><th>用户</th><th>有效用户</th><th></th><th></th><th></th></tr>
+								<tr><th></th><th></th><th>排名</th><th>用户</th><th>有效用户</th><th></th><th></th><th></th></tr>
 							</thead>
 							<tbody>
-								<tr><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
-								<tr><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
-								<tr><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
-								<tr><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
-								<tr><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td>150****0918</td><td>1</td><td>12</td><td></td><td></td><td></td></tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 
 				<div class="cnApp_Declaration">
-					<span class="cnApp_Text">● 说明：本活动最终解释权在分权宝·全球度假俱乐部，因上证、深圳指数无法预测，保证活动公开、公正性。</span>
+					<span class="cnApp_Text">●说明：本活动最终解释权在分权宝·全球度假俱乐部，因上证、深圳指数无法预测，保证活动公开、公正性。</span>
 				</div>
+			</div><!--cnApp_Env-->
+		</div>
+	</div><!--cnApp_Bkgd cnApp_InitDsplNone-->
 
-			</div>
+	<div class="cnApp_FullScrnDiv ">
+	</div>
+
+	<div id="k_CalcMethodsDlg" class="cnApp_DlgDiv cnApp_Bkgd cnApp_InitDsplNone">
+		<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
+		<h2 class="cnApp_Cptn">具体计算方式如下</h2>
+		<p class="cnApp_Ctnt">
+			（1）当日上证收盘指数*深圳收盘指数*10000=12位整数（去掉小数点后）。<br />
+			（2）将12位整数倒叙排列，如第一位是0，则去掉。<br />
+			（3）倒叙排列的数除以当日参加活动的总人数。<br />
+			（4）所得余数+1即为获奖号。<br />
+			<br />
+			举例：2014年12月19日上证收盘：3108.60，深圳收盘：10627.11，参加活动有2787人，<br />
+			则： 3108.60*10627.11*10000=330354341460<br />
+			倒序：064143453033<br />
+			去0：64143453033/2787<br />
+			除人数：23015232<br />
+			余数为： 1449<br />
+			加1：1449+1=1450即为获奖号
+		</p>
+
+		<div id="k_Monster" class="cnApp_AbsPos_RtBm ">
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_10"></div>
+		</div>
+	</div>
+
+	<div id="k_SuccessDlg" class="cnApp_DlgDiv cnApp_Bkgd">
+		<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
+		<div class="cnApp_Congratulations cnApp_Sprite cnApp_20"></div>
+
+		<div id="k_Monster" class="cnApp_AbsPos_LtTp cnApp_HrztMir">
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
+			<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_10"></div>
 		</div>
 	</div>
 
