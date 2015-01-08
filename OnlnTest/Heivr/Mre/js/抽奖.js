@@ -29,6 +29,9 @@
 
 				// 居中
 				var l_DlgDiv = document.getElementById("k_CalcMethodsDlg");
+				if (! l_DlgDiv)
+				{ return ; }
+
 				l_DlgDiv.style.display = "block";
 				var l_X = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - l_DlgDiv.offsetWidth) / 2);
 				var l_Y = Math.max(0, (nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight) / 2);
@@ -46,6 +49,9 @@
 
 				// 居中
 				var l_DlgDiv = document.getElementById(l_WhichDlg);
+				if (! l_DlgDiv)
+				{ return ; }
+
 				l_DlgDiv.style.display = "block";
 				var l_X = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - l_DlgDiv.offsetWidth) / 2);
 				var l_Y = Math.max(0, (nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight) / 2);
