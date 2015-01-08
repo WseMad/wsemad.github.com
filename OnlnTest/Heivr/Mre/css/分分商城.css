@@ -28,10 +28,31 @@
 }
 
 .cnApp_PC .cnApp_ItemList li {
+	width: 100%;
+	padding: 0px;
+	/*margin: 0px 5px 10px;*/
+	border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.cnApp_PC .cnApp_ItemList li .cnApp_Boa {
+
+}
+
+.cnApp_PC .cnApp_ItemList li .cnApp_Col {
+	width: 25%;
 	float: left;
-	width: 256px;
-	margin: 0px 5px 10px;
-	border: 1px solid rgb(200, 200, 200);
+	padding: 5px;
+}
+
+.cnApp_PC .cnApp_ItemList li .cnApp_Col .cnApp_Cptn {
+	font-weight: bold;
+}
+
+.cnApp_PC .cnApp_ItemList li .cnApp_Col .cnApp_Ctgr .cnApp_Text {
+	padding: 0px 2px;
+	border-radius: 4px;
+	color: white;
+	background-color: rgb(229, 66, 0);
 }
 
 .cnApp_TextBlk {
@@ -64,6 +85,10 @@
 
 .cnApp_TicketRsrv .cnApp_LabelDiv {
 	background-color: rgb(247, 249, 252);
+}
+
+.cnApp_PC .cnApp_TicketRsrv .cnApp_LabelDiv {
+	height: 34px;
 }
 
 .cnApp_SrchForm .cnApp_SwapBtn {

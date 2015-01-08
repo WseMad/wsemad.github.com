@@ -617,9 +617,11 @@
 	}
 
 .cnApp_Mbl .cnApp_DrawHeader {
-	background-size: 160%;
-	min-height: 184px;
+	background-size: 100%;
+	min-height: 180px;
 	height: auto;
+
+	background-image: url("../images/抽奖/BG_Mbl.jpg");
 }
 
 .cnApp_Env.cnApp_Mbl .cnApp_BtnDiv {
@@ -640,6 +642,7 @@
 
 	.cnApp_Mbl .cnApp_DrawHeader .cnApp_EarthDiv img {
 		width: 40%;
+		/*width: 128px;*/
 	}
 
 .cnApp_Mbl .cnApp_DrawHeader .cnApp_CptnDiv {
@@ -648,6 +651,7 @@
 
 	.cnApp_Mbl .cnApp_DrawHeader .cnApp_CptnDiv img {
 		width: 40%;
+		/*width: 128px;*/
 	}
 
 .cnApp_Env.cnApp_Mbl .cnApp_Sect {
