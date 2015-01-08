@@ -200,13 +200,24 @@
 
 #k_MonsterWords {
 	position: absolute;
-	left: 650px;
-	top: -30px;
+	left: 580px;
+	top: -50px;
+	font-size: 30px;
 	color: white;
+	-webkit-transform: rotateX(-10deg) rotateY(35deg);
+	-moz-transform: rotateX(-10deg) rotateY(35deg);
+	-ms-transform: rotateX(-10deg) rotateY(35deg);
+	-o-transform: rotateX(-10deg) rotateY(35deg);
+	transform: rotateX(-10deg) rotateY(35deg);
 }
 
 	#k_MonsterWords.cnApp_Lt {
-		left: 226px;
+		left: 136px;
+		-webkit-transform: rotateX(-10deg) rotateY(-35deg);
+		-moz-transform: rotateX(-10deg) rotateY(-35deg);
+		-ms-transform: rotateX(-10deg) rotateY(-35deg);
+		-o-transform: rotateX(-10deg) rotateY(-35deg);
+		transform: rotateX(-10deg) rotateY(-35deg);
 	}
 
 #k_SuccessDlg .cnApp_Congratulations {
@@ -459,6 +470,14 @@
 .cnApp_Env .cnApp_Sect.cnApp_Accomplished {
 	margin-top: 0px;
 }
+
+	.cnApp_Env .cnApp_Sect.cnApp_Accomplished .cnApp_TabDiv {
+		-webkit-perspective: 500px;
+		-moz-perspective: 500px;
+		-ms-perspective: 500px;
+		-o-perspective: 500px;
+		perspective: 500px;
+	}
 
 .cnApp_Env .cnApp_Sect .cnApp_BdrZone {
 	position: relative;
