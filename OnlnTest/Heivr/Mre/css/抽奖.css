@@ -381,7 +381,7 @@
 	background-color: rgb(236, 48, 47);
 }
 
-.cnApp_Env * {
+.cnApp_Env.cnApp_PC * {
 	color: inherit;
 }
 
