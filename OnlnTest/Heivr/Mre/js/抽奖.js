@@ -22,8 +22,8 @@
 		})();
 
 		// 计算详情
-		(function (){
-			$("#k_CalcDetails").click(function (){
+		(function () {
+			$("#k_CalcDetails").click(function () {
 				$(".cnApp_FullScrnDiv").show();
 
 				// 居中
@@ -33,24 +33,44 @@
 				var l_Y = Math.max(0, (nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight) / 2);
 				nWse.stCssUtil.cSetPos(l_DlgDiv, l_X, l_Y);
 			});
+		})();
 
-			$("#k_CalcMethodsDlg .cnApp_ClsDiv .cnApp_Btn").click(function (){
+		// 我要抽奖
+		(function () {
+			$("#k_Draw").click(function () {
+				$(".cnApp_FullScrnDiv").show();
+
+				// 随机产生一个
+				var l_WhichDlg = (Math.random() < 0.5) ? "k_SuccessDlg" : "k_FailedDlg";
+
+				// 居中
+				var l_DlgDiv = document.getElementById(l_WhichDlg);
+				l_DlgDiv.style.display = "block";
+				var l_X = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - l_DlgDiv.offsetWidth) / 2);
+				var l_Y = Math.max(0, (nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight) / 2);
+				nWse.stCssUtil.cSetPos(l_DlgDiv, l_X, l_Y);
+			});
+		})();
+
+		// 计算方法的关闭
+		(function () {
+			$("#k_CalcMethodsDlg .cnApp_ClsDiv .cnApp_Btn").click(function () {
 				$("#k_CalcMethodsDlg").hide();
 				$(".cnApp_FullScrnDiv").hide();
 			});
 		})();
 
-		// 成功
-		(function (){
-			$("#k_SuccessDlg .cnApp_ClsDiv .cnApp_Btn").click(function (){
+		// 成功的关闭
+		(function () {
+			$("#k_SuccessDlg .cnApp_ClsDiv .cnApp_Btn").click(function () {
 				$("#k_SuccessDlg").hide();
 				$(".cnApp_FullScrnDiv").hide();
 			});
 		})();
 
-		// 失败
-		(function (){
-			$("#k_FailedDlg .cnApp_ClsDiv .cnApp_Btn").click(function (){
+		// 失败的关闭
+		(function () {
+			$("#k_FailedDlg .cnApp_ClsDiv .cnApp_Btn").click(function () {
 				$("#k_FailedDlg").hide();
 				$(".cnApp_FullScrnDiv").hide();
 			});
