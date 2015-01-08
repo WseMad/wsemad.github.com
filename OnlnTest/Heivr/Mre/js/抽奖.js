@@ -15,9 +15,10 @@
 				$(".cnApp_Sect.cnApp_InitDsplNone").show();
 				$("#k_ViewDetails").hide();
 
-				// 怪物头像换到左边
+				// 怪物头像换到左边，包扩他说得话
 				var l_MonsterHead = document.getElementById("k_MonsterHead");
 				nWse.stCssUtil.cAddCssc(l_MonsterHead, "cnApp_HrztMir cnApp_Lt");
+				nWse.stCssUtil.cAddCssc(document.getElementById("k_MonsterWords"), "cnApp_Lt");
 			});
 		})();
 
