@@ -297,6 +297,26 @@
 	height: 635px;
 }
 
+	.cnApp_Header .cnApp_EarthDiv {
+		position: absolute;
+		left: 0px;
+		top: 50px;
+		width: 100%;
+		text-align: center;
+		/*padding-top: 160px;*/
+		z-index: 1;
+	}
+
+	.cnApp_Header .cnApp_CptnDiv {
+		position: absolute;
+		left: 0px;
+		top: 160px;
+		width: 100%;
+		text-align: center;
+		/*padding-top: 160px;*/
+		z-index: 2;
+	}
+
 	.cnApp_Header .cnApp_Join {
 		position: absolute;
 		left: 0px;
@@ -309,11 +329,12 @@
 
 	.cnApp_Header .cnApp_BtnDiv.cnApp_Draw {
 		display: inline-block;
-		padding: 10px 40px;
+		padding: 10px 80px;
 		border-radius: 5px;
 		background-color: rgb(255, 203, 0);
 		color: rgb(236, 48, 47);
 		box-shadow: 0px 5px 0px rgb(146, 117, 2), 0px 5px 10px rgb(0, 0, 0);
+		cursor: pointer;
 	}
 
 	.cnApp_Header .cnApp_People {
