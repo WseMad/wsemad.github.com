@@ -107,7 +107,7 @@
 			// 文字相对于地球垂直居中
 			var l_CptnDiv = nWse.stDomUtil.cQryOne(".cnApp_CptnDiv");
 			l_Y = l_Y + (l_EH - l_CptnDiv.offsetHeight) / 2;
-			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y);
+			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y); 
 		})();
 
 		// 地球旋转
