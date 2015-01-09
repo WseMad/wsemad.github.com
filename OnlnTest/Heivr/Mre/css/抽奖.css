@@ -618,7 +618,7 @@
 
 .cnApp_Mbl .cnApp_DrawHeader {
 	background-size: 100%;
-	min-height: 180px;
+	min-height: 100px;
 	height: auto;
 
 	background-image: url("../images/抽奖/BG_Mbl.jpg");

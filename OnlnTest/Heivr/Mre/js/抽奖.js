@@ -87,6 +87,29 @@
 	//【等到全部加装完后才执行的代码！】
 	$(window).load(function () {
 
+		// 手机版页面高度修正
+		(function () {
+			var l_EarthDiv = nWse.stDomUtil.cQryOne(".cnApp_Mbl .cnApp_EarthDiv");
+			if (! l_EarthDiv)
+			{ return; }
+
+			var l_DrawHeader = nWse.stDomUtil.cQryOne(".cnApp_DrawHeader");
+		//	console.log(l_EarthDiv.offsetHeight + ", " + l_DrawHeader.offsetHeight);
+			var i_Scl = 1.2;	// 这个比例是合适的，但是取决于BG_Mbl.jpg的大小
+			var l_EH = l_EarthDiv.offsetHeight;
+			var l_DHH = Math.round(l_EH * i_Scl);
+			nWse.stCssUtil.cSetDimHgt(l_DrawHeader, l_DHH);
+
+			// 地球垂直居中
+			var l_Y = (l_DHH - l_EH) / 2;
+			nWse.stCssUtil.cSetPosTp(l_EarthDiv, l_Y);
+
+			// 文字相对于地球垂直居中
+			var l_CptnDiv = nWse.stDomUtil.cQryOne(".cnApp_CptnDiv");
+			l_Y = l_Y + (l_EH - l_CptnDiv.offsetHeight) / 2;
+			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y);
+		})();
+
 		// 地球旋转
 		(function () {
 			var l_Dom = document.getElementById("k_Earth");
