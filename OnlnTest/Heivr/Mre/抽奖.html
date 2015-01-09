@@ -94,7 +94,7 @@
 				<img src="images/抽奖/标题文字.png" class="" />
 			</div>
 		</div>
-	
+
 		<div class="cnApp_Join">
 			<div id="k_Draw" class="cnApp_BtnDiv cnApp_Draw">
 				<span class="cnApp_Btn">我要抽奖</span>
@@ -103,7 +103,7 @@
 				<img src="images/抽奖/活动时间.png" />
 			</div>
 		</div>
-	
+
 		<div class="cnApp_Sect cnApp_List cnApp_Winning">
 			<div class="cnApp_TabDiv ">
 				<h2 class="cnApp_Cptn ">中奖名单</h2>
@@ -212,7 +212,7 @@
 				具体计算方式如下
 			</p>
 			<p>
-				（1）当日上证收盘指数*深圳收盘指数*10000=12位整数（去掉小数点后）.<br/>
+				（1）当日上证收盘指数*深圳收盘指数*10000=12位整数（去掉小数点后）.<br />
 				（2）将12位整数倒叙排列，如第一位是0，则去掉。<br />
 				（3）倒叙排列的数除以当日参加活动的总人数。<br />
 				（4）所得余数+1即为获奖号。<br />
@@ -239,7 +239,68 @@
 		<div class="cnApp_Declaration ">
 			<span class="cnApp_Text">●说明：本活动最终解释权归分权宝·全球度假俱乐部，因上证、深圳指数无法预测，保证活动公开、公正性。</span>
 		</div>
-	</div><!--cnApp_Env-->
+
+		<!--对话框-->
+		<div class="cnApp_FullScrnDiv cnApp_InitDsplNone">
+		</div>
+
+		<div id="k_SuccessDlg" class="cnApp_DlgDiv cnApp_RedBkgd cnApp_InitDsplNone">
+			<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
+			<div class="cnApp_Congratulations cnApp_Sprite cnApp_20"></div>
+
+			<div class="cnApp_Ctnt">
+				<p>
+					您的抽奖号码为：<span class="cnApp_Num">1234</span>
+				</p>
+				<div class="cnApp_BtnDiv">
+					<span class="cnApp_Btn">分享好友</span>
+				</div>
+				<p>
+					分享好友，给自己加码！
+				</p>
+			</div>
+
+			<div id="k_Monster" class="cnApp_AbsPos_LtTp cnApp_HrztMir">
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_11"></div>
+			</div>
+		</div>
+
+		<div id="k_FailedDlg" class="cnApp_DlgDiv cnApp_InitDsplNone">
+			<div class="cnApp_ClsDiv"><span class="cnApp_Btn">×</span></div>
+			<div class="cnApp_Sorry cnApp_Sprite cnApp_21"></div>
+
+			<div class="cnApp_Ctnt">
+				<p>
+					您本期已领过抽奖号码！
+				</p>
+				<p>
+					【纷纷】告诉您，邀请好友更多机会哦！
+				</p>
+				<div class="cnApp_BtnDiv">
+					<span class="cnApp_Btn">分享好友</span>
+				</div>
+				<p>
+					分享好友，给自己加码！
+				</p>
+			</div>
+
+			<div id="k_Monster" class="cnApp_AbsPos_LtTp cnApp_HrztMir">
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_8"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_9"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_10"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L1"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L2"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_L3"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R1"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R2"></div>
+				<div class="cnApp_AbsPos_LtTp cnApp_Sprite cnApp_12 cnApp_R3"></div>
+			</div>
+		</div>
+	</div><!--cnApp_Env cnApp_InitDsplNone-->
+
+
 
 </body>
 </html>

@@ -53,8 +53,22 @@
 				{ return ; }
 
 				l_DlgDiv.style.display = "block";
+
 				var l_X = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - l_DlgDiv.offsetWidth) / 2);
 				var l_Y = Math.max(0, (nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight) / 2);
+
+				var l_Scl;
+				if (nWse.stDomUtil.cQryOne(".cnApp_Mbl")) // 手机版
+				{
+					l_X = l_Y = 0;
+					l_Scl = nWse.stCssUtil.cAcsExtdAnmt_2dTsfm(l_DlgDiv).c_Scl;
+					l_Scl.x = nWse.stDomUtil.cGetVwptWid() / l_DlgDiv.offsetWidth;
+					l_Scl.y = l_Scl.x;
+					nWse.stCssUtil.cUpdExtdAnmt_2dTsfm(l_DlgDiv);
+
+					l_Y = nWse.stDomUtil.cGetVwptHgt() - l_DlgDiv.offsetHeight * l_Scl.y;	// 底对齐
+				}
+
 				nWse.stCssUtil.cSetPos(l_DlgDiv, l_X, l_Y);
 			});
 		})();

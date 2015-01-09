@@ -709,4 +709,24 @@
 	font-weight: bold;
 }
 
+.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv {
+	-webkit-transform-origin: left top;
+	-moz-transform-origin: left top;
+	-ms-transform-origin: left top;
+	-o-transform-origin: left top;
+	transform-origin: left top;
+}
+
+.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_ClsDiv {
+	font-size: 48px;
+}
+
+.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_BtnDiv {
+	text-align: left;
+}
+
+.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_Ctnt .cnApp_Btn {
+	/*margin: 0px;*/
+}
+
 /*********************************************************************** Over ***********************************************************************/
