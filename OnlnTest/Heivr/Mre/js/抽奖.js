@@ -29,8 +29,8 @@
 
 				// 居中
 				var l_DlgDiv = document.getElementById("k_CalcMethodsDlg");
-				if (! l_DlgDiv)
-				{ return ; }
+				if (!l_DlgDiv)
+				{ return; }
 
 				l_DlgDiv.style.display = "block";
 				var l_X = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - l_DlgDiv.offsetWidth) / 2);
@@ -49,8 +49,8 @@
 
 				// 居中
 				var l_DlgDiv = document.getElementById(l_WhichDlg);
-				if (! l_DlgDiv)
-				{ return ; }
+				if (!l_DlgDiv)
+				{ return; }
 
 				l_DlgDiv.style.display = "block";
 
@@ -96,6 +96,13 @@
 				$(".cnApp_FullScrnDiv").hide();
 			});
 		})();
+
+		// 分享好友
+		(function () {
+			$(".cnApp_Btn.cnApp_ShrFrnds").click(function () {
+				console.log("abc");
+			});
+		})();
 	});
 
 	//【等到全部加装完后才执行的代码！】
@@ -104,11 +111,11 @@
 		// 手机版页面高度修正
 		(function () {
 			var l_EarthDiv = nWse.stDomUtil.cQryOne(".cnApp_Mbl .cnApp_EarthDiv");
-			if (! l_EarthDiv)
+			if (!l_EarthDiv)
 			{ return; }
 
 			var l_DrawHeader = nWse.stDomUtil.cQryOne(".cnApp_DrawHeader");
-		//	console.log(l_EarthDiv.offsetHeight + ", " + l_DrawHeader.offsetHeight);
+			//	console.log(l_EarthDiv.offsetHeight + ", " + l_DrawHeader.offsetHeight);
 			var i_Scl = 1.2;	// 这个比例是合适的，但是取决于BG_Mbl.jpg的大小
 			var l_EH = l_EarthDiv.offsetHeight;
 			var l_DHH = Math.round(l_EH * i_Scl);
@@ -121,7 +128,7 @@
 			// 文字相对于地球垂直居中
 			var l_CptnDiv = nWse.stDomUtil.cQryOne(".cnApp_CptnDiv");
 			l_Y = l_Y + (l_EH - l_CptnDiv.offsetHeight) / 2;
-			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y); 
+			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y);
 		})();
 
 		// 地球旋转
