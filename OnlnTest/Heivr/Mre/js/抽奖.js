@@ -99,8 +99,15 @@
 
 		// 分享好友
 		(function () {
-			$(".cnApp_Btn.cnApp_ShrFrnds").click(function () {
-				console.log("abc");
+			$(".cnApp_Mbl .cnApp_Btn.cnApp_ShrFrnds").click(function () {
+			//	console.log("abc");
+
+				// 把对话框关闭，留住遮罩。
+				$("#k_SuccessDlg").hide();
+				$("#k_FailedDlg").hide();
+
+				// 把提示显示出来
+				$("#k_Hint").show();
 			});
 		})();
 	});
