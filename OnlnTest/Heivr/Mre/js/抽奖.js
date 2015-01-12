@@ -100,7 +100,7 @@
 		// 分享好友
 		(function () {
 			$(".cnApp_Mbl .cnApp_Btn.cnApp_ShrFrnds").click(function () {
-			//	console.log("abc");
+				//	console.log("abc");
 
 				// 把对话框关闭，留住遮罩。
 				$("#k_SuccessDlg").hide();
@@ -110,33 +110,53 @@
 				$("#k_Hint").show();
 			});
 		})();
+
+		// 手机版页面高度修正
+		(function () {
+
+			function fFixDrawHeaderHgt() {
+				var l_EarthDiv = nWse.stDomUtil.cQryOne(".cnApp_Mbl .cnApp_EarthDiv");
+				if (!l_EarthDiv)
+				{ return; }
+
+				var i_ImgWidPct = 40;
+				var i_EarthImgAr = 454 / 435;
+				var i_HintImgAr = 523 / 174;
+
+				var l_EarthImgWid = Math.round(nWse.stDomUtil.cGetVwptWid() * i_ImgWidPct / 100);
+				var l_EarthImgHgt = Math.round(l_EarthImgWid / i_EarthImgAr);
+				var l_HintImgWid = Math.round(nWse.stDomUtil.cGetVwptWid() * i_ImgWidPct / 100);
+				var l_HintImgHgt = Math.round(l_HintImgWid / i_HintImgAr);
+
+				var l_DrawHeader = nWse.stDomUtil.cQryOne(".cnApp_DrawHeader");
+				//	console.log(l_EarthDiv.offsetHeight + ", " + l_DrawHeader.offsetHeight);
+				var i_Scl = 1.2;	// 这个比例是合适的，但是取决于BG_Mbl.jpg的大小
+
+				nWse.stCssUtil.cSetDimHgt(l_EarthDiv, l_EarthImgHgt);
+				//	console.log("l_EarthImgHgt = " + l_EarthImgHgt);
+				var l_DHH = Math.round(l_EarthImgHgt * i_Scl);
+				nWse.stCssUtil.cSetDimHgt(l_DrawHeader, l_DHH);
+
+				// 地球垂直居中
+				var l_Y = (l_DHH - l_EarthImgHgt) / 2;
+				nWse.stCssUtil.cSetPosTp(l_EarthDiv, l_Y);
+
+				// 文字相对于地球垂直居中
+				var l_CptnDiv = nWse.stDomUtil.cQryOne(".cnApp_CptnDiv");
+				nWse.stCssUtil.cSetDimHgt(l_CptnDiv, l_HintImgHgt);
+				l_Y = l_Y + (l_EarthImgHgt - l_HintImgHgt) / 2;
+				nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y);
+			}
+
+			// 一开始修一次，以后每当窗口尺寸改变时继续修正
+			fFixDrawHeaderHgt();
+			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixDrawHeaderHgt, 0.1);
+
+		})();
 	});
 
 	//【等到全部加装完后才执行的代码！】
 	$(window).load(function () {
-
-		// 手机版页面高度修正
-		(function () {
-			var l_EarthDiv = nWse.stDomUtil.cQryOne(".cnApp_Mbl .cnApp_EarthDiv");
-			if (!l_EarthDiv)
-			{ return; }
-
-			var l_DrawHeader = nWse.stDomUtil.cQryOne(".cnApp_DrawHeader");
-			//	console.log(l_EarthDiv.offsetHeight + ", " + l_DrawHeader.offsetHeight);
-			var i_Scl = 1.2;	// 这个比例是合适的，但是取决于BG_Mbl.jpg的大小
-			var l_EH = l_EarthDiv.offsetHeight;
-			var l_DHH = Math.round(l_EH * i_Scl);
-			nWse.stCssUtil.cSetDimHgt(l_DrawHeader, l_DHH);
-
-			// 地球垂直居中
-			var l_Y = (l_DHH - l_EH) / 2;
-			nWse.stCssUtil.cSetPosTp(l_EarthDiv, l_Y);
-
-			// 文字相对于地球垂直居中
-			var l_CptnDiv = nWse.stDomUtil.cQryOne(".cnApp_CptnDiv");
-			l_Y = l_Y + (l_EH - l_CptnDiv.offsetHeight) / 2;
-			nWse.stCssUtil.cSetPosTp(l_CptnDiv, l_Y);
-		})();
 
 		// 地球旋转
 		(function () {
