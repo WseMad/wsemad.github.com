@@ -435,6 +435,22 @@ double fNmlzDeg0360(double a_Deg) // ∈[0, 360)
 	return a_Deg;
 }
 
+double fNmlzRad02Pi(double a_Rad) // ∈[0, 2Pi)
+{
+	auto i_2Pi = 2.0 * i_Pi;
+	while (a_Rad < 0)
+	{
+		a_Rad += i_2Pi;
+	}
+
+	while (a_Rad >= i_2Pi)
+	{
+		a_Rad -= i_2Pi;
+	}
+
+	return a_Rad;
+}
+
 double fJMFromJD(double a_JD)
 {
 	auto l_Rst = (a_JD - 2451545.0) / 365250.0;
@@ -493,7 +509,7 @@ double CalcSunEarthRadius(double a_JM)
 	auto l_R2 = CalcPeriodicTerm(i_Earth_R2, _countof(i_Earth_R2), 3, l_JM);
 	auto l_R3 = CalcPeriodicTerm(i_Earth_R3, _countof(i_Earth_R3), 3, l_JM);
 	auto l_R4 = CalcPeriodicTerm(i_Earth_R4, _countof(i_Earth_R4), 3, l_JM);
-	double l_R = (((((l_R4 * l_JM) + l_R3) * l_JM + l_R2) * l_JM + l_R1) * l_JM + l_R0) / 1e8; // 弧度
+	double l_R = (((((l_R4 * l_JM) + l_R3) * l_JM + l_R2) * l_JM + l_R1) * l_JM + l_R0) / 1e8;
 	auto l_Rst = l_R;
 	return l_Rst;
 }
@@ -531,7 +547,11 @@ void GetEarthNutationParameter(double a_JC, double *D, double *M, double *Mp, do
 	// 黄道与月亮平轨道升交点黄经
 	*Omega = 125.04452 - 1934.136261 * l_JC + 0.0020708 * l_JC2 + l_JC3 / 450000.0;
 
-//	fNmlzDeg0360
+	*D = fNmlzDeg0360(*D);
+	*M = fNmlzDeg0360(*M);
+	*Mp = fNmlzDeg0360(*Mp);
+	*F = fNmlzDeg0360(*F);
+	*Omega = fNmlzDeg0360(*Omega);
 }
 
 double fCalcNutnPeriodicTerm(double const *a_pCoe, int a_Amt, int a_Npe, double a_JM, // millennium千年
@@ -560,6 +580,9 @@ double fCalcNutnPeriodicTerm(double const *a_pCoe, int a_Amt, int a_Npe, double 
 		l_BaseIdx = l_ElmtIdx * a_Npe;
 		l_Tht = a_pCoe[l_BaseIdx + 0] * D + a_pCoe[l_BaseIdx + 1] * M
 			+ a_pCoe[l_BaseIdx + 2] * Mp + a_pCoe[l_BaseIdx + 3] * F + a_pCoe[l_BaseIdx + 4] * Omega;
+
+	//	l_Tht = fNmlzRad02Pi(l_Tht);	// 算出来的是弧度？×
+		l_Tht = fRadFromDeg(fNmlzDeg0360(l_Tht));	// 还是角度？√
 		l_Rst += (a_pCoe[l_BaseIdx + 5] + a_pCoe[l_BaseIdx + 6] * a_JC) * ::sin(l_Tht);
 	}
 	return l_Rst;
@@ -569,7 +592,7 @@ double CalcEarthLongitudeNutation(double a_JM)
 {
 	auto l_JC = a_JM * 10;	// 儒略世纪
 
-	double D, M, Mp, F, Omega;
+	double D, M, Mp, F, Omega;	// 都是角度！
 	GetEarthNutationParameter(l_JC, &D, &M, &Mp, &F, &Omega);
 
 	auto l_Nutn = fCalcNutnPeriodicTerm(i_Earth_N0, _countof(i_Earth_N0), 9, a_JM, D, M, Mp, F, Omega, l_JC);
@@ -597,7 +620,13 @@ double GetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 
 	// 修正光行差
 	// 太阳地心黄经光行差修正项是: -20".4898/R
-	longitude -= (20.4898 / CalcSunEarthRadius(l_JM)) / (20 * i_Pi);
+	auto i_K = 20.49552 / 3600; // 20.4898 20.49552
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM));					// 慢了大约2分钟
+	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * 0.8;			// 快了约12秒
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.00625);	// 快了24秒
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.00625);	// 快了24秒
+
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) / (20 * i_Pi);	// 快了大约7分钟
 
 	longitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (longitude > 345.0)) ? (longitude - 360) : longitude;
 	return longitude;
@@ -606,42 +635,24 @@ double GetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 double fEstmInitGuess(int a_Year, SOLARTERMS a_Ang);
 double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms)
 {
-	/*
-	double l_JD0, l_JD1, l_Lon, l_LonDrv;
-	double l_Ang = (double)ST_SolarTerms;
-
-	l_JD1 = fEstmInitGuess(year, ST_SolarTerms);
-	int l_Cnt = 0;
-	do
-	{
-		l_JD0 = l_JD1;
-
-		// 计算太阳黄经
-		l_Lon = fGetSunEclipticLongitudeECDegree(l_JD0, ST_SolarTerms) - l_Ang;
-		l_LonDrv = (fGetSunEclipticLongitudeECDegree(l_JD0 + 0.000005, ST_SolarTerms) -
-			fGetSunEclipticLongitudeECDegree(l_JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
-
-		l_JD1 = l_JD0 - l_Lon / l_LonDrv;
-
-		++l_Cnt;
-	} while ((fabs(l_JD1 - l_JD0) > 0.0000001) && (l_Cnt < 100)); // 最多迭代100次
-	cout << "牛顿迭代次数 = " << l_Cnt << endl;
-	return l_JD1;
-	//*/
-
 	double JD0, JD1, stDegree, stDegreep;
 	JD1 = fEstmInitGuess(year, ST_SolarTerms);
+
+	int l_Cnt = 0;
 	do
 	{
 		JD0 = JD1;
 		stDegree = GetSunEclipticLongitudeECDegree(JD0, ST_SolarTerms) - (double)ST_SolarTerms;
-		cout << stDegree << endl;
+	//	cout << stDegree << endl;
 
 		stDegreep = (GetSunEclipticLongitudeECDegree(JD0 + 0.000005, ST_SolarTerms) 
 			- GetSunEclipticLongitudeECDegree(JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
 		JD1 = JD0 - stDegree / stDegreep;
-	} while ((fabs(JD1 - JD0) > 0.0000001));
 
+		++l_Cnt;
+	} while ((fabs(JD1 - JD0) > 0.0000001) && (l_Cnt < 100));	// 最多迭代100次
+
+	cout << "牛顿迭代次数 = " << l_Cnt << endl;
 	return JD1;
 }
 

@@ -537,16 +537,17 @@ double w_GetNutationJamScalar(const double &dbJD)
 	double dbF = 93.27191 + 483202.017538 * dbT - 0.0036825 * dbTsquared + dbTcubed / 327270.0;
 	double dbOmega = 125.04452 - 1934.136261 * dbT + 0.0020708 * dbTsquared + dbTcubed / 450000.0;
 	
-	/*dbD = w_MapTo0To360Range(dbD);
+	dbD = w_MapTo0To360Range(dbD);
 	dbM = w_MapTo0To360Range(dbM);
 	dbMprime = w_MapTo0To360Range(dbMprime);
 	dbF = w_MapTo0To360Range(dbF);
-	dbOmega = w_MapTo0To360Range(dbOmega);*/
+	dbOmega = w_MapTo0To360Range(dbOmega);
 
 	double dbResulte = 0.0;
 	for (int i = 0; i < sizeof(Nutation_Gene) / sizeof(NUTATIONCOEFFICIENT); i++)
 	{
-		double dbRadargument = (Nutation_Gene[i].nD * dbD + Nutation_Gene[i].nM * dbM + Nutation_Gene[i].nMprime * dbMprime + Nutation_Gene[i].nF * dbF + Nutation_Gene[i].nOmega * dbOmega) * dbUnitRadian;
+		double dbRadargument = (Nutation_Gene[i].nD * dbD + Nutation_Gene[i].nM * dbM + Nutation_Gene[i].nMprime * dbMprime 
+			+ Nutation_Gene[i].nF * dbF + Nutation_Gene[i].nOmega * dbOmega) * dbUnitRadian; // 转成弧度
 		dbResulte += (Nutation_Gene[i].nSincoeff1 + Nutation_Gene[i].dSincoeff2 * dbT) * sin(dbRadargument) * 0.0001;
 	}
 	return dbResulte; // 秒（度分秒）
@@ -705,12 +706,12 @@ double fGetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 	// 计算太阳黄经
 	double dbLongitude = w_GetSunLongitude(a_JD);
 
-	//@
+	//@ 计算太阳黄纬
 	auto l_SL = w_GetSunLatitude(a_JD);
 
 
 	// 一次校正经度
-	dbLongitude += w_CorrectionCalcSunLongitude(dbLongitude, w_GetSunLatitude(a_JD), a_JD);
+	dbLongitude += w_CorrectionCalcSunLongitude(dbLongitude, l_SL, a_JD);
 	// 二次校正天体章动
 	dbLongitude += w_GetNutationJamScalar(a_JD) / 3600.0;
 	// 三次校正太阳半径向量
@@ -721,57 +722,6 @@ double fGetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 //	dbLongitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (dbLongitude > 345.0)) ? -dbLongitude : dbLongitude;
 	dbLongitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (dbLongitude > 345.0)) ? (dbLongitude - 360) : dbLongitude;
 	return dbLongitude;
-}
-
-double w_CalcSolarTerms(const int &year, const SOLARTERMS &ST_SolarTerms)
-{
-	// 节气月份
-	int SolarTermsMonth = static_cast<int>(ceil(static_cast<double>((ST_SolarTerms + 90.0) / 30.0)));
-	SolarTermsMonth = SolarTermsMonth > 12 ? SolarTermsMonth - 12 : SolarTermsMonth;
-	// 节令的发生日期基本都在每月 4 - 9 号间
-	int LowerLimitSolarTermsDay = ST_SolarTerms % 15 == 0 && ST_SolarTerms % 30 != 0 ? 1 : 15;//4 : 16;
-	// 节气的发生日期基本都在每月 16 - 24 号间
-	int UpperLimitSolarTermsDay = ST_SolarTerms % 15 == 0 && ST_SolarTerms % 30 != 0 ? 16 : 28;//9 : 24;
-	// 采用二分法逼近计算
-	double dbLowerLinit = w_GDToJD(year, SolarTermsMonth, LowerLimitSolarTermsDay, 0, 0, 0);
-	double dbUpperLinit = w_GDToJD(year, SolarTermsMonth, UpperLimitSolarTermsDay, 23, 59, 59);
-	// 二分法分界点日期
-	double dbDichotomyDivisionDayJD = 0;
-	// 太阳黄经角度
-	double dbLongitude = 0;
-	// 对比二分法精度是否达到要求
-	for (; fabs(dbLongitude - static_cast<double>(ST_SolarTerms)) >= 0.0000001;)
-	{
-		if (dbUpperLinit <= dbLowerLinit)
-		{
-			break;
-		}
-
-
-		dbDichotomyDivisionDayJD = ((dbUpperLinit - dbLowerLinit) / 2.0) + dbLowerLinit;
-
-	//	dbLongitude = fGetSunEclipticLongitudeECDegree(dbDichotomyDivisionDayJD, ST_SolarTerms);
-
-	//	/*
-		// 计算太阳黄经
-		dbLongitude = w_GetSunLongitude(dbDichotomyDivisionDayJD);
-		// 一次校正经度
-		dbLongitude += w_CorrectionCalcSunLongitude(dbLongitude, w_GetSunLatitude(dbDichotomyDivisionDayJD), dbDichotomyDivisionDayJD);
-		// 二次校正天体章动
-		dbLongitude += w_GetNutationJamScalar(dbDichotomyDivisionDayJD) / 3600.0;
-		// 三次校正太阳半径向量
-		//	dbLongitude -= (20.4898 / w_GetSunRadiusVector(dbDichotomyDivisionDayJD)) / 3600.0;
-		dbLongitude -= (20.49552 / w_GetSunRadiusVector(dbDichotomyDivisionDayJD)) / 3600.0 / (20 * PI);	//@ 20*PI 文档中还除了这一项！
-
-		// 由于春分这天黄经为 0 度，比较特殊，因此专门判断（如不加以特殊对待则会导致计算范围覆盖整个 360 度角）
-	//	dbLongitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (dbLongitude > 345.0)) ? -dbLongitude : dbLongitude;
-		dbLongitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (dbLongitude > 345.0)) ? (dbLongitude - 360) : dbLongitude;
-		//*/
-
-		// 调整二分法上下限
-		(dbLongitude > static_cast<double>(ST_SolarTerms)) ? dbUpperLinit = dbDichotomyDivisionDayJD : dbLowerLinit = dbDichotomyDivisionDayJD;
-	}
-	return dbDichotomyDivisionDayJD;
 }
 
 double fEstmInitGuess(int a_Year, SOLARTERMS a_Ang)
@@ -899,7 +849,7 @@ double fCalcSolarTerms_Newton(const int &year, const SOLARTERMS &ST_SolarTerms)
 
 		// 计算太阳黄经
 		l_Lon = fGetSunEclipticLongitudeECDegree(l_JD0, ST_SolarTerms) - l_Ang;
-		cout << l_Lon << endl;
+	//	cout << l_Lon << endl;
 
 		l_LonDrv = (fGetSunEclipticLongitudeECDegree(l_JD0 + 0.000005, ST_SolarTerms) - 
 			fGetSunEclipticLongitudeECDegree(l_JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
@@ -1040,23 +990,42 @@ int _tmain(int argc, _TCHAR* argv[])
 	// 2021年冬至，偏多35秒，成22号（百度算是21号）
 	// 与那篇文章里的2012年节气对比，早了接近但不到7分钟；但2012年春分误差达1个半小时
 	double l_JD;
-
-//	l_JD = w_CalcSolarTerms(2012, ST_VERNAL_EQUINOX);
-//	l_JD = fCalcSolarTerms_Newton(2012, ST_VERNAL_EQUINOX);
-
-	double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms);
-	l_JD = fCalcSolarTerms_Newton2(2012, ST_VERNAL_EQUINOX);
-
 	int l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec;
-	w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
-//	cout << "格林威治时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+
+	int i_WhichYear = 2016;
+	double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms);
+
+	for (int y = 2016; y <= 2033; ++y)
+	{
+		l_JD = fCalcSolarTerms_Newton2(y, ST_VERNAL_EQUINOX);
+		w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+		//	cout << "格林威治时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+		w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+		cout << y << ", 本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+	}
+//	l_JD = fCalcSolarTerms_Newton(i_WhichYear, ST_VERNAL_EQUINOX);
+//	w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+////	cout << "格林威治时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
 //	w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
-	cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+//	cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+	//l_JD = fCalcSolarTerms_Newton2(i_WhichYear, ST_VERNAL_EQUINOX); //
+	//w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+	//w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+	//cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
 
 	//【调试】
 	void fTest();
 	fTest();
 	/////////
+
+	/*
+2016年春分时间	3月20日 12:30:08	2017年春分时间	3月20日 18:28:35	2018年春分时间	3月21日 00:15:24
+2019年春分时间	3月21日 05:58:20	2020年春分时间	3月20日 11:49:29	2021年春分时间	3月20日 17:37:19
+2022年春分时间	3月20日 23:33:15	2023年春分时间	3月21日 05:24:14	2024年春分时间	3月20日 11:06:12
+2025年春分时间	3月20日 17:01:14	2026年春分时间	3月20日 22:45:42	2027年春分时间	3月21日 04:24:24
+2028年春分时间	3月20日 10:16:49	2029年春分时间	3月20日 16:01:37	2030年春分时间	3月20日 21:51:43
+2031年春分时间	3月21日 03:40:34	2032年春分时间	3月20日 09:21:29	2033年春分时间	3月20日 15:22:17
+	*/
 
 	/////////////////////////////////////////////////////////////////////////
 	cout << endl << "===============================================" << endl;
