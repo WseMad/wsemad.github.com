@@ -531,16 +531,18 @@ double w_GetNutationJamScalar(const double &dbJD)
 	double dbT = (dbJD - 2451545.0) / 36525.0;
 	double dbTsquared = dbT * dbT;
 	double dbTcubed = dbTsquared * dbT;
-	double dbD = 297.85036 + 445267.111480 * dbT - 0.0019142 * dbTsquared + dbTcubed / 189474.0;
-	dbD = w_MapTo0To360Range(dbD);
+	double dbD = 297.85036 + 445267.111480 * dbT - 0.0019142 * dbTsquared + dbTcubed / 189474.0;	
 	double dbM = 357.52772 + 35999.050340 * dbT - 0.0001603 * dbTsquared - dbTcubed / 300000.0;
-	dbM = w_MapTo0To360Range(dbM);
 	double dbMprime = 134.96298 + 477198.867398 * dbT + 0.0086972 * dbTsquared + dbTcubed / 56250.0;
-	dbMprime = w_MapTo0To360Range(dbMprime);
 	double dbF = 93.27191 + 483202.017538 * dbT - 0.0036825 * dbTsquared + dbTcubed / 327270.0;
-	dbF = w_MapTo0To360Range(dbF);
 	double dbOmega = 125.04452 - 1934.136261 * dbT + 0.0020708 * dbTsquared + dbTcubed / 450000.0;
-	dbOmega = w_MapTo0To360Range(dbOmega);
+	
+	/*dbD = w_MapTo0To360Range(dbD);
+	dbM = w_MapTo0To360Range(dbM);
+	dbMprime = w_MapTo0To360Range(dbMprime);
+	dbF = w_MapTo0To360Range(dbF);
+	dbOmega = w_MapTo0To360Range(dbOmega);*/
+
 	double dbResulte = 0.0;
 	for (int i = 0; i < sizeof(Nutation_Gene) / sizeof(NUTATIONCOEFFICIENT); i++)
 	{
@@ -897,6 +899,8 @@ double fCalcSolarTerms_Newton(const int &year, const SOLARTERMS &ST_SolarTerms)
 
 		// 计算太阳黄经
 		l_Lon = fGetSunEclipticLongitudeECDegree(l_JD0, ST_SolarTerms) - l_Ang;
+		cout << l_Lon << endl;
+
 		l_LonDrv = (fGetSunEclipticLongitudeECDegree(l_JD0 + 0.000005, ST_SolarTerms) - 
 			fGetSunEclipticLongitudeECDegree(l_JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
 
@@ -1035,13 +1039,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	// ST_SPRING_BEGINS ST_WINTER_SOLSTICE
 	// 2021年冬至，偏多35秒，成22号（百度算是21号）
 	// 与那篇文章里的2012年节气对比，早了接近但不到7分钟；但2012年春分误差达1个半小时
-//	double l_JD = w_CalcSolarTerms(2012, ST_VERNAL_EQUINOX);
-	double l_JD = fCalcSolarTerms_Newton(2012, ST_VERNAL_EQUINOX);
+	double l_JD;
+
+//	l_JD = w_CalcSolarTerms(2012, ST_VERNAL_EQUINOX);
+//	l_JD = fCalcSolarTerms_Newton(2012, ST_VERNAL_EQUINOX);
+
+	double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms);
+	l_JD = fCalcSolarTerms_Newton2(2012, ST_VERNAL_EQUINOX);
 
 	int l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec;
 	w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 //	cout << "格林威治时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
-	w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
+//	w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 	cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
 
 	//【调试】

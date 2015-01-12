@@ -435,14 +435,22 @@ double fNmlzDeg0360(double a_Deg) // ∈[0, 360)
 	return a_Deg;
 }
 
+double fJMFromJD(double a_JD)
+{
+	auto l_Rst = (a_JD - 2451545.0) / 365250.0;
+	return l_Rst;
+}
+
 double CalcPeriodicTerm(double const *a_pCoe, int a_Amt, int a_Npe, double a_JM) // millennium千年
 {
 	double l_Rst = 0;
 	int l_ElmtAmt = a_Amt / a_Npe;
 	int l_ElmtIdx = 0;
+	int l_BaseIdx;
 	for (; l_ElmtIdx < l_ElmtAmt; ++ l_ElmtIdx)
 	{
-		l_Rst += a_pCoe[l_ElmtIdx * a_Npe + 0] * ::cos(a_pCoe[l_ElmtIdx * a_Npe + 1] + a_pCoe[l_ElmtIdx * a_Npe + 2] * a_JM);
+		l_BaseIdx = l_ElmtIdx * a_Npe;
+		l_Rst += a_pCoe[l_BaseIdx + 0] * ::cos(a_pCoe[l_BaseIdx + 1] + a_pCoe[l_BaseIdx + 2] * a_JM);
 	}
 	return l_Rst;
 }
@@ -476,6 +484,20 @@ double CalcSunEclipticLatitudeEC(double a_JM)
 	return l_Rst;
 }
 
+// 计算日地距离
+double CalcSunEarthRadius(double a_JM)
+{
+	auto l_JM = a_JM;
+	auto l_R0 = CalcPeriodicTerm(i_Earth_R0, _countof(i_Earth_R0), 3, l_JM);
+	auto l_R1 = CalcPeriodicTerm(i_Earth_R1, _countof(i_Earth_R1), 3, l_JM);
+	auto l_R2 = CalcPeriodicTerm(i_Earth_R2, _countof(i_Earth_R2), 3, l_JM);
+	auto l_R3 = CalcPeriodicTerm(i_Earth_R3, _countof(i_Earth_R3), 3, l_JM);
+	auto l_R4 = CalcPeriodicTerm(i_Earth_R4, _countof(i_Earth_R4), 3, l_JM);
+	double l_R = (((((l_R4 * l_JM) + l_R3) * l_JM + l_R2) * l_JM + l_R1) * l_JM + l_R0) / 1e8; // 弧度
+	auto l_Rst = l_R;
+	return l_Rst;
+}
+
 // 修正太阳黄经
 double AdjustSunEclipticLongitudeEC(double a_LonDeg, double a_LatDeg, double a_JM)
 {
@@ -487,12 +509,147 @@ double AdjustSunEclipticLongitudeEC(double a_LonDeg, double a_LatDeg, double a_J
 	return l_Rst;
 }
 
+// 计算地球章动
+void GetEarthNutationParameter(double a_JC, double *D, double *M, double *Mp, double*F, double *Omega)
+{
+	auto l_JC = a_JC;
+	auto l_JC2 = l_JC * l_JC;
+	auto l_JC3 = l_JC2 * l_JC;
+
+	// 平距角（如月对地心的角距离）
+	*D = 297.85036 + 445267.111480 * l_JC - 0.0019142 * l_JC2 + l_JC3 / 189474.0;
+
+	// 太阳（地球）平近点角
+	*M = 357.52772 + 35999.050340 * l_JC - 0.0001603 * l_JC2 - l_JC3 / 300000.0;
+
+	// 月亮平近点角
+	*Mp = 134.96298 + 477198.867398 * l_JC + 0.0086972 * l_JC2 + l_JC3 / 56250.0;
+
+	// 月亮纬度参数
+	*F = 93.27191 + 483202.017538 * l_JC - 0.0036825 * l_JC2 + l_JC3 / 327270.0;
+
+	// 黄道与月亮平轨道升交点黄经
+	*Omega = 125.04452 - 1934.136261 * l_JC + 0.0020708 * l_JC2 + l_JC3 / 450000.0;
+
+//	fNmlzDeg0360
+}
+
+double fCalcNutnPeriodicTerm(double const *a_pCoe, int a_Amt, int a_Npe, double a_JM, // millennium千年
+	double D, double M, double Mp, double F, double Omega, double a_JC)
+{
+	//struct NUTATION_COEFFICIENT
+	//{
+	//	double   nD;
+	//	double   nM;
+	//	double   nMprime;
+	//	double   nF;
+	//	double   nOmega;
+	//	double   nSincoeff1;
+	//	double dSincoeff2;		// double
+	//	double   nCoscoeff1;
+	//	double dCoscoeff2;		// double
+	//}
+
+	double l_Rst = 0;
+	int l_ElmtAmt = a_Amt / a_Npe;
+	int l_ElmtIdx = 0;
+	int l_BaseIdx;
+	double l_Tht;
+	for (; l_ElmtIdx < l_ElmtAmt; ++l_ElmtIdx)
+	{
+		l_BaseIdx = l_ElmtIdx * a_Npe;
+		l_Tht = a_pCoe[l_BaseIdx + 0] * D + a_pCoe[l_BaseIdx + 1] * M
+			+ a_pCoe[l_BaseIdx + 2] * Mp + a_pCoe[l_BaseIdx + 3] * F + a_pCoe[l_BaseIdx + 4] * Omega;
+		l_Rst += (a_pCoe[l_BaseIdx + 5] + a_pCoe[l_BaseIdx + 6] * a_JC) * ::sin(l_Tht);
+	}
+	return l_Rst;
+}
+
+double CalcEarthLongitudeNutation(double a_JM)
+{
+	auto l_JC = a_JM * 10;	// 儒略世纪
+
+	double D, M, Mp, F, Omega;
+	GetEarthNutationParameter(l_JC, &D, &M, &Mp, &F, &Omega);
+
+	auto l_Nutn = fCalcNutnPeriodicTerm(i_Earth_N0, _countof(i_Earth_N0), 9, a_JM, D, M, Mp, F, Omega, l_JC);
+	l_Nutn = l_Nutn * 0.0001 / 3600.0; // 先乘以章动表的系数 0.0001，然后换算成度的单位
+	return l_Nutn;
+}
+
+// 计算太阳的地心黄经
+double GetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
+{
+	auto l_JM = fJMFromJD(a_JD); // 儒略千年
+
+	// 计算太阳的地心黄经
+	double longitude = CalcSunEclipticLongitudeEC(l_JM);
+
+	// 计算太阳的地心黄纬
+//	double latitude = CalcSunEclipticLatitudeEC(l_JM) * 3600.0;
+	double latitude = CalcSunEclipticLatitudeEC(l_JM);
+
+	// 修正精度
+	longitude += AdjustSunEclipticLongitudeEC(longitude, latitude, l_JM);
+
+	// 修正天体章动
+	longitude += CalcEarthLongitudeNutation(l_JM);
+
+	// 修正光行差
+	// 太阳地心黄经光行差修正项是: -20".4898/R
+	longitude -= (20.4898 / CalcSunEarthRadius(l_JM)) / (20 * i_Pi);
+
+	longitude = ((ST_SolarTerms == ST_VERNAL_EQUINOX) && (longitude > 345.0)) ? (longitude - 360) : longitude;
+	return longitude;
+}
+
+double fEstmInitGuess(int a_Year, SOLARTERMS a_Ang);
+double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms)
+{
+	/*
+	double l_JD0, l_JD1, l_Lon, l_LonDrv;
+	double l_Ang = (double)ST_SolarTerms;
+
+	l_JD1 = fEstmInitGuess(year, ST_SolarTerms);
+	int l_Cnt = 0;
+	do
+	{
+		l_JD0 = l_JD1;
+
+		// 计算太阳黄经
+		l_Lon = fGetSunEclipticLongitudeECDegree(l_JD0, ST_SolarTerms) - l_Ang;
+		l_LonDrv = (fGetSunEclipticLongitudeECDegree(l_JD0 + 0.000005, ST_SolarTerms) -
+			fGetSunEclipticLongitudeECDegree(l_JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
+
+		l_JD1 = l_JD0 - l_Lon / l_LonDrv;
+
+		++l_Cnt;
+	} while ((fabs(l_JD1 - l_JD0) > 0.0000001) && (l_Cnt < 100)); // 最多迭代100次
+	cout << "牛顿迭代次数 = " << l_Cnt << endl;
+	return l_JD1;
+	//*/
+
+	double JD0, JD1, stDegree, stDegreep;
+	JD1 = fEstmInitGuess(year, ST_SolarTerms);
+	do
+	{
+		JD0 = JD1;
+		stDegree = GetSunEclipticLongitudeECDegree(JD0, ST_SolarTerms) - (double)ST_SolarTerms;
+		cout << stDegree << endl;
+
+		stDegreep = (GetSunEclipticLongitudeECDegree(JD0 + 0.000005, ST_SolarTerms) 
+			- GetSunEclipticLongitudeECDegree(JD0 - 0.000005, ST_SolarTerms)) / 0.00001;
+		JD1 = JD0 - stDegree / stDegreep;
+	} while ((fabs(JD1 - JD0) > 0.0000001));
+
+	return JD1;
+}
 
 //// 测试
 void fTest()
 {
-	auto l_JM = (2456006.5000000000 - 2451545.0) / 365250.0;
-	CalcSunEclipticLatitudeEC(l_JM);
+	/*auto l_JM = (2456006.5000000000 - 2451545.0) / 365250.0;
+	CalcSunEclipticLatitudeEC(l_JM);*/
 }
 
 
