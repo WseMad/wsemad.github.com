@@ -41,7 +41,7 @@
 			s_FlashHgt = i_FlashHgt * s_FlashScl;
 			s_FlashX = (nWse.stDomUtil.cGetVwptWid() - s_FlashWid) / 2;
 			s_FlashY = (nWse.stDomUtil.cGetVwptHgt() - s_FlashHgt) / 2;
-			console.log("s_FlashScl = " + s_FlashScl);
+		//	console.log("s_FlashScl = " + s_FlashScl);
 		}
 
 		fUpdFlashScl();
