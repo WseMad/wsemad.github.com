@@ -622,9 +622,17 @@ double GetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 	// 太阳地心黄经光行差修正项是: -20".4898/R
 	auto i_K = 20.49552 / 3600; // 20.4898 20.49552
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM));					// 慢了大约2分钟
-	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * 0.8;			// 快了约12秒
-//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.00625);	// 快了24秒
-//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.00625);	// 快了24秒
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * 0.951;			// 72s, 0%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * 0.8;			// 105s, 3377.44, 66.6667%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.05);	// 107s, 734.944, 94.4444%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.025);	// 109s, 709, 94.4444%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.0125);	// 103s, 717.722, 94.4444%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.00625);	// 104s, 2407.11, 77.7778%
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.0375);	// 16s, 42.2222, 100%★
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.03125);// 13s, 39.2222, 100%★
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.032);// 13s, 38.2778, 100%★
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.0324);// 13s, 37, 100%★
+	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.032475);// 13s, 36.2222, 100%★
 
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM)) / (20 * i_Pi);	// 快了大约7分钟
 
