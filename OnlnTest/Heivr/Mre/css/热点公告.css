@@ -1,0 +1,104 @@
+﻿/*	
+*
+*/
+
+
+
+/******************************************* 热点公告 *******************************************/
+
+/********** 公共 ***********/
+
+.cnApp_Env .cnApp_List {
+	background-color: rgb(247, 249, 252);
+}
+
+.cnApp_Env .cnApp_ClkToLrnDtals a {
+	text-decoration: none;
+}
+
+/********** PC版 ***********/
+
+.cnApp_Env.cnApp_PC {
+}
+
+	.cnApp_Env.cnApp_PC .cnApp_List {
+		margin-top: 20px;
+		padding: 20px;
+		background-color: rgb(247, 249, 252);
+	}
+
+		.cnApp_Env.cnApp_PC .cnApp_List li {
+			margin-bottom: 20px;
+		}
+
+	.cnApp_Env.cnApp_PC .cnApp_Boa {
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+
+		.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_Col.cnApp_0 {
+			width: 40%;
+			padding-right: 20px;
+		}
+
+			.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_Col.cnApp_0 img {
+			}
+
+		.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_Col.cnApp_1 {
+			width: 60%;
+		}
+
+			.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_Col.cnApp_1 .cnApp_Cptn {
+				margin-bottom: 10px;
+				font-size: 1.5em;
+				font-weight: bold;
+				color: black;
+			}
+
+			.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_Col.cnApp_1 .cnApp_Ctnt {
+				font-size: 1em;
+				color: black;
+			}
+
+		.cnApp_Env.cnApp_PC .cnApp_Boa .cnApp_ClkToLrnDtals {
+			position: absolute;
+			right: 0px;
+			bottom: 4px;
+			width: 60%;
+			border-bottom: 1px dashed rgb(168, 168, 168);
+			padding-bottom: 10px;
+			text-align: right;
+		}
+
+
+
+/********** 手机版 ***********/
+
+.cnApp_Mbl .cnApp_Body {
+	padding: 10px;
+}
+
+.cnApp_Mbl .cnApp_Heading {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: black;
+}
+
+.cnApp_Mbl .cnApp_List li {
+	margin-bottom: 10px;
+	border-bottom: 1px dashed rgb(168, 168, 168);
+	padding-bottom: 5px;
+}
+
+.cnApp_Mbl .cnApp_List li .cnApp_Cptn {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.cnApp_Mbl .cnApp_ClkToLrnDtals {
+	text-align: right;
+}
+
+/*********************************************************************** Over ***********************************************************************/
