@@ -1,0 +1,60 @@
+﻿/*	
+*
+*/
+
+
+/******************************** 共同 ********************************/
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.mi_abs_pos_lt_tp {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+}
+
+.mi_lot_env {
+	z-index: 100;
+}
+
+.mi_menu_bm {
+	position: fixed;
+	width: 100%;
+	height: 88px;
+	bottom: 32px;
+	z-index: 10000;
+	background-color: rgba(0, 0, 0, 1);
+}
+
+.mi_btn {
+	cursor: pointer;
+}
+
+
+/******************************** 正在加载 ********************************/
+
+.mi_loading .mi_btn {
+	position: fixed;
+	display: block;
+	
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+
+	/*【调试】*/
+	/*border: 1px solid rgb(0, 255, 0);*/
+}
+
+.mi_loading .mi_btn:hover {
+	box-shadow: 0px 0px 20px rgb(240, 233, 79);
+}
+
+
+/********************************  ********************************/
+
+/*********************************************************************** Over ***********************************************************************/
