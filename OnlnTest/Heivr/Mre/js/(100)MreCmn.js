@@ -261,7 +261,11 @@
 				if (!a_Ctanr)
 				{ return this; }
 
-				this.e_Cptns = nWse.stDomUtil.cQryAll(".cnApp_CptnGrp>.cnApp_Cptn", a_Ctanr, false);
+				this.e_CptnGrp = nWse.stDomUtil.cQryOne(".cnApp_tTabs>.cnApp_CptnGrp", a_Ctanr, true);	// 只考虑父子关系
+				if (!this.e_CptnGrp)
+				{ return this; }
+
+				this.e_Cptns = nWse.stDomUtil.cQryAll(".cnApp_tTabs>.cnApp_CptnGrp>.cnApp_Cptn", this.e_CptnGrp, true); // 只考虑父子关系
 				if (!this.e_Cptns)
 				{ return this; }
 
