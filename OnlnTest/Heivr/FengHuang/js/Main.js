@@ -57,10 +57,10 @@
 				if (!l_MenuBm)
 				{ return; }
 
-				var i_Gap = 32;
-				var l_Wid = nWse.stDomUtil.cGetVwptWid() - i_Gap * 2;
-				nWse.stCssUtil.cSetPosLt(l_MenuBm, i_Gap);
-				nWse.stCssUtil.cSetDimWid(l_MenuBm, l_Wid);
+				var l_X, l_Y;
+				l_X = 0;
+				l_Y = s_FlashY + s_FlashHgt - l_MenuBm.offsetHeight;
+				nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
 			}
 
 			fFixMenu();
