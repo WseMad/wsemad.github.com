@@ -26,6 +26,18 @@
 	color: rgb(156, 140, 114);
 }
 
+/* 文字渐变 */
+.mi_text_grad_tp {
+	/*color: rgb(221, 208, 200);*/
+	color: rgb(254, 242, 196);
+	clip: rect(0px, 2000px, 0.6em, 0px); /* 0.5em过短 */
+}
+
+.mi_text_grad_bm {
+	/*color: rgb(204, 164, 98);*/
+	color: rgb(202, 158, 90);
+}
+
 /* 布局环境和菜单 */
 .mi_lot_env {
 	width: 100%;
@@ -91,10 +103,8 @@
 					border-left: 1px dotted;
 				}
 
-				.mi_menu_bm .mi_boa.mi_nav .mi_list > li .mi_text_grad_mask {
-					background-image: -webkit-linear-gradient(top, rgba(2, 27, 67, 0.5) 0%, rgba(2, 27, 67, 0) 100%);
+				.mi_menu_bm .mi_boa.mi_nav .mi_list > li .mi_text_grad_tp {
 				}
-				
 
 				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item > a:hover {
 					background-color: rgb(9, 68, 172); /*若不支持渐变，使用这个*/
