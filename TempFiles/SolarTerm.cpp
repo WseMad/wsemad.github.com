@@ -992,33 +992,29 @@ int _tmain(int argc, _TCHAR* argv[])
 	double l_JD;
 	int l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec;
 
-	int i_WhichYear = 2016;
+	int i_WhichYear = 2015;
 	double fCalcSolarTerms_Newton2(const int &year, const SOLARTERMS &ST_SolarTerms);
 
 	//【误差统计】
-	
-	/*
-	2016年春分时间	3月20日 12:30:08	2017年春分时间	3月20日 18:28:35	2018年春分时间	3月21日 00:15:24
-	2019年春分时间	3月21日 05:58:20	2020年春分时间	3月20日 11:49:29	2021年春分时间	3月20日 17:37:19
-	2022年春分时间	3月20日 23:33:15	2023年春分时间	3月21日 05:24:14	2024年春分时间	3月20日 11:06:12
-	2025年春分时间	3月20日 17:01:14	2026年春分时间	3月20日 22:45:42	2027年春分时间	3月21日 04:24:24
-	2028年春分时间	3月20日 10:16:49	2029年春分时间	3月20日 16:01:37	2030年春分时间	3月20日 21:51:43
-	2031年春分时间	3月21日 03:40:34	2032年春分时间	3月20日 09:21:29	2033年春分时间	3月20日 15:22:17
-	*/
 	int i_Tab[][3] = {
-		{ 12, 30, 8 }, { 18, 28, 35 }, { 0, 15, 24 },
-		{ 5, 58, 20 }, { 11, 49, 29 }, { 17, 37, 19 },
-		{ 23, 33, 15 }, { 5, 24, 14 }, { 11, 6, 12 },
-		{ 17, 1, 14 }, { 22, 45, 42 }, { 4, 24, 24 },
-		{ 10, 16, 49 }, { 16, 1, 37 }, { 21, 51, 43 },
-		{ 3, 40, 34 }, { 9, 21, 29 }, { 15, 22, 17 }
+		{ 13, 48, 17 }, { 19, 43, 48 }, { 1, 32, 12 }, { 7, 20, 44 },	// 2008
+		{ 13, 14, 25 }, { 19, 1, 55 }, { 0, 57, 6 }, { 6, 45, 7 },		// 2012
+		{ 12, 30, 8 }, { 18, 28, 35 }, { 0, 15, 24 }, { 5, 58, 20 },	// 2016
+		{ 11, 49, 29 }, { 17, 37, 19 }, { 23, 33, 15 }, { 5, 24, 14 },	// 2020
+		{ 11, 6, 12 }, { 17, 1, 14 }, { 22, 45, 42 }, { 4, 24, 24 },	// 2024
+		{ 10, 16, 49 }, { 16, 1, 37 }, { 21, 51, 43 }, { 3, 40, 34 },	// 2028
+		{ 9, 21, 29 }, { 15, 22, 17 }, { 21, 17, 1 }, { 3, 2, 12 },		// 2032
+		{ 9, 2, 19 }, { 14, 49, 43 }, { 20, 40, 4 }, { 2, 31, 26 },		// 2036
+		{ 8, 11, 5 }, { 14, 6, 11 }, { 19, 52, 39 }, { 1, 27, 7 },		// 2040
+		{ 7, 19, 52 }, { 13, 6, 56 }, { 18, 57, 10 }, { 0, 51, 56 },	// 2044
+		{ 6, 33, 5 }, { 12, 27, 52 }, { 18, 18, 49 }, { 23, 58, 25 },	// 2048
 	};
 
 	int l_MaxErr = 0, l_MaxYear;
 	int l_Lt30Cnt = 0;	// 误差＜30s的数量
-	double l_Variance = 0;
+	double l_MeanErr = 0;
 
-	int i_BgnYear = 2016, i_EndYear = 2033;
+	int i_BgnYear = 2008, i_EndYear = i_BgnYear + _countof(i_Tab) - 1;
 	for (int y = i_BgnYear; y <= i_EndYear; ++y)
 	{
 		l_JD = fCalcSolarTerms_Newton2(y, ST_VERNAL_EQUINOX);
@@ -1027,8 +1023,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 		cout << y << ", 本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec;
 
-		int l_Err = ::abs(l_Hour - i_Tab[y - i_BgnYear][0]) * 3600
-			+ ::abs(l_Min - i_Tab[y - i_BgnYear][1]) * 60 + ::abs(l_Sec - i_Tab[y - i_BgnYear][2]);
+		/*int l_Err = ::abs(l_Hour - i_Tab[y - i_BgnYear][0]) * 3600
+			+ ::abs(l_Min - i_Tab[y - i_BgnYear][1]) * 60 + ::abs(l_Sec - i_Tab[y - i_BgnYear][2]);*/
+
+		int l_Err = ::abs((l_Hour * 3600 + l_Min * 60 + l_Sec) - 
+			(i_Tab[y - i_BgnYear][0] * 3600 + i_Tab[y - i_BgnYear][1] * 60 + i_Tab[y - i_BgnYear][2]));
+
 		cout << ", err = " << l_Err << "s" << endl;
 
 		if (l_Err > l_MaxErr)
@@ -1042,28 +1042,31 @@ int _tmain(int argc, _TCHAR* argv[])
 			++l_Lt30Cnt;
 		}
 
-		l_Variance += l_Err * l_Err;
+		l_MeanErr += l_Err;
 	}
 
 	int l_YearAmt = i_EndYear - i_BgnYear + 1;
 	cout << "最大误差 = " << l_MaxErr << "s, Year = " << l_MaxYear << endl;
-	cout << "方差 = " << l_Variance / (double)l_YearAmt << endl;
+	cout << "平均误差 = " << l_MeanErr / (double)l_YearAmt << endl;
 	cout << "误差＜30s的数量 = " << l_Lt30Cnt << ", 比率 = " << (double)l_Lt30Cnt / (double)l_YearAmt * 100 << "%" << endl;
+
+	/////////////////////////////////////
 
 //	l_JD = fCalcSolarTerms_Newton(i_WhichYear, ST_VERNAL_EQUINOX);
 //	w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 ////	cout << "格林威治时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
 //	w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 //	cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
+	
 	//l_JD = fCalcSolarTerms_Newton2(i_WhichYear, ST_VERNAL_EQUINOX); //
 	//w_JDToGD(l_JD, l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 	//w_UTCToLST(l_Year, l_Mon, l_Day, l_Hour, l_Min, l_Sec);
 	//cout << "本地时间：" << l_Year << "-" << l_Mon << "-" << l_Day << ", " << l_Hour << ":" << l_Min << ":" << l_Sec << endl;
 
-	//【调试】
-	void fTest();
-	fTest();
-	/////////
+	////【调试】
+	//void fTest();
+	//fTest();
+	///////////
 
 	/////////////////////////////////////////////////////////////////////////
 	cout << endl << "===============================================" << endl;
@@ -1071,3 +1074,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
+/*
+2015年春分时间是 3月21日 06:45:07
+2016年春分时间	3月20日 12:30:08	2017年春分时间	3月20日 18:28:35	2018年春分时间	3月21日 00:15:24
+2019年春分时间	3月21日 05:58:20	2020年春分时间	3月20日 11:49:29	2021年春分时间	3月20日 17:37:19
+2022年春分时间	3月20日 23:33:15	2023年春分时间	3月21日 05:24:14	2024年春分时间	3月20日 11:06:12
+2025年春分时间	3月20日 17:01:14	2026年春分时间	3月20日 22:45:42	2027年春分时间	3月21日 04:24:24
+2028年春分时间	3月20日 10:16:49	2029年春分时间	3月20日 16:01:37	2030年春分时间	3月20日 21:51:43
+2031年春分时间	3月21日 03:40:34	2032年春分时间	3月20日 09:21:29	2033年春分时间	3月20日 15:22:17
+*/

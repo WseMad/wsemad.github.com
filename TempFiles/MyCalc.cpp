@@ -632,7 +632,8 @@ double GetSunEclipticLongitudeECDegree(double a_JD, SOLARTERMS ST_SolarTerms)
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.03125);// 13s, 39.2222, 100%★
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.032);// 13s, 38.2778, 100%★
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.0324);// 13s, 37, 100%★
-	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.032475);// 13s, 36.2222, 100%★
+	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.032475);// 26s, 9.53571, 100%★
+//	longitude -= (i_K / CalcSunEarthRadius(l_JM)) * (0.8 + 0.02185);
 
 //	longitude -= (i_K / CalcSunEarthRadius(l_JM)) / (20 * i_Pi);	// 快了大约7分钟
 
