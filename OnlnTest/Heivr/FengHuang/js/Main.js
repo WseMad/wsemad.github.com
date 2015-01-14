@@ -94,6 +94,30 @@
 			})();
 		}
 
+		//===================================================== 区位价值
+
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_qu_wei")) {
+			(function () {
+
+				// 调整按钮位置尺寸
+				function fFixBtnPosDim()
+				{
+					var i_BtnStdWid = 326, i_BtnStdHgt = 203;
+					var l_W = Math.round(i_BtnStdWid * s_FlashScl), l_H = Math.round(i_BtnStdHgt * s_FlashScl);
+					var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+					nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
+
+					var l_X, l_Y;
+					l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+					l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
+					nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
+				}
+
+				fFixBtnPosDim();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixBtnPosDim, i_WndRszRspsSpd);
+				
+			})();
+		}
 
 	});
 })();

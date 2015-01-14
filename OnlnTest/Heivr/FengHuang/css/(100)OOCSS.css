@@ -41,6 +41,22 @@ li > a {
 	bottom: 0px;
 }
 
+.mi_full_wid {
+	width: 100%;
+}
+
+.mi_text_aln_lt {
+	text-align: left;
+}
+
+.mi_text_aln_ct {
+	text-align: center;
+}
+
+.mi_text_aln_rt {
+	text-align: right;
+}
+
 .mi_boa .mi_col {
 	float: left;
 }
