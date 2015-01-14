@@ -3,9 +3,8 @@
 */
 
 
-/******************************** 共同 ********************************/
+/******************************** 精灵图 ********************************/
 
-/* 精灵图 */
 .mi_icon {
 	background-color: transparent;
 	background-image: url("../images/sprite.png");
@@ -20,47 +19,7 @@
 		height: 98px;
 	}
 
-/* html */
-html, body {
-	width: 100%;
-	height: 100%;
-}
-
-li > a {
-	display: block;
-	text-decoration: none;
-}
-
-/* OOCSS */
-.mi_rel_pstn {
-	position: relative;
-	left: 0px;
-	right: 0px;
-}
-
-.mi_dspl_blk {
-	display: block;
-}
-
-.mi_abs_pstn_lt_tp {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-}
-
-.mi_abs_pstn_lt_bm {
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-}
-
-.mi_boa .mi_col {
-	float: left;
-}
-
-.mi_cur_pointer {
-	cursor: pointer;
-}
+/******************************** 共同 ********************************/
 
 /* 本项目的OOCSS */
 .mi_nml_font_clo {
@@ -81,6 +40,13 @@ li > a {
 	width: 100%;
 	/*height: 80px;*/
 	z-index: 1000;
+
+	/*3D变换*/
+	-webkit-perspective: 500px;
+	-moz-perspective: 500px;
+	-ms-perspective: 500px;
+	-o-perspective: 500px;
+	perspective: 500px;
 }
 
 	.mi_menu_bm .mi_boa.mi_nav {
@@ -100,21 +66,21 @@ li > a {
 			}
 
 				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item,
-				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_main {
+				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo {
 					/*margin: 0px 0.36%;*/
 				}
 
 					.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item > a,
-					.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_main {
+					.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo {
 						padding: 10px 20px;
 					}
 
-				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_main {
+				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo {
 					position: relative;
 					width: 111px;
 				}
 
-					.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_main .mi_plchd {
+					.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo .mi_plchd {
 						visibility: hidden;
 					}
 
@@ -128,6 +94,7 @@ li > a {
 
 				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item > a:hover {
 					background-color: rgb(9, 68, 172); /*若不支持渐变，使用这个*/
+					background-image: -webkit-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);	/*Chrome用这个*/
 					/*background-image: -webkit-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);*/
 					/*background-image: -webkit-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
 					background-image: -moz-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
@@ -140,8 +107,13 @@ li > a {
 					-webkit-animation-iteration-count: infinite;
 					-webkit-animation-direction: alternate;
 					-webkit-animation-fill-mode: forwards;*/
-					-webkit-animation: mi_menu_bm_item_bkgd 0.4s linear infinite alternate 0s forwards;
-					-ms-animation: mi_menu_bm_item_bkgd 0.8s linear infinite alternate 0s forwards;
+				
+					-ms-animation: mi_menu_bm_item_bkgd 0.8s ease-out 1 normal 0s forwards; /*IE做动画*/
+				}
+
+				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo > a:hover {
+					-webkit-animation: mi_menu_bm_logo_spin 1s ease-in-out 1 normal 0s backwards;
+					-ms-animation: mi_menu_bm_logo_spin 1s ease-in-out 1 normal 0s backwards;
 				}
 
 	.mi_menu_bm .mi_boa.mi_foot {
@@ -174,27 +146,33 @@ li > a {
 /*各种动画*/
 
 /*注意这一组动画在不同浏览器里表现不同，IE很好，Chrome糟糕……*/
-@-webkit-keyframes mi_menu_bm_item_bkgd {
+@-ms-keyframes mi_menu_bm_item_bkgd {
 	from {
-		/*background-color: yellow;*/
-		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 89%);
+		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 69%);
 	}
 	/*50% {
 		background-color: blue;
 	}*/
 	to {
-		/*background-color: red;*/
-		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);
+		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);
 	}
 }
 
-@-ms-keyframes mi_menu_bm_item_bkgd {
+@-webkit-keyframes mi_menu_bm_logo_spin {
 	from {
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 69%);
+		-webkit-transform: rotateY(0deg);
 	}
-
 	to {
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);
+		-webkit-transform: rotateY(360deg);
+	}
+}
+
+@-ms-keyframes mi_menu_bm_logo_spin {
+	from {
+		-ms-transform: rotateY(0deg);
+	}
+	to {
+		-ms-transform: rotateY(360deg);
 	}
 }
 

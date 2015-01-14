@@ -319,8 +319,216 @@
 	/// 可能是非Html5浏览器
 	nWse.fMaybeNonHtml5Brsr = function ()
 	{
-		return (! document.querySelector);	// IE8以前都没有这个函数
+		return (! document.getElementsByClassName);	// IE8以前都没有这个函数
 	};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 页面初始化
+
+	var stPageInit;
+	(function ()
+	{
+		/// 页面初始化
+		stPageInit = function () { };
+		nWse.stPageInit = stPageInit;
+		stPageInit.oc_nHost = nWse;
+		stPageInit.oc_FullName = nWse.ocBldFullName("stPageInit");
+
+		/// 构建全名
+		stPageInit.ocBldFullName = function (a_Name)
+		{ return stPageInit.oc_FullName + "." + a_Name; };
+
+		//======== 私有字段
+
+		var e_OnDocRdy = [];
+		var e_OnWndLoad = [];
+
+		//======== 私有函数
+
+		function eOnDocRdy()
+		{
+			if ((! e_OnDocRdy))
+			{ return; }
+
+			var i;
+			for (i = 0; i<e_OnDocRdy.length; ++i)
+			{
+				e_OnDocRdy[i]();
+			}
+
+			e_OnDocRdy = null;	// 完成后立即清除
+		}
+
+		function eOnDocRdy_NH5()
+		{
+			if (("interactive" != document.readyState) && ("complete" != document.readyState))
+			{ return; }
+
+			stPageInit.cRmvEvtHdlr(document, "readystatechange", eOnDocRdy_NH5);
+			eOnDocRdy();
+		}
+
+		function eOnWndLoad()
+		{
+			if (e_OnDocRdy) // 如果还没有被清除，现在回调
+			{ eOnDocRdy(); }
+
+			if ((! e_OnWndLoad))
+			{ return; }
+
+			var i;
+			for (i = 0; i<e_OnWndLoad.length; ++i)
+			{
+				e_OnWndLoad[i]();
+			}
+
+			e_OnWndLoad = null;	// 完成后立即清除
+		}
+
+		//======== 公有函数
+
+		/// 添加事件处理器
+		stPageInit.cAddEvtHdlr = function (a_Elmt, a_EvtName, a_fHdl)
+		{
+			if (a_Elmt.addEventListener)
+			{ a_Elmt.addEventListener(a_EvtName, a_fHdl, false); }
+			else
+			if (a_Elmt.attachEvent)
+			{ a_Elmt.attachEvent("on" + a_EvtName, a_fHdl); }
+			else
+			{ a_Elmt["on" + a_EvtName] = a_fHdl; }
+
+			return stPageInit;
+		};
+
+		/// 移除事件处理器
+		stPageInit.cRmvEvtHdlr = function (a_Elmt, a_EvtName, a_fHdl)
+		{
+			if (a_Elmt.removeEventListener)
+			{ a_Elmt.removeEventListener(a_EvtName, a_fHdl, false); }
+			else
+			if (a_Elmt.detachEvent)
+			{ a_Elmt.detachEvent("on" + a_EvtName, a_fHdl); }
+			else
+			{ a_Elmt["on" + a_EvtName] = null; }
+
+			return stPageInit;
+		};
+
+		// 注册两个事件处理器
+		if (nWse.fMaybeNonHtml5Brsr()) // IE8
+		{ stPageInit.cAddEvtHdlr(document, "readystatechange", eOnDocRdy_NH5); }
+		else // H5
+		{ stPageInit.cAddEvtHdlr(document, "DOMContentLoaded", eOnDocRdy); }
+
+		stPageInit.cAddEvtHdlr(window, "load", eOnWndLoad);
+
+		/// 添加事件处理器 - 文档就绪
+		stPageInit.cAddEvtHdlr_DocRdy = function (a_fCabk)
+		{
+			e_OnDocRdy.push(a_fCabk);
+			return stPageInit;
+		};
+
+		/// 添加事件处理器 - 窗口加载
+		stPageInit.cAddEvtHdlr_WndLoad = function (a_fCabk)
+		{
+			e_OnWndLoad.push(a_fCabk);
+			return stPageInit;
+		};
+	})();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 异步导入
+
+	var stAsynImpt;
+	(function ()
+	{
+		/// 异步导入（样式表）
+		stAsynImpt = function () { };
+		nWse.stAsynImpt = stAsynImpt;
+		stAsynImpt.oc_nHost = nWse;
+		stAsynImpt.oc_FullName = nWse.ocBldFullName("stAsynImpt");
+
+		/// 构建全名
+		stAsynImpt.ocBldFullName = function (a_Name)
+		{
+			return stAsynImpt.oc_FullName + "." + a_Name;
+		};
+
+		//======== 私有字段
+
+		//======== 私有函数
+
+		//======== 公有函数
+
+		/// 按序并行，一次发出全部请求，同时保证每个文件按数组顺序加入到文档
+		/// a_Paths：String[]，路径数组，每个路径指向一个CSS文件
+		/// a_fCabk：void f(a_Errs)，回调，a_Errs记录出错的文件路径
+		stAsynImpt.cPrllInOdr = function (a_Paths, a_fCabk)
+		{
+			var l_Len = a_Paths ? a_Paths.length : 0;
+			if (! l_Len) // 没有时立即回调
+			{
+				a_fCabk(null);
+				return stAsynImpt;
+			}
+
+			var l_Dom_Head = l_Glb.document.documentElement.firstChild;	// <head>
+			var l_Dom_CssJs;
+			var l_Idx = 0, l_Cnt = 0;
+			for (; l_Idx<l_Len; ++l_Idx)
+			{
+				l_Dom_CssJs = l_Glb.document.createElement("link");
+				l_Dom_CssJs.rel="stylesheet";
+				l_Dom_CssJs.type = "text/css";
+				l_Dom_CssJs.onerror = fOnErr;
+				("onload" in l_Dom_CssJs) ? (l_Dom_CssJs.onload = fOnLoad) : (l_Dom_CssJs.onreadystatechange = fOnLoad);
+				l_Dom_CssJs.href = l_Dom_CssJs.Wse_Path = a_Paths[l_Idx]; // 记录路径并赋予
+				l_Dom_Head.appendChild(l_Dom_CssJs); // 加入文档
+			}
+
+			function fOnErr()
+			{
+				// 记录错误
+				a_fCabk.Wse_Errs ? a_fCabk.Wse_Errs.push(this.Wse_Path) : (a_fCabk.Wse_Errs = [this.Wse_Path]);
+
+				// 累计一个
+				fAccOne();
+			}
+
+			function fOnLoad()
+			{
+				// IE8
+				if (nWse.fMaybeNonHtml5Brsr())
+				{
+					// 继续等待
+					if (("loaded" != this.readyState) && ("complete" != this.readyState))
+					{ return; }
+				}
+
+				// 累计一个
+				fAccOne();
+			}
+
+			function fAccOne()
+			{
+				// 加一个
+				++ l_Cnt;
+				if (l_Cnt < l_Len) // 还有
+				{
+					// 继续
+				}
+				else // 完成
+				{
+					// 回调
+					a_fCabk(a_fCabk.Wse_Errs || null);
+				}
+			}
+
+			return stAsynImpt;
+		};
+	})();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 异步加载
@@ -328,7 +536,7 @@
 	var stAsynLoad;
 	(function ()
 	{
-		/// 异步加载
+		/// 异步加载（脚本）
 		stAsynLoad = function () { };
 		nWse.stAsynLoad = stAsynLoad;
 		stAsynLoad.oc_nHost = nWse;
@@ -346,8 +554,10 @@
 
 		//======== 公有函数
 
-		/// 顺序
-		stAsynLoad.cSqnc = function (a_Paths, a_fCabk)
+		/// 按序串行，一个接一个地发出请求，保证每个文件按数组顺序加入到文档
+		/// a_Paths：String[]，路径数组，每个路径指向一个JS文件
+		/// a_fCabk：void f(a_Errs)，回调，a_Errs记录出错的文件路径
+		stAsynLoad.cSrilInOdr = function (a_Paths, a_fCabk)
 		{
 			var l_Len = a_Paths ? a_Paths.length : 0;
 			if (! l_Len) // 没有时立即回调
@@ -356,71 +566,54 @@
 				return stAsynLoad;
 			}
 
-			var i_Rgx = /\.css$/i;	// 用来区分样式表和脚本
 			var l_Dom_Head = l_Glb.document.documentElement.firstChild;	// <head>
-			var l_Paths = Array.prototype.slice.call(a_Paths);
 			var l_Idx = 0;
 			function fLoadOne()
 			{
-				var l_Path = l_Paths[l_Idx];
-				var l_Dom_CssJs, l_HrefSrc;
-				if (i_Rgx.test(l_Path))
-				{
-					l_Dom_CssJs = l_Glb.document.createElement("link");
-					l_Dom_CssJs.rel="stylesheet";
-					l_Dom_CssJs.type = "text/css";
-					l_HrefSrc = "href";
-
-				}
-				else
-				{
-					l_Dom_CssJs = l_Glb.document.createElement("script");
-					l_Dom_CssJs.type = "text/javascript";
-					l_HrefSrc = "src";
-				}
-
+				var l_Dom_CssJs = l_Glb.document.createElement("script");
+				l_Dom_CssJs.type = "text/javascript";
 				l_Dom_CssJs.onerror = fOnErr;
 				("onload" in l_Dom_CssJs) ? (l_Dom_CssJs.onload = fOnLoad) : (l_Dom_CssJs.onreadystatechange = fOnLoad);
-				l_Dom_CssJs[l_HrefSrc] = l_Path;
-				l_Dom_Head.appendChild(l_Dom_CssJs);						// 加入文档
+				l_Dom_CssJs.src = l_Dom_CssJs.Wse_Path = a_Paths[l_Idx]; // 记录路径并赋予
+				l_Dom_Head.appendChild(l_Dom_CssJs); // 加入文档
+			}
 
-				function fOnErr()
+			function fOnErr()
+			{
+				// 记录错误
+				a_fCabk.Wse_Errs ? a_fCabk.Wse_Errs.push(this.Wse_Path) : (a_fCabk.Wse_Errs = [this.Wse_Path]);
+
+				// 下一个
+				fNext();
+			}
+
+			function fOnLoad()
+			{
+				// IE8
+				if (nWse.fMaybeNonHtml5Brsr())
 				{
-					// 记录错误
-					a_fCabk.Wse_Errs ? a_fCabk.Wse_Errs.push(l_Path) : (a_fCabk.Wse_Errs = [l_Path]);
-
-					// 下一个
-					fNext();
+					// 继续等待
+					if (("loaded" != this.readyState) && ("complete" != this.readyState))
+					{ return; }
 				}
 
-				function fOnLoad()
-				{
-					// IE8
-					if (nWse.fMaybeNonHtml5Brsr())
-					{
-						// 继续等待
-						if (("loaded" != this.readyState) && ("complete" != this.readyState))
-						{ return; }
-					}
+				// 下一个
+				fNext();
+			}
 
-					// 下一个
-					fNext();
+			function fNext()
+			{
+				// 下一个
+				++ l_Idx;
+				if (l_Idx < l_Len) // 还有
+				{
+					// 继续
+					fLoadOne();
 				}
-
-				function fNext()
+				else // 完成
 				{
-					// 下一个
-					++ l_Idx;
-					if (l_Idx < l_Len) // 还有
-					{
-						// 继续
-						fLoadOne();
-					}
-					else // 完成
-					{
-						// 回调
-						a_fCabk(a_fCabk.Wse_Errs || null);
-					}
+					// 回调
+					a_fCabk(a_fCabk.Wse_Errs || null);
 				}
 			}
 
@@ -460,8 +653,8 @@
 		// 初始化库目录映射
 		function eInitLibDiryMap()
 		{
-			if (i_InNodeJs)
-			{ return; }
+			//if (i_InNodeJs) // 如常处理
+			//{ return; }
 
 			var l_Doms = l_Glb.document.getElementsByTagName("script");
 			var l_Src = (l_Doms.length > 0) && l_Doms[l_Doms.length - 1].getAttribute("src");	// 取最后一个，即为当前脚本

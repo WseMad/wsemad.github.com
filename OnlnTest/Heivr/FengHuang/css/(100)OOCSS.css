@@ -1,0 +1,53 @@
+﻿/*	
+*
+*/
+
+
+/******************************** OOCSS ********************************/
+
+/* html */
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+li > a {
+	display: block;
+	text-decoration: none;
+}
+
+/* OOCSS */
+.mi_rel_pstn {
+	position: relative;
+	left: 0px;
+	right: 0px;
+}
+
+.mi_dspl_blk {
+	display: block;
+}
+
+.mi_abs_pstn_lt_tp {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.mi_abs_pstn_lt_bm {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+
+.mi_boa .mi_col {
+	float: left;
+}
+
+.mi_cur_pointer {
+	cursor: pointer;
+}
+
+
+/********************************  ********************************/
+
+/*********************************************************************** Over ***********************************************************************/
