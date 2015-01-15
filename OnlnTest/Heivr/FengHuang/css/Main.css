@@ -24,9 +24,39 @@
 	}
 
 	.mi_icon.mi_1 {
-		background-position: -113px 0px;
+		background-position: -1px -100px;
 		width: 48px;
 		height: 48px;
+	}
+
+	.mi_icon.mi_2, .mi_icon.mi_wait {
+		background-position: 0px -150px;
+		width: 44px;
+		height: 44px;
+	}
+
+	.mi_icon.mi_3, .mi_icon.mi_slcd {
+		background-position: -45px -150px;
+		width: 44px;
+		height: 44px;
+	}
+
+	.mi_icon.mi_50 {
+		background-position: -112px 0px;
+		width: 146px;
+		height: 43px;
+	}
+
+	.mi_icon.mi_51 {
+		background-position: -113px -44px;
+		width: 93px;
+		height: 22px;
+	}
+
+	.mi_icon.mi_52 {
+		background-position: -113px -67px;
+		width: 93px;
+		height: 22px;
 	}
 
 /******************************** 本项目的OOCSS ********************************/
@@ -86,10 +116,11 @@ body {
 
 	.mi_menu_bm .mi_boa.mi_nav {
 		background-color: rgb(2, 27, 67);
-		padding-top: 1px; /*为掩膜预留空间，以防悬停链接的渐变与掩膜相撞*/
+		padding-top: 1px; /*为遮罩预留空间，以防悬停链接的渐变与遮罩相撞*/
 	}
 
 		.mi_menu_bm .mi_boa.mi_nav > .mi_bdr_grad_mask {
+			/*background-color: rgb(204, 164, 98);*/
 			background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(204, 164, 98, 1) 50%, rgba(0, 0, 0, 0) 100%);
 			background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(204, 164, 98, 1) 50%, rgba(0, 0, 0, 0) 100%);
 			background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(204, 164, 98, 1) 50%, rgba(0, 0, 0, 0) 100%);
@@ -294,19 +325,101 @@ body {
 }
 
 .mi_hu_xing .mi_boa.mi_appreciate {
-	/*height: 680px;*/	/*还是由右列中的图像决定吧！*/
 }
 
-.mi_hu_xing .mi_boa.mi_appreciate .mi_col {
-	width: 50%;
-	/*height: 100%;*/		/*动态计算，就像程序化布局*/
+	.mi_hu_xing .mi_boa.mi_appreciate .mi_col {
+		width: 50%;
+		padding: 2%;
+	}
 
-	padding: 20px;
-}
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_col.mi_0 {
+			padding-top: 5%;
+		}
 
-.mi_hu_xing .mi_boa.mi_appreciate .mi_col.mi_1 img {
-	/*max-width: 686px;*/	/*不限制了，允许放大！*/
-}
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_col.mi_1 {
+			padding-right: 10%;
+		}
+
+	.mi_hu_xing .mi_boa.mi_appreciate .mi_pane {
+		display: inline-block;
+		background-color: rgb(64, 64, 64);
+		/*-ms-filter: 'alpha(opacity=70)';*/ /*别用了，会把全体变透明*/
+		background-color: rgba(255, 255, 255, 0.13);
+		/*border: 1px solid;*/
+		min-width: 50%;
+		padding: 1px; /*为遮罩预留空间*/
+		color: rgb(209, 193, 178);
+	}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div {
+			padding: 40px;
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane > .mi_bdr_grad_mask.mi_tp,
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane > .mi_bdr_grad_mask.mi_bm {
+			/*background-color: rgb(100, 111, 255);*/
+			background-image: -webkit-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -moz-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -ms-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -o-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane > .mi_bdr_grad_mask.mi_lt,
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane > .mi_bdr_grad_mask.mi_rt {
+			/*background-color: rgb(100, 111, 255);*/
+			background-image: -webkit-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -moz-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -ms-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: -o-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+			background-image: linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_hn {
+			padding-bottom: 20px;
+			border-bottom: 2px solid rgb(209, 193, 178);
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_itro {
+			font-size: 1.2em;
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_sumr {
+			margin-bottom: 20px;
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_type_div {
+			font-size: 2.4em;
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_List {
+			list-style-type: disc;
+			font-size: 16px;
+			text-align: left;
+		}
+
+			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_List > li {
+				margin-left: 2em;
+			}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa {
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa .mi_icon {
+			font-size: 16px;
+			padding: 12px;
+			margin: 0px 0.5em 1em 0.5em;
+			cursor: pointer;
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa
+		{
+			
+		}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_icon {
+			margin: 0px 0.5em;
+		}
 
 /********************************  ********************************/
 

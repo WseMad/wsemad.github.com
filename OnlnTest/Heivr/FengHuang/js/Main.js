@@ -45,6 +45,20 @@
 		fUpdFlashScl();
 		nWse.stDomUtil.cAddEvtHdlr_WndRsz(fUpdFlashScl, i_WndRszRspsSpd);
 
+		//===================================================== 全局
+
+		// 整个文档禁用选取
+		nWse.stDomUtil.cAddEvtHdlr(document, "selectstart",
+			function (a_Evt)
+			{
+				a_Evt = a_Evt || window.event;
+				if (a_Evt.preventDefault)
+				{
+					a_Evt.preventDefault();
+				}
+				return false;
+			});
+
 		//===================================================== 共同
 
 		// 调整底部菜单的位置宽度
@@ -123,25 +137,6 @@
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
 		})();
 
-		// 垂直居中（要求绝对定位）
-		(function () {
-			function fFixPos() {
-				var l_All = nWse.stDomUtil.cQryAll(".mi_vtic_aln_ct");
-				nWse.stAryUtil.cFor(l_All,
-					function (a_Ary, a_Idx, a_DomElmt) {
-						var l_PrnElmt = a_DomElmt.parentNode;
-						if (!l_PrnElmt)
-						{ return; }
-
-						var l_Y = (l_PrnElmt.offsetHeight - a_DomElmt.offsetHeight) / 2;
-						nWse.stCssUtil.cSetPosTp(a_DomElmt, l_Y);
-					});
-			}
-
-			fFixPos();
-			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPos, i_WndRszRspsSpd);
-		})();
-
 		//===================================================== 正在加载
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_loading")) {
@@ -189,6 +184,80 @@
 
 		//	})();
 		//}
+
+		//===================================================== 户型
+
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_hu_xing")) {
+			// 垂直居中（要求绝对定位）
+			(function () {
+				var l_Cols = nWse.stDomUtil.cQryAll(".mi_col");
+				var l_DomBoa = l_Cols[0].parentNode;
+				var l_DomPrn = l_DomBoa.parentNode;
+
+				function fFixPosDim() {
+
+					// 宽高比为1:1，两列等宽，故使用列1的offsetWidth
+					// 注意不要使用offsetHeight，因为图像可能尚未下载完成！
+					nWse.stCssUtil.cSetDimHgt(l_DomBoa, l_Cols[1].offsetWidth);
+					var l_Y = Math.max(0, (l_DomPrn.offsetHeight - l_DomBoa.offsetHeight) / 2);
+					nWse.stCssUtil.cSetPosTp(l_DomBoa, l_Y);
+				}
+
+				fFixPosDim();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+
+				//-------- 输入处理
+
+				// 选项板
+				(function (){
+					var l_Boa = document.getElementById("k_OptnsBoa");
+					nWse.stDomUtil.cAddEvtHdlr(l_Boa, "click",
+						function (a_Evt)
+						{
+							a_Evt = a_Evt || window.event;
+							var l_EvtTgt = a_Evt.target || a_Evt.srcElement;
+
+							if (! nWse.stCssUtil.cHasCssc(l_EvtTgt, "mi_icon"))
+							{ return; }
+
+							fSlcHx(l_EvtTgt);
+							return false;
+						});
+
+					function fSlcHx(a_Which)
+					{
+						// 文字作为图像名，加载
+						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
+						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
+						var l_DomImg = document.getElementById("k_Diagram");
+						if (l_DomImg)
+						{
+							l_DomImg.src = l_Path;
+						}
+
+						// 同时更新上面的类型及相关信息
+						var l_Type = document.getElementById("k_Type");
+						if (l_Type)
+						{
+							nWse.stDomUtil.cSetTextCtnt(l_Type, l_Text);
+						}
+
+						// CSS类
+						var l_Old = nWse.stDomUtil.cQryOne(".mi_icon.mi_slcd", l_Boa);
+						if (l_Old !== a_Which)
+						{
+							nWse.stCssUtil.cRplcCssc(l_Old, "mi_slcd", "mi_wait", true);
+							nWse.stCssUtil.cRplcCssc(a_Which, "mi_wait", "mi_slcd", true);
+						}
+					}
+				})();
+			})();
+		}
+
+
+		(function () {
+
+		})();
 
 	});
 })();

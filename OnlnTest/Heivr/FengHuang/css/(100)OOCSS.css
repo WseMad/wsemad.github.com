@@ -17,8 +17,16 @@ li > a {
 }
 
 /* OOCSS */
+.mi_dspl_none {
+	display: none;
+}
+
 .mi_dspl_blk {
 	display: block;
+}
+
+.mi_dspl_inln_blk {
+	display: inline-block;
 }
 
 .mi_rel_pstn {
@@ -82,6 +90,23 @@ li > a {
 
 .mi_cur_pntr {
 	cursor: pointer;
+}
+
+/* 边距 */
+.mi_mgn_bm_l0 {
+	margin-bottom: 0px;
+}
+
+.mi_mgn_bm_l1 {
+	margin-bottom: 10px;
+}
+
+.mi_mgn_bm_l2 {
+	margin-bottom: 20px;
+}
+
+.mi_mgn_bm_l3 {
+	margin-bottom: 30px;
 }
 
 /* 背景 */
