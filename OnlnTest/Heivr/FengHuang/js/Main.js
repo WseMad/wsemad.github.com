@@ -34,14 +34,13 @@
 
 		// 当前位置尺寸，比例（取两个方向更小的那个）
 		var s_FlashX = 0, s_FlashY = 0, s_FlashWid = i_FlashWid, s_FlashHgt = i_FlashHgt, s_FlashScl = 1;
-		function fUpdFlashScl()
-		{
-			s_FlashScl = Math.min(nWse.stDomUtil.cGetVwptWid() / i_FlashWid, nWse.stDomUtil.cGetVwptHgt() / i_FlashHgt);			
+		function fUpdFlashScl() {
+			s_FlashScl = Math.min(nWse.stDomUtil.cGetVwptWid() / i_FlashWid, nWse.stDomUtil.cGetVwptHgt() / i_FlashHgt);
 			s_FlashWid = i_FlashWid * s_FlashScl;
 			s_FlashHgt = i_FlashHgt * s_FlashScl;
 			s_FlashX = (nWse.stDomUtil.cGetVwptWid() - s_FlashWid) / 2;
 			s_FlashY = (nWse.stDomUtil.cGetVwptHgt() - s_FlashHgt) / 2;
-		//	console.log("s_FlashScl = " + s_FlashScl);
+			//	console.log("s_FlashScl = " + s_FlashScl);
 		}
 
 		fUpdFlashScl();
@@ -59,13 +58,12 @@
 
 				var l_X, l_Y;
 				l_X = 0;
-			//	l_Y = s_FlashY + s_FlashHgt - l_MenuBm.offsetHeight; // 和flash无关，总是紧靠最底部
+				//	l_Y = s_FlashY + s_FlashHgt - l_MenuBm.offsetHeight; // 和flash无关，总是紧靠最底部
 				l_Y = nWse.stDomUtil.cGetVwptHgt() - l_MenuBm.offsetHeight;
-			//	nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
+				//	nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
 
 				// 第一次动画
-				if (true === a_1st)
-				{
+				if (true === a_1st) {
 					nWse.stCssUtil.cSetPos(l_MenuBm, l_X, nWse.stDomUtil.cGetVwptHgt());
 					nWse.stCssUtil.cAnmt(l_MenuBm,
 						{
@@ -73,14 +71,12 @@
 						},
 						{
 							c_Dur: 0.6,
-							c_fEsn : function (a_Scl)
-							{
+							c_fEsn: function (a_Scl) {
 								return nWse.stNumUtil.cPrbItp(0, 1, a_Scl, false);
 							}
 						});
 				}
-				else
-				{
+				else {
 					nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
 				}
 			}
@@ -91,14 +87,50 @@
 
 		var s_DomBody = nWse.stDomUtil.cAcsBody();
 
+		//===================================================== 公共
+
+		// 主标题广告牌
+		(function () {
+			var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
+			if (!l_DomBlbd)
+			{ return; }
+
+			// 调整位置尺寸
+			function fFixPosDim() {
+				var i_StdWid = 326, i_StdHgt = 203;
+				var i_MyScl = s_FlashScl * 1; // 太小，放大？
+				var l_W = Math.round(i_StdWid * i_MyScl), l_H = Math.round(i_StdHgt * i_MyScl);
+				nWse.stCssUtil.cSetDim(l_DomBlbd, l_W, l_H);
+
+				var l_X, l_Y;
+				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+				l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
+				nWse.stCssUtil.cSetPos(l_DomBlbd, l_X, l_Y);
+
+				// 按钮
+				var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+				if (! l_DomBtn)
+				{ return; }
+
+				var i_BtnDim = l_DomBtn.offsetWidth;
+				l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
+				l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
+				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+				nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
+				//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
+			}
+
+			fFixPosDim();
+			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+		})();
+
 		//===================================================== 正在加载
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_loading")) {
 			(function () {
 
 				// 调整按钮位置尺寸
-				function fFixBtnPosDim()
-				{
+				function fFixBtnPosDim() {
 					var i_BtnStdDim = 44, i_BtnStdYscl = 640 / 945;
 					var l_BtnDim = Math.round(i_BtnStdDim * s_FlashScl);
 					var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
@@ -112,43 +144,33 @@
 
 				fFixBtnPosDim();
 				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixBtnPosDim, i_WndRszRspsSpd);
-				
+
 			})();
 		}
 
 		//===================================================== 区位价值
 
-		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_qu_wei")) {
-			(function () {
+		//if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_qu_wei_jia_zhi")) {
+		//	(function () {
+		//		// 调整位置尺寸
+		//		function fFixPosDim() {
+		//			var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
+		//			var l_X = l_DomBlbd.offsetLeft, l_Y = l_DomBlbd.offsetTop, l_W = l_DomBlbd.offsetWidth, l_H = l_DomBlbd.offsetHeight;
 
-				// 调整位置尺寸
-				function fFixPosDim()
-				{
-					var i_StdWid = 326, i_StdHgt = 203;
-					var i_MyScl = s_FlashScl * 1; // 太小，放大？
-					var l_W = Math.round(i_StdWid * i_MyScl), l_H = Math.round(i_StdHgt * i_MyScl);
-					var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_blbd");
-					nWse.stCssUtil.cSetDim(l_DomBlbd, l_W, l_H);
+		//			var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+		//			var i_BtnDim = l_DomBtn.offsetWidth;
+		//			l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
+		//			l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
+		//			l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+		//			nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
+		//			//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
+		//		}
 
-					var l_X, l_Y;
-					l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
-					l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
-					nWse.stCssUtil.cSetPos(l_DomBlbd, l_X, l_Y);
+		//		fFixPosDim();
+		//		nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
 
-					var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
-					var i_BtnDim = l_DomBtn.offsetWidth;
-					l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
-					l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
-					l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
-					nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
-				//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
-				}
-
-				fFixPosDim();
-				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-				
-			})();
-		}
+		//	})();
+		//}
 
 	});
 })();
