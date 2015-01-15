@@ -41,6 +41,10 @@ li > a {
 	bottom: 0px;
 }
 
+.mi_fxd_pstn {
+	position: fixed;
+}
+
 .mi_full_wid {
 	width: 100%;
 }
@@ -55,6 +59,11 @@ li > a {
 
 .mi_text_aln_rt {
 	text-align: right;
+}
+
+/* 板和列 */
+.mi_boa {
+	width: 100%;
 }
 
 .mi_boa .mi_col {
@@ -88,7 +97,7 @@ li > a {
 	height: 100%;
 
 	background-color: rgb(0, 0, 0);
-	-ms-filter: "alpha(opacity=70)";
+	-ms-filter: 'alpha(opacity=70)';
 	background-color: rgba(0, 0, 0, 0.7);
 }
 

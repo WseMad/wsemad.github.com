@@ -293,6 +293,21 @@ body {
 	background-image: url("../images/bj-huxingjianshang.jpg");
 }
 
+.mi_hu_xing .mi_boa.mi_appreciate {
+	/*height: 680px;*/	/*还是由右列中的图像决定吧！*/
+}
+
+.mi_hu_xing .mi_boa.mi_appreciate .mi_col {
+	width: 50%;
+	/*height: 100%;*/		/*动态计算，就像程序化布局*/
+
+	padding: 20px;
+}
+
+.mi_hu_xing .mi_boa.mi_appreciate .mi_col.mi_1 img {
+	/*max-width: 686px;*/	/*不限制了，允许放大！*/
+}
+
 /********************************  ********************************/
 
 /*********************************************************************** Over ***********************************************************************/

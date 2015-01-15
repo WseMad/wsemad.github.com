@@ -22,8 +22,7 @@
 
 
 (function () {
-	var $ = window.jQuery;
-	$(document).ready(function () {
+	nWse.stPageInit.cAddEvtHdlr_DocRdy(function () {
 		//	console.log("document.ready");
 
 		// 窗口调整尺寸响应速率
@@ -109,7 +108,7 @@
 
 				// 按钮
 				var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
-				if (! l_DomBtn)
+				if (!l_DomBtn)
 				{ return; }
 
 				var i_BtnDim = l_DomBtn.offsetWidth;
@@ -122,6 +121,25 @@
 
 			fFixPosDim();
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+		})();
+
+		// 垂直居中（要求绝对定位）
+		(function () {
+			function fFixPos() {
+				var l_All = nWse.stDomUtil.cQryAll(".mi_vtic_aln_ct");
+				nWse.stAryUtil.cFor(l_All,
+					function (a_Ary, a_Idx, a_DomElmt) {
+						var l_PrnElmt = a_DomElmt.parentNode;
+						if (!l_PrnElmt)
+						{ return; }
+
+						var l_Y = (l_PrnElmt.offsetHeight - a_DomElmt.offsetHeight) / 2;
+						nWse.stCssUtil.cSetPosTp(a_DomElmt, l_Y);
+					});
+			}
+
+			fFixPos();
+			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPos, i_WndRszRspsSpd);
 		})();
 
 		//===================================================== 正在加载
