@@ -52,18 +52,40 @@
 		// 调整底部菜单的位置宽度
 		(function () {
 
-			function fFixMenu() {
+			function fFixMenu(a_1st) {
 				var l_MenuBm = nWse.stDomUtil.cQryOne(".mi_menu_bm");
 				if (!l_MenuBm)
 				{ return; }
 
 				var l_X, l_Y;
 				l_X = 0;
-				l_Y = s_FlashY + s_FlashHgt - l_MenuBm.offsetHeight;
-				nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
+			//	l_Y = s_FlashY + s_FlashHgt - l_MenuBm.offsetHeight; // 和flash无关，总是紧靠最底部
+				l_Y = nWse.stDomUtil.cGetVwptHgt() - l_MenuBm.offsetHeight;
+			//	nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
+
+				// 第一次动画
+				if (true === a_1st)
+				{
+					nWse.stCssUtil.cSetPos(l_MenuBm, l_X, nWse.stDomUtil.cGetVwptHgt());
+					nWse.stCssUtil.cAnmt(l_MenuBm,
+						{
+							"top": l_Y + "px"
+						},
+						{
+							c_Dur: 0.6,
+							c_fEsn : function (a_Scl)
+							{
+								return nWse.stNumUtil.cPrbItp(0, 1, a_Scl, false);
+							}
+						});
+				}
+				else
+				{
+					nWse.stCssUtil.cSetPos(l_MenuBm, l_X, l_Y);
+				}
 			}
 
-			fFixMenu();
+			fFixMenu(true);
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixMenu, i_WndRszRspsSpd);
 		})();
 
@@ -113,11 +135,11 @@
 					l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
 					nWse.stCssUtil.cSetPos(l_DomBlbd, l_X, l_Y);
 
-					var i_BtnDim = 48;
+					var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+					var i_BtnDim = l_DomBtn.offsetWidth;
 					l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
 					l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
-					l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);	
-					var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+					l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
 					nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
 				//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
 				}

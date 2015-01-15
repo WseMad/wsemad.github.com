@@ -16,7 +16,11 @@
 	.mi_icon.mi_0 {
 		background-position: 0px 0px;
 		width: 111px;
-		height: 98px;
+	}
+
+	.mi_icon.mi_0,
+	.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo a {
+		height: 98px;	/*图标与容器一样高！加图标是为了在旋转过程中单击时，仍能点中链接，所以才把链接和图标分开。*/
 	}
 
 	.mi_icon.mi_1 {
@@ -26,6 +30,11 @@
 	}
 
 /******************************** 共同 ********************************/
+
+/* html */
+body {
+	background-color: black;
+}
 
 /* 本项目的OOCSS */
 .mi_nml_font_clo {
@@ -50,7 +59,7 @@
 	height: 100%;
 	z-index: 100;
 	font-family: 微软雅黑;
-	overflow: hidden;	/*预防动画溢出*/
+	overflow: hidden; /*预防动画溢出*/
 	cursor: default;
 }
 
@@ -116,8 +125,7 @@
 				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item > a:hover {
 					background-color: rgb(9, 68, 172); /*若不支持渐变，使用这个*/
 					background-image: -webkit-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*Chrome用这个*/
-					background-image: -moz-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);	/*FF*/
-
+					background-image: -moz-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*FF*/
 					/*background-image: -webkit-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);*/
 					/*background-image: -webkit-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
 					background-image: -moz-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
@@ -133,7 +141,7 @@
 					-ms-animation: mi_menu_bm_item_bkgd 0.8s ease-out 1 normal 0s forwards; /*IE做动画*/
 				}
 
-				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo > a:hover {
+				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo .mi_icon:hover {
 					-webkit-animation: mi_menu_bm_logo_spin 1s ease-in-out 1 normal 0s backwards;
 					-moz-animation: mi_menu_bm_logo_spin 1s ease-in-out 1 normal 0s backwards;
 					-ms-animation: mi_menu_bm_logo_spin 1s ease-in-out 1 normal 0s backwards;
@@ -235,12 +243,10 @@
 .mi_qu_wei .mi_bkgd_anmt {
 	width: 100%;
 	height: 100%;
-
 	background-image: url("../images/bj-quweijiazhi.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: 100%;
-
+	background-size: 100% 100%;
 	-webkit-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
 	-moz-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
 	-ms-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
@@ -248,19 +254,21 @@
 
 @-webkit-keyframes mi_bkgd_scl {
 	from {
-		background-size: 100%;
+		background-size: 100% 100%;
 	}
+
 	to {
-		background-size: 110%;
+		background-size: 110% 110%;
 	}
 }
 
 @-moz-keyframes mi_bkgd_scl {
 	from {
-		background-size: 100%;
+		background-size: 100% 100%;
 	}
+
 	to {
-		background-size: 110%;
+		background-size: 110% 110%;
 	}
 }
 
@@ -268,6 +276,7 @@
 	from {
 		-ms-transform: scale(1.0);
 	}
+
 	to {
 		-ms-transform: scale(1.1);
 	}
