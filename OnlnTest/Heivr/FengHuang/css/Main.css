@@ -78,9 +78,9 @@ body {
 }
 
 .mi_bkgd_anmt {
-	-webkit-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
-	-moz-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
-	-ms-animation: mi_bkgd_scl 2s ease-in-out infinite alternate 0s backwards;
+	-webkit-animation: mi_bkgd_scl 4s ease-in-out infinite alternate 0s backwards;
+	-moz-animation: mi_bkgd_scl 4s ease-in-out infinite alternate 0s backwards;
+	-ms-animation: mi_bkgd_scl 4s ease-in-out infinite alternate 0s backwards;
 }
 
 /******************************** 共同 ********************************/
@@ -405,21 +405,31 @@ body {
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa {
 		}
 
-		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa .mi_icon {
-			font-size: 16px;
-			padding: 12px;
-			margin: 0px 0.5em 1em 0.5em;
-			cursor: pointer;
+			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa .mi_icon {
+				font-size: 16px;
+				padding: 12px;
+				margin: 0px 0.5em 1em 0.5em;
+				cursor: pointer;
+			}
+
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa {
 		}
 
-		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa
-		{
-			
-		}
+			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_icon {
+				margin: 0px 0.5em;
+			}
 
-		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_icon {
-			margin: 0px 0.5em;
-		}
+/******************************** 户型鉴赏＆户型 ********************************/
+
+.mi_jing_guan_man_you .mi_bkgd_anmt {
+	background-image: url("../images/bj-jingguanmanyou.jpg");
+}
+
+.mi_jing_guan_man_you #k_BtnsBoa .mi_btn {
+	width: 132px;
+	height: 132px;
+	margin: 0px 10px;
+}
 
 /********************************  ********************************/
 

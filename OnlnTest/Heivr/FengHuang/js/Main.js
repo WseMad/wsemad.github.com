@@ -49,11 +49,9 @@
 
 		// 整个文档禁用选取
 		nWse.stDomUtil.cAddEvtHdlr(document, "selectstart",
-			function (a_Evt)
-			{
+			function (a_Evt) {
 				a_Evt = a_Evt || window.event;
-				if (a_Evt.preventDefault)
-				{
+				if (a_Evt.preventDefault) {
 					a_Evt.preventDefault();
 				}
 				return false;
@@ -209,43 +207,38 @@
 				//-------- 输入处理
 
 				// 选项板
-				(function (){
+				(function () {
 					var l_Boa = document.getElementById("k_OptnsBoa");
 					nWse.stDomUtil.cAddEvtHdlr(l_Boa, "click",
-						function (a_Evt)
-						{
+						function (a_Evt) {
 							a_Evt = a_Evt || window.event;
 							var l_EvtTgt = a_Evt.target || a_Evt.srcElement;
 
-							if (! nWse.stCssUtil.cHasCssc(l_EvtTgt, "mi_icon"))
+							if (!nWse.stCssUtil.cHasCssc(l_EvtTgt, "mi_icon"))
 							{ return; }
 
 							fSlcHx(l_EvtTgt);
 							return false;
 						});
 
-					function fSlcHx(a_Which)
-					{
+					function fSlcHx(a_Which) {
 						// 文字作为图像名，加载
 						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
 						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
 						var l_DomImg = document.getElementById("k_Diagram");
-						if (l_DomImg)
-						{
+						if (l_DomImg) {
 							l_DomImg.src = l_Path;
 						}
 
 						// 同时更新上面的类型及相关信息
 						var l_Type = document.getElementById("k_Type");
-						if (l_Type)
-						{
+						if (l_Type) {
 							nWse.stDomUtil.cSetTextCtnt(l_Type, l_Text);
 						}
 
 						// CSS类
 						var l_Old = nWse.stDomUtil.cQryOne(".mi_icon.mi_slcd", l_Boa);
-						if (l_Old !== a_Which)
-						{
+						if (l_Old !== a_Which) {
 							nWse.stCssUtil.cRplcCssc(l_Old, "mi_slcd", "mi_wait", true);
 							nWse.stCssUtil.cRplcCssc(a_Which, "mi_wait", "mi_slcd", true);
 						}
@@ -254,11 +247,25 @@
 			})();
 		}
 
+		//===================================================== 景观漫游
 
-		(function () {
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_jing_guan_man_you")) {
+			(function () {
+				function fFixPosDim() {
+					var l_BtnsBoa = document.getElementById("k_BtnsBoa");
+					if (!l_BtnsBoa)
+					{ return; }
 
-		})();
+					var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
+				//	var l_X = (nWse.stDomUtil.cGetVwptWid() - l_BtnsBoa.offsetWidth) / 2;	// 注意在一瞬间可能会换行，所以采用全宽＋居中对齐方案，X总是0
+					var l_Y = l_DomBlbd.offsetTop + l_DomBlbd.offsetHeight + 30;
+					nWse.stCssUtil.cSetPos(l_BtnsBoa, 0, l_Y);
+				}
 
+				fFixPosDim();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+			})();
+		}
 	});
 })();
 
