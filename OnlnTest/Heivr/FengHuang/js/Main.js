@@ -139,59 +139,92 @@
 					this.e_ImgSqnc = null;
 					this.e_SucsCnt = 0;
 					this.e_FailCnt = 0;
+					this.e_AccTchOfst = 0;
+					this.e_SpinSpd = 8;
+					this.e_PlayIdx = 0;
 				},
 				null,
 				{
 					/// a_Cfg：Object，
 					/// {
 					///	c_UrlDiry：String，如"http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/"
-					/// c_Bgn，c_Amt：Number，如0，25
+					/// c_Bgn，c_Amt：Number，如0，26
 					/// c_Extd：String，如".png"
+					/// c_fOnFnshOne：void f(Image a_Img)，当完成一个时
+					/// c_fOnFnshAll：void f(a_Errs)，当完成全部时
 					/// c_ImgTgt：HTMLElement，<img>目标
 					/// }
-					cInit: function (a_Cfg)
-					{
+					cInit: function (a_Cfg) {
 						var l_This = this;
 						l_This.e_Cfg = a_Cfg;
-						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;
+						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;						
 						l_This.eLoadImgSqnc((a_Cfg.c_UrlDiry || "./"), (a_Cfg.c_Bgn || 0), a_Cfg.c_Amt, (a_Cfg.c_Extd || ".png"));
 						return this;
 					}
 					,
-					cGetPgrsPct: function ()
-					{
+					cGetPgrsPct: function () {
 						var l_This = this;
-						if ((! l_This.e_ImgSqnc) || (0 == l_This.e_ImgSqnc.length))
+						if ((!l_This.e_ImgSqnc) || (0 == l_This.e_ImgSqnc.length))
 						{ return 0; }
 
 						return ((l_This.e_FailCnt + l_This.e_SucsCnt) / l_This.e_ImgSqnc.length) * 100;
 					}
 					,
+					cIsLoadCplt: function () {
+						var l_This;
+						if ((!l_This.e_ImgSqnc) || (0 == l_This.e_ImgSqnc.length))
+						{ return true; }
+
+						return (l_This.e_FailCnt + l_This.e_SucsCnt) >= l_This.e_ImgSqnc.length;
+					}
+					,
 					cHdlIpt: function (a_Ipt, a_DmntTch) {
+						var l_This = this;
+						var l_DmntTch = a_DmntTch;	
+
+						if ((nWse.tPntIptTrkr.tPntIpt.tKind.i_TchMove == l_DmntTch.c_Kind))
+						{
+							l_This.e_AccTchOfst += Math.abs(l_DmntTch.c_OfstX);
+							if (l_This.e_AccTchOfst > l_This.e_SpinSpd)
+							{
+								l_This.eRgltAccTchOfst();
+								if (l_DmntTch.c_OfstX < 0) {
+									l_This.cPlayNext();
+								}
+								else {
+									l_This.cPlayPrev();
+								}
+							}
+						}
+
 						return this;
 					}
 					,
-					cIsPlaying: function ()
+					eRgltAccTchOfst: function ()
 					{
+						var l_This = this;
+						l_This.e_AccTchOfst -= Math.floor(l_This.e_AccTchOfst / l_This.e_SpinSpd) * l_This.e_SpinSpd;
+						return this;
+					}
+					,
+					cIsPlaying: function () {
 						return this.e_Playing;
 					}
 					,
-					cPlay: function ()
-					{
+					cPlay: function () {
 						var l_This = this;
 						if (l_This.cIsPlaying())
 						{ return this; }
-						
+
 						l_This.e_fOneFrm = nWse.stFctnUtil.cBindThis(l_This, l_This.eOneFrm);
 						nWse.stDomUtil.cRegAnmt(l_This.e_fOneFrm);
 						l_This.e_Playing = true;
 						return this;
 					}
 					,
-					cStopPlay: function ()
-					{
+					cStopPlay: function () {
 						var l_This = this;
-						if (! l_This.cIsPlaying())
+						if (!l_This.cIsPlaying())
 						{ return this; }
 
 						nWse.stDomUtil.cUrgAnmt(l_This.e_fOneFrm);
@@ -199,19 +232,44 @@
 						return this;
 					}
 					,
-					eOneFrm : function (a_FrmTime, a_FrmItvl, a_FrmNum)
-					{
+					cPlayByIdx: function (a_Idx, a_NoWrap) {
+						var l_This = this;
+						if (0 == l_This.e_ImgSqnc.length)
+						{ return this; }
+
+						if (a_Idx < 0) {
+							a_Idx = l_This.e_ImgSqnc.length - 1;
+						}
+						else
+							if (a_Idx >= l_This.e_ImgSqnc.length) {
+								a_Idx = 0;
+							}
+
+						l_This.ePutOneImgByIdx(a_Idx);
+						l_This.e_PlayIdx = a_Idx;
+						return this;
+					}
+					,
+					cPlayPrev: function (a_NoWrap) {
+						return this.cPlayByIdx(this.e_PlayIdx - 1, a_NoWrap);
+					}
+					,
+					cPlayNext: function (a_NoWrap) {
+						return this.cPlayByIdx(this.e_PlayIdx + 1, a_NoWrap);
+					}
+					,
+					eOneFrm: function (a_FrmTime, a_FrmItvl, a_FrmNum) {
 						var l_This = this;
 						var l_Tpf = 1 / 30;
 					}
 					,
-					ePutOneImgByIdx: function (a_Idx)
-					{
+					ePutOneImgByIdx: function (a_Idx) {
 						var l_This = this;
 						//if (! l_This.e_ImgSqnc[a_Idx].complete)
 						//{ return l_This; }
 
-						l_This.c
+						l_This.e_ImgTgt.src = l_This.e_ImgSqnc[a_Idx].src;
+						return l_This;
 					}
 					,
 					eLoadImgSqnc: function (a_UrlDiry, a_Bgn, a_Amt, a_Extd) {
@@ -220,6 +278,7 @@
 
 						var l_This = this;
 						l_This.e_ImgSqnc = new Array(a_Amt);
+						l_This.e_Errs = null;
 
 						var l_Url, l_Img;
 						var i;
@@ -228,35 +287,51 @@
 							l_Img = new Image();
 							l_Img.onerror = fOnErr;
 							("onload" in l_Img) ? (l_Img.onload = fOnLoad) : (l_Img.onreadystatechange = fOnLoad);
+							l_Img.src = l_Url;
 							l_This.e_ImgSqnc[i] = l_Img;
 						}
 
 						function fOnErr() {
+							if (!l_This.e_Errs)
+							{ l_This.e_Errs = []; }
+
+							l_This.e_Errs.push(this.src);
+
 							// 处理……
-							fFnshOne(false);
+							fFnshOne(false, this);
 						}
 
 						function fOnLoad() {
 							// IE8
 							if (nWse.fMaybeNonHtml5Brsr()) {
 								// 继续等待
-								if (("loaded" != this.readyState) && ("complete" != this.readyState))
-								{ return; }
+								//if (("loaded" != this.readyState) && ("complete" != this.readyState))
+								//{ return; }
+
+								console.log(this.readyState);
 							}
 
 							// 处理……
-							fFnshOne(true);
+							fFnshOne(true, this);
 						}
 
-						function fFnshOne(a_Sucs) {
+						function fFnshOne(a_Sucs, a_Img) {
 							// 递增计数
 							a_Sucs ? ++l_This.e_SucsCnt : ++l_This.e_FailCnt;
+
+							// 回调
+							if (l_This.e_Cfg.c_fOnFnshOne) {
+								l_This.e_Cfg.c_fOnFnshOne(a_Img);
+							}
 
 							// 继续等待？
 							if (l_This.e_FailCnt + l_This.e_SucsCnt < l_This.e_ImgSqnc.length)
 							{ return; }
 
-							// 已完成
+							// 已完成，回调
+							if (l_This.e_Cfg.c_fOnFnshAll) {
+								l_This.e_Cfg.c_fOnFnshAll(l_This.e_Errs);
+							}
 						}
 					}
 				});
@@ -409,31 +484,68 @@
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
 			(function () {
-				//nWse.stDomUtil.cAddEvtHdlr(window, "mousemove",
-				//	function (a_Evt) {
-				//		a_Evt = a_Evt || window.event;
-				//		if (a_Evt.preventDefault) {
-				//			a_Evt.preventDefault();
-				//		}
-				//		else
-				//		{
-				//			a_Evt.returnValue = false;
-				//		}
-				//		return false;
-				//	});
 
-				var s_PIT = new nWse.tPntIptTrkr();
-				s_PIT.cInit({
-					c_HdlMode: 1,
-					c_HdlMosMove: true
-				});
-				s_PIT.cSetImdtHdlr(fHdlIpt);
+				// 修正位置尺寸
+				var l_Pnl = nWse.stDomUtil.cQryOne(".mi_pnl");
+				var l_CtntDiv = nWse.stDomUtil.cQryOne(".mi_ctnt_div");
 
+				function fFixPosDim() {
+
+					// 不能这么算，因为受图像影响，但图像可能尚未载入！
+					// 固定宽高比为2:1
+					var i_ImgAr = 2 / 1;
+					var l_H, l_Y;
+
+					l_H = Math.round(nWse.stDomUtil.cGetVwptWid() / i_ImgAr);
+					nWse.stCssUtil.cSetDimHgt(l_CtntDiv, l_H);
+
+					l_H = Math.max(100, nWse.stDomUtil.cGetVwptHgt() - l_CtntDiv.offsetHeight);
+					nWse.stCssUtil.cSetDimHgt(l_Pnl, l_H);
+					l_H = l_Pnl.offsetHeight; // 可能会受最小高度的影响！
+
+					l_Y = nWse.stDomUtil.cGetVwptHgt() - l_H;
+					nWse.stCssUtil.cSetPosTp(l_Pnl, l_Y);
+				}
+
+				fFixPosDim();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+
+
+				// 输入处理
 				function fHdlIpt(a_Ipt) {
 					var l_DmntTch = a_Ipt.c_Tchs[0];
 					l_DmntTch.c_Hdld = true;
+
+					// 点中图像时才处理？算了，总是处理！
+					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
+				//	if (l_EvtTgt && ("IMG" == l_EvtTgt.tagName))
+					{
+						nApp.g_ISP.cHdlIpt(a_Ipt, l_DmntTch);
+					}
 					return false;
 				}
+
+				// 图像序列播放器
+				nApp.g_ISP = new nApp.tImgSqncPlr();
+				nApp.g_ISP.cInit({
+					c_UrlDiry: "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/",
+					c_Bgn: 0,
+					c_Amt: 26,
+					c_Extd: ".png",
+					c_ImgTgt: document.getElementById("k_ImgTgt"),
+					c_fOnFnshOne: function (a_Img) {
+						//	console.log("finish: " + a_Img.src);
+					},
+					c_fOnFnshAll: function (a_Errs) {
+						console.log("开始播放");
+						nApp.g_PIT = new nWse.tPntIptTrkr();
+						nApp.g_PIT.cInit({
+							c_HdlMode: 1,
+							c_HdlMosMove: true
+						});
+						nApp.g_PIT.cSetImdtHdlr(fHdlIpt);
+					}
+				});
 			})();
 		}
 	});

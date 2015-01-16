@@ -118,7 +118,7 @@ body {
 	cursor: default;
 }
 
-.mi_menu_bm {
+.mi_menu_bm, .mi_pnl {
 	position: fixed;
 	width: 100%;
 	/*height: 80px;*/
@@ -530,6 +530,28 @@ body {
 .mi_xiang_mu_niao_kan .mi_ctnt_div > img {
 	width: 100%;
 	cursor: auto;
+}
+
+.mi_xiang_mu_niao_kan .mi_pnl {
+	min-height: 100px;
+
+	background-color: rgb(9, 68, 172); /*若不支持渐变，使用这个*/
+	background-image: -webkit-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
+	background-image: -moz-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
+	background-image: -ms-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
+	background-image: -o-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
+	background-image: radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
+}
+
+.mi_xiang_mu_niao_kan .mi_img_div,
+.mi_xiang_mu_niao_kan .mi_btn {
+	bottom: 30px;
+}
+
+.mi_xiang_mu_niao_kan .mi_btn {
+	right: 1.5em;
+	font-size: 1.5em;
+	color: rgb(216, 195, 150);
 }
 
 /*********************************************************************** Over ***********************************************************************/
