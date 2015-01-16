@@ -2,25 +2,6 @@
 *
 */
 
-/*
-		<div id="myFlashContentDiv" style="z-index:1;">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="myFlashContent" style="z-index:1; position:absolute;">
-				<param name="movie" value="frame.swf" />
-				<param name="wmode" value="transparent">
-				<!--[if !IE]>-->
-				<object type="application/x-shockwave-flash" data="frame.swf" width="100%" height="100%" style="z-index:1; position:absolute;">
-					<param name="movie" value="frame.swf" />
-					<param name="wmode" value="transparent">
-					<!--<![endif]-->
-					<a href="http://www.adobe.com/go/getflashplayer"> <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="点击获取最新版FlashPlayer" /> </a>
-					<!--[if !IE]>-->
-				</object>
-				<!--<![endif]-->
-			</object>
-		</div>
-*/
-
-
 (function () {
 	nWse.stPageInit.cAddEvtHdlr_DocRdy(function () {
 		//	console.log("document.ready");
@@ -222,7 +203,7 @@
 						});
 
 					function fSlcHx(a_Which, a_Idx) {
-					
+
 						// 文字作为图像名，加载
 						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
 						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
@@ -234,14 +215,11 @@
 						// 同时更新上面的类型及相关信息
 						var l_Divs = nWse.stDomUtil.cQryAll(".mi_sumr_div");
 						nWse.stAryUtil.cFor(l_Divs,
-							function (a_Ary, a_DivIdx, a_Div)
-							{
-								if (a_DivIdx == a_Idx)
-								{
+							function (a_Ary, a_DivIdx, a_Div) {
+								if (a_DivIdx == a_Idx) {
 									nWse.stCssUtil.cRmvCssc(a_Div, "mi_dspl_none");
 								}
-								else
-								{
+								else {
 									nWse.stCssUtil.cAddCssc(a_Div, "mi_dspl_none");
 								}
 							});
@@ -287,14 +265,28 @@
 				function fFixPosDim() {
 					nApp.fVticAln(l_Pane);
 					nWse.stAryUtil.cFor(l_Arws,
-						function (a_Ary, a_Idx, a_Arw)
-						{
+						function (a_Ary, a_Idx, a_Arw) {
 							nApp.fVticAln(a_Arw);
 						});
 				}
 
 				fFixPosDim();
 				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+			})();
+		}
+
+		//===================================================== 项目鸟瞰
+
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
+			(function () {
+				nWse.stDomUtil.cAddEvtHdlr(window, "mousemove",
+					function (a_Evt) {
+						//a_Evt = a_Evt || window.event;
+						//if (a_Evt.preventDefault) {
+						//	a_Evt.preventDefault();
+						//}
+						//return false;
+					});
 			})();
 		}
 	});
