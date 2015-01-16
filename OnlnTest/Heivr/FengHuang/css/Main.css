@@ -431,28 +431,55 @@ body {
 	margin: 0px 10px;
 }
 
-/******************************** 楼盘介绍＆项目简介＆物业服务 ********************************/
+/******************************** 楼盘介绍＆介绍 ********************************/
 
 .mi_lou_pan_jie_shao .mi_bkgd_anmt {
 	background-image: url("../images/bj-loupanjieshao.jpg");
 }
 
-.mi_jie_shao .mi_bkgd_anmt {
+.mi_jie_shao.mi_xiang_mu .mi_bkgd_anmt {
 	background-image: url("../images/ny-loupaiBJ01.jpg");
 }
 
-/*.mi_wu_ye_fu_wu_jian_jie .mi_bkgd_anmt {
+.mi_jie_shao.mi_wu_ye_fu_wu .mi_bkgd_anmt {
 	background-image: url("../images/ny-loupaiBJ02.jpg");
-}*/
+}
 
 .mi_jie_shao .mi_pane {
+	min-width: 500px;
 	width: 40%;
-	left: 20%;
+	left: 15%;
 	top: 30%;
 }
 
-.mi_jie_shao .mi_pane .mi_hn {
+	.mi_jie_shao .mi_pane .mi_hn {
+		font-size: 2em;
+	}
+
+.mi_jie_shao #k_ImgDiv {
+	height: 36px;
+}
+
+.mi_jie_shao #k_ParaDiv,
+.mi_jie_shao .mi_nav_arw_div {
+	color: rgb(215, 181, 120);
+}
+
+	.mi_jie_shao #k_ParaDiv p {
+		line-height: 1.3;
+		margin-bottom: 5px;
+	}
+
+.mi_jie_shao .mi_nav_arw_div {
 	font-size: 2em;
+}
+
+.mi_jie_shao #k_LtArw {
+	left: 20px;
+}
+
+.mi_jie_shao #k_RtArw {
+	right: 20px;
 }
 
 /********************************  ********************************/

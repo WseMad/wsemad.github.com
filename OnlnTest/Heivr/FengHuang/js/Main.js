@@ -98,6 +98,22 @@
 
 		var s_DomBody = nWse.stDomUtil.cAcsBody();
 
+
+		//===================================================== API
+
+		// 垂直居中
+		(function () {
+			nApp.fVticAln = function (a_DomElmt) {
+				if (!a_DomElmt)
+				{ return; }
+
+				var l_DomPrn = a_DomElmt.parentNode;
+				var l_PrnHgt = l_DomPrn ? l_DomPrn.offsetHeight : nWse.stDomUtil.cGetVwptHgt();
+				var l_Y = (l_PrnHgt - a_DomElmt.offsetHeight) / 2;
+				nWse.stCssUtil.cSetPosTp(a_DomElmt, l_Y);
+			};
+		})();
+
 		//===================================================== 公共
 
 		// 主标题广告牌
@@ -158,30 +174,6 @@
 
 			})();
 		}
-
-		//===================================================== 区位价值
-
-		//if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_qu_wei_jia_zhi")) {
-		//	(function () {
-		//		// 调整位置尺寸
-		//		function fFixPosDim() {
-		//			var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
-		//			var l_X = l_DomBlbd.offsetLeft, l_Y = l_DomBlbd.offsetTop, l_W = l_DomBlbd.offsetWidth, l_H = l_DomBlbd.offsetHeight;
-
-		//			var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
-		//			var i_BtnDim = l_DomBtn.offsetWidth;
-		//			l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
-		//			l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
-		//			l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
-		//			nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
-		//			//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
-		//		}
-
-		//		fFixPosDim();
-		//		nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-
-		//	})();
-		//}
 
 		//===================================================== 户型
 
@@ -257,9 +249,30 @@
 					{ return; }
 
 					var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
-				//	var l_X = (nWse.stDomUtil.cGetVwptWid() - l_BtnsBoa.offsetWidth) / 2;	// 注意在一瞬间可能会换行，所以采用全宽＋居中对齐方案，X总是0
+					//	var l_X = (nWse.stDomUtil.cGetVwptWid() - l_BtnsBoa.offsetWidth) / 2;	// 注意在一瞬间可能会换行，所以采用全宽＋居中对齐方案，X总是0
 					var l_Y = l_DomBlbd.offsetTop + l_DomBlbd.offsetHeight + 30;
 					nWse.stCssUtil.cSetPos(l_BtnsBoa, 0, l_Y);
+				}
+
+				fFixPosDim();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+			})();
+		}
+
+		//===================================================== 介绍
+
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_jie_shao")) {
+			(function () {
+				var l_Pane = document.getElementById("k_Pane");
+				var l_Arws = nWse.stDomUtil.cQryAll(".mi_nav_arw_div");
+
+				function fFixPosDim() {
+					nApp.fVticAln(l_Pane);
+					nWse.stAryUtil.cFor(l_Arws,
+						function (a_Ary, a_Idx, a_Arw)
+						{
+							nApp.fVticAln(a_Arw);
+						});
 				}
 
 				fFixPosDim();
