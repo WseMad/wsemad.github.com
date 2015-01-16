@@ -57,6 +57,8 @@ li > a {
 	width: 100%;
 }
 
+/* 文字 */
+
 .mi_text_aln_lt {
 	text-align: left;
 }
@@ -68,6 +70,12 @@ li > a {
 .mi_text_aln_rt {
 	text-align: right;
 }
+
+.mi_clo_white {
+	color: white;
+}
+
+/*  */
 
 /* 板和列 */
 .mi_boa {

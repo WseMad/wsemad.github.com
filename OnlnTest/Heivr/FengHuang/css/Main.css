@@ -431,6 +431,30 @@ body {
 	margin: 0px 10px;
 }
 
+/******************************** 楼盘介绍＆项目简介＆物业服务 ********************************/
+
+.mi_lou_pan_jie_shao .mi_bkgd_anmt {
+	background-image: url("../images/bj-loupanjieshao.jpg");
+}
+
+.mi_jie_shao .mi_bkgd_anmt {
+	background-image: url("../images/ny-loupaiBJ01.jpg");
+}
+
+/*.mi_wu_ye_fu_wu_jian_jie .mi_bkgd_anmt {
+	background-image: url("../images/ny-loupaiBJ02.jpg");
+}*/
+
+.mi_jie_shao .mi_pane {
+	width: 40%;
+	left: 20%;
+	top: 30%;
+}
+
+.mi_jie_shao .mi_pane .mi_hn {
+	font-size: 2em;
+}
+
 /********************************  ********************************/
 
 /*********************************************************************** Over ***********************************************************************/
