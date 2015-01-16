@@ -209,11 +209,20 @@
 							if (!nWse.stCssUtil.cHasCssc(l_EvtTgt, "mi_icon"))
 							{ return; }
 
-							fSlcHx(l_EvtTgt);
+							// 计算索引
+							var l_Icons = nWse.stDomUtil.cQryAll("#k_OptnsBoa .mi_icon");
+							var l_Idx = nWse.stAryUtil.cFind(l_Icons,
+								function (a_Ary, a_Idx, a_Icon) { return (a_Icon === l_EvtTgt); });
+
+							if (l_Idx < 0)
+							{ return; }
+
+							fSlcHx(l_EvtTgt, l_Idx);
 							return false;
 						});
 
-					function fSlcHx(a_Which) {
+					function fSlcHx(a_Which, a_Idx) {
+					
 						// 文字作为图像名，加载
 						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
 						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
@@ -223,10 +232,19 @@
 						}
 
 						// 同时更新上面的类型及相关信息
-						var l_Type = document.getElementById("k_Type");
-						if (l_Type) {
-							nWse.stDomUtil.cSetTextCtnt(l_Type, l_Text);
-						}
+						var l_Divs = nWse.stDomUtil.cQryAll(".mi_sumr_div");
+						nWse.stAryUtil.cFor(l_Divs,
+							function (a_Ary, a_DivIdx, a_Div)
+							{
+								if (a_DivIdx == a_Idx)
+								{
+									nWse.stCssUtil.cRmvCssc(a_Div, "mi_dspl_none");
+								}
+								else
+								{
+									nWse.stCssUtil.cAddCssc(a_Div, "mi_dspl_none");
+								}
+							});
 
 						// CSS类
 						var l_Old = nWse.stDomUtil.cQryOne(".mi_icon.mi_slcd", l_Boa);

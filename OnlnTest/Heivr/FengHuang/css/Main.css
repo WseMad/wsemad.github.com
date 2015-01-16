@@ -353,6 +353,7 @@ body {
 
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div {
 			padding: 40px;
+			width: 420px;
 		}
 
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane > .mi_bdr_grad_mask.mi_tp,
@@ -390,16 +391,20 @@ body {
 
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_type_div {
 			font-size: 2.4em;
+			margin-right: 10px;
 		}
 
-		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_List {
+		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_list {
 			list-style-type: disc;
 			font-size: 16px;
 			text-align: left;
+
+			height: 142px;
 		}
 
-			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_List > li {
+			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div .mi_list > li {
 				margin-left: 2em;
+				margin-bottom: 5px;
 			}
 
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_OptnsBoa {
