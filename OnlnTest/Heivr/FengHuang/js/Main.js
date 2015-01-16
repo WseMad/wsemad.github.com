@@ -132,6 +132,136 @@
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
 		})();
 
+		// 图像序列播放器
+		(function () {
+			nWse.fClass(nApp,
+				function tImgSqncPlr() {
+					this.e_ImgSqnc = null;
+					this.e_SucsCnt = 0;
+					this.e_FailCnt = 0;
+				},
+				null,
+				{
+					/// a_Cfg：Object，
+					/// {
+					///	c_UrlDiry：String，如"http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/"
+					/// c_Bgn，c_Amt：Number，如0，25
+					/// c_Extd：String，如".png"
+					/// c_ImgTgt：HTMLElement，<img>目标
+					/// }
+					cInit: function (a_Cfg)
+					{
+						var l_This = this;
+						l_This.e_Cfg = a_Cfg;
+						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;
+						l_This.eLoadImgSqnc((a_Cfg.c_UrlDiry || "./"), (a_Cfg.c_Bgn || 0), a_Cfg.c_Amt, (a_Cfg.c_Extd || ".png"));
+						return this;
+					}
+					,
+					cGetPgrsPct: function ()
+					{
+						var l_This = this;
+						if ((! l_This.e_ImgSqnc) || (0 == l_This.e_ImgSqnc.length))
+						{ return 0; }
+
+						return ((l_This.e_FailCnt + l_This.e_SucsCnt) / l_This.e_ImgSqnc.length) * 100;
+					}
+					,
+					cHdlIpt: function (a_Ipt, a_DmntTch) {
+						return this;
+					}
+					,
+					cIsPlaying: function ()
+					{
+						return this.e_Playing;
+					}
+					,
+					cPlay: function ()
+					{
+						var l_This = this;
+						if (l_This.cIsPlaying())
+						{ return this; }
+						
+						l_This.e_fOneFrm = nWse.stFctnUtil.cBindThis(l_This, l_This.eOneFrm);
+						nWse.stDomUtil.cRegAnmt(l_This.e_fOneFrm);
+						l_This.e_Playing = true;
+						return this;
+					}
+					,
+					cStopPlay: function ()
+					{
+						var l_This = this;
+						if (! l_This.cIsPlaying())
+						{ return this; }
+
+						nWse.stDomUtil.cUrgAnmt(l_This.e_fOneFrm);
+						l_This.e_Playing = false;
+						return this;
+					}
+					,
+					eOneFrm : function (a_FrmTime, a_FrmItvl, a_FrmNum)
+					{
+						var l_This = this;
+						var l_Tpf = 1 / 30;
+					}
+					,
+					ePutOneImgByIdx: function (a_Idx)
+					{
+						var l_This = this;
+						//if (! l_This.e_ImgSqnc[a_Idx].complete)
+						//{ return l_This; }
+
+						l_This.c
+					}
+					,
+					eLoadImgSqnc: function (a_UrlDiry, a_Bgn, a_Amt, a_Extd) {
+						if (a_Amt <= 0)
+						{ return this; }
+
+						var l_This = this;
+						l_This.e_ImgSqnc = new Array(a_Amt);
+
+						var l_Url, l_Img;
+						var i;
+						for (i = 0; i < a_Amt; ++i) {
+							l_Url = a_UrlDiry + (a_Bgn + i).toString() + a_Extd;
+							l_Img = new Image();
+							l_Img.onerror = fOnErr;
+							("onload" in l_Img) ? (l_Img.onload = fOnLoad) : (l_Img.onreadystatechange = fOnLoad);
+							l_This.e_ImgSqnc[i] = l_Img;
+						}
+
+						function fOnErr() {
+							// 处理……
+							fFnshOne(false);
+						}
+
+						function fOnLoad() {
+							// IE8
+							if (nWse.fMaybeNonHtml5Brsr()) {
+								// 继续等待
+								if (("loaded" != this.readyState) && ("complete" != this.readyState))
+								{ return; }
+							}
+
+							// 处理……
+							fFnshOne(true);
+						}
+
+						function fFnshOne(a_Sucs) {
+							// 递增计数
+							a_Sucs ? ++l_This.e_SucsCnt : ++l_This.e_FailCnt;
+
+							// 继续等待？
+							if (l_This.e_FailCnt + l_This.e_SucsCnt < l_This.e_ImgSqnc.length)
+							{ return; }
+
+							// 已完成
+						}
+					}
+				});
+		})();
+
 		//===================================================== 正在加载
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_loading")) {
@@ -279,14 +409,31 @@
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
 			(function () {
-				nWse.stDomUtil.cAddEvtHdlr(window, "mousemove",
-					function (a_Evt) {
-						//a_Evt = a_Evt || window.event;
-						//if (a_Evt.preventDefault) {
-						//	a_Evt.preventDefault();
-						//}
-						//return false;
-					});
+				//nWse.stDomUtil.cAddEvtHdlr(window, "mousemove",
+				//	function (a_Evt) {
+				//		a_Evt = a_Evt || window.event;
+				//		if (a_Evt.preventDefault) {
+				//			a_Evt.preventDefault();
+				//		}
+				//		else
+				//		{
+				//			a_Evt.returnValue = false;
+				//		}
+				//		return false;
+				//	});
+
+				var s_PIT = new nWse.tPntIptTrkr();
+				s_PIT.cInit({
+					c_HdlMode: 1,
+					c_HdlMosMove: true
+				});
+				s_PIT.cSetImdtHdlr(fHdlIpt);
+
+				function fHdlIpt(a_Ipt) {
+					var l_DmntTch = a_Ipt.c_Tchs[0];
+					l_DmntTch.c_Hdld = true;
+					return false;
+				}
 			})();
 		}
 	});
