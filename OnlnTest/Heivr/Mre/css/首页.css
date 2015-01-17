@@ -245,7 +245,7 @@ a.mi_link_div {
 			}
 
 	.cnApp_Env.cnApp_PC .mi_fig_cptn {
-		margin-top: 5px;
+		margin-top: 2px;
 	}
 
 		.cnApp_Env.cnApp_PC .mi_fig_cptn .mi_text {
@@ -429,6 +429,11 @@ a.mi_link_div {
 	.cnApp_Env.cnApp_PC .mi_had .mi_col {
 		width: 25%;
 		text-align: center;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_had .mi_col.mi_3 .mi_fig_cptn {
+		margin-top: 5px;
+		margin-bottom: 4px;
 	}
 
 	.cnApp_Env.cnApp_PC .mi_hsp .mi_col {
