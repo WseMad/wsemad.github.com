@@ -105,6 +105,14 @@
 		height: 22px;
 	}
 
+	.cnApp_Sprite.cnApp_13 {
+		background-position: -306px -321px;
+		width: 166px;
+		height: 104px;
+		left: -105px;
+		top: 5px;
+	}
+
 	.cnApp_Sprite.cnApp_20 {
 		background-position: 0px -323px;
 		width: 306px;
@@ -204,24 +212,24 @@
 
 #k_MonsterWords {
 	position: absolute;
-	left: 580px;
+	left: 590px;
 	top: -50px;
 	font-size: 30px;
 	color: white;
-	-webkit-transform: rotateX(-10deg) rotateY(35deg);
-	-moz-transform: rotateX(-10deg) rotateY(35deg);
-	-ms-transform: rotateX(-10deg) rotateY(35deg);
-	-o-transform: rotateX(-10deg) rotateY(35deg);
-	transform: rotateX(-10deg) rotateY(35deg);
+	-webkit-transform: rotateX(-10deg) rotateY(42deg);
+	-moz-transform: rotateX(-10deg) rotateY(42deg);
+	-ms-transform: rotateX(-10deg) rotateY(42deg);
+	-o-transform: rotateX(-10deg) rotateY(42deg);
+	transform: rotateX(-10deg) rotateY(42deg);
 }
 
 	#k_MonsterWords.cnApp_Lt {
 		left: 136px;
-		-webkit-transform: rotateX(-10deg) rotateY(-35deg);
-		-moz-transform: rotateX(-10deg) rotateY(-35deg);
-		-ms-transform: rotateX(-10deg) rotateY(-35deg);
-		-o-transform: rotateX(-10deg) rotateY(-35deg);
-		transform: rotateX(-10deg) rotateY(-35deg);
+		-webkit-transform: rotateX(-10deg) rotateY(-42deg);
+		-moz-transform: rotateX(-10deg) rotateY(-42deg);
+		-ms-transform: rotateX(-10deg) rotateY(-42deg);
+		-o-transform: rotateX(-10deg) rotateY(-42deg);
+		transform: rotateX(-10deg) rotateY(-42deg);
 	}
 
 #k_SuccessDlg .cnApp_Congratulations {
@@ -314,6 +322,14 @@
 
 /* 头和环境 */
 
+body {
+	background-color: rgb(236, 48, 47);
+}
+
+.cnApp_DrawBody {
+	margin-top: 20px;
+}
+
 .cnApp_DrawHeader {
 	position: relative;
 	left: 0px;
@@ -339,17 +355,26 @@
 	.cnApp_DrawHeader .cnApp_CptnDiv {
 		position: absolute;
 		left: 0px;
-		top: 160px;
+		top: 150px;
 		width: 100%;
 		text-align: center;
 		/*padding-top: 160px;*/
 		z-index: 2;
 	}
 
+		.cnApp_DrawHeader .cnApp_CptnDiv .cnApp_ImgGrp {
+			display: inline-block;
+			position: relative;
+		}
+
+		.cnApp_DrawHeader .cnApp_CptnDiv .cnApp_ImgGrp .cnApp_ChouChouChou {
+			left: -150px;
+		}
+
 	.cnApp_DrawHeader .cnApp_Join {
 		position: absolute;
 		left: 0px;
-		bottom: 0px;
+		bottom: -30px;
 		width: 100%;
 		text-align: center;
 		font-size: 48px;
@@ -366,19 +391,19 @@
 		cursor: pointer;
 	}
 
-	.cnApp_Join .cnApp_People {
-		margin-top: 30px;
-		text-align: center;
-		font-size: 16px;
-		color: rgb(255, 203, 0);
-	}
+.cnApp_Join .cnApp_People {
+	margin-top: 30px;
+	text-align: center;
+	font-size: 16px;
+	color: rgb(255, 203, 0);
+}
 
-	.cnApp_Join .cnApp_Num {
-		background-color: rgb(255, 203, 0);
-		color: rgb(236, 48, 47);
-		padding: 0px 10px;
-		margin-right: 1em;
-	}
+.cnApp_Join .cnApp_Num {
+	background-color: rgb(255, 203, 0);
+	color: rgb(236, 48, 47);
+	padding: 0px 10px;
+	margin-right: 1em;
+}
 
 .cnApp_RedBkgd {
 	background-color: rgb(236, 48, 47);
@@ -616,9 +641,9 @@
 		top: -20px;
 	}
 
-	.cnApp_Env.cnApp_Mbl .cnApp_ActTime img {
-		width: 100%;
-	}
+		.cnApp_Env.cnApp_Mbl .cnApp_ActTime img {
+			width: 100%;
+		}
 
 .cnApp_Mbl .cnApp_DrawHeader {
 	background-size: 100%;
@@ -721,17 +746,17 @@
 	transform-origin: left top;
 }
 
-.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_ClsDiv {
-	font-size: 48px;
-}
+	.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_ClsDiv {
+		font-size: 48px;
+	}
 
-.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_BtnDiv {
-	text-align: left;
-}
+	.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_BtnDiv {
+		text-align: left;
+	}
 
-.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_Ctnt .cnApp_Btn {
-	/*margin: 0px;*/
-}
+	.cnApp_Env.cnApp_Mbl .cnApp_DlgDiv .cnApp_Ctnt .cnApp_Btn {
+		/*margin: 0px;*/
+	}
 
 .cnApp_Env.cnApp_Mbl .cnApp_Join .cnApp_People {
 	font-size: 12px;

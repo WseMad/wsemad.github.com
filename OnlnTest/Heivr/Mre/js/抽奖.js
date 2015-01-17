@@ -121,7 +121,7 @@
 
 				var i_ImgWidPct = 40;
 				var i_EarthImgAr = 454 / 435;
-				var i_HintImgAr = 523 / 174;
+				var i_HintImgAr = 525 / 225;
 
 				var l_EarthImgWid = Math.round(nWse.stDomUtil.cGetVwptWid() * i_ImgWidPct / 100);
 				var l_EarthImgHgt = Math.round(l_EarthImgWid / i_EarthImgAr);
