@@ -166,7 +166,7 @@
 					"Wse_2dTsfm": [
 						{
 							c_Name: "rotate",
-							c_End: { w: -2 * Math.PI }
+							c_End: { w: +2 * Math.PI }
 						}
 					]
 				},
