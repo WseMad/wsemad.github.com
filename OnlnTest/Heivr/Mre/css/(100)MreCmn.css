@@ -167,6 +167,12 @@
 		height: 48px;
 	}
 
+	.cnApp_Icon.cnApp_20 {
+		background-position: -427px 0px;
+		width: 36px;
+		height: 36px;
+	}
+
 /***************************** 环境 *****************************/
 
 .cnApp_Env {
