@@ -45,6 +45,10 @@
 
 	.cnApp_Boa .cnApp_FigAry figure {
 		display: inline-block;
+		*zoom: 1;
+		*display: inline;
+		*zoom: 1;
+		*display: inline;
 		width: 33%;
 		margin-bottom: 10px;
 	}
@@ -86,6 +90,8 @@
 
 .cnApp_AU .cnApp_TextBlk {
 	display: inline-block;
+	*zoom: 1;
+	*display: inline;
 	width: 8em;
 	padding: 5px;
 	border-radius: 4px;
@@ -159,6 +165,8 @@
 
 		.cnApp_GuessYouLike ul > li {
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 			width: 40%;
 			margin: 0px;
 			padding: 5px 10px;
@@ -223,6 +231,8 @@ a.mi_link_div {
 
 			.cnApp_Env.cnApp_PC .mi_sect .mi_hdn .mi_text_div {
 				display: inline-block;
+				*zoom: 1;
+				*display: inline;
 				padding: 2px 10px;
 				background-color: white;
 				position: relative;
@@ -277,6 +287,8 @@ a.mi_link_div {
 
 		.cnApp_Env.cnApp_PC .mi_top_links .mi_btn {
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 			margin-right: 10px;
 			padding: 2px 10px;
 			border-radius: 4px;
@@ -299,12 +311,16 @@ a.mi_link_div {
 		.cnApp_Env.cnApp_PC .mi_nav_div .mi_col.mi_0 {
 			float: none;
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 			width: 80%;
 		}
 
 		.cnApp_Env.cnApp_PC .mi_nav_div .mi_col.mi_1 {
 			float: none;
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 			width: 19%; /*inline-block会产生空格符，所以稍微小一点，否则就把html写在一行上*/
 			text-align: right;
 		}
@@ -315,6 +331,8 @@ a.mi_link_div {
 
 	.cnApp_Env.cnApp_PC .mi_nav_div .mi_list {
 		display: inline-block;
+		*zoom: 1;
+		*display: inline;
 	}
 
 		.cnApp_Env.cnApp_PC .mi_nav_div .mi_list .mi_list {
@@ -328,6 +346,8 @@ a.mi_link_div {
 
 		.cnApp_Env.cnApp_PC .mi_nav_div .mi_list > li {
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 			position: relative;
 		}
 
@@ -368,10 +388,12 @@ a.mi_link_div {
 		font-size: 24px;
 	}
 
+	.cnApp_Env.cnApp_PC .mi_blue_line {
+		height: 1px;
+		background-color: rgb(0, 0, 155);
+	}
+
 	.cnApp_Env.cnApp_PC .mi_banner {
-		height: 400px;
-		border-top: 1px solid rgb(0, 0, 155);
-		margin-bottom: 30px;
 	}
 
 		.cnApp_Env.cnApp_PC .mi_banner .mi_bkgd {
@@ -432,6 +454,8 @@ a.mi_link_div {
 
 		.cnApp_Env.cnApp_PC .mi_cell > * {
 			display: inline-block;
+			*zoom: 1;
+			*display: inline;
 		}
 
 		.cnApp_Env.cnApp_PC .mi_cell .cnApp_Icon {
@@ -456,8 +480,8 @@ a.mi_link_div {
 			color: rgb(0, 23, 85);
 		}
 
-		.cnApp_Env.cnApp_PC .mi_scp .mi_list > li > a {
-			margin-right: 0.5em;
-		}
+			.cnApp_Env.cnApp_PC .mi_scp .mi_list > li > a {
+				margin-right: 0.5em;
+			}
 
 /*********************************************************************** Over ***********************************************************************/
