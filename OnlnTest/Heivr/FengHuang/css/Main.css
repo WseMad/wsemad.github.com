@@ -431,11 +431,21 @@ body {
 		.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa {
 		}
 
-			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_icon {
+			.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn {
 				margin: 0px 0.5em;
+				padding: 5px 10px;
+				border-radius: 4px;
+				background-color: rgb(78, 124, 188);
+				-ms-filter: 'alpha(opacity = 70)';
+				background-color: rgba(78, 124, 188, 0.23);
 			}
 
-/******************************** 户型鉴赏＆户型 ********************************/
+				.mi_hu_xing .mi_boa.mi_appreciate .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn.mi_prsd {
+					background-color: rgb(230, 235, 224);
+					background-color: rgba(230, 235, 224, 0.23);
+				}
+
+/******************************** 景观漫游 ********************************/
 
 .mi_jing_guan_man_you .mi_bkgd_anmt {
 	background-image: url("../images/bj-jingguanmanyou.jpg");
