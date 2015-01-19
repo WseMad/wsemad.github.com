@@ -41,11 +41,12 @@
 		//===================================================== 共同
 
 		// 调整底部菜单的位置宽度
+		//【注意】IE8有个问题，当页面含flash时，文档就绪事件触发之际，底部菜单<div>竟然还没有加载！
 		(function () {
 
 			function fFixMenu(a_1st) {
 				var l_MenuBm = nWse.stDomUtil.cQryOne(".mi_menu_bm");
-				if (!l_MenuBm)
+				if (!l_MenuBm) //【IE8】这里会返回
 				{ return; }
 
 				var l_X, l_Y;
@@ -73,6 +74,13 @@
 				}
 			}
 
+			if (nWse.fMaybeNonHtml5Brsr()) //【IE8】window.onload时再次修正
+			{
+				nWse.stPageInit.cAddEvtHdlr_WndLoad(function () {
+					fFixMenu(true);
+				});
+			}
+
 			fFixMenu(true);
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixMenu, i_WndRszRspsSpd);
 		})();
@@ -96,6 +104,27 @@
 		})();
 
 		//===================================================== 公共
+
+		// logo动画
+		(function () {
+			var l_Dom = nWse.stDomUtil.cQryOne(".mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo .mi_icon");
+			if (!l_Dom)
+			{ return; }
+
+			function fRmvCssc() {
+				nWse.stCssUtil.cRmvCssc(l_Dom, "mi_anmt");
+			}
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "webkitAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mozAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "msAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "oAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "animationend", fRmvCssc);
+
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mouseover",
+				function () {
+					nWse.stCssUtil.cAddCssc(l_Dom, "mi_anmt");
+				});
+		})();
 
 		// 主标题广告牌
 		(function () {
@@ -150,16 +179,24 @@
 					///	c_UrlDiry：String，如"http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/"
 					/// c_Bgn，c_Amt：Number，如0，26
 					/// c_Extd：String，如".png"
-					/// c_fOnFnshOne：void f(Image a_Img)，当完成一个时
-					/// c_fOnFnshAll：void f(a_Errs)，当完成全部时
+					/// c_fOnFnshOne：void f(this, Image a_Img)，当完成一个时
+					/// c_fOnFnshAll：void f(this, a_Errs)，当完成全部时
 					/// c_ImgTgt：HTMLElement，<img>目标
 					/// }
 					cInit: function (a_Cfg) {
 						var l_This = this;
 						l_This.e_Cfg = a_Cfg;
-						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;						
+						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;
 						l_This.eLoadImgSqnc((a_Cfg.c_UrlDiry || "./"), (a_Cfg.c_Bgn || 0), a_Cfg.c_Amt, (a_Cfg.c_Extd || ".png"));
 						return this;
+					}
+					,
+					cGetSucsCnt: function () {
+						return this.e_SucsCnt;
+					}
+					,
+					cGetFailCnt: function () {
+						return this.e_FailCnt;
 					}
 					,
 					cGetPgrsPct: function () {
@@ -180,13 +217,11 @@
 					,
 					cHdlIpt: function (a_Ipt, a_DmntTch) {
 						var l_This = this;
-						var l_DmntTch = a_DmntTch;	
+						var l_DmntTch = a_DmntTch;
 
-						if ((nWse.tPntIptTrkr.tPntIpt.tKind.i_TchMove == l_DmntTch.c_Kind))
-						{
+						if ((nWse.tPntIptTrkr.tPntIpt.tKind.i_TchMove == l_DmntTch.c_Kind)) {
 							l_This.e_AccTchOfst += Math.abs(l_DmntTch.c_OfstX);
-							if (l_This.e_AccTchOfst > l_This.e_SpinSpd)
-							{
+							if (l_This.e_AccTchOfst > l_This.e_SpinSpd) {
 								l_This.eRgltAccTchOfst();
 								if (l_DmntTch.c_OfstX < 0) {
 									l_This.cPlayNext();
@@ -200,35 +235,9 @@
 						return this;
 					}
 					,
-					eRgltAccTchOfst: function ()
-					{
+					eRgltAccTchOfst: function () {
 						var l_This = this;
 						l_This.e_AccTchOfst -= Math.floor(l_This.e_AccTchOfst / l_This.e_SpinSpd) * l_This.e_SpinSpd;
-						return this;
-					}
-					,
-					cIsPlaying: function () {
-						return this.e_Playing;
-					}
-					,
-					cPlay: function () {
-						var l_This = this;
-						if (l_This.cIsPlaying())
-						{ return this; }
-
-						l_This.e_fOneFrm = nWse.stFctnUtil.cBindThis(l_This, l_This.eOneFrm);
-						nWse.stDomUtil.cRegAnmt(l_This.e_fOneFrm);
-						l_This.e_Playing = true;
-						return this;
-					}
-					,
-					cStopPlay: function () {
-						var l_This = this;
-						if (!l_This.cIsPlaying())
-						{ return this; }
-
-						nWse.stDomUtil.cUrgAnmt(l_This.e_fOneFrm);
-						l_This.e_Playing = false;
 						return this;
 					}
 					,
@@ -321,7 +330,7 @@
 
 							// 回调
 							if (l_This.e_Cfg.c_fOnFnshOne) {
-								l_This.e_Cfg.c_fOnFnshOne(a_Img);
+								l_This.e_Cfg.c_fOnFnshOne(l_This, a_Img);
 							}
 
 							// 继续等待？
@@ -330,7 +339,7 @@
 
 							// 已完成，回调
 							if (l_This.e_Cfg.c_fOnFnshAll) {
-								l_This.e_Cfg.c_fOnFnshAll(l_This.e_Errs);
+								l_This.e_Cfg.c_fOnFnshAll(l_This, l_This.e_Errs);
 							}
 						}
 					}
@@ -518,7 +527,7 @@
 
 					// 点中图像时才处理？算了，总是处理！
 					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
-				//	if (l_EvtTgt && ("IMG" == l_EvtTgt.tagName))
+					//	if (l_EvtTgt && ("IMG" == l_EvtTgt.tagName))
 					{
 						nApp.g_ISP.cHdlIpt(a_Ipt, l_DmntTch);
 					}
@@ -526,17 +535,38 @@
 				}
 
 				// 图像序列播放器
+				var l_DomLoadPgrs = document.getElementById("k_LoadPgrs");
+				//	nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, "0％"); // html里
+
+				var i_ImgTot = 26;
 				nApp.g_ISP = new nApp.tImgSqncPlr();
 				nApp.g_ISP.cInit({
 					c_UrlDiry: "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/",
 					c_Bgn: 0,
-					c_Amt: 26,
+					c_Amt: i_ImgTot,
 					c_Extd: ".png",
 					c_ImgTgt: document.getElementById("k_ImgTgt"),
-					c_fOnFnshOne: function (a_Img) {
+					c_fOnFnshOne: function (a_This, a_Img) {
 						//	console.log("finish: " + a_Img.src);
+
+						var l_Pct = Math.round(a_This.cGetPgrsPct());
+						nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, l_Pct + "％");
 					},
-					c_fOnFnshAll: function (a_Errs) {
+					c_fOnFnshAll: function (a_This, a_Errs) {
+
+						// 隐藏这些提示
+						var l_Hints = nWse.stDomUtil.cQryAll(".mi_load_pgrs_hint");
+						nWse.stAryUtil.cFor(l_Hints,
+							function (a_Ary, a_Idx, a_Hint) {
+								a_Hint.style.display = "none";
+							});
+
+						// 显示提示图像
+						var l_HintImg = document.getElementById("k_Zcss");
+						if (l_HintImg) {
+							l_HintImg.style.display = "inline";
+						}
+
 						console.log("开始播放");
 						nApp.g_PIT = new nWse.tPntIptTrkr();
 						nApp.g_PIT.cInit({

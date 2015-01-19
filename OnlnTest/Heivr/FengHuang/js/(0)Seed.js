@@ -426,14 +426,16 @@
 		/// 添加事件处理器 - 文档就绪
 		stPageInit.cAddEvtHdlr_DocRdy = function (a_fCabk)
 		{
-			e_OnDocRdy.push(a_fCabk);
+			// 存在时录入，不存在时立即回调
+			e_OnDocRdy ? e_OnDocRdy.push(a_fCabk) : a_fCabk();
 			return stPageInit;
 		};
 
 		/// 添加事件处理器 - 窗口加载
 		stPageInit.cAddEvtHdlr_WndLoad = function (a_fCabk)
 		{
-			e_OnWndLoad.push(a_fCabk);
+			// 存在时录入，不存在时立即回调
+			e_OnWndLoad ? e_OnWndLoad.push(a_fCabk) : a_fCabk();
 			return stPageInit;
 		};
 	})();
@@ -956,6 +958,13 @@
 		/// 来自App
 		stAsynIcld.cFromApp = function (a_DftLibDiry, a_LibPaths, a_fCabk)
 		{
+			a_fCabk = a_fCabk || function (a_Errs) {}; // 回调函数必须存在，若未提供则补充一个空函数
+			if (! a_DftLibDiry) // 无效时立即回调
+			{
+				eCabkTree(a_fCabk, a_fCabk);
+				return stAsynIcld;
+			}
+
 			// 首次调用，创建队列
 			if (! e_FromLibQue)
 			{ e_FromLibQue = []; }
@@ -968,8 +977,14 @@
 		/// 来自库
 		stAsynIcld.cFromLib = function (a_DftLibDiry, a_LibPaths, a_fCabk)
 		{
+			a_fCabk = a_fCabk || function (a_Errs) {}; // 回调函数必须存在，若未提供则补充一个空函数
+			if (! a_DftLibDiry) // 无效时立即回调
+			{
+				eCabkTree(a_fCabk, a_fCabk);
+				return stAsynIcld;
+			}
+
 			var l_DftDiry = eGnrtDftDiry(a_DftLibDiry);
-			a_fCabk = a_fCabk || function (a_Errs) {};
 
 			// 需要异步加载的文件名存入这里
 			var l_AsynAry = [];
@@ -987,6 +1002,9 @@
 		/// 预载入
 		stAsynIcld.cPreLoad = function (a_DftLibDiry, a_LibPaths)
 		{
+			if (! a_DftLibDiry) // 无效时立即返回
+			{ return stAsynIcld; }
+
 			var l_DftDiry = eGnrtDftDiry(a_DftLibDiry);
 
 			var i = 0, l_Len = a_LibPaths ? a_LibPaths.length : 0;
