@@ -43,6 +43,14 @@ body, .mi_std_font_fam {
 
 /******************************** 共同 ********************************/
 
+.mi_lot_env {
+	min-width: 1240px;
+	-webkit-transform-origin: left top; /*用于全局缩放*/
+	-moz-transform-origin: left top;
+	-ms-transform-origin: left top;
+	-o-transform-origin: left top;
+	transform-origin: left top;
+}
 
 /******************************** Home ********************************/
 
@@ -69,9 +77,13 @@ body, .mi_std_font_fam {
 			margin-right: 2em;
 		}
 
-			.mi_sect.mi_nav .mi_list > li:hover {
-				color: rgb(228, 0, 19);
+			.mi_sect.mi_nav .mi_list > li > a {
+				color: black;
 			}
+
+				.mi_sect.mi_nav .mi_list > li > a:hover {
+					color: rgb(228, 0, 19);
+				}
 
 	.mi_sect.mi_nav .mi_col.mi_0 {
 		width: 80%;
@@ -130,6 +142,35 @@ body, .mi_std_font_fam {
 				width: 50%;
 			}
 
+		.mi_sect.mi_banner .mi_pane .mi_btn_base {
+			width: 195px;
+			height: 55px;
+			border-radius: 4px;
+			background-color: rgb(0, 0, 0);
+			background-color: rgba(0, 0, 0, 0.3);
+			box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.15);
+		}
+
+		.mi_sect.mi_banner .mi_pane .mi_btn {
+			padding: 6px 0px;
+			border-radius: inherit;
+			background-color: rgb(183, 2, 66);
+			background-image: -webkit-linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
+			background-image: -moz-linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
+			background-image: -ms-linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
+			background-image: -o-linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
+			background-image: linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
+			box-shadow: 0px -1px 0px rgba(255, 142, 192, 1);
+		}
+
+			.mi_sect.mi_banner .mi_pane .mi_btn.mi_3d {
+				box-shadow: 0px -1px 0px rgba(255, 142, 192, 1), 0px 6px 0px rgba(128, 1, 46, 1);
+			}
+
+				.mi_sect.mi_banner .mi_pane .mi_btn.mi_3d.mi_prsd {
+					box-shadow: 0px -1px 0px rgba(255, 142, 192, 1);
+				}
+
 	.mi_sect.mi_banner .mi_icon.mi_icon_news {
 		margin-right: 20px;
 		vertical-align: middle;
@@ -137,6 +178,10 @@ body, .mi_std_font_fam {
 
 	.mi_sect.mi_banner .mi_news {
 		border-bottom: 1px solid rgb(215, 215, 215);
+	}
+
+	.mi_sect.mi_banner .mi_news .mi_aph {
+		opacity: 0.5;
 	}
 
 /*********************************************************************** Over ***********************************************************************/
