@@ -161,6 +161,16 @@
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
 		})();
 
+		// 垂直居中
+		(function (){
+			var l_Doms = nWse.stDomUtil.cQryAll(".mi_vtic_aln_ct");
+			nWse.stAryUtil.cFor(l_Doms,
+				function (a_Ary, a_Idx, a_Dom)
+				{
+					nApp.fVticAln(a_Dom);
+				});
+		})();
+
 		// 图像序列播放器
 		(function () {
 			nWse.fClass(nApp,
@@ -277,7 +287,15 @@
 						//if (! l_This.e_ImgSqnc[a_Idx].complete)
 						//{ return l_This; }
 
-						l_This.e_ImgTgt.src = l_This.e_ImgSqnc[a_Idx].src;
+						if (l_This.e_Cfg.c_BkgdImg)
+						{
+							l_This.e_ImgTgt.style.backgroundImage = "url(" + l_This.e_ImgSqnc[a_Idx].src + ")";
+						}
+						else
+						{
+							l_This.e_ImgTgt.src = l_This.e_ImgSqnc[a_Idx].src;
+						}
+						
 						return l_This;
 					}
 					,
@@ -511,19 +529,27 @@
 					l_H = Math.max(100, nWse.stDomUtil.cGetVwptHgt() - l_CtntDiv.offsetHeight);
 					nWse.stCssUtil.cSetDimHgt(l_Pnl, l_H);
 					l_H = l_Pnl.offsetHeight; // 可能会受最小高度的影响！
-
 					l_Y = nWse.stDomUtil.cGetVwptHgt() - l_H;
+
+					var l_BmMenu = nWse.stDomUtil.cQryOne(".mi_menu_bm"); // 还有底部菜单
+					if (l_BmMenu)
+					{
+						l_Y -= l_BmMenu.offsetHeight;
+					}
+			
 					nWse.stCssUtil.cSetPosTp(l_Pnl, l_Y);
 				}
 
-				fFixPosDim();
-				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+				//fFixPosDim();
+				//nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
 
 
 				// 输入处理
 				function fHdlIpt(a_Ipt) {
 					var l_DmntTch = a_Ipt.c_Tchs[0];
 					l_DmntTch.c_Hdld = true;
+
+				//	console.log(l_DmntTch.c_Kind.toString());
 
 					// 点中图像时才处理？算了，总是处理！
 					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
@@ -533,6 +559,13 @@
 					}
 					return false;
 				}
+
+				//nApp.g_PIT = new nWse.tPntIptTrkr();
+				//nApp.g_PIT.cInit({
+				//	c_HdlMode: 1,
+				//	c_HdlMosMove: true
+				//});
+				//nApp.g_PIT.cSetImdtHdlr(fHdlIpt);
 
 				// 图像序列播放器
 				var l_DomLoadPgrs = document.getElementById("k_LoadPgrs");
@@ -545,7 +578,8 @@
 					c_Bgn: 0,
 					c_Amt: i_ImgTot,
 					c_Extd: ".png",
-					c_ImgTgt: document.getElementById("k_ImgTgt"),
+					c_ImgTgt: l_CtntDiv,	//document.getElementById("k_ImgTgt"),
+					c_BkgdImg: true,
 					c_fOnFnshOne: function (a_This, a_Img) {
 						//	console.log("finish: " + a_Img.src);
 
@@ -580,5 +614,43 @@
 		}
 	});
 })();
+
+
+/*
+在网页中用JavaScript控制Flash的播放 (2005-12-28 12:57:56)转载▼
+标签： 杂谈	分类： 计算机与 Internet
+用Javascript控制Flash播放的函数
+1.StopPlay() 停止flash动画的播放
+2.Play() 使falsh动画在停止处开始播放
+3.IsPlay() 判断flash动画是否正在播放，返回布尔值。
+4.Rewin() 使flash跳到第一帧关停止播放
+5.GoToFrame(intnum) 使flash跳到指定帧
+6.CurrentFrame 返回当前帧数。flash帧数从0开始计算
+7.TotalFrames() 返回当前flash动画的总帧数
+8.PercentLoad() 返回当前载入的flash帧数百分比。可以用来作精确的loading动画。
+9.LoadMovie(int,string) 装载其它的falsh动画。string是flash动画名。
+10.TGoToFrame(string,intnum) 跳到指定的movieclip的指定帧
+11.TGoToLabel(string,string) 跳到指定的movieclip的指定label
+12.TCurrentFrame(string,str2) 返回指定的movieclip的帧
+13.TCurrentLabel(string,str2) 返回指定movieclip的label
+14.TStopPlay(string) 停止指定movieclip的动画
+15.TPlay(string) 从指定movieclip的动停止处开始播放
+示例：一，在网页中加入此FLASH播放器
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="800" height="600" id="MyFlash">
+<param name="movie" value="flash.swf">
+<param name="quality" value="high">
+<param name="fullscreen" value="true"><param name="scale" value="exactfit">
+<embed src="flash.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="800" height="600">
+</embed>
+</object>
+二，调用以上的函数进行播放器的控制：
+<script language=javascript>
+var movie=document.getElementByIdx("MyFlash");   //此处的MyFlash是Object的ID号
+</script>
+比如：点击此按钮开始播放<input type=button value="开始播放" onClick="movie.Play()"/>
+测试一下，点击此按钮后FLASH是不是播放了呢？
+注意函数的大小写
+ (From:Internet)
+ */
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
