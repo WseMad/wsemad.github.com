@@ -336,110 +336,117 @@ body {
 	background-image: url("../images/bj-huxingjianshang.jpg");
 }
 
-	.mi_hu_xing .mi_appreciate .mi_col {
-		width: 50%;
-		padding: 2%;
+.mi_hu_xing .mi_appreciate .mi_col {
+	width: 50%;
+	padding: 2%;
+}
+
+	.mi_hu_xing .mi_appreciate .mi_col.mi_0 {
+		/*padding-top: 5%;*/
 	}
 
-		.mi_hu_xing .mi_appreciate .mi_col.mi_0 {
-			/*padding-top: 5%;*/
-		}
-
-		.mi_hu_xing .mi_appreciate .mi_col.mi_1 {
-			padding-right: 10%;
-		}
-
-	.mi_hu_xing .mi_pane {
-		background-color: rgb(64, 64, 64);
-		/*-ms-filter: 'alpha(opacity=70)';*/ /*别用了，会把全体变透明*/
-		background-color: rgba(255, 255, 255, 0.13);
-		/*border: 1px solid;*/
-		/*min-width: 50%;*/
-		padding: 1px; /*为遮罩预留空间*/
-		color: rgb(216, 195, 150);
+	.mi_hu_xing .mi_appreciate .mi_col.mi_1 {
+		padding-right: 10%;
 	}
 
-		.mi_hu_xing .mi_pane .mi_ctnt_div {
-			padding: 40px;
-			width: 420px;
+.mi_hu_xing .mi_pane {
+	background-color: rgb(64, 64, 64);
+	/*-ms-filter: 'alpha(opacity=70)';*/ /*别用了，会把全体变透明*/
+	background-color: rgba(255, 255, 255, 0.13);
+	/*border: 1px solid;*/
+	/*min-width: 50%;*/
+	padding: 1px; /*为遮罩预留空间*/
+	color: rgb(216, 195, 150);
+}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div {
+		padding: 40px;
+		width: 420px;
+	}
+
+	.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_tp,
+	.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_bm {
+		/*background-color: rgb(100, 111, 255);*/
+		background-image: -webkit-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -moz-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -ms-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -o-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+	}
+
+	.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_lt,
+	.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_rt {
+		/*background-color: rgb(100, 111, 255);*/
+		background-image: -webkit-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -moz-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -ms-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: -o-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+		background-image: linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
+	}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div .mi_hn {
+		padding-bottom: 20px;
+		border-bottom: 2px solid rgb(216, 195, 150);
+	}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div .mi_itro {
+		font-size: 1.2em;
+	}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div .mi_sumr {
+		margin-bottom: 20px;
+	}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div .mi_type_div {
+		font-size: 2.4em;
+		margin-right: 10px;
+	}
+
+	.mi_hu_xing .mi_pane .mi_ctnt_div .mi_list {
+		list-style-type: disc;
+		font-size: 16px;
+		text-align: left;
+		height: 142px;
+	}
+
+		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_list > li {
+			margin-left: 2em;
+			margin-bottom: 5px;
 		}
 
-		.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_tp,
-		.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_bm {
-			/*background-color: rgb(100, 111, 255);*/
-			background-image: -webkit-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -moz-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -ms-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -o-linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: linear-gradient(left, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-		}
+	.mi_hu_xing .mi_pane .mi_ctnt_div #k_OptnsBoa {
+	}
 
-		.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_lt,
-		.mi_hu_xing .mi_pane > .mi_bdr_grad_mask.mi_rt {
-			/*background-color: rgb(100, 111, 255);*/
-			background-image: -webkit-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -moz-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -ms-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: -o-linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-			background-image: linear-gradient(top, rgba(100, 111, 255, 0.3) 0%, rgba(100, 111, 255, 0.5) 25%, rgba(100, 111, 255, 0.3) 50%, rgba(100, 111, 255, 0.5) 75%, rgba(100, 111, 255, 0.3) 100%);
-		}
-
-		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_hn {
-			padding-bottom: 20px;
-			border-bottom: 2px solid rgb(216, 195, 150);
-		}
-
-		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_itro {
-			font-size: 1.2em;
-		}
-
-		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_sumr {
-			margin-bottom: 20px;
-		}
-
-		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_type_div {
-			font-size: 2.4em;
-			margin-right: 10px;
-		}
-
-		.mi_hu_xing .mi_pane .mi_ctnt_div .mi_list {
-			list-style-type: disc;
+		.mi_hu_xing .mi_pane .mi_ctnt_div #k_OptnsBoa .mi_icon {
 			font-size: 16px;
-			text-align: left;
-			height: 142px;
+			padding: 12px;
+			margin: 0px 0.5em 1em 0.5em;
+			cursor: pointer;
 		}
 
-			.mi_hu_xing .mi_pane .mi_ctnt_div .mi_list > li {
-				margin-left: 2em;
-				margin-bottom: 5px;
-			}
+	.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa {
+	}
 
-		.mi_hu_xing .mi_pane .mi_ctnt_div #k_OptnsBoa {
+		.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn {
+			margin: 0px 0.5em;
+			padding: 5px 10px;
+			border-radius: 4px;
+			background-color: rgb(78, 124, 188);
+			-ms-filter: 'alpha(opacity = 70)';
+			background-color: rgba(78, 124, 188, 0.23);
 		}
 
-			.mi_hu_xing .mi_pane .mi_ctnt_div #k_OptnsBoa .mi_icon {
-				font-size: 16px;
-				padding: 12px;
-				margin: 0px 0.5em 1em 0.5em;
-				cursor: pointer;
+			.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn.mi_prsd {
+				background-color: rgb(230, 235, 224);
+				background-color: rgba(230, 235, 224, 0.23);
 			}
 
-		.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa {
-		}
+.mi_hu_xing #k_Pane {
+}
 
-			.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn {
-				margin: 0px 0.5em;
-				padding: 5px 10px;
-				border-radius: 4px;
-				background-color: rgb(78, 124, 188);
-				-ms-filter: 'alpha(opacity = 70)';
-				background-color: rgba(78, 124, 188, 0.23);
-			}
-
-				.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn.mi_prsd {
-					background-color: rgb(230, 235, 224);
-					background-color: rgba(230, 235, 224, 0.23);
-				}
+.mi_hu_xing #k_DgrmDiv {
+	padding-left: 20px; /*G5这张图需要左边增加一些空间*/
+}
 
 /******************************** 景观漫游 ********************************/
 
@@ -553,7 +560,6 @@ body {
 		background-image: -ms-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
 		background-image: -o-radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);
 		background-image: radial-gradient(center bottom, ellipse farthest-corner, rgb(43, 106, 150) 0%, rgb(17, 36, 102) 100%);*/
-
 		background-image: none;
 		background-color: transparent;
 	}

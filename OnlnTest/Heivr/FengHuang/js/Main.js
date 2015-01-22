@@ -98,7 +98,7 @@
 
 				var l_DomPrn = a_DomElmt.parentNode;
 				var l_PrnHgt = l_DomPrn ? l_DomPrn.offsetHeight : nWse.stDomUtil.cGetVwptHgt();
-				var l_Y = (l_PrnHgt - a_DomElmt.offsetHeight) / 2;
+				var l_Y = Math.max(0, (l_PrnHgt - a_DomElmt.offsetHeight) / 2); // 不要出现负数
 				nWse.stCssUtil.cSetPosTp(a_DomElmt, l_Y);
 			};
 		})();
@@ -159,16 +159,6 @@
 
 			fFixPosDim();
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-		})();
-
-		// 垂直居中
-		(function (){
-			var l_Doms = nWse.stDomUtil.cQryAll(".mi_vtic_aln_ct");
-			nWse.stAryUtil.cFor(l_Doms,
-				function (a_Ary, a_Idx, a_Dom)
-				{
-					nApp.fVticAln(a_Dom);
-				});
 		})();
 
 		// 图像序列播放器
@@ -287,15 +277,13 @@
 						//if (! l_This.e_ImgSqnc[a_Idx].complete)
 						//{ return l_This; }
 
-						if (l_This.e_Cfg.c_BkgdImg)
-						{
+						if (l_This.e_Cfg.c_BkgdImg) {
 							l_This.e_ImgTgt.style.backgroundImage = "url(" + l_This.e_ImgSqnc[a_Idx].src + ")";
 						}
-						else
-						{
+						else {
 							l_This.e_ImgTgt.src = l_This.e_ImgSqnc[a_Idx].src;
 						}
-						
+
 						return l_This;
 					}
 					,
@@ -393,17 +381,26 @@
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_hu_xing")) {
 			// 垂直居中（要求绝对定位）
 			(function () {
-				var l_Cols = nWse.stDomUtil.cQryAll(".mi_col");
-				var l_DomBoa = l_Cols[0].parentNode;
-				var l_DomPrn = l_DomBoa.parentNode;
+				var l_Pane = document.getElementById("k_Pane");
+				var l_DgrmImg = document.getElementById("k_Dgrm");
+				var l_DgrmDiv = document.getElementById("k_DgrmDiv");
+				var l_LogoLi = nWse.stDomUtil.cQryOne(".mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo");
 
 				function fFixPosDim() {
 
 					// 宽高比为1:1，两列等宽，故使用列1的offsetWidth
 					// 注意不要使用offsetHeight，因为图像可能尚未下载完成！
-					nWse.stCssUtil.cSetDimHgt(l_DomBoa, l_Cols[1].offsetWidth);
-					var l_Y = Math.max(0, (l_DomPrn.offsetHeight - l_DomBoa.offsetHeight) / 2);
-					nWse.stCssUtil.cSetPosTp(l_DomBoa, l_Y);
+					var i_ImgWid = 686;
+					nWse.stCssUtil.cSetDim(l_DgrmDiv, i_ImgWid, i_ImgWid);
+
+					//【不用了，垂直居中已加入CSS类，最后统一处理；这里只调整水平位置】
+					//var l_Y = Math.max(0, (l_DgrmDiv.parentNode.offsetHeight - l_DgrmDiv.offsetHeight) / 2);
+					//nWse.stCssUtil.cSetPosTp(l_DgrmDiv, l_Y);
+
+					var l_X = nWse.stDomUtil.cGetVwptWid() / 2;
+					l_X -= l_LogoLi.offsetWidth / 2;
+					nWse.stCssUtil.cSetPosLt(l_DgrmDiv, l_X);
+					nWse.stCssUtil.cSetPosLt(l_Pane, l_X - l_Pane.offsetWidth);
 				}
 
 				fFixPosDim();
@@ -439,7 +436,7 @@
 						// 文字作为图像名，加载
 						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
 						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
-						var l_DomImg = document.getElementById("k_Diagram");
+						var l_DomImg = l_DgrmImg;
 						if (l_DomImg) {
 							l_DomImg.src = l_Path;
 						}
@@ -532,11 +529,10 @@
 					l_Y = nWse.stDomUtil.cGetVwptHgt() - l_H;
 
 					var l_BmMenu = nWse.stDomUtil.cQryOne(".mi_menu_bm"); // 还有底部菜单
-					if (l_BmMenu)
-					{
+					if (l_BmMenu) {
 						l_Y -= l_BmMenu.offsetHeight;
 					}
-			
+
 					nWse.stCssUtil.cSetPosTp(l_Pnl, l_Y);
 				}
 
@@ -549,7 +545,7 @@
 					var l_DmntTch = a_Ipt.c_Tchs[0];
 					l_DmntTch.c_Hdld = true;
 
-				//	console.log(l_DmntTch.c_Kind.toString());
+					//	console.log(l_DmntTch.c_Kind.toString());
 
 					// 点中图像时才处理？算了，总是处理！
 					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
@@ -612,6 +608,22 @@
 				});
 			})();
 		}
+
+		//===================================================== 最后执行的公共代码
+
+		// 垂直居中
+		(function () {
+			function fFixPosDim() {
+				var l_Doms = nWse.stDomUtil.cQryAll(".mi_vtic_aln_ct");
+				nWse.stAryUtil.cFor(l_Doms,
+					function (a_Ary, a_Idx, a_Dom) {
+						nApp.fVticAln(a_Dom);
+					});
+			}
+
+			fFixPosDim();
+			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+		})();
 	});
 })();
 
