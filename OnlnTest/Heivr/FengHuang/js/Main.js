@@ -103,64 +103,6 @@
 			};
 		})();
 
-		//===================================================== 公共
-
-		// logo动画
-		(function () {
-			var l_Dom = nWse.stDomUtil.cQryOne(".mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo .mi_icon");
-			if (!l_Dom)
-			{ return; }
-
-			function fRmvCssc() {
-				nWse.stCssUtil.cRmvCssc(l_Dom, "mi_anmt");
-			}
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "webkitAnimationEnd", fRmvCssc);
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mozAnimationEnd", fRmvCssc);
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "msAnimationEnd", fRmvCssc);
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "oAnimationEnd", fRmvCssc);
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "animationend", fRmvCssc);
-
-			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mouseover",
-				function () {
-					nWse.stCssUtil.cAddCssc(l_Dom, "mi_anmt");
-				});
-		})();
-
-		// 主标题广告牌
-		(function () {
-			var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
-			if (!l_DomBlbd)
-			{ return; }
-
-			// 调整位置尺寸
-			function fFixPosDim() {
-				var i_StdWid = 326, i_StdHgt = 203;
-				var i_MyScl = s_FlashScl * 1; // 太小，放大？
-				var l_W = Math.round(i_StdWid * i_MyScl), l_H = Math.round(i_StdHgt * i_MyScl);
-				nWse.stCssUtil.cSetDim(l_DomBlbd, l_W, l_H);
-
-				var l_X, l_Y;
-				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
-				l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
-				nWse.stCssUtil.cSetPos(l_DomBlbd, l_X, l_Y);
-
-				// 按钮
-				var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
-				if (!l_DomBtn)
-				{ return; }
-
-				var i_BtnDim = l_DomBtn.offsetWidth;
-				l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
-				l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
-				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
-				nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
-				//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
-			}
-
-			fFixPosDim();
-			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-		})();
-
 		// 图像序列播放器
 		(function () {
 			nWse.fClass(nApp,
@@ -176,7 +118,7 @@
 				{
 					/// a_Cfg：Object，
 					/// {
-					///	c_UrlDiry：String，如"http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/"
+					///	c_UrlPfx：String，如"http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/"
 					/// c_Bgn，c_Amt：Number，如0，26
 					/// c_Extd：String，如".png"
 					/// c_fOnFnshOne：void f(this, Image a_Img)，当完成一个时
@@ -187,7 +129,7 @@
 						var l_This = this;
 						l_This.e_Cfg = a_Cfg;
 						l_This.e_ImgTgt = a_Cfg.c_ImgTgt;
-						l_This.eLoadImgSqnc((a_Cfg.c_UrlDiry || "./"), (a_Cfg.c_Bgn || 0), a_Cfg.c_Amt, (a_Cfg.c_Extd || ".png"));
+						l_This.eLoadImgSqnc((a_Cfg.c_UrlPfx || "./"), (a_Cfg.c_Bgn || 0), a_Cfg.c_Amt, (a_Cfg.c_Extd || ".png"));
 						return this;
 					}
 					,
@@ -352,6 +294,128 @@
 				});
 		})();
 
+		// 鸟瞰
+		(function () {
+			nApp.fBirdEye = function (a_UrlPfx, a_Amt, a_ImgTgt) {
+				// 输入处理
+				function fHdlIpt(a_Ipt) {
+					var l_DmntTch = a_Ipt.c_Tchs[0];
+					l_DmntTch.c_Hdld = true;
+
+					//	console.log(l_DmntTch.c_Kind.toString());
+
+					// 点中图像时才处理？算了，总是处理！
+					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
+					//	if (l_EvtTgt && ("IMG" == l_EvtTgt.tagName))
+					{
+						nApp.g_ISP.cHdlIpt(a_Ipt, l_DmntTch);
+					}
+					return false;
+				}
+
+				// 图像序列播放器
+				var l_DomLoadPgrs = document.getElementById("k_LoadPgrs");
+				//	nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, "0％"); // html里
+
+				nApp.g_ISP = new nApp.tImgSqncPlr();
+				nApp.g_ISP.cInit({
+					c_UrlPfx: a_UrlPfx,
+					c_Bgn: 0,
+					c_Amt: a_Amt,
+					c_Extd: ".png",
+					c_ImgTgt: a_ImgTgt,
+					c_BkgdImg: true,
+					c_fOnFnshOne: function (a_This, a_Img) {
+						//	console.log("finish: " + a_Img.src);
+
+						var l_Pct = Math.round(a_This.cGetPgrsPct());
+						nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, l_Pct + "％");
+					},
+					c_fOnFnshAll: function (a_This, a_Errs) {
+
+						// 隐藏这些提示
+						var l_Hints = nWse.stDomUtil.cQryAll(".mi_load_pgrs_hint");
+						nWse.stAryUtil.cFor(l_Hints,
+							function (a_Ary, a_Idx, a_Hint) {
+								a_Hint.style.display = "none";
+							});
+
+						// 显示提示图像
+						var l_HintImg = document.getElementById("k_Zcss");
+						if (l_HintImg) {
+							l_HintImg.style.display = "inline";
+						}
+
+						console.log("开始播放");
+						nApp.g_PIT = new nWse.tPntIptTrkr();
+						nApp.g_PIT.cInit({
+							c_HdlMode: 1,
+							c_HdlMosMove: true
+						});
+						nApp.g_PIT.cSetImdtHdlr(fHdlIpt);
+					}
+				});
+			}
+		})();
+
+		//===================================================== 公共
+
+		// logo动画
+		(function () {
+			var l_Dom = nWse.stDomUtil.cQryOne(".mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo .mi_icon");
+			if (!l_Dom)
+			{ return; }
+
+			function fRmvCssc() {
+				nWse.stCssUtil.cRmvCssc(l_Dom, "mi_anmt");
+			}
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "webkitAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mozAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "msAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "oAnimationEnd", fRmvCssc);
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "animationend", fRmvCssc);
+
+			nWse.stDomUtil.cAddEvtHdlr(l_Dom, "mouseover",
+				function () {
+					nWse.stCssUtil.cAddCssc(l_Dom, "mi_anmt");
+				});
+		})();
+
+		// 主标题广告牌
+		(function () {
+			var l_DomBlbd = nWse.stDomUtil.cQryOne(".mi_tit_blbd");
+			if (!l_DomBlbd)
+			{ return; }
+
+			// 调整位置尺寸
+			function fFixPosDim() {
+				var i_StdWid = 326, i_StdHgt = 203;
+				var i_MyScl = s_FlashScl * 1; // 太小，放大？
+				var l_W = Math.round(i_StdWid * i_MyScl), l_H = Math.round(i_StdHgt * i_MyScl);
+				nWse.stCssUtil.cSetDim(l_DomBlbd, l_W, l_H);
+
+				var l_X, l_Y;
+				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+				l_Y = Math.round(s_FlashY + s_FlashHgt * 0.3); // 固定比例
+				nWse.stCssUtil.cSetPos(l_DomBlbd, l_X, l_Y);
+
+				// 按钮
+				var l_DomBtn = nWse.stDomUtil.cQryOne(".mi_btn");
+				if (!l_DomBtn)
+				{ return; }
+
+				var i_BtnDim = l_DomBtn.offsetWidth;
+				l_Y += l_H + (i_BtnDim / 2) * s_FlashScl;
+				l_W = l_H = i_BtnDim;// * s_FlashScl;由于使用了图标，不能缩放！
+				l_X = Math.round(s_FlashX + (s_FlashWid - l_W) / 2);
+				nWse.stCssUtil.cSetPos(l_DomBtn, l_X, l_Y);
+				//	nWse.stCssUtil.cSetDim(l_DomBtn, l_W, l_H);
+			}
+
+			fFixPosDim();
+			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+		})();
+
 		//===================================================== 正在加载
 
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_loading")) {
@@ -385,6 +449,7 @@
 				var l_DgrmImg = document.getElementById("k_Dgrm");
 				var l_DgrmDiv = document.getElementById("k_DgrmDiv");
 				var l_LogoLi = nWse.stDomUtil.cQryOne(".mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_logo");
+				var s_HuXingText = "G1"; // 户型文本，默认“G1”
 
 				function fFixPosDim() {
 
@@ -399,8 +464,13 @@
 
 					var l_X = nWse.stDomUtil.cGetVwptWid() / 2;
 					l_X -= l_LogoLi.offsetWidth / 2;
+					if (l_X + l_DgrmDiv.offsetWidth > nWse.stDomUtil.cGetVwptWid()) // 防止右端溢出
+					{
+						l_X = nWse.stDomUtil.cGetVwptWid() - l_DgrmDiv.offsetWidth;
+					}
+
 					nWse.stCssUtil.cSetPosLt(l_DgrmDiv, l_X);
-					nWse.stCssUtil.cSetPosLt(l_Pane, l_X - l_Pane.offsetWidth);
+					nWse.stCssUtil.cSetPosLt(l_Pane, Math.max(0, l_X - l_Pane.offsetWidth)); // 防止左端溢出
 				}
 
 				fFixPosDim();
@@ -435,6 +505,8 @@
 
 						// 文字作为图像名，加载
 						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
+						s_HuXingText = l_Text; // 记录文本
+
 						var l_Path = "images/diagrams/hx_" + l_Text + ".png";
 						var l_DomImg = l_DgrmImg;
 						if (l_DomImg) {
@@ -460,6 +532,104 @@
 							nWse.stCssUtil.cRplcCssc(a_Which, "mi_wait", "mi_slcd", true);
 						}
 					}
+				})();
+
+				// 查看按钮
+				(function () {
+					var l_View2d = document.getElementById("k_View2d");
+					var l_View3d = document.getElementById("k_View3d");
+
+					nWse.stDomUtil.cAddEvtHdlr(l_View2d, "click",
+						function () {
+							// 跳转
+							window.location = "户型鸟瞰_" + s_HuXingText + ".html";
+							return false;
+						});
+
+				})();
+			})();
+		}
+
+		//===================================================== 户型全景
+
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_hu_xing_quan_jing")) {
+			(function () {
+
+				var s_HuXingText = "G1"; // 户型文本，默认“G1”
+
+				//-------- 输入处理
+
+				// 选项板
+				if (!document.getElementById("k_OptnsBoa")) //【IE8】
+				{
+					nWse.stPageInit.cAddEvtHdlr_WndLoad(fHdlOptnsBoa);
+				}
+				else {
+					fHdlOptnsBoa();
+				}
+
+				function fHdlOptnsBoa() {
+					var l_Boa = document.getElementById("k_OptnsBoa");
+					nWse.stDomUtil.cAddEvtHdlr(l_Boa, "click",
+						function (a_Evt) {
+							a_Evt = a_Evt || window.event;
+							var l_EvtTgt = a_Evt.target || a_Evt.srcElement;
+
+							if (!nWse.stCssUtil.cHasCssc(l_EvtTgt, "mi_icon"))
+							{ return; }
+
+							// 计算索引
+							var l_Icons = nWse.stDomUtil.cQryAll("#k_OptnsBoa .mi_icon");
+							var l_Idx = nWse.stAryUtil.cFind(l_Icons,
+								function (a_Ary, a_Idx, a_Icon) { return (a_Icon === l_EvtTgt); });
+
+							if (l_Idx < 0)
+							{ return; }
+
+							fSlcHx(l_EvtTgt, l_Idx);
+							return false;
+						});
+
+					function fSlcHx(a_Which, a_Idx) {
+
+						// 文字作为flash名，加载
+						var l_Text = nWse.stDomUtil.cGetTextCtnt(a_Which);
+						s_HuXingText = l_Text; // 记录文本
+
+						var l_Type = nWse.stDomUtil.cQryOne(".mi_TypeText");
+						var l_TypeText = nWse.stDomUtil.cGetTextCtnt(l_Type);
+						var l_Path = "户型全景swf/" + l_TypeText + "/" + l_Text + ".swf";
+						//	l_Path = "file:///F:/MyGit/MyHome/OnlnTest/Heivr/FengHuang/" + l_Path;
+						console.log(l_Path);
+
+						var l_FlashDiv = document.getElementById("k_FlashDiv");
+						var l_InrHtml;
+						var l_FlashPlr;
+						if (nWse.fMaybeNonHtml5Brsr()) {
+							l_FlashPlr = document.getElementById("k_FlashPlr_IE");
+							l_InrHtml = '<object id="k_FlashPlr_IE" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" style="z-index:1; position:absolute;"><param name="movie" value="' + l_Path + '" /><param name="wmode" value="transparent"></object>';
+						}
+						else {
+							l_FlashPlr = document.getElementById("k_FlashPlr_Othr");
+							l_InrHtml = '<object id="k_FlashPlr_Othr" type="application/x-shockwave-flash" width="100%" height="100%" style="z-index:1; position:absolute;"><param name="movie" value="' + l_Path + '" /><param name="wmode" value="transparent"></object>';
+						}
+
+						l_FlashDiv.innerHTML = l_InrHtml;
+						//	l_FlashPlr.LoadMovie(l_Path, "_root.k_FlashPlr_Othr");
+						//	console.log(l_FlashPlr.LoadMovie.length);
+						//	l_FlashPlr.LoadMovie(l_Path);
+
+						// CSS类
+						var l_Old = nWse.stDomUtil.cQryOne(".mi_icon.mi_slcd", l_Boa);
+						if (l_Old !== a_Which) {
+							nWse.stCssUtil.cRplcCssc(l_Old, "mi_slcd", "mi_wait", true);
+							nWse.stCssUtil.cRplcCssc(a_Which, "mi_wait", "mi_slcd", true);
+						}
+					}
+				}
+
+				(function () {
+
 				})();
 			})();
 		}
@@ -504,108 +674,51 @@
 			})();
 		}
 
-		//===================================================== 项目鸟瞰
+		//===================================================== 项目鸟瞰＆户型鸟瞰
 
-		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
+		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_niao_kan")) {
 			(function () {
-
-				// 修正位置尺寸
-				var l_Pnl = nWse.stDomUtil.cQryOne(".mi_pnl");
-				var l_CtntDiv = nWse.stDomUtil.cQryOne(".mi_ctnt_div");
-
-				function fFixPosDim() {
-
-					// 不能这么算，因为受图像影响，但图像可能尚未载入！
-					// 固定宽高比为2:1
-					var i_ImgAr = 2 / 1;
-					var l_H, l_Y;
-
-					l_H = Math.round(nWse.stDomUtil.cGetVwptWid() / i_ImgAr);
-					nWse.stCssUtil.cSetDimHgt(l_CtntDiv, l_H);
-
-					l_H = Math.max(100, nWse.stDomUtil.cGetVwptHgt() - l_CtntDiv.offsetHeight);
-					nWse.stCssUtil.cSetDimHgt(l_Pnl, l_H);
-					l_H = l_Pnl.offsetHeight; // 可能会受最小高度的影响！
-					l_Y = nWse.stDomUtil.cGetVwptHgt() - l_H;
-
-					var l_BmMenu = nWse.stDomUtil.cQryOne(".mi_menu_bm"); // 还有底部菜单
-					if (l_BmMenu) {
-						l_Y -= l_BmMenu.offsetHeight;
-					}
-
-					nWse.stCssUtil.cSetPosTp(l_Pnl, l_Y);
+				// 项目
+				var l_UrlPfx = "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/";
+				var l_Amt = 26;
+				if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
+					l_UrlPfx += "nk/";
 				}
-
-				//fFixPosDim();
-				//nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-
-
-				// 输入处理
-				function fHdlIpt(a_Ipt) {
-					var l_DmntTch = a_Ipt.c_Tchs[0];
-					l_DmntTch.c_Hdld = true;
-
-					//	console.log(l_DmntTch.c_Kind.toString());
-
-					// 点中图像时才处理？算了，总是处理！
-					var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
-					//	if (l_EvtTgt && ("IMG" == l_EvtTgt.tagName))
-					{
-						nApp.g_ISP.cHdlIpt(a_Ipt, l_DmntTch);
+				else // 下面都是户型……
+					if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G1")) {
+						l_UrlPfx += "G1/G1NK_";
 					}
-					return false;
-				}
-
-				//nApp.g_PIT = new nWse.tPntIptTrkr();
-				//nApp.g_PIT.cInit({
-				//	c_HdlMode: 1,
-				//	c_HdlMosMove: true
-				//});
-				//nApp.g_PIT.cSetImdtHdlr(fHdlIpt);
-
-				// 图像序列播放器
-				var l_DomLoadPgrs = document.getElementById("k_LoadPgrs");
-				//	nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, "0％"); // html里
-
-				var i_ImgTot = 26;
-				nApp.g_ISP = new nApp.tImgSqncPlr();
-				nApp.g_ISP.cInit({
-					c_UrlDiry: "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/",
-					c_Bgn: 0,
-					c_Amt: i_ImgTot,
-					c_Extd: ".png",
-					c_ImgTgt: l_CtntDiv,	//document.getElementById("k_ImgTgt"),
-					c_BkgdImg: true,
-					c_fOnFnshOne: function (a_This, a_Img) {
-						//	console.log("finish: " + a_Img.src);
-
-						var l_Pct = Math.round(a_This.cGetPgrsPct());
-						nWse.stDomUtil.cSetTextCtnt(l_DomLoadPgrs, l_Pct + "％");
-					},
-					c_fOnFnshAll: function (a_This, a_Errs) {
-
-						// 隐藏这些提示
-						var l_Hints = nWse.stDomUtil.cQryAll(".mi_load_pgrs_hint");
-						nWse.stAryUtil.cFor(l_Hints,
-							function (a_Ary, a_Idx, a_Hint) {
-								a_Hint.style.display = "none";
-							});
-
-						// 显示提示图像
-						var l_HintImg = document.getElementById("k_Zcss");
-						if (l_HintImg) {
-							l_HintImg.style.display = "inline";
+					else
+						if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G3")) {
+							l_UrlPfx += "G3/G3NK_";
 						}
+						else
+							if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G4")) {
+								l_UrlPfx += "G4/G4NK_";
+							}
+							else
+								if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G5")) {
+									l_UrlPfx += "G5/G5NK_";
+								}
+								else
+									if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G6")) {
+										l_UrlPfx += "G6/G6NK_";
+									}
+									else
+										if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G7")) {
+											l_UrlPfx += "G7/G7NK_";
+										}
+										else
+											if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_D1")) {
+												l_UrlPfx += "D1/D1NK_1_"; // 这名字起得……
+											}
+											else
+												if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_D2")) {
+													l_UrlPfx += "D2/D2NK_";
+												}
 
-						console.log("开始播放");
-						nApp.g_PIT = new nWse.tPntIptTrkr();
-						nApp.g_PIT.cInit({
-							c_HdlMode: 1,
-							c_HdlMosMove: true
-						});
-						nApp.g_PIT.cSetImdtHdlr(fHdlIpt);
-					}
-				});
+				// 鸟瞰
+				nApp.fBirdEye(l_UrlPfx, l_Amt, nWse.stDomUtil.cQryOne(".mi_ctnt_div"));
 			})();
 		}
 
@@ -623,46 +736,18 @@
 
 			fFixPosDim();
 			nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+
+			if (nWse.fMaybeNonHtml5Brsr()) //【IE8】window.onload时再次修正
+			{
+				nWse.stPageInit.cAddEvtHdlr_WndLoad(function () {
+					fFixPosDim();
+				});
+			}
 		})();
 	});
 })();
 
 
-/*
-在网页中用JavaScript控制Flash的播放 (2005-12-28 12:57:56)转载▼
-标签： 杂谈	分类： 计算机与 Internet
-用Javascript控制Flash播放的函数
-1.StopPlay() 停止flash动画的播放
-2.Play() 使falsh动画在停止处开始播放
-3.IsPlay() 判断flash动画是否正在播放，返回布尔值。
-4.Rewin() 使flash跳到第一帧关停止播放
-5.GoToFrame(intnum) 使flash跳到指定帧
-6.CurrentFrame 返回当前帧数。flash帧数从0开始计算
-7.TotalFrames() 返回当前flash动画的总帧数
-8.PercentLoad() 返回当前载入的flash帧数百分比。可以用来作精确的loading动画。
-9.LoadMovie(int,string) 装载其它的falsh动画。string是flash动画名。
-10.TGoToFrame(string,intnum) 跳到指定的movieclip的指定帧
-11.TGoToLabel(string,string) 跳到指定的movieclip的指定label
-12.TCurrentFrame(string,str2) 返回指定的movieclip的帧
-13.TCurrentLabel(string,str2) 返回指定movieclip的label
-14.TStopPlay(string) 停止指定movieclip的动画
-15.TPlay(string) 从指定movieclip的动停止处开始播放
-示例：一，在网页中加入此FLASH播放器
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="800" height="600" id="MyFlash">
-<param name="movie" value="flash.swf">
-<param name="quality" value="high">
-<param name="fullscreen" value="true"><param name="scale" value="exactfit">
-<embed src="flash.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="800" height="600">
-</embed>
-</object>
-二，调用以上的函数进行播放器的控制：
-<script language=javascript>
-var movie=document.getElementByIdx("MyFlash");   //此处的MyFlash是Object的ID号
-</script>
-比如：点击此按钮开始播放<input type=button value="开始播放" onClick="movie.Play()"/>
-测试一下，点击此按钮后FLASH是不是播放了呢？
-注意函数的大小写
- (From:Internet)
- */
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
