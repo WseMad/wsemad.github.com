@@ -222,9 +222,9 @@ body {
 
 .mi_menu_lt {
 	position: fixed;
-	width: 324px;
+	width: 304px;
 	height: 100%;
-	padding: 0px 30px;
+	padding: 0px 20px;
 	z-index: 1000;
 	color: rgb(216, 195, 150);
 }
@@ -249,7 +249,7 @@ body {
 }
 
 .mi_menu_lt .mi_icon {
-	margin: 0px 20px 20px 0px;
+	margin: 0px 10px 20px 10px;
 	padding: 30px 0px;
 	text-align: center;
 	cursor: pointer;
