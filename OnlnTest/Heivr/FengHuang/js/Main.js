@@ -546,6 +546,12 @@
 							return false;
 						});
 
+					nWse.stDomUtil.cAddEvtHdlr(l_View3d, "click",
+						function () {
+							// 跳转
+							window.location = "户型全景_" + s_HuXingText + ".html";
+							return false;
+						});
 				})();
 			})();
 		}
