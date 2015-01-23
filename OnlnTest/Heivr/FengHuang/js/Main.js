@@ -501,6 +501,53 @@
 							return false;
 						});
 
+					// 一开始根据查询字符串设置初始选中户型
+					var l_QryStr = window.location.search;
+					if (l_QryStr) {
+						(function () {
+							// 去掉问号
+							if (63 == l_QryStr.charCodeAt(0)) {
+								l_QryStr = l_QryStr.slice(1, l_QryStr.length);
+							}
+
+							// 按“&”拆分
+							var l_KVs = l_QryStr.split("&");
+							var i, l_Key, l_Val, l_EqIdx, l_TypeIdx;
+							var l_Agms = [];
+							for (i = 0; i < l_KVs.length; ++i) {
+								l_EqIdx = l_KVs[i].indexOf("=");
+								if (l_EqIdx < 0)
+								{ continue; }
+
+								l_Agms.push({
+									c_Key: l_KVs[i].slice(0, l_EqIdx),
+									c_Val: l_KVs[i].slice(l_EqIdx + 1, l_KVs[i].length)
+								});
+
+								if ("type" == l_Agms[l_Agms.length - 1].c_Key.toString())
+								{
+									l_TypeIdx = l_Agms.length - 1;
+								}
+							}
+
+							// 找到“type”这一项的值对应的图标
+							var l_Icons, l_IconIdx;
+							if (l_TypeIdx >= 0)
+							{
+								// 计算索引
+								l_Icons = nWse.stDomUtil.cQryAll("#k_OptnsBoa .mi_icon");
+								l_IconIdx = nWse.stAryUtil.cFind(l_Icons,
+									function (a_Ary, a_Idx, a_Icon) { return (nWse.stDomUtil.cGetTextCtnt(a_Icon) === l_Agms[l_TypeIdx].c_Val); });
+
+								if (l_IconIdx >= 0)
+								{
+									// 选中
+									fSlcHx(l_Icons[l_IconIdx], l_IconIdx);
+								}				
+							}
+						})();
+					}
+
 					function fSlcHx(a_Which, a_Idx) {
 
 						// 文字作为图像名，加载

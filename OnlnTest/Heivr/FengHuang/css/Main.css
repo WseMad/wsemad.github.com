@@ -11,7 +11,7 @@
 	background-repeat: no-repeat;
 	background-size: initial;
 	display: inline-block;
-	*zoom: 1;	/*【IE7】*/
+	*zoom: 1; /*【IE7】*/
 	*display: inline; /*【IE7】*/
 }
 
@@ -49,17 +49,23 @@
 		height: 43px;
 	}
 
-	.mi_hu_xing_quan_jing .mi_icon.mi_51, .mi_hu_xing_quan_jing .mi_icon.mi_wait {
-		background-position: -141px -44px;
-		width: 85px;
-		height: 85px;
-	}
+.mi_hu_xing_quan_jing .mi_icon.mi_51, .mi_hu_xing_quan_jing .mi_icon.mi_wait {
+	background-position: -141px -51px;
+	width: 70px;
+	height: 70px;
+}
 
-	.mi_hu_xing_quan_jing .mi_icon.mi_52, .mi_hu_xing_quan_jing .mi_icon.mi_slcd {
-		background-position: -226px -44px;
-		width: 85px;
-		height: 85px;
-	}
+.mi_hu_xing_quan_jing .mi_icon.mi_52, .mi_hu_xing_quan_jing .mi_icon.mi_slcd {
+	background-position: -212px -51px;
+	width: 70px;
+	height: 70px;
+}
+
+.mi_icon.mi_53 {
+	background-position: -259px 0px;
+	width: 50px;
+	height: 50px;
+}
 
 /******************************** 本项目的OOCSS ********************************/
 
@@ -220,39 +226,47 @@ body {
 				text-align: right;
 			}
 
+/* 左边菜单 */
 .mi_menu_lt {
 	position: fixed;
-	width: 304px;
+	width: 270px;
 	height: 100%;
-	padding: 0px 20px;
+	padding: 150px 35px 0px 35px;
 	z-index: 1000;
 	color: rgb(216, 195, 150);
 }
 
-.mi_menu_lt .mi_sumr_div {
-	padding-bottom: 10px;
-	border-bottom: 1px solid;
-	margin-bottom: 20px;
-}
+	.mi_menu_lt .mi_sumr_div {
+		padding-bottom: 10px;
+		border-bottom: 1px solid;
+		margin-bottom: 40px;
+	}
 
-.mi_menu_lt .mi_sumr {
-	font-size: 1.2em;
-}
+	.mi_menu_lt .mi_sumr {
+		font-size: 16px;
+	}
 
-.mi_menu_lt .mi_type_div {
-	font-size: 2.4em;
-	margin-right: 10px;
-}
+	.mi_menu_lt .mi_type_div {
+		font-size: 40px;
+		margin-right: 5px;
+	}
 
-.mi_menu_lt #k_OptnsBoa {
-	width: 220px;
-}
+	.mi_menu_lt #k_OptnsBoa {
+		width: 100%;
+	}
 
-.mi_menu_lt .mi_icon {
-	margin: 0px 10px 20px 10px;
-	padding: 30px 0px;
-	text-align: center;
-	cursor: pointer;
+	.mi_menu_lt .mi_icon {
+		margin: 0px 20px 20px 0px;
+		padding: 25px 0px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+/*户型全景里的关闭按钮*/
+.mi_hu_xing_quan_jing .mi_btn.mi_cls {
+	right: 70px;
+	top: 70px;
+	z-index: 1000;
 }
 
 /* 其他 */
