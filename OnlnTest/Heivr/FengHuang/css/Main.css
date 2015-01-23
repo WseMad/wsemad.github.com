@@ -182,8 +182,8 @@ body {
 
 				.mi_menu_bm .mi_boa.mi_nav .mi_list > li.mi_item > a:hover {
 					background-color: rgb(9, 68, 172); /*若不支持渐变，使用这个*/
-					background-image: -webkit-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*Chrome用这个*/
-					background-image: -moz-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*FF*/
+					background-image: -webkit-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*Chrome用这个*/
+					background-image: -moz-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%); /*FF*/
 					/*background-image: -webkit-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);*/
 					/*background-image: -webkit-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
 					background-image: -moz-linear-gradient(top, rgba(22, 90, 159,1) 0%, rgba(27, 56, 130,1) 100%);
@@ -277,13 +277,13 @@ body {
 /*注意这一组动画在不同浏览器里表现不同，IE很好，Chrome糟糕……*/
 @-ms-keyframes mi_menu_bm_item_bkgd {
 	from {
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 69%);
+		background-image: -ms-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 69%);
 	}
 	/*50% {
 		background-color: blue;
 	}*/
 	to {
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);
+		background-image: -ms-radial-gradient(ellipse farthest-side, rgb(9, 68, 172) 0%, rgb(2, 27, 67) 99%);
 	}
 }
 
@@ -377,6 +377,12 @@ body {
 
 /******************************** 户型鉴赏＆户型 ********************************/
 
+.mi_hu_xing .mi_mask {
+	/*background-color: rgb(0, 0, 0);
+	-ms-filter: 'alpha(opacity=80)';
+	background-color: rgba(0, 0, 0, 0.8);*/
+}
+
 .mi_hu_xing_jian_shang .mi_bkgd_anmt,
 .mi_hu_xing .mi_bkgd {
 	background-image: url("../images/bj-huxingjianshang.jpg");
@@ -396,13 +402,18 @@ body {
 	}
 
 .mi_hu_xing .mi_pane {
-	background-color: rgb(64, 64, 64);
+	background-color: rgb(32, 32, 32);
 	/*-ms-filter: 'alpha(opacity=70)';*/ /*别用了，会把全体变透明*/
-	background-color: rgba(255, 255, 255, 0.13);
-	/*border: 1px solid;*/
-	/*min-width: 50%;*/
+	background-color: rgba(0, 0, 0, 0);	/*C3浏览器覆盖上面的*/
+	background-image: -webkit-radial-gradient(left top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100px, rgba(255, 255, 255, 0.0) 300px);
+	background-image: -moz-radial-gradient(left top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100px, rgba(255, 255, 255, 0.0) 300px);
+	background-image: -ms-radial-gradient(left top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100px, rgba(255, 255, 255, 0.0) 300px);
+	background-image: -o-radial-gradient(left top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100px, rgba(255, 255, 255, 0.0) 300px);
+	background-image: radial-gradient(left top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100px, rgba(255, 255, 255, 0.0) 300px);
+
 	padding: 1px; /*为遮罩预留空间*/
 	color: rgb(216, 195, 150);
+	box-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.5);
 }
 
 	.mi_hu_xing .mi_pane .mi_ctnt_div {

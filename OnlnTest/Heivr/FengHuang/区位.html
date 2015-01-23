@@ -18,8 +18,8 @@
 </head>
 <body class="mi_qu_wei">
 
-	<!-- flash尺寸：1920×1080 -->
-	<div id="myFlashContentDiv" style="z-index:1;">
+	<!-- flash尺寸：1327×819 -->
+	<div id="myFlashContentDiv" style="z-index:1; ">
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="myFlashContent" style="z-index:1; position:absolute;">
 			<param name="movie" value="quwei.swf" />
 			<param name="wmode" value="transparent">
@@ -59,9 +59,41 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
+	<script type="text/javascript">
+		// 修正myFlashContent的高度
+		(function () {
+			// flash尺寸
+			var i_FlashWid = 1327, i_FlashHgt = 819, i_FlashAr = i_FlashWid / i_FlashHgt;
+			var i_FullWid = 1920, i_FullHgt = 1080;
+			var i_BmMenuHgt = 121;
+			var i_TpBmMgn = 20;
+
+			// 当前位置尺寸，比例（取两个方向更小的那个）
+			var s_FlashX = 0, s_FlashY = 0, s_FlashWid = i_FlashWid, s_FlashHgt = i_FlashHgt, s_FlashScl = 1;
+			function fUpdFlashScl() {
+
+				//var l_AvlbWid = nWse.stDomUtil.cGetVwptWid(), l_AvlbHgt = nWse.stDomUtil.cGetVwptHgt() - i_BmMenuHgt - i_TpBmMgn;
+				//s_FlashScl = Math.min(l_AvlbWid / i_FullWid, nWse.stDomUtil.cGetVwptHgt() / i_FullHgt);
+
+				s_FlashScl = Math.max(nWse.stDomUtil.cGetVwptWid() / i_FullWid, nWse.stDomUtil.cGetVwptHgt() / i_FullHgt);
+				s_FlashWid = i_FlashWid * s_FlashScl;
+				s_FlashHgt = i_FlashHgt * s_FlashScl;
+				s_FlashX = Math.max(0, (nWse.stDomUtil.cGetVwptWid() - s_FlashWid) / 2);
+
+				var l_FlashCtnt = document.getElementById("myFlashContent");
+				s_FlashY = Math.max(0, ((nWse.stDomUtil.cGetVwptHgt() - i_BmMenuHgt) - s_FlashHgt) / 2);
+				nWse.stCssUtil.cSetPosDim(l_FlashCtnt, s_FlashX, s_FlashY, s_FlashWid, s_FlashHgt);
+			}
+
+			nWse.stPageInit.cAddEvtHdlr_DocRdy(function () {
+				fUpdFlashScl();
+				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fUpdFlashScl, 1 / 75);
+			});
+		})();
+
+	</script>
 
 </body>
 </html>
