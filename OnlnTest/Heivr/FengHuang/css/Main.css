@@ -231,7 +231,7 @@ body {
 	position: fixed;
 	width: 270px;
 	height: 100%;
-	padding: 150px 35px 0px 35px;
+	padding: 100px 35px 0px 35px;
 	z-index: 1000;
 	color: rgb(216, 195, 150);
 }
@@ -263,6 +263,7 @@ body {
 	}
 
 /*户型全景里的关闭按钮*/
+.mi_hu_xing_niao_kan .mi_btn.mi_cls,
 .mi_hu_xing_quan_jing .mi_btn.mi_cls {
 	right: 70px;
 	top: 70px;
@@ -483,7 +484,7 @@ body {
 			background-color: rgba(24, 20, 21, 0.7);
 		}
 
-			.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn.mi_rt {
+/*.mi_hu_xing .mi_pane .mi_ctnt_div #k_BtnsBoa .mi_btn.mi_rt {
 				background-color: rgb(8, 44, 80);
 				background-color: rgba(8, 44, 80, 0.7);
 				background-image: -webkit-linear-gradient(top, rgba(8, 44, 80, 0.7) 0%, rgba(25, 62, 106, 0.7) 100%);
@@ -491,7 +492,7 @@ body {
 				background-image: -ms-linear-gradient(top, rgba(8, 44, 80, 0.7) 0%, rgba(25, 62, 106, 0.7) 100%);
 				background-image: -o-linear-gradient(top, rgba(8, 44, 80, 0.7) 0%, rgba(25, 62, 106, 0.7) 100%);
 				background-image: linear-gradient(top, rgba(8, 44, 80, 0.7) 0%, rgba(25, 62, 106, 0.7) 100%);
-			}
+			}*/
 
 .mi_hu_xing #k_Pane {
 }
@@ -602,6 +603,10 @@ body {
 		background-position: center center;
 	}
 
+.mi_hu_xing_niao_kan {
+	background-color: rgb(20, 44, 88);
+}
+
 .mi_xiang_mu_niao_kan .mi_ctnt_div {
 	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/0.png");
 	background-size: cover;
@@ -612,35 +617,35 @@ body {
 }
 
 .mi_hu_xing_niao_kan.mi_G1 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G1/G1NK_0.png");
+	background-image: url("../images/HxBirdEye/G1/G1_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_G3 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G3/G3NK_0.png");
+	background-image: url("../images/HxBirdEye/G3/G3_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_G4 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G4/G4NK_0.png");
+	background-image: url("../images/HxBirdEye/G4/G4_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_G5 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G5/G5NK_0.png");
+	background-image: url("../images/HxBirdEye/G5/G5_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_G6 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G6/G6NK_0.png");
+	background-image: url("../images/HxBirdEye/G6/G6_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_G7 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/G7/G7NK_0.png");
+	background-image: url("../images/HxBirdEye/G7/G7_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_D1 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/D1/D1NK_1_0.png"); /*注意名字*/
+	background-image: url("../images/HxBirdEye/D1/D1_0.jpg");
 }
 
 .mi_hu_xing_niao_kan.mi_D2 .mi_ctnt_div {
-	background-image: url("http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/D2/D2NK_0.png");
+	background-image: url("../images/HxBirdEye/D2/D2_0.jpg");
 }
 
 .mi_niao_kan .mi_pnl {

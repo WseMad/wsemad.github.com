@@ -296,7 +296,7 @@
 
 		// 鸟瞰
 		(function () {
-			nApp.fBirdEye = function (a_UrlPfx, a_Amt, a_ImgTgt) {
+			nApp.fBirdEye = function (a_UrlPfx, a_Extd, a_Amt, a_ImgTgt) {
 				// 输入处理
 				function fHdlIpt(a_Ipt) {
 					var l_DmntTch = a_Ipt.c_Tchs[0];
@@ -322,7 +322,7 @@
 					c_UrlPfx: a_UrlPfx,
 					c_Bgn: 0,
 					c_Amt: a_Amt,
-					c_Extd: ".png",
+					c_Extd: a_Extd,
 					c_ImgTgt: a_ImgTgt,
 					c_BkgdImg: true,
 					c_fOnFnshOne: function (a_This, a_Img) {
@@ -513,31 +513,26 @@
 							// 按“&”拆分
 							var l_KVs = l_QryStr.split("&");
 							var i, l_Key, l_Val, l_EqIdx, l_TypeIdx;
-							var l_Agms = [];
+							var l_Agms = {};
 							for (i = 0; i < l_KVs.length; ++i) {
 								l_EqIdx = l_KVs[i].indexOf("=");
 								if (l_EqIdx < 0)
 								{ continue; }
 
-								l_Agms.push({
-									c_Key: l_KVs[i].slice(0, l_EqIdx),
-									c_Val: l_KVs[i].slice(l_EqIdx + 1, l_KVs[i].length)
-								});
-
-								if ("type" == l_Agms[l_Agms.length - 1].c_Key.toString())
-								{
-									l_TypeIdx = l_Agms.length - 1;
-								}
+								l_Key = l_KVs[i].slice(0, l_EqIdx);
+								l_Val = l_KVs[i].slice(l_EqIdx + 1, l_KVs[i].length);
+								l_Agms[l_Key] = l_Val;
 							}
 
 							// 找到“type”这一项的值对应的图标
 							var l_Icons, l_IconIdx;
-							if (l_TypeIdx >= 0)
+							l_Val = l_Agms["type"];
+							if (l_Val)
 							{
 								// 计算索引
 								l_Icons = nWse.stDomUtil.cQryAll("#k_OptnsBoa .mi_icon");
 								l_IconIdx = nWse.stAryUtil.cFind(l_Icons,
-									function (a_Ary, a_Idx, a_Icon) { return (nWse.stDomUtil.cGetTextCtnt(a_Icon) === l_Agms[l_TypeIdx].c_Val); });
+									function (a_Ary, a_Idx, a_Icon) { return (nWse.stDomUtil.cGetTextCtnt(a_Icon) === l_Val); });
 
 								if (l_IconIdx >= 0)
 								{
@@ -732,46 +727,48 @@
 		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_niao_kan")) {
 			(function () {
 				// 项目
-				var l_UrlPfx = "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/";
+				var l_UrlPfx = "./images/HxBirdEye/";
+				var l_Extd = ".jpg";
 				var l_Amt = 26;
 				if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_xiang_mu_niao_kan")) {
-					l_UrlPfx += "nk/";
+					l_UrlPfx = "http://wx.heivr.com/tpl/Home/huiyuan/huxing/zc/nk/";
+					l_Extd = ".png";
 				}
 				else // 下面都是户型……
 					if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G1")) {
-						l_UrlPfx += "G1/G1NK_";
+						l_UrlPfx += "G1/G1_";
 					}
 					else
 						if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G3")) {
-							l_UrlPfx += "G3/G3NK_";
+							l_UrlPfx += "G3/G3_";
 						}
 						else
 							if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G4")) {
-								l_UrlPfx += "G4/G4NK_";
+								l_UrlPfx += "G4/G4_";
 							}
 							else
 								if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G5")) {
-									l_UrlPfx += "G5/G5NK_";
+									l_UrlPfx += "G5/G5_";
 								}
 								else
 									if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G6")) {
-										l_UrlPfx += "G6/G6NK_";
+										l_UrlPfx += "G6/G6_";
 									}
 									else
 										if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_G7")) {
-											l_UrlPfx += "G7/G7NK_";
+											l_UrlPfx += "G7/G7_";
 										}
 										else
 											if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_D1")) {
-												l_UrlPfx += "D1/D1NK_1_"; // 这名字起得……
+												l_UrlPfx += "D1/D1_";
 											}
 											else
 												if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_D2")) {
-													l_UrlPfx += "D2/D2NK_";
+													l_UrlPfx += "D2/D2_";
 												}
 
 				// 鸟瞰
-				nApp.fBirdEye(l_UrlPfx, l_Amt, nWse.stDomUtil.cQryOne(".mi_ctnt_div"));
+				nApp.fBirdEye(l_UrlPfx, l_Extd, l_Amt, nWse.stDomUtil.cQryOne(".mi_ctnt_div"));
 			})();
 		}
 
