@@ -50,39 +50,39 @@ li > a {
 
 /******************************** 定位 ********************************/
 
-.mi_rel_pstn {
+.mi_pstn_rel {
 	position: relative;
 }
 
-.mi_abs_pstn {
+.mi_pstn_abs {
 	position: absolute;
 }
 
-.mi_abs_pstn_lt_tp {
+.mi_pstn_abs_lt_tp {
 	position: absolute;
 	left: 0px;
 	top: 0px;
 }
 
-.mi_abs_pstn_lt_bm {
+.mi_pstn_abs_lt_bm {
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
 }
 
-.mi_abs_pstn_rt_tp {
+.mi_pstn_abs_rt_tp {
 	position: absolute;
 	right: 0px;
 	top: 0px;
 }
 
-.mi_abs_pstn_rt_bm {
+.mi_pstn_abs_rt_bm {
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
 }
 
-.mi_fxd_pstn {
+.mi_pstn_fxd {
 	position: fixed;
 }
 
@@ -325,16 +325,44 @@ li > a {
 
 /******************************** 文字 ********************************/
 
-.mi_font_size_big {
+.mi_font_size_30 {
+	font-size: 30px;
+}
+
+.mi_font_size_28 {
+	font-size: 28px;
+}
+
+.mi_font_size_26 {
+	font-size: 26px;
+}
+
+.mi_font_size_24 {
+	font-size: 24px;
+}
+
+.mi_font_size_22 {
+	font-size: 22px;
+}
+
+.mi_font_size_20 {
+	font-size: 20px;
+}
+
+.mi_font_size_18 {
 	font-size: 18px;
 }
 
-.mi_font_size_std {
+.mi_font_size_16 {
 	font-size: 16px;
 }
 
-.mi_font_size_sml {
+.mi_font_size_14 {
 	font-size: 14px;
+}
+
+.mi_font_size_12 {
+	font-size: 12px;
 }
 
 .mi_font_wgt_lgtr {
@@ -363,10 +391,6 @@ li > a {
 
 .mi_font_stl_oblq {
 	font-style: oblique;
-}
-
-.mi_font_size_tiny {
-	font-size: 12px;
 }
 
 .mi_text_aln_lt {
@@ -408,7 +432,7 @@ li > a {
 	.mi_btn.mi_3d {
 		position: relative;
 		left: 0px;
-		top: -6px;
+		top: -8px;
 		transition-property: top, box-shadow;
 		transition-duration: 0.3s;
 	}

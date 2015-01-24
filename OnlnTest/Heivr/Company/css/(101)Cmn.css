@@ -21,7 +21,6 @@ body, .mi_std_font_fam {
 }
 
 /* 颜色 */
-
 .mi_clo_gray {
 	color: rgb(146, 146, 146);
 }
@@ -30,21 +29,29 @@ body, .mi_std_font_fam {
 	color: rgb(0, 139, 237);
 }
 
+.mi_clo_hdn_magenta {
+	color: rgb(242, 18, 102);
+}
+
 .mi_bkgd_clo_gray {
 	background-color: rgb(246, 246, 246);
 }
 
-/* 居中宽度 */
+/* 布局环境和居中宽度 */
+.mi_cen_wid, .mi_lot_env
+{
+	width: 1260px;
+	min-width: 1260px;
+}
+
 .mi_cen_wid {
-	width: 1240px;
+	padding: 0px 10px;	/* 全局缩放后，防止内容紧贴屏幕两侧，内容宽度仍然保持1240px */
 	margin-left: auto;
 	margin-right: auto;
 }
 
-/******************************** 共同 ********************************/
-
 .mi_lot_env {
-	min-width: 1240px;
+	width: 100%;
 	-webkit-transform-origin: left top; /*用于全局缩放*/
 	-moz-transform-origin: left top;
 	-ms-transform-origin: left top;
@@ -52,12 +59,17 @@ body, .mi_std_font_fam {
 	transform-origin: left top;
 }
 
+/******************************** 共同 ********************************/
+
+
+
 /******************************** Home ********************************/
 
 /***** logo节 *****/
 
 .mi_sect.mi_logo {
-	padding: 72px 0px 110px 0px;
+	padding-top: 72px;
+	padding-bottom: 110px;
 }
 
 .mi_icon.mi_icon_logo {
@@ -145,6 +157,7 @@ body, .mi_std_font_fam {
 		.mi_sect.mi_banner .mi_pane .mi_btn_base {
 			width: 195px;
 			height: 55px;
+			padding: 8px;
 			border-radius: 4px;
 			background-color: rgb(0, 0, 0);
 			background-color: rgba(0, 0, 0, 0.3);
@@ -152,7 +165,7 @@ body, .mi_std_font_fam {
 		}
 
 		.mi_sect.mi_banner .mi_pane .mi_btn {
-			padding: 6px 0px;
+			padding: 8px 0px;
 			border-radius: inherit;
 			background-color: rgb(183, 2, 66);
 			background-image: -webkit-linear-gradient(top, rgb(254, 77, 144) 0%, rgb(183, 2, 66) 100%);
@@ -164,7 +177,7 @@ body, .mi_std_font_fam {
 		}
 
 			.mi_sect.mi_banner .mi_pane .mi_btn.mi_3d {
-				box-shadow: 0px -1px 0px rgba(255, 142, 192, 1), 0px 6px 0px rgba(128, 1, 46, 1);
+				box-shadow: 0px -1px 0px rgba(255, 142, 192, 1), 0px 8px 0px rgba(128, 1, 46, 1);
 			}
 
 				.mi_sect.mi_banner .mi_pane .mi_btn.mi_3d.mi_prsd {
@@ -183,5 +196,17 @@ body, .mi_std_font_fam {
 	.mi_sect.mi_banner .mi_news .mi_aph {
 		opacity: 0.5;
 	}
+
+/***** 案例展示节 *****/
+
+.mi_sect_cptn {
+	padding-top: 70px;
+}
+
+.mi_sect_cptn .mi_hdn {
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgb(167, 167, 167);
+	font-size: 34px;
+}
 
 /*********************************************************************** Over ***********************************************************************/
