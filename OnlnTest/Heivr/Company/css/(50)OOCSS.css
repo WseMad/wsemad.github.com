@@ -48,6 +48,14 @@ li > a {
 	visibility: visible;
 }
 
+.mi_ovfl_hide {
+	overflow: hidden;
+}
+
+.mi_ovfl_vsbl {
+	overflow: visible;
+}
+
 /******************************** 定位 ********************************/
 
 .mi_pstn_rel {
@@ -329,6 +337,18 @@ li > a {
 
 /******************************** 文字 ********************************/
 
+.mi_font_size_36 {
+	font-size: 36px;
+}
+
+.mi_font_size_34 {
+	font-size: 34px;
+}
+
+.mi_font_size_32 {
+	font-size: 32px;
+}
+
 .mi_font_size_30 {
 	font-size: 30px;
 }
@@ -422,6 +442,11 @@ li > a {
 .mi_hrzt_line {
 	width: 100%;
 	height: 1px;
+}
+
+.mi_cir {
+	width: 1em;
+	height: 1em;
 }
 
 /******************************** 板和列 ********************************/
