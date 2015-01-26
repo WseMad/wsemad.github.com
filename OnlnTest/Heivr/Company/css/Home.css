@@ -241,10 +241,6 @@
 			background-color: rgb(200, 200, 200);
 		}
 
-			.mi_case_itro .mi_ctnt_div .mi_cir.mi_slcd {
-				background-color: rgb(242, 18, 102);
-			}
-
 .mi_case_show .mi_cell {
 	float: left;
 	width: 218px;
@@ -268,6 +264,10 @@
 
 /***** 产品体系节 *****/
 
+.mi_product_hierarchy {
+	padding-bottom: 150px;
+}
+
 .mi_bkgd_clo_gray .mi_sect_cptn .mi_hdn_div > .mi_ctnt_grad_mask {
 	background-image: -webkit-linear-gradient(top, rgba(246, 246, 246, 0.9) 0%, rgba(246, 246, 246, 0) 60%);
 	background-image: -moz-linear-gradient(top, rgba(246, 246, 246, 0.9) 0%, rgba(246, 246, 246, 0) 60%);
@@ -282,6 +282,90 @@
 	background-image: -ms-linear-gradient(left, rgba(246, 246, 246, 1) 0%, rgba(246, 246, 246, 0.5) 45%, rgba(246, 246, 246, 0.5) 55%, rgba(246, 246, 246, 1) 100%);
 	background-image: -o-linear-gradient(left, rgba(246, 246, 246, 1) 0%, rgba(246, 246, 246, 0.5) 45%, rgba(246, 246, 246, 0.5) 55%, rgba(246, 246, 246, 1) 100%);
 	background-image: linear-gradient(left, rgba(246, 246, 246, 1) 0%, rgba(246, 246, 246, 0.5) 45%, rgba(246, 246, 246, 0.5) 55%, rgba(246, 246, 246, 1) 100%);
+}
+
+.mi_product_hierarchy .mi_col.mi_0 {
+	width: 260px;
+}
+
+.mi_product_hierarchy .mi_col.mi_1 {
+	width: 876px;
+}
+
+.mi_product_hierarchy .mi_col.mi_2 {
+	width: 84px;
+}
+
+.mi_product_hierarchy .mi_col.mi_0 .mi_lab {
+	background-color: rgb(8, 138, 225);
+}
+
+.mi_product_hierarchy .mi_col.mi_1 .mi_lab {
+	background-color: rgb(158, 212, 42);
+}
+
+.mi_product_hierarchy .mi_col.mi_2 .mi_lab {
+	background-color: rgb(232, 114, 41);
+}
+
+.mi_product_hierarchy .mi_col .mi_lab {
+	margin-bottom: 4px;
+}
+
+.mi_product_hierarchy .mi_col .mi_cell {
+	width: 84px;
+	margin-right: 4px;
+	border: 1px solid rgb(234, 234, 234);
+	color: rgb(67, 67, 67);
+}
+
+.mi_product_hierarchy .mi_col .mi_cell.mi_mgn_rt_l0 {
+	margin-right: 0px;
+}
+
+.mi_product_hierarchy .mi_col .mi_cell .mi_sn {
+	border-bottom: 1px solid;
+	border-color: inherit;
+	padding: 30px;
+}
+
+.mi_product_hierarchy .mi_col .mi_cell .mi_text_div {
+	padding: 20px 30px;
+	overflow-wrap: break-word;
+	text-align: center;
+}
+
+/*实现部分文字旋转*/
+.mi_nh5_plchd {
+	line-height: 1em;	/*行高=字体高*/
+}
+
+.mi_rot_text_div {
+	transform-origin: 0.5em 0.5em;
+	transform: translate(3px, 0px) rotate(90deg);	/*先顺时针转90°，后接平移修正（似乎偏了3px，具体取值应该与字体高度有关！），注意变换顺序！*/
+}
+
+.mi_cc, .mi_ec {
+	display: inline-block;
+	*zoom: 1;			/* 兼容IE7 */
+	*display: inline;	/* 兼容IE7 */
+}
+
+.mi_nh5_plchd .mi_cc {
+	padding: 1px 0px;	/*注意与mi_rot_text_div的成正交关系*/
+}
+
+.mi_nh5_plchd .mi_ec {
+	/*margin: 2px 0px;*/	/*注意与mi_rot_text_div的成正交关系*/
+}
+
+.mi_rot_text_div .mi_cc {
+	padding: 0px 1px;	/*注意与mi_nh5_plchd的成正交关系*/
+	transform: rotate(-90deg); /*逆时针转90°，转回来*/
+}
+
+.mi_rot_text_div .mi_ec {
+	/*margin: 0px 2px;*/	/*注意与mi_nh5_plchd的成正交关系*/
 }
 
 /*********************************************************************** Over ***********************************************************************/

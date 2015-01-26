@@ -141,6 +141,10 @@ body, .mi_std_font_fam {
 	color: rgb(242, 18, 102);
 }
 
+.mi_bkgd_clo_magenta {
+	background-color: rgb(242, 18, 102);
+}
+
 .mi_bkgd_clo_gray {
 	background-color: rgb(246, 246, 246);
 }
@@ -165,6 +169,7 @@ body, .mi_std_font_fam {
 	-o-transform-origin: left top;
 	transform-origin: left top;
 }
+
 
 /******************************** 共同 ********************************/
 
