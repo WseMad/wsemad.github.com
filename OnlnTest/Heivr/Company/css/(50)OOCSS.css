@@ -214,6 +214,46 @@ li > a {
 	margin-bottom: 30px;
 }
 
+.mi_mgn_lt_1px {
+	margin-left: 1px;
+}
+
+.mi_mgn_lt_2px {
+	margin-left: 2px;
+}
+
+.mi_mgn_lt_3px {
+	margin-left: 3px;
+}
+
+.mi_mgn_lt_4px {
+	margin-left: 4px;
+}
+
+.mi_mgn_lt_5px {
+	margin-left: 5px;
+}
+
+.mi_mgn_rt_1px {
+	margin-right: 1px;
+}
+
+.mi_mgn_rt_2px {
+	margin-right: 2px;
+}
+
+.mi_mgn_rt_3px {
+	margin-right: 3px;
+}
+
+.mi_mgn_rt_4px {
+	margin-right: 4px;
+}
+
+.mi_mgn_rt_5px {
+	margin-right: 5px;
+}
+
 .mi_pad_l0 {
 	padding: 0px;
 }
@@ -292,6 +332,12 @@ li > a {
 
 .mi_pad_bm_l3 {
 	padding-bottom: 30px;
+}
+
+/******************************** 边框 ********************************/
+
+.mi_bdr_rds_ihrt {
+	border-radius: inherit;
 }
 
 /******************************** 背景与遮罩 ********************************/
@@ -447,6 +493,38 @@ li > a {
 
 .mi_clo_white {
 	color: white;
+}
+
+.mi_vtic_aln_bl {
+	vertical-align: baseline;
+}
+
+.mi_vtic_aln_bm {
+	vertical-align: bottom;
+}
+
+.mi_vtic_aln_md {
+	vertical-align: middle;
+}
+
+.mi_vtic_aln_sb {
+	vertical-align: sub;
+}
+
+.mi_vtic_aln_sp {
+	vertical-align: super;
+}
+
+.mi_vtic_aln_tbm {
+	vertical-align: text-bottom;
+}
+
+.mi_vtic_aln_ttp {
+	vertical-align: text-top;
+}
+
+.mi_vtic_aln_tp {
+	vertical-align: top;
 }
 
 /******************************** 图元 ********************************/

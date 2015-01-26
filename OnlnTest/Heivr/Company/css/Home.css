@@ -11,7 +11,11 @@
 	background-color: rgb(13, 127, 208);
 }
 
-.mi_btn.mi_bkgd_clo_blue {
+.mi_bkgd_clo_blue2 {
+	background-color: rgb(7, 135, 223);
+}
+
+.mi_btn.mi_bkgd_clo_blue, .mi_btn.mi_bkgd_clo_blue2 {
 	padding: 15px 65px;
 	border-radius: 5px;
 	color: white;
@@ -241,6 +245,10 @@
 			background-color: rgb(200, 200, 200);
 		}
 
+		.mi_case_itro .mi_ctnt_div .mi_cir.mi_slcd {
+			background-color: rgb(242, 18, 102);
+		}
+
 .mi_case_show .mi_cell {
 	float: left;
 	width: 218px;
@@ -374,5 +382,110 @@
 .mi_rot_text_div .mi_ec {
 	/*margin: 0px 2px;*/	/*注意与mi_nh5_plchd的成正交关系*/
 }
+
+/***** 解决方案节 *****/
+
+.mi_solution > .mi_boa {
+	height: 450px;
+	margin-bottom: 80px;
+}
+
+.mi_solution > .mi_boa > .mi_col {
+	height: 100%;
+}
+
+.mi_solution .mi_col.mi_0, .mi_solution .mi_col.mi_2 {
+	width: 52px;
+	padding-top: 203px;
+}
+
+.mi_solution .mi_col.mi_1 {
+	width: 1136px;
+	overflow: hidden;
+}
+
+.mi_solution .mi_btn.mi_arw {
+	width: 44px;
+	height: 44px;
+	border-radius: 22px;
+
+	font-size: 32px;
+	text-align: center;
+
+	background-color: rgb(219, 219, 219);
+	color: white;
+}
+
+.mi_solution .mi_sld_slot {
+	min-width: 1136px;
+	width: 10000px;	/*一开始大一些，后来将用JS修正*/
+}
+
+.mi_solution .mi_sld_slot .mi_cell {
+	float: left;
+	width : 266px;
+	margin: 0px 9px;
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cir_div {
+	padding-top: 22px;
+	text-align: center;
+	z-index: 0;
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cir {
+	width: 166px;
+	height: 166px;
+	border-radius: 83px;
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_blue {
+	background-color: rgb(0, 139, 237);
+	background-image: -webkit-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+	background-image: -moz-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+	background-image: -ms-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+	background-image: -o-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+	/*background-image: linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_orange {
+	background-color: rgb(249, 140, 30);
+	background-image: -webkit-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+	background-image: -moz-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+	background-image: -ms-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+	background-image: -o-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+	/*background-image: linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_hlgt_mask {
+	left: -50px;	/* 59 = 83/√2，但50和PS更吻合 */
+	top: -50px;
+	border-radius: inherit;
+	background-color: transparent;
+	background-color: rgba(246, 246, 246, 0.2);
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cell_mask {
+	background-image: url("../images/Home/SltnCellMask.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 100%;
+	height: 416px;
+	padding-top: 218px;
+	margin-bottom: 2px;
+	z-index: 1;
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_hdn {
+	padding: 15px 0px;
+	margin-bottom: 15px;
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_foot {
+	height: 1em;
+}
+
+/***** 硬件展示节 *****/
+
 
 /*********************************************************************** Over ***********************************************************************/

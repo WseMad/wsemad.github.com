@@ -137,7 +137,19 @@ body, .mi_std_font_fam {
 	color: rgb(0, 139, 237);
 }
 
-.mi_clo_hdn_magenta {
+.mi_clo_dark {
+	color: rgb(67, 67, 67);
+}
+
+.mi_clo_gray2 {
+	color: rgb(109, 115, 119);
+}
+
+.mi_clo_gray3 {
+	color: rgb(124, 131, 135);
+}
+
+.mi_clo_magenta {
 	color: rgb(242, 18, 102);
 }
 
