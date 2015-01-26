@@ -23,7 +23,8 @@
 	var $ = window.jQuery;
 	$(document).ready(function () {
 
-		// 如果像素率不是1，对布局环境应用全局缩放！（此时浏览器一定支持2D变换）
+		//--------------------- 如果像素率不是1，对布局环境应用全局缩放！（此时浏览器一定支持2D变换）
+
 		var s_LotEnv = document.getElementById("k_LotEnv");
 		var s_LotEnvMinWid = parseFloat($(s_LotEnv).css("minWidth")); // 取得最小宽度
 		console.log("s_LotEnvMinWid = " + s_LotEnvMinWid);
@@ -60,7 +61,12 @@
 			}
 		})();
 
-		// 按钮（3D）
+		//--------------------- 禁用浏览器拖选文字？
+
+	//	$(document).bind("selectstart", function () { return false; });
+
+		//--------------------- 按钮（3D）
+
 		(function () {
 			var l_$Btns = $(".mi_btn");
 			var l_$3dBtns = $(".mi_btn.mi_3d");
@@ -84,6 +90,8 @@
 				});
 			$(document).bind(i_EvtName_TchEnd, function (a_Evt) { l_$3dBtns.removeClass("mi_prsd"); return false; })
 		})();
+
+		//--------------------- 实用函数
 
 		// 松弛函数
 		function fEsn_PrbItp(a_Scl) {
@@ -237,8 +245,9 @@
 				})();
 
 
-				//-------- 产品体系节里的文字旋转
+				//-------- 产品体系节
 
+				// 文字旋转
 				(function (){
 					// 非H5浏览器不作处理
 					if (i_NohH5Brsr)
@@ -268,9 +277,86 @@
 						l_Nh5Plchd.style.visibility = "hidden";	// 用这个，为了保持原位
 						l_This.style.display = "block";
 					});
-
 				})();
 
+				// 左右箭头
+				(function () {
+					var l_$LtArw = $(".mi_solution .mi_btn.mi_arw.mi_lt");
+					var l_$RtArw = $(".mi_solution .mi_btn.mi_arw.mi_rt");
+
+					l_$LtArw.bind("click",
+						function (a_Evt)
+						{
+							var l_EvtTgt = a_Evt.target;
+							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx - 1);
+						});
+
+					l_$RtArw.bind("click",
+						function (a_Evt)
+						{
+							var l_EvtTgt = a_Evt.target;
+							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx + 1);
+						});
+
+					// 暴露API
+					nApp.g_SltnCellOfstIdx = 0;	// 初始为0
+					nApp.fShowSltnCell = function(a_CellIdx)
+					{
+						var l_$SldSlot = $(".mi_solution .mi_sld_slot");
+						var l_$Cells = l_$SldSlot.children(".mi_cell");
+						if (0 == l_$Cells.length)
+						{ return; }
+
+						var i_ShowCpct = 4;
+						var l_SldSlot = l_$SldSlot.get(0);
+						var l_Cells = l_$Cells.get();
+						var l_MgnLt = parseFloat(l_$Cells.css("marginLeft"));
+						var l_MgnRt = parseFloat(l_$Cells.css("marginRight"));
+						var l_CellTotWid = l_Cells[0].offsetWidth + l_MgnLt + l_MgnRt;
+
+						if (a_CellIdx < 0)
+						{ a_CellIdx = 0; }
+						else
+						if (a_CellIdx > l_Cells.length - i_ShowCpct)
+						{ a_CellIdx = l_Cells.length - i_ShowCpct; }
+
+						var l_OldX = l_SldSlot.offsetLeft;
+						var l_NewX = -(a_CellIdx * l_CellTotWid);	// 注意负号
+						l_SldSlot.style.left = (l_NewX).toString() + "px";
+						nApp.g_SltnCellOfstIdx = a_CellIdx;
+
+						// 隐藏箭头按钮
+						if (0 == a_CellIdx)
+						{
+							l_$LtArw.hide();
+							l_$RtArw.show();
+						}
+						else
+						if (a_CellIdx == l_Cells.length - i_ShowCpct)
+						{
+							l_$LtArw.show();
+							l_$RtArw.hide();
+						}
+						else
+						{
+							l_$LtArw.show();
+							l_$RtArw.show();
+						}
+
+						//【注意】下面这部分是可选的，作个动画
+						nWse.stCssUtil.cSetPosLt(l_SldSlot, l_OldX);	// 先回到刚才的位置
+						nWse.stCssUtil.cAnmt(l_SldSlot,
+							{
+								"left": l_NewX + "px"
+							},
+							{
+								c_Dur: 0.4
+								,c_fEsn: fEsn_PrbItp
+							});
+					};
+
+					nApp.fShowSltnCell(0);	// 一上来显示[0]
+				})();
 			})();
 		}
 

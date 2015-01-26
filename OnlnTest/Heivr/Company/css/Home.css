@@ -457,6 +457,24 @@
 	/*background-image: linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
 }
 
+.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_red {
+	background-color: rgb(242, 18, 102);
+	background-image: -webkit-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+	background-image: -moz-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+	background-image: -ms-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+	background-image: -o-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+	/*background-image: linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+}
+
+.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_green {
+	background-color: rgb(157, 211, 41);
+	background-image: -webkit-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+	background-image: -moz-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+	background-image: -ms-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+	background-image: -o-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+	/*background-image: linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+}
+
 .mi_solution .mi_sld_slot .mi_cell .mi_hlgt_mask {
 	left: -50px;	/* 59 = 83/√2，但50和PS更吻合 */
 	top: -50px;
