@@ -265,7 +265,7 @@
 /***** 产品体系节 *****/
 
 .mi_product_hierarchy {
-	padding-bottom: 150px;
+	padding-bottom: 130px;
 }
 
 .mi_bkgd_clo_gray .mi_sect_cptn .mi_hdn_div > .mi_ctnt_grad_mask {
@@ -315,6 +315,7 @@
 .mi_product_hierarchy .mi_col .mi_cell {
 	width: 84px;
 	margin-right: 4px;
+	*margin-right: 0px;	/*IE7防止掉落，取消右外边距！*/
 	border: 1px solid rgb(234, 234, 234);
 	color: rgb(67, 67, 67);
 }
@@ -326,11 +327,13 @@
 .mi_product_hierarchy .mi_col .mi_cell .mi_sn {
 	border-bottom: 1px solid;
 	border-color: inherit;
-	padding: 30px;
+	padding: 30px 0px;
 }
 
 .mi_product_hierarchy .mi_col .mi_cell .mi_text_div {
 	padding: 20px 30px;
+	height: 290px;	/*固定高度*/
+	overflow: hidden;
 	overflow-wrap: break-word;
 	text-align: center;
 }
@@ -349,6 +352,10 @@
 	display: inline-block;
 	*zoom: 1;			/* 兼容IE7 */
 	*display: inline;	/* 兼容IE7 */
+}
+
+.mi_nh5_plchd .mi_cc, .mi_nh5_plchd .mi_ec {
+	/*display: block;*/			/*确保一个一行？但这会令高度增加*/
 }
 
 .mi_nh5_plchd .mi_cc {

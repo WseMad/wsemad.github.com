@@ -244,15 +244,24 @@
 					if (i_NohH5Brsr)
 					{ return; }
 
+					// 计算mi_text_div的内容高度
+					var l_TextDiv = $(".mi_product_hierarchy .mi_col .mi_cell .mi_text_div").get(0);
+					var l_$TextDiv = $(l_TextDiv);
+					var l_PadTp = parseFloat(l_$TextDiv.css("paddingTop"));
+					var l_PadBm = parseFloat(l_$TextDiv.css("paddingBottom"));
+					var l_TextDivCtntHgt = l_TextDiv.clientHeight - l_PadTp - l_PadBm;
+
 					var l_$RotTextDivs = $(".mi_rot_text_div");
 					l_$RotTextDivs.each(function (a_Idx, a_Dom)
 					{
 						var l_This = a_Dom;
-						var l_$Nh5Plchd = $(a_Dom).prev(".mi_nh5_plchd");
+						var l_$This = $(l_This);
+						var l_$Nh5Plchd = l_$This.prev(".mi_nh5_plchd");
 						var l_Nh5Plchd = l_$Nh5Plchd.get(0);
 
 						// 交换宽高
-						l_This.style.width = l_Nh5Plchd.offsetHeight + "px";
+					//	l_This.style.width = l_Nh5Plchd.offsetHeight + "px";
+						l_This.style.width = l_TextDivCtntHgt + "px";		// 用这个
 						l_This.style.height = l_Nh5Plchd.offsetWidth + "px";
 
 						// 交换显示
