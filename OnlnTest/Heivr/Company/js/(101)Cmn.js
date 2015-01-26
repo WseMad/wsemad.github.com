@@ -357,6 +357,16 @@
 
 					nApp.fShowSltnCell(0);	// 一上来显示[0]
 				})();
+
+				// 圆点
+				(function (){
+					var l_$DotBtns = $(".mi_dot_div.mi_btn");
+					l_$DotBtns.click(function (a_Evt){
+						var l_$This = $(this);
+						$(".mi_dots_boa .mi_dot").removeClass("mi_slcd");
+						l_$This.find(".mi_dot").addClass("mi_slcd");
+					});
+				})();
 			})();
 		}
 

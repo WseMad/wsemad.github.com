@@ -385,6 +385,10 @@
 
 /***** 解决方案节 *****/
 
+.mi_solution {
+	margin-bottom: 150px;
+}
+
 .mi_solution > .mi_boa {
 	height: 450px;
 	margin-bottom: 80px;
@@ -501,6 +505,35 @@
 
 .mi_solution .mi_sld_slot .mi_cell .mi_foot {
 	height: 1em;
+}
+
+.mi_solution .mi_dots_boa {
+	margin-bottom: 60px;
+}
+
+.mi_solution .mi_dots_boa .mi_hrzt_line {
+	background-color: rgb(200, 200, 200);
+}
+
+.mi_solution .mi_dots_boa .mi_dots_div {
+	top: -8px;	/*压在水平线上*/
+}
+
+.mi_solution .mi_dots_boa .mi_dots_div .mi_dot_div {
+	margin: 0px 30px;
+}
+
+.mi_solution .mi_dots_boa .mi_dot {
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	border: 1px solid rgb(200, 200, 200);
+	background-color: white;
+	margin-bottom: 20px;
+}
+
+.mi_solution .mi_dots_boa .mi_dot.mi_slcd {
+	background-color: rgb(9, 144, 228);
 }
 
 /***** 硬件展示节 *****/
