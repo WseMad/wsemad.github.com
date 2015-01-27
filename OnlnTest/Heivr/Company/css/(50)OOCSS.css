@@ -534,7 +534,12 @@ li > a {
 	height: 1px;
 }
 
-.mi_cir {
+.mi_vtic_line {
+	width: 1px;
+	height: 100%;
+}
+
+.mi_cir, .mi_dot {
 	width: 1em;
 	height: 1em;
 	border-radius: 0.5em;
@@ -588,7 +593,79 @@ li > a {
 	cursor: pointer;
 }
 
-/******************************** 3D变换 ********************************/
+/******************************** 变换 ********************************/
+
+.mi_tsfm_orig_lt_tp {
+	-webkit-transform-origin: left top;
+	-moz-transform-origin: left top;
+	-ms-transform-origin: left top;
+	-o-transform-origin: left top;
+	transform-origin: left top;
+}
+
+.mi_tsfm_orig_lt_ct {
+	-webkit-transform-origin: left center;
+	-moz-transform-origin: left center;
+	-ms-transform-origin: left center;
+	-o-transform-origin: left center;
+	transform-origin: left center;
+}
+
+.mi_tsfm_orig_lt_bm {
+	-webkit-transform-origin: left bottom;
+	-moz-transform-origin: left bottom;
+	-ms-transform-origin: left bottom;
+	-o-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+.mi_tsfm_orig_ct_tp {
+	-webkit-transform-origin: center top;
+	-moz-transform-origin: center top;
+	-ms-transform-origin: center top;
+	-o-transform-origin: center top;
+	transform-origin: center top;
+}
+
+.mi_tsfm_orig_ct_ct {
+	-webkit-transform-origin: center center;
+	-moz-transform-origin: center center;
+	-ms-transform-origin: center center;
+	-o-transform-origin: center center;
+	transform-origin: center center;
+}
+
+.mi_tsfm_orig_ct_bm {
+	-webkit-transform-origin: center bottom;
+	-moz-transform-origin: center bottom;
+	-ms-transform-origin: center bottom;
+	-o-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+
+.mi_tsfm_orig_rt_tp {
+	-webkit-transform-origin: right top;
+	-moz-transform-origin: right top;
+	-ms-transform-origin: right top;
+	-o-transform-origin: right top;
+	transform-origin: right top;
+}
+
+.mi_tsfm_orig_rt_ct {
+	-webkit-transform-origin: right center;
+	-moz-transform-origin: right center;
+	-ms-transform-origin: right center;
+	-o-transform-origin: right center;
+	transform-origin: right center;
+}
+
+.mi_tsfm_orig_rt_bm {
+	-webkit-transform-origin: right bottom;
+	-moz-ttransform-origin: right bottom;
+	-ms-transform-origin: right bottom;
+	-o-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
 
 .mi_3d_pspctv {
 	-webkit-perspective: 320px;
@@ -597,6 +674,7 @@ li > a {
 	-o-perspective: 320px;
 	perspective: 320px;
 }
+
 
 /********************************  ********************************/
 

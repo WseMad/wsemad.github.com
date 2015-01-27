@@ -538,5 +538,63 @@
 
 /***** 硬件展示节 *****/
 
+.mi_hardware {
+
+}
+
+.mi_hardware .mi_bkgd {
+	height: 684px;
+	background-image: url("../images/Home/HardwareShow.jpg");
+}
+
+.mi_hardware .mi_flag .mi_mdl, .mi_hardware .mi_flag .mi_cptn {
+	padding: 10px;
+}
+
+.mi_hardware .mi_flag .mi_cptn {
+	
+}
+
+.mi_hardware .mi_flag_div {
+	width: 22px;
+	height: 22px;
+	border-radius: 11px;
+	overflow: visible;
+}
+
+.mi_hardware .mi_flag_div .mi_dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+}
+
+.mi_hardware .mi_flag_div .mi_vtic_line {
+	height: 60px;
+	left: 50%;
+	bottom: 11px;
+}
+
+.mi_hardware .mi_flag {
+	left: 11px;
+	bottom: 11px;
+	width: 300px;	/*先设置的大一点，稍后会用JS修正*/
+	background-color: transparent;	/*确保超出的部分不可见*/
+}
+
+.mi_hardware .mi_flag .mi_lab {
+	left: -21px;
+}
+
+.mi_hardware .mi_flag .mi_cptn, .mi_hardware .mi_flag_div {
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+/***** 公司分布节 *****/
+
+.mi_distribution {
+
+}
+
 
 /*********************************************************************** Over ***********************************************************************/
