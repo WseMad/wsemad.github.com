@@ -597,61 +597,78 @@
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-.mi_hardware .mi_flag_div.mi_1 {
-	left: 804px;
-	top: 493px;
-}
-
-.mi_hardware .mi_flag_div.mi_2 {
-	left: 810px;
-	top: 336px;
-}
-
-.mi_hardware .mi_flag_div.mi_3 {
-	left: 883px;
-	top: 186px;
-}
-
-.mi_hardware .mi_flag_div.mi_4 {
-	left: 655px;
-	top: 249px;
-}
-
-.mi_hardware .mi_flag_div.mi_5 {
-	left: 524px;
-	top: 186px;
-}
-
-.mi_hardware .mi_flag_div.mi_6 {
-	left: 134px;
-	top: 330px;
-}
-
-.mi_hardware .mi_flag_div.mi_7 {
-	left: 365px;
-	top: 130px;
-}
-
-.mi_hardware .mi_flag_div.mi_8 {
-	left: 419px;
-	top: 522px;
-}
-
-.mi_hardware .mi_flag_div.mi_9 {
-	left: 1066px;
-	top: 518px;
-}
-
-.mi_hardware .mi_flag_div.mi_10 {
-	left: 501px;
-	top: 375px;
-}
-
 /***** 公司分布节 *****/
 
 .mi_distribution {
-
+	margin-bottom: 130px;
 }
 
+.mi_distribution .mi_tmln_boa {
+	padding-top: 70px;
+	padding-bottom: 90px;
+	margin-bottom: 70px;
+}
+
+.mi_distribution .mi_hrzt_line_dash {
+	border-top-color: rgb(200, 200, 200);
+}
+
+.mi_distribution .mi_year {
+	font-weight: bold;
+	top: -16px;
+}
+
+.mi_distribution .mi_lab_tp, .mi_distribution .mi_lab_bm {
+	text-align:center;
+}
+
+.mi_distribution .mi_lab_tp {
+	top: -64px;
+	color: rgb(9, 144, 228);
+}
+
+.mi_distribution .mi_lab_bm {
+	top: 8px;
+	color: rgb(67, 67, 67);
+}
+
+.mi_distribution .mi_lab_tp .mi_vtic_line_div {
+	height: 22px;
+}
+
+.mi_distribution .mi_lab_bm .mi_vtic_line_div {
+	height: 12px;
+}
+
+.mi_distribution .mi_vtic_line {
+	height: 100%;
+	background-color: rgb(200, 200, 200);
+}
+
+.mi_distribution .mi_vtic_line.mi_fix {
+	/*inline-block造成的下偏，修正*/
+	position: relative;
+	top: -5px;
+}
+
+.mi_distribution .mi_brc_upwd {
+	height: 12px;
+	border-radius: 12px 12px 0px 0px;
+	border: 1px solid rgb(200, 200, 200);
+	border-bottom: none;
+}
+
+.mi_distribution .mi_lab_tp .mi_cptn {
+	margin-bottom: 2px;
+	font-weight: bold;
+}
+
+.mi_distribution .mi_lab_bm .mi_dot {
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	border: 2px solid rgb(200, 200, 200);
+	background-color: rgb(9, 144, 228);
+}
 
 /*********************************************************************** Over ***********************************************************************/
