@@ -638,17 +638,14 @@
 
 .mi_distribution .mi_lab_bm .mi_vtic_line_div {
 	height: 12px;
+	margin-bottom: 2px;
 }
 
 .mi_distribution .mi_vtic_line {
+	left: 50%;	/*水平居中，由于inline-block会产生奇怪的向下偏移，所以改用绝对定位！*/
+	top: 0px;
 	height: 100%;
 	background-color: rgb(200, 200, 200);
-}
-
-.mi_distribution .mi_vtic_line.mi_fix {
-	/*inline-block造成的下偏，修正*/
-	position: relative;
-	top: -5px;
 }
 
 .mi_distribution .mi_brc_upwd {
@@ -663,12 +660,50 @@
 	font-weight: bold;
 }
 
+.mi_distribution .mi_lab_tp.mi_hlgt .mi_cptn {
+	color: rgb(242, 18, 102);
+}
+
 .mi_distribution .mi_lab_bm .mi_dot {
 	width: 16px;
 	height: 16px;
 	border-radius: 8px;
 	border: 2px solid rgb(200, 200, 200);
 	background-color: rgb(9, 144, 228);
+}
+
+.mi_distribution .mi_lab_bm.mi_hlgt .mi_dot {
+	background-color: rgb(242, 18, 102);
+}
+
+.mi_distribution .mi_bkgd {
+	height: 803px;
+	background-image: url("../images/Home/map.jpg");
+}
+
+.mi_distribution .mi_bkgd .mi_text {
+	width: 186px;
+	overflow-wrap: break-word;
+}
+
+.mi_distribution .mi_btn_div {
+	bottom: 20px;
+}
+
+.mi_distribution .mi_btn_div .mi_btn {
+	padding: 15px 45px;
+	border: 2px solid rgb(0, 89, 152);
+	background-color: rgb(7, 135, 223);
+	background-image: -webkit-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -o-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+}
+
+.mi_footer {
+	background-color: rgb(53, 53, 53);
+	height: 300px;
 }
 
 /*********************************************************************** Over ***********************************************************************/
