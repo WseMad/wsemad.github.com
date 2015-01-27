@@ -577,7 +577,7 @@
 .mi_hardware .mi_flag {
 	left: 11px;
 	bottom: 11px;
-	width: 300px;	/*先设置的大一点，稍后会用JS修正*/
+	width: 235px;	/*先设置的大一点，稍后会用JS修正*/
 	background-color: transparent;	/*确保超出的部分不可见*/
 }
 
@@ -585,9 +585,24 @@
 	left: -21px;
 }
 
-.mi_hardware .mi_flag .mi_cptn, .mi_hardware .mi_flag_div {
+.mi_hardware .mi_flag_div, .mi_hardware .mi_lab {
 	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.6);
+}
+
+.mi_hardware .mi_flag_div.mi_1 {
+	left: 804px;
+	top: 493px;
+}
+
+.mi_hardware .mi_flag_div.mi_2 {
+	left: 810px;
+	top: 336px;
+}
+
+.mi_hardware .mi_flag_div.mi_8 {
+	left: 419px;
+	top: 522px;
 }
 
 /***** 公司分布节 *****/

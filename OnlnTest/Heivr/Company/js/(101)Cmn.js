@@ -16,7 +16,7 @@
 	console.log("i_DvcPxlRat = " + i_DvcPxlRat);
 
 	// 非H5浏览器？
-	var i_NohH5Brsr = (! document.getElementsByClassName);
+	var i_NohH5Brsr = (!document.getElementsByClassName);
 
 	//-------- 文档就绪
 
@@ -63,7 +63,7 @@
 
 		//--------------------- 禁用浏览器拖选文字？
 
-	//	$(document).bind("selectstart", function () { return false; });
+		//	$(document).bind("selectstart", function () { return false; });
 
 		//--------------------- 按钮（3D）
 
@@ -186,7 +186,7 @@
 						if (!l_FigCptn)
 						{ return; }
 
-					//	var l_Dir = nWse.stNumUtil.cRandInt(0, 3); // 上右下左
+						//	var l_Dir = nWse.stNumUtil.cRandInt(0, 3); // 上右下左
 						var l_Dir = 2;
 						var l_BgnX = 0, l_BgnY = 0, l_EndX = 0, l_EndY = 0;
 						if (0 == l_Dir) {
@@ -248,7 +248,7 @@
 				//-------- 产品体系节
 
 				// 文字旋转
-				(function (){
+				(function () {
 					// 非H5浏览器不作处理
 					if (i_NohH5Brsr)
 					{ return; }
@@ -261,15 +261,14 @@
 					var l_TextDivCtntHgt = l_TextDiv.clientHeight - l_PadTp - l_PadBm;
 
 					var l_$RotTextDivs = $(".mi_rot_text_div");
-					l_$RotTextDivs.each(function (a_Idx, a_Dom)
-					{
+					l_$RotTextDivs.each(function (a_Idx, a_Dom) {
 						var l_This = a_Dom;
 						var l_$This = $(l_This);
 						var l_$Nh5Plchd = l_$This.prev(".mi_nh5_plchd");
 						var l_Nh5Plchd = l_$Nh5Plchd.get(0);
 
 						// 交换宽高
-					//	l_This.style.width = l_Nh5Plchd.offsetHeight + "px";
+						//	l_This.style.width = l_Nh5Plchd.offsetHeight + "px";
 						l_This.style.width = l_TextDivCtntHgt + "px";		// 用这个
 						l_This.style.height = l_Nh5Plchd.offsetWidth + "px";
 
@@ -285,23 +284,20 @@
 					var l_$RtArw = $(".mi_solution .mi_btn.mi_arw.mi_rt");
 
 					l_$LtArw.bind("click",
-						function (a_Evt)
-						{
+						function (a_Evt) {
 							var l_EvtTgt = a_Evt.target;
 							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx - 1);
 						});
 
 					l_$RtArw.bind("click",
-						function (a_Evt)
-						{
+						function (a_Evt) {
 							var l_EvtTgt = a_Evt.target;
 							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx + 1);
 						});
 
 					// 暴露API
 					nApp.g_SltnCellOfstIdx = 0;	// 初始为0
-					nApp.fShowSltnCell = function(a_CellIdx)
-					{
+					nApp.fShowSltnCell = function (a_CellIdx) {
 						var l_$SldSlot = $(".mi_solution .mi_sld_slot");
 						var l_$Cells = l_$SldSlot.children(".mi_cell");
 						if (0 == l_$Cells.length)
@@ -317,8 +313,8 @@
 						if (a_CellIdx < 0)
 						{ a_CellIdx = 0; }
 						else
-						if (a_CellIdx > l_Cells.length - i_ShowCpct)
-						{ a_CellIdx = l_Cells.length - i_ShowCpct; }
+							if (a_CellIdx > l_Cells.length - i_ShowCpct)
+							{ a_CellIdx = l_Cells.length - i_ShowCpct; }
 
 						var l_OldX = l_SldSlot.offsetLeft;
 						var l_NewX = -(a_CellIdx * l_CellTotWid);	// 注意负号
@@ -326,22 +322,19 @@
 						nApp.g_SltnCellOfstIdx = a_CellIdx;
 
 						// 隐藏箭头按钮
-						if (0 == a_CellIdx)
-						{
+						if (0 == a_CellIdx) {
 							l_$LtArw.hide();
 							l_$RtArw.show();
 						}
 						else
-						if (a_CellIdx == l_Cells.length - i_ShowCpct)
-						{
-							l_$LtArw.show();
-							l_$RtArw.hide();
-						}
-						else
-						{
-							l_$LtArw.show();
-							l_$RtArw.show();
-						}
+							if (a_CellIdx == l_Cells.length - i_ShowCpct) {
+								l_$LtArw.show();
+								l_$RtArw.hide();
+							}
+							else {
+								l_$LtArw.show();
+								l_$RtArw.show();
+							}
 
 						//【注意】下面这部分是可选的，作个动画
 						nWse.stCssUtil.cSetPosLt(l_SldSlot, l_OldX);	// 先回到刚才的位置
@@ -351,7 +344,7 @@
 							},
 							{
 								c_Dur: 0.4
-								,c_fEsn: fEsn_PrbItp
+								, c_fEsn: fEsn_PrbItp
 							});
 					};
 
@@ -359,18 +352,53 @@
 				})();
 
 				// 圆点
-				(function (){
+				(function () {
 					var l_$DotBtns = $(".mi_dot_div.mi_btn");
-					l_$DotBtns.click(function (a_Evt){
+					l_$DotBtns.click(function (a_Evt) {
 						var l_$This = $(this);
 						$(".mi_dots_boa .mi_dot").removeClass("mi_slcd");
 						l_$This.find(".mi_dot").addClass("mi_slcd");
 					});
 				})();
-			})();
-		}
 
-	});
+				//-------- 硬件展示节
+
+				(function () {
+					/*
+					// 旗帜3D变换动画
+					var l_Flags = nWse.stDomUtil.cQryAll(".mi_flag");
+					nWse.stAryUtil.cFor(l_Flags,
+						function (a_Flags, a_Idx, a_Flag) {
+							// 绕X轴从90°到0°旋转，不用取到90，取一个接近的数就好，数值稳定
+							nWse.stNumUtil.cInitQtn$AaRad(nWse.stCssUtil.cAcsExtdAnmt_3dTsfm(a_Flag).c_Rot, 1, 0, 0, nWse.stNumUtil.cRadFromDeg(89.5));
+							nWse.stCssUtil.cUpdExtdAnmt_3dTsfm(a_Flag);
+
+							var l_EndQtn = {};
+							nWse.stNumUtil.cInitQtn$AaRad(l_EndQtn, 1, 0, 0, 0);
+
+							nWse.stCssUtil.cAnmt(a_Flag,
+								{
+									"Wse_3dTsfm": [
+										{
+											c_Name: "rotate3d",
+											c_End: l_EndQtn
+										}
+									]
+								},
+								{
+									c_Dur: 2
+									,c_Tot: -1
+									,c_EvenCntRvs: true
+									,c_fEsn: fEsn_PrbItp
+								});
+						});
+					//*/
+
+				})();
+
+			})(); // if { ... }
+		} // if 首页
+	}); // doc rdy
 })();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
