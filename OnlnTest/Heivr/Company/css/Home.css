@@ -551,6 +551,13 @@
 	padding: 10px;
 }
 
+.mi_hardware .mi_flag .mi_mdl {
+	width: 42px;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: center;
+}
+
 .mi_hardware .mi_flag .mi_cptn {
 	
 }
@@ -628,6 +635,16 @@
 .mi_hardware .mi_flag_div.mi_8 {
 	left: 419px;
 	top: 522px;
+}
+
+.mi_hardware .mi_flag_div.mi_9 {
+	left: 1066px;
+	top: 518px;
+}
+
+.mi_hardware .mi_flag_div.mi_10 {
+	left: 501px;
+	top: 375px;
 }
 
 /***** 公司分布节 *****/
