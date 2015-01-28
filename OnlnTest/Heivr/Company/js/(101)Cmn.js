@@ -18,6 +18,9 @@
 	// 非H5浏览器？
 	var i_NohH5Brsr = (!document.getElementsByClassName);
 
+	// 连续事件处理频率
+	var i_SrsEvtHdlFrqc = 1 / 75;
+
 	//-------- 文档就绪
 
 	var $ = window.jQuery;
@@ -112,12 +115,23 @@
 
 		// 评估显示比例（仅垂直方向）
 		nApp.fEstmShowPptn_VticOnly = function (a_PageSara) {
-			var l_ScrlY = nWse.stDomUtil.cGetScrlY(), l_VwptH = nWse.stDomUtil.cGetVwptH();
+			var l_ScrlY = nWse.stDomUtil.cGetScrlY(), l_VwptH = nWse.stDomUtil.cGetVwptHgt();
 			if ((a_PageSara.c_Y + a_PageSara.c_H < l_ScrlY) || (l_ScrlY + l_VwptH < a_PageSara.c_Y))
 			{ return 0; }
 
-			var l_ShowH = Math.min(l_ScrlY + l_VwptH - a_PageSara.c_Y, a_PageSara.c_H);
-			return l_ShowH / a_PageSara.c_H;
+			var l_TotH = Math.min(a_PageSara.c_H, l_VwptH);
+			var l_ShowH = Math.min(l_ScrlY + l_VwptH - a_PageSara.c_Y, l_TotH);
+			return l_ShowH / l_TotH;
+		};
+
+		// 发出进入动画？
+		nApp.fIsuEntAnmt = function (a_DomElmt, a_LstPptn) {
+			if (!a_DomElmt)
+			{ return false; }
+
+			var l_PageSara = nApp.fCalcPageSara(a_DomElmt);
+			var l_Pptn = nApp.fEstmShowPptn_VticOnly(l_PageSara);
+			return (l_Pptn >= (a_LstPptn || 0.7));
 		};
 
 		//===================================================== 首页
@@ -407,7 +421,7 @@
 						var l_MgnLt = parseFloat(l_$Cells.css("marginLeft"));
 						var l_MgnRt = parseFloat(l_$Cells.css("marginRight"));
 						var l_CellTotWid = l_Cells[0].offsetWidth + l_MgnLt + l_MgnRt;
-		
+
 						if (a_Wrap) { // 环绕
 							if (a_CellIdx < 0)
 							{ a_CellIdx = l_Cells.length - i_ShowCpct; }
@@ -488,41 +502,132 @@
 				//-------- 硬件展示节
 
 				(function () {
-					/*
 					// 旗帜3D变换动画
 					var l_Flags = nWse.stDomUtil.cQryAll(".mi_flag");
-					nWse.stAryUtil.cFor(l_Flags,
-						function (a_Flags, a_Idx, a_Flag) {
-							// 绕X轴从90°到0°旋转，不用取到90，取一个接近的数就好，数值稳定
-							nWse.stNumUtil.cInitQtn$AaRad(nWse.stCssUtil.cAcsExtdAnmt_3dTsfm(a_Flag).c_Rot, 1, 0, 0, nWse.stNumUtil.cRadFromDeg(89.5));
-							nWse.stCssUtil.cUpdExtdAnmt_3dTsfm(a_Flag);
 
-							var l_EndQtn = {};
-							nWse.stNumUtil.cInitQtn$AaRad(l_EndQtn, 1, 0, 0, 0);
+					function fRstAnmtData() {
+						nWse.stAryUtil.cFor(l_Flags,
+							function (a_Flags, a_Idx, a_Flag) {
+								// 绕X轴从90°到0°旋转，不用取到90，取一个接近的数就好，数值稳定
+								nWse.stCssUtil.cFnshAnmt(a_Flag, false, false);
+								nWse.stNumUtil.cInitQtn$AaRad(nWse.stCssUtil.cAcsExtdAnmt_3dTsfm(a_Flag).c_Rot, 1, 0, 0, nWse.stNumUtil.cRadFromDeg(89.5));
+								nWse.stCssUtil.cUpdExtdAnmt_3dTsfm(a_Flag);
+							});
+					}
 
-							nWse.stCssUtil.cAnmt(a_Flag,
-								{
-									"Wse_3dTsfm": [
-										{
-											c_Name: "rotate3d",
-											c_End: l_EndQtn
-										}
-									]
-								},
-								{
-									c_Dur: 2
-									,c_Tot: -1
-									,c_EvenCntRvs: true
-									,c_fEsn: fEsn_PrbItp
-								});
-						});
-					//*/
+					function fIsuAnmt() {
+						if (0 != nApp.g_EntAnmtSta_Hardware) // 检查状态机
+						{ return; }
 
+						fRstAnmtData(); // 复位动画数据，然后动画
+						var i_Dur = 0.5;
+						nWse.stAryUtil.cFor(l_Flags,
+							function (a_Flags, a_Idx, a_Flag) {
+								nWse.stCssUtil.cAnmt(a_Flag,
+									{
+										"Wse_3dTsfm": [
+											{
+												c_Name: "rotate3d",
+												c_End: nWse.stNumUtil.cInitQtn$AaRad({}, 1, 0, 0, 0)
+											}
+										]
+									},
+									{
+										c_Dly: a_Idx * i_Dur
+										, c_Dur: i_Dur
+										//	,c_Tot: -1
+										//	,c_EvenCntRvs: true
+									//	, c_fEsn: fEsn_PrbItp
+										, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.5, a_Scl, false); }
+										, c_fOnEnd: (a_Idx == l_Flags.length - 1) ? function () { nApp.g_EntAnmtSta_Hardware = 2; } : null // 最后一个负责更新状态机
+									});
+							});
+
+						nApp.g_EntAnmtSta_Hardware = 1; // 更新状态机
+					}
+
+					function fTryIsu() {
+						var l_DomElmt = document.getElementById("k_Hardware");
+						var l_AnmtIsud = (0 != nApp.g_EntAnmtSta_Hardware); // 动画已发出？发出后降低评估要求，未发出则增加
+						if (nApp.fIsuEntAnmt(l_DomElmt, (l_AnmtIsud ? 0.3 : 0.7))) {
+							fIsuAnmt();
+						}
+						else
+							if (l_AnmtIsud) {
+								nApp.g_EntAnmtSta_Hardware = 0;	// 复位状态机
+								fRstAnmtData();	// 复位动画数据
+							}
+					}
+
+					nApp.g_EntAnmtSta_Hardware = 0; // 使用简单状态机跟踪动画状态
+					//fTryIsu(); //【一开始不用，因为这里是文档就绪，样式表可能还未就位，所以位置计算可能不正确！】
+					nWse.stDomUtil.cAddEvtHdlr_WndScrl(fTryIsu, i_SrsEvtHdlFrqc);
 				})();
 
 				//-------- 公司分布节
 
 				(function () {
+					// 标签3D变换动画
+					var l_Labs = nWse.stDomUtil.cQryAll(".mi_lab_tp, .mi_lab_bm");
+
+					function fRstAnmtData() {
+						nWse.stAryUtil.cFor(l_Labs,
+							function (a_Labs, a_Idx, a_Lab) {
+								// 绕X轴从90°到0°旋转，不用取到90，取一个接近的数就好，数值稳定
+								nWse.stCssUtil.cFnshAnmt(a_Lab, false, false);
+								var l_Tp = nWse.stCssUtil.cHasCssc(a_Lab, "mi_lab_tp");
+								nWse.stNumUtil.cInitQtn$AaRad(nWse.stCssUtil.cAcsExtdAnmt_3dTsfm(a_Lab).c_Rot, 1, 0, 0, nWse.stNumUtil.cRadFromDeg((l_Tp ? 1 : -1) * 89.5));
+								nWse.stCssUtil.cUpdExtdAnmt_3dTsfm(a_Lab);
+							});
+					}
+
+					function fIsuAnmt() {
+						if (0 != nApp.g_EntAnmtSta_Distribution) // 检查状态机
+						{ return; }
+
+						fRstAnmtData(); // 复位动画数据，然后动画
+						var i_Dur = 1;
+						nWse.stAryUtil.cFor(l_Labs,
+							function (a_Labs, a_Idx, a_Lab) {
+								nWse.stCssUtil.cAnmt(a_Lab,
+									{
+										"Wse_3dTsfm": [
+											{
+												c_Name: "rotate3d",
+												c_End: nWse.stNumUtil.cInitQtn$AaRad({}, 1, 0, 0, 0)
+											}
+										]
+									},
+									{
+										c_Dly: (a_Idx < (l_Labs.length / 2)) ? (a_Idx * i_Dur) : ((a_Idx - l_Labs.length / 2) * i_Dur)
+										, c_Dur: i_Dur
+										//	,c_Tot: -1
+										//	,c_EvenCntRvs: true
+										, c_fEsn: fEsn_PrbItp
+									//	, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.2, a_Scl, false); }
+										, c_fOnEnd: (a_Idx == l_Labs.length - 1) ? function () { nApp.g_EntAnmtSta_Distribution = 2; } : null // 最后一个负责更新状态机
+									});
+							});
+
+						nApp.g_EntAnmtSta_Distribution = 1; // 更新状态机
+					}
+
+					function fTryIsu() {
+						var l_DomElmt = document.getElementById("k_Distribution");
+						var l_AnmtIsud = (0 != nApp.g_EntAnmtSta_Distribution); // 动画已发出？发出后降低评估要求，未发出则增加
+						if (nApp.fIsuEntAnmt(l_DomElmt, (l_AnmtIsud ? 0.3 : 0.7))) {
+							fIsuAnmt();
+						}
+						else
+							if (l_AnmtIsud) {
+								nApp.g_EntAnmtSta_Distribution = 0;	// 复位状态机
+								fRstAnmtData();	// 复位动画数据
+							}
+					}
+
+					nApp.g_EntAnmtSta_Distribution = 0; // 使用简单状态机跟踪动画状态
+					//fTryIsu(); //【一开始不用，因为这里是文档就绪，样式表可能还未就位，所以位置计算可能不正确！】
+					nWse.stDomUtil.cAddEvtHdlr_WndScrl(fTryIsu, i_SrsEvtHdlFrqc);
 				})();
 
 			})(); // if { ... }
