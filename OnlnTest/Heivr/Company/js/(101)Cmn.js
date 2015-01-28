@@ -25,6 +25,7 @@
 
 		//--------------------- 如果像素率不是1，对布局环境应用全局缩放！（此时浏览器一定支持2D变换）
 
+		var s_GlbSclBnd = document.getElementById("k_GlbSclBnd");
 		var s_LotEnv = document.getElementById("k_LotEnv");
 		var s_LotEnvMinWid = parseFloat($(s_LotEnv).css("minWidth")); // 取得最小宽度
 		console.log("s_LotEnvMinWid = " + s_LotEnvMinWid);
@@ -50,9 +51,12 @@
 
 			function fGlbScl() {
 				var l_VW = $(window).innerWidth();
-
-				var l_Scl = l_VW / (s_LotEnvMinWid);
+				var l_Scl = l_VW / (s_LotEnvMinWid) - 0.00001;	// 稍微缩小一点
 				s_LotEnv.style[s_TsfmStr] = "scale(" + (l_Scl).toString() + ")";
+
+				// 范围的高度与缩放后的布局环境一致！
+				var l_LotEnvHgtAftScl = s_LotEnv.offsetHeight * l_Scl;
+				s_GlbSclBnd.style.height = Math.round(l_LotEnvHgtAftScl).toString() + "px";
 			}
 
 			if (1 != i_DvcPxlRat) {
@@ -115,7 +119,7 @@
 			var l_ShowH = Math.min(l_ScrlY + l_VwptH - a_PageSara.c_Y, a_PageSara.c_H);
 			return l_ShowH / a_PageSara.c_H;
 		};
-		
+
 		//===================================================== 首页
 
 		if ($("body").hasClass("mi_page_home")) {
@@ -125,19 +129,19 @@
 
 				(function () {
 
-					$(".mi_nav a").click(function (a_Evt) {
+					$(".mi_nav a").bind(i_EvtName_TchEnd, function (a_Evt) {
 						// 提取元素ID
 						var l_EvtTgt = a_Evt.target;
 						var l_Href = l_EvtTgt.href;
 						var i_Rgx = /#.+$/;
 						var l_Mch = l_Href.match(i_Rgx);
-						if (! l_Mch)
+						if (!l_Mch)
 						{ return; }
 
 						var l_ElmtId = l_Mch[0].slice(1, l_Mch[0].length);
-					//	console.log(l_ElmtId);
+						//	console.log(l_ElmtId);
 						var l_DomElmt = document.getElementById(l_ElmtId);
-						if (! l_DomElmt)
+						if (!l_DomElmt)
 						{ return; }
 
 						// 计算页面区域，滚动到那里
@@ -148,7 +152,7 @@
 							},
 							{
 								c_Dur: 0.6
-								,c_fEsn: nWse.stNumUtil.cEsn_SlowToFastToSlow
+								, c_fEsn: nWse.stNumUtil.cEsn_SlowToFastToSlow
 							});
 
 						// 取消默认动作
@@ -165,7 +169,7 @@
 				nApp.fShowTabPage_CaseShow = function (a_Idx) {
 					if (nApp.g_ShowTabPageIdx_CaseShow == a_Idx) // 防止重复点击
 					{ return; }
-					
+
 					var l_QryStr = ".mi_case_show .mi_tab_page";
 					var l_$TabPages = $(l_QryStr);
 					var l_TabPages = l_$TabPages.get();
@@ -242,7 +246,7 @@
 					}
 					fSttTmr();
 
-					l_$CirBtns.click(function (a_Evt) {
+					l_$CirBtns.bind(i_EvtName_TchEnd, function (a_Evt) {
 						// 找到索引，显示
 						var l_EvtTgt = a_Evt.target;
 						var l_Idx = l_CirBtns.indexOf(l_EvtTgt) % l_TagPageAmt; // 对数量求余
@@ -369,21 +373,29 @@
 					var l_$LtArw = $(".mi_solution .mi_btn.mi_arw.mi_lt");
 					var l_$RtArw = $(".mi_solution .mi_btn.mi_arw.mi_rt");
 
-					l_$LtArw.bind("click",
+					l_$LtArw.bind(i_EvtName_TchEnd,
 						function (a_Evt) {
 							var l_EvtTgt = a_Evt.target;
 							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx - 1);
+
+							// 重新开始计时
+							fClrTmr();
+							fSttTmr(10);
 						});
 
-					l_$RtArw.bind("click",
+					l_$RtArw.bind(i_EvtName_TchEnd,
 						function (a_Evt) {
 							var l_EvtTgt = a_Evt.target;
 							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx + 1);
+
+							// 重新开始计时
+							fClrTmr();
+							fSttTmr(10);
 						});
 
 					// 暴露API
 					nApp.g_SltnCellOfstIdx = 0;	// 初始为0
-					nApp.fShowSltnCell = function (a_CellIdx) {
+					nApp.fShowSltnCell = function (a_CellIdx, a_Wrap) {
 						var l_$SldSlot = $(".mi_solution .mi_sld_slot");
 						var l_$Cells = l_$SldSlot.children(".mi_cell");
 						if (0 == l_$Cells.length)
@@ -395,12 +407,21 @@
 						var l_MgnLt = parseFloat(l_$Cells.css("marginLeft"));
 						var l_MgnRt = parseFloat(l_$Cells.css("marginRight"));
 						var l_CellTotWid = l_Cells[0].offsetWidth + l_MgnLt + l_MgnRt;
-
-						if (a_CellIdx < 0)
-						{ a_CellIdx = 0; }
-						else
-							if (a_CellIdx > l_Cells.length - i_ShowCpct)
+		
+						if (a_Wrap) { // 环绕
+							if (a_CellIdx < 0)
 							{ a_CellIdx = l_Cells.length - i_ShowCpct; }
+							else
+								if (a_CellIdx > l_Cells.length - i_ShowCpct)
+								{ a_CellIdx = 0; }
+						}
+						else { // 截断
+							if (a_CellIdx < 0)
+							{ a_CellIdx = 0; }
+							else
+								if (a_CellIdx > l_Cells.length - i_ShowCpct)
+								{ a_CellIdx = l_Cells.length - i_ShowCpct; }
+						}
 
 						var l_OldX = l_SldSlot.offsetLeft;
 						var l_NewX = -(a_CellIdx * l_CellTotWid);	// 注意负号
@@ -435,12 +456,29 @@
 					};
 
 					nApp.fShowSltnCell(0);	// 一上来显示[0]
+
+					var l_SwchFrqc = 3; // 每过一段时间自动换页
+					var l_TmrId = null;
+					function fSttTmr(a_Frqc) {
+						l_SwchFrqc = a_Frqc || 3; // 默认3秒
+						l_TmrId = window.setTimeout(function () {
+							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx + 1, true);
+							fSttTmr();	// 继续
+						}, l_SwchFrqc * 1000);
+					}
+					function fClrTmr() {
+						if (l_TmrId) {
+							window.clearTimeout(l_TmrId);
+							l_TmrId = null;
+						}
+					}
+					fSttTmr();
 				})();
 
 				// 圆点
 				(function () {
 					var l_$DotBtns = $(".mi_dot_div.mi_btn");
-					l_$DotBtns.click(function (a_Evt) {
+					l_$DotBtns.bind(i_EvtName_TchEnd, function (a_Evt) {
 						var l_$This = $(this);
 						$(".mi_dots_boa .mi_dot").removeClass("mi_slcd");
 						l_$This.find(".mi_dot").addClass("mi_slcd");
