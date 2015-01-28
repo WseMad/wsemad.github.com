@@ -704,23 +704,23 @@
 
 		//===================================================== 介绍
 
-		if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_jie_shao")) {
-			(function () {
-				var l_Pane = document.getElementById("k_Pane");
-				var l_Arws = nWse.stDomUtil.cQryAll(".mi_nav_arw_div");
+		//if (nWse.stCssUtil.cHasCssc(s_DomBody, "mi_jie_shao")) {
+		//	(function () {
+		//		var l_Pane = document.getElementById("k_Pane");
+		//		var l_Arws = nWse.stDomUtil.cQryAll(".mi_nav_arw_div");
 
-				function fFixPosDim() {
-					nApp.fVticAln(l_Pane);
-					nWse.stAryUtil.cFor(l_Arws,
-						function (a_Ary, a_Idx, a_Arw) {
-							nApp.fVticAln(a_Arw);
-						});
-				}
+		//		function fFixPosDim() {
+		//			nApp.fVticAln(l_Pane);
+		//			nWse.stAryUtil.cFor(l_Arws,
+		//				function (a_Ary, a_Idx, a_Arw) {
+		//					nApp.fVticAln(a_Arw);
+		//				});
+		//		}
 
-				fFixPosDim();
-				nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
-			})();
-		}
+		//		fFixPosDim();
+		//		nWse.stDomUtil.cAddEvtHdlr_WndRsz(fFixPosDim, i_WndRszRspsSpd);
+		//	})();
+		//}
 
 		//===================================================== 项目鸟瞰＆户型鸟瞰
 

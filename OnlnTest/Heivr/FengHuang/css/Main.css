@@ -567,8 +567,12 @@ body {
 	font-size: 2em;
 }
 
+.mi_jie_shao #k_LtArw, .mi_jie_shao #k_RtArw {
+	top: 20px;
+}
+
 .mi_jie_shao #k_LtArw {
-	left: 20px;
+	right: 80px;
 }
 
 .mi_jie_shao #k_RtArw {

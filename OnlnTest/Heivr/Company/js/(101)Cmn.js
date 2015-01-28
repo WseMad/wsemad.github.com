@@ -107,7 +107,7 @@
 			l_Rst.c_Y += (window.scrollY || 0) + document.documentElement.scrollTop;	// IE使用后一项
 			return l_Rst;
 		};
-
+		
 		//===================================================== 首页
 
 		if ($("body").hasClass("mi_page_home")) {
