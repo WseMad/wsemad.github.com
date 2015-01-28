@@ -168,7 +168,9 @@ body, .mi_std_font_fam {
 }
 
 .mi_cen_wid {
-	padding: 0px 10px; /* 全局缩放后，防止内容紧贴屏幕两侧，内容宽度仍然保持1240px */
+	/* 全局缩放后，防止内容紧贴屏幕两侧，内容宽度仍然保持1240px */
+	padding-left: 10px;
+	padding-right: 10px;
 	margin-left: auto;
 	margin-right: auto;
 }

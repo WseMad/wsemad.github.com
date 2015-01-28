@@ -245,9 +245,9 @@
 			background-color: rgb(200, 200, 200);
 		}
 
-		.mi_case_itro .mi_ctnt_div .mi_cir.mi_slcd {
-			background-color: rgb(242, 18, 102);
-		}
+			.mi_case_itro .mi_ctnt_div .mi_cir.mi_slcd {
+				background-color: rgb(242, 18, 102);
+			}
 
 .mi_case_show .mi_cell {
 	float: left;
@@ -323,64 +323,64 @@
 .mi_product_hierarchy .mi_col .mi_cell {
 	width: 84px;
 	margin-right: 4px;
-	*margin-right: 0px;	/*IE7防止掉落，取消右外边距！*/
+	*margin-right: 0px; /*IE7防止掉落，取消右外边距！*/
 	border: 1px solid rgb(234, 234, 234);
 	color: rgb(67, 67, 67);
 }
 
-.mi_product_hierarchy .mi_col .mi_cell.mi_mgn_rt_l0 {
-	margin-right: 0px;
-}
+	.mi_product_hierarchy .mi_col .mi_cell.mi_mgn_rt_l0 {
+		margin-right: 0px;
+	}
 
-.mi_product_hierarchy .mi_col .mi_cell .mi_sn {
-	border-bottom: 1px solid;
-	border-color: inherit;
-	padding: 30px 0px;
-}
+	.mi_product_hierarchy .mi_col .mi_cell .mi_sn {
+		border-bottom: 1px solid;
+		border-color: inherit;
+		padding: 30px 0px;
+	}
 
-.mi_product_hierarchy .mi_col .mi_cell .mi_text_div {
-	padding: 20px 30px;
-	height: 290px;	/*固定高度*/
-	overflow: hidden;
-	overflow-wrap: break-word;
-	text-align: center;
-}
+	.mi_product_hierarchy .mi_col .mi_cell .mi_text_div {
+		padding: 20px 30px;
+		height: 290px; /*固定高度*/
+		overflow: hidden;
+		overflow-wrap: break-word;
+		text-align: center;
+	}
 
 /*实现部分文字旋转*/
 .mi_nh5_plchd {
-	line-height: 1em;	/*行高=字体高*/
+	line-height: 1em; /*行高=字体高*/
 }
 
 .mi_rot_text_div {
 	transform-origin: 0.5em 0.5em;
-	transform: translate(3px, 0px) rotate(90deg);	/*先顺时针转90°，后接平移修正（似乎偏了3px，具体取值应该与字体高度有关！），注意变换顺序！*/
+	transform: translate(3px, 0px) rotate(90deg); /*先顺时针转90°，后接平移修正（似乎偏了3px，具体取值应该与字体高度有关！），注意变换顺序！*/
 }
 
 .mi_cc, .mi_ec {
 	display: inline-block;
-	*zoom: 1;			/* 兼容IE7 */
-	*display: inline;	/* 兼容IE7 */
+	*zoom: 1; /* 兼容IE7 */
+	*display: inline; /* 兼容IE7 */
 }
 
 .mi_nh5_plchd .mi_cc, .mi_nh5_plchd .mi_ec {
-	/*display: block;*/			/*确保一个一行？但这会令高度增加*/
+	/*display: block;*/ /*确保一个一行？但这会令高度增加*/
 }
 
 .mi_nh5_plchd .mi_cc {
-	padding: 1px 0px;	/*注意与mi_rot_text_div的成正交关系*/
+	padding: 1px 0px; /*注意与mi_rot_text_div的成正交关系*/
 }
 
 .mi_nh5_plchd .mi_ec {
-	/*margin: 2px 0px;*/	/*注意与mi_rot_text_div的成正交关系*/
+	/*margin: 2px 0px;*/ /*注意与mi_rot_text_div的成正交关系*/
 }
 
 .mi_rot_text_div .mi_cc {
-	padding: 0px 1px;	/*注意与mi_nh5_plchd的成正交关系*/
+	padding: 0px 1px; /*注意与mi_nh5_plchd的成正交关系*/
 	transform: rotate(-90deg); /*逆时针转90°，转回来*/
 }
 
 .mi_rot_text_div .mi_ec {
-	/*margin: 0px 2px;*/	/*注意与mi_nh5_plchd的成正交关系*/
+	/*margin: 0px 2px;*/ /*注意与mi_nh5_plchd的成正交关系*/
 }
 
 /***** 解决方案节 *****/
@@ -389,213 +389,209 @@
 	margin-bottom: 150px;
 }
 
-.mi_solution > .mi_boa {
-	height: 450px;
-	margin-bottom: 80px;
-}
+	.mi_solution > .mi_boa {
+		height: 450px;
+		margin-bottom: 80px;
+	}
 
-.mi_solution > .mi_boa > .mi_col {
-	height: 100%;
-}
+		.mi_solution > .mi_boa > .mi_col {
+			height: 100%;
+		}
 
-.mi_solution .mi_col.mi_0, .mi_solution .mi_col.mi_2 {
-	width: 52px;
-	padding-top: 203px;
-}
+	.mi_solution .mi_col.mi_0, .mi_solution .mi_col.mi_2 {
+		width: 52px;
+		padding-top: 203px;
+	}
 
-.mi_solution .mi_col.mi_1 {
-	width: 1136px;
-	overflow: hidden;
-}
+	.mi_solution .mi_col.mi_1 {
+		width: 1136px;
+		overflow: hidden;
+	}
 
-.mi_solution .mi_btn.mi_arw {
-	width: 44px;
-	height: 44px;
-	border-radius: 22px;
+	.mi_solution .mi_btn.mi_arw {
+		width: 44px;
+		height: 44px;
+		border-radius: 22px;
+		font-size: 32px;
+		text-align: center;
+		background-color: rgb(219, 219, 219);
+		color: white;
+	}
 
-	font-size: 32px;
-	text-align: center;
+	.mi_solution .mi_sld_slot {
+		min-width: 1136px;
+		width: 10000px; /*一开始大一些，后来将用JS修正*/
+	}
 
-	background-color: rgb(219, 219, 219);
-	color: white;
-}
+		.mi_solution .mi_sld_slot .mi_cell {
+			float: left;
+			width: 266px;
+			margin: 0px 9px;
+		}
 
-.mi_solution .mi_sld_slot {
-	min-width: 1136px;
-	width: 10000px;	/*一开始大一些，后来将用JS修正*/
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_cir_div {
+				padding-top: 22px;
+				text-align: center;
+				z-index: 0;
+			}
 
-.mi_solution .mi_sld_slot .mi_cell {
-	float: left;
-	width : 266px;
-	margin: 0px 9px;
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_cir {
+				width: 166px;
+				height: 166px;
+				border-radius: 83px;
+			}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir_div {
-	padding-top: 22px;
-	text-align: center;
-	z-index: 0;
-}
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_blue {
+					background-color: rgb(0, 139, 237);
+					background-image: -webkit-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+					background-image: -moz-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+					background-image: -ms-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+					background-image: -o-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
+					/*background-image: linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+				}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir {
-	width: 166px;
-	height: 166px;
-	border-radius: 83px;
-}
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_orange {
+					background-color: rgb(249, 140, 30);
+					background-image: -webkit-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+					background-image: -moz-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+					background-image: -ms-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+					background-image: -o-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
+					/*background-image: linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+				}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_blue {
-	background-color: rgb(0, 139, 237);
-	background-image: -webkit-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
-	background-image: -moz-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
-	background-image: -ms-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
-	background-image: -o-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
-	/*background-image: linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
-}
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_red {
+					background-color: rgb(242, 18, 102);
+					background-image: -webkit-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+					background-image: -moz-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+					background-image: -ms-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+					background-image: -o-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
+					/*background-image: linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+				}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_orange {
-	background-color: rgb(249, 140, 30);
-	background-image: -webkit-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
-	background-image: -moz-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
-	background-image: -ms-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
-	background-image: -o-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
-	/*background-image: linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
-}
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_green {
+					background-color: rgb(157, 211, 41);
+					background-image: -webkit-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+					background-image: -moz-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+					background-image: -ms-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+					background-image: -o-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
+					/*background-image: linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
+				}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_red {
-	background-color: rgb(242, 18, 102);
-	background-image: -webkit-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
-	background-image: -moz-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
-	background-image: -ms-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
-	background-image: -o-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
-	/*background-image: linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_hlgt_mask {
+				left: -50px; /* 59 = 83/√2，但50和PS更吻合 */
+				top: -50px;
+				border-radius: inherit;
+				background-color: transparent;
+				background-color: rgba(246, 246, 246, 0.2);
+			}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_green {
-	background-color: rgb(157, 211, 41);
-	background-image: -webkit-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
-	background-image: -moz-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
-	background-image: -ms-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
-	background-image: -o-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
-	/*background-image: linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);*/	/*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_cell_mask {
+				background-image: url("../images/Home/SltnCellMask.png");
+				background-repeat: no-repeat;
+				background-position: left top;
+				width: 100%;
+				height: 416px;
+				padding-top: 218px;
+				margin-bottom: 2px;
+				z-index: 1;
+			}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_hlgt_mask {
-	left: -50px;	/* 59 = 83/√2，但50和PS更吻合 */
-	top: -50px;
-	border-radius: inherit;
-	background-color: transparent;
-	background-color: rgba(246, 246, 246, 0.2);
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_hdn {
+				padding: 15px 0px;
+				margin-bottom: 15px;
+			}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_cell_mask {
-	background-image: url("../images/Home/SltnCellMask.png");
-	background-repeat: no-repeat;
-	background-position: left top;
-	width: 100%;
-	height: 416px;
-	padding-top: 218px;
-	margin-bottom: 2px;
-	z-index: 1;
-}
+			.mi_solution .mi_sld_slot .mi_cell .mi_foot {
+				height: 1em;
+			}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_hdn {
-	padding: 15px 0px;
-	margin-bottom: 15px;
-}
+	.mi_solution .mi_dots_boa {
+		margin-bottom: 60px;
+	}
 
-.mi_solution .mi_sld_slot .mi_cell .mi_foot {
-	height: 1em;
-}
+		.mi_solution .mi_dots_boa .mi_hrzt_line {
+			background-color: rgb(200, 200, 200);
+		}
 
-.mi_solution .mi_dots_boa {
-	margin-bottom: 60px;
-}
+		.mi_solution .mi_dots_boa .mi_dots_div {
+			top: -8px; /*压在水平线上*/
+		}
 
-.mi_solution .mi_dots_boa .mi_hrzt_line {
-	background-color: rgb(200, 200, 200);
-}
+			.mi_solution .mi_dots_boa .mi_dots_div .mi_dot_div {
+				margin: 0px 30px;
+			}
 
-.mi_solution .mi_dots_boa .mi_dots_div {
-	top: -8px;	/*压在水平线上*/
-}
+		.mi_solution .mi_dots_boa .mi_dot {
+			width: 16px;
+			height: 16px;
+			border-radius: 8px;
+			border: 1px solid rgb(200, 200, 200);
+			background-color: white;
+			margin-bottom: 20px;
+		}
 
-.mi_solution .mi_dots_boa .mi_dots_div .mi_dot_div {
-	margin: 0px 30px;
-}
-
-.mi_solution .mi_dots_boa .mi_dot {
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
-	border: 1px solid rgb(200, 200, 200);
-	background-color: white;
-	margin-bottom: 20px;
-}
-
-.mi_solution .mi_dots_boa .mi_dot.mi_slcd {
-	background-color: rgb(9, 144, 228);
-}
+			.mi_solution .mi_dots_boa .mi_dot.mi_slcd {
+				background-color: rgb(9, 144, 228);
+			}
 
 /***** 硬件展示节 *****/
 
 .mi_hardware {
-
 }
 
-.mi_hardware .mi_bkgd {
-	height: 684px;
-	background-image: url("../images/Home/HardwareShow.jpg");
-}
+	.mi_hardware .mi_bkgd {
+		height: 684px;
+		background-image: url("../images/Home/HardwareShow.jpg");
+	}
 
-.mi_hardware .mi_flag .mi_mdl, .mi_hardware .mi_flag .mi_cptn {
-	padding: 10px;
-}
+	.mi_hardware .mi_flag .mi_mdl, .mi_hardware .mi_flag .mi_cptn {
+		padding: 10px;
+	}
 
-.mi_hardware .mi_flag .mi_mdl {
-	width: 42px;
-	padding-left: 0px;
-	padding-right: 0px;
-	text-align: center;
-}
+	.mi_hardware .mi_flag .mi_mdl {
+		width: 42px;
+		padding-left: 0px;
+		padding-right: 0px;
+		text-align: center;
+	}
 
-.mi_hardware .mi_flag .mi_cptn {
-	
-}
+	.mi_hardware .mi_flag .mi_cptn {
+	}
 
-.mi_hardware .mi_flag_div {
-	width: 22px;
-	height: 22px;
-	border-radius: 11px;
-	overflow: visible;
-}
+	.mi_hardware .mi_flag_div {
+		width: 22px;
+		height: 22px;
+		border-radius: 11px;
+		overflow: visible;
+	}
 
-.mi_hardware .mi_flag_div .mi_dot {
-	width: 10px;
-	height: 10px;
-	border-radius: 5px;
-}
+		.mi_hardware .mi_flag_div .mi_dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+		}
 
-.mi_hardware .mi_flag_div .mi_vtic_line {
-	height: 60px;
-	left: 50%;
-	bottom: 11px;
-}
+		.mi_hardware .mi_flag_div .mi_vtic_line {
+			height: 60px;
+			left: 50%;
+			bottom: 11px;
+		}
 
-.mi_hardware .mi_flag {
-	left: 11px;
-	bottom: 11px;
-	width: 235px;	/*先设置的大一点，稍后会用JS修正*/
-	background-color: transparent;	/*确保超出的部分不可见*/
-}
+	.mi_hardware .mi_flag {
+		left: 11px;
+		bottom: 11px;
+		width: 235px; /*先设置的大一点，稍后会用JS修正*/
+		background-color: transparent; /*确保超出的部分不可见*/
+	}
 
-.mi_hardware .mi_flag .mi_lab {
-	left: -21px;
-}
+		.mi_hardware .mi_flag .mi_lab {
+			left: -21px;
+		}
 
-.mi_hardware .mi_flag_div, .mi_hardware .mi_lab {
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0.6);
-}
+	.mi_hardware .mi_flag_div, .mi_hardware .mi_lab {
+		background-color: rgb(255, 255, 255);
+		background-color: rgba(255, 255, 255, 0.6);
+	}
 
 /***** 公司分布节 *****/
 
@@ -603,107 +599,168 @@
 	margin-bottom: 130px;
 }
 
-.mi_distribution .mi_tmln_boa {
-	padding-top: 70px;
-	padding-bottom: 90px;
-	margin-bottom: 70px;
+	.mi_distribution .mi_tmln_boa {
+		padding-top: 70px;
+		padding-bottom: 90px;
+		margin-bottom: 70px;
+	}
+
+	.mi_distribution .mi_hrzt_line_dash {
+		border-top-color: rgb(200, 200, 200);
+	}
+
+	.mi_distribution .mi_year {
+		font-weight: bold;
+		top: -16px;
+	}
+
+	.mi_distribution .mi_lab_tp, .mi_distribution .mi_lab_bm {
+		text-align: center;
+	}
+
+	.mi_distribution .mi_lab_tp {
+		top: -64px;
+		color: rgb(9, 144, 228);
+	}
+
+	.mi_distribution .mi_lab_bm {
+		top: 8px;
+		color: rgb(67, 67, 67);
+	}
+
+	.mi_distribution .mi_lab_tp .mi_vtic_line_div {
+		height: 22px;
+	}
+
+	.mi_distribution .mi_lab_bm .mi_vtic_line_div {
+		height: 12px;
+		margin-bottom: 2px;
+	}
+
+	.mi_distribution .mi_vtic_line {
+		left: 50%; /*水平居中，由于inline-block会产生奇怪的向下偏移，所以改用绝对定位！*/
+		top: 0px;
+		height: 100%;
+		background-color: rgb(200, 200, 200);
+	}
+
+	.mi_distribution .mi_brc_upwd {
+		height: 12px;
+		border-radius: 12px 12px 0px 0px;
+		border: 1px solid rgb(200, 200, 200);
+		border-bottom: none;
+	}
+
+	.mi_distribution .mi_lab_tp .mi_cptn {
+		margin-bottom: 2px;
+		font-weight: bold;
+	}
+
+	.mi_distribution .mi_lab_tp.mi_hlgt .mi_cptn {
+		color: rgb(242, 18, 102);
+	}
+
+	.mi_distribution .mi_lab_bm .mi_dot {
+		width: 16px;
+		height: 16px;
+		border-radius: 8px;
+		border: 2px solid rgb(200, 200, 200);
+		background-color: rgb(9, 144, 228);
+	}
+
+	.mi_distribution .mi_lab_bm.mi_hlgt .mi_dot {
+		background-color: rgb(242, 18, 102);
+	}
+
+	.mi_distribution .mi_bkgd {
+		height: 803px;
+		background-image: url("../images/Home/map.jpg");
+	}
+
+		.mi_distribution .mi_bkgd .mi_text {
+			width: 186px;
+			overflow-wrap: break-word;
+		}
+
+	.mi_distribution .mi_btn_div {
+		bottom: 20px;
+	}
+
+		.mi_distribution .mi_btn_div .mi_btn {
+			padding: 15px 45px;
+			border: 2px solid rgb(0, 89, 152);
+			background-color: rgb(7, 135, 223);
+			background-image: -webkit-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+			background-image: -moz-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+			background-image: -ms-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+			background-image: -o-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+			background-image: linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+		}
+
+/***** 联系节 *****/
+
+.mi_bkgd_clo_contact {
+	background-color: rgb(53, 53, 53);
 }
 
-.mi_distribution .mi_hrzt_line_dash {
-	border-top-color: rgb(200, 200, 200);
+.mi_contact {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: rgb(171, 171, 171);
 }
 
-.mi_distribution .mi_year {
-	font-weight: bold;
-	top: -16px;
+.mi_contact .mi_boa.mi_list_grp {
+	margin-bottom: 50px;
 }
 
-.mi_distribution .mi_lab_tp, .mi_distribution .mi_lab_bm {
-	text-align:center;
+.mi_contact .mi_boa.mi_list_grp .mi_col {
+	width: 162px;
 }
 
-.mi_distribution .mi_lab_tp {
-	top: -64px;
-	color: rgb(9, 144, 228);
+.mi_contact .mi_boa.mi_list_grp .mi_col.mi_last {
+	width: 106px;
 }
 
-.mi_distribution .mi_lab_bm {
-	top: 8px;
-	color: rgb(67, 67, 67);
+.mi_contact .mi_boa.mi_list_grp .mi_list {
+	list-style-type: square;
 }
 
-.mi_distribution .mi_lab_tp .mi_vtic_line_div {
-	height: 22px;
+.mi_contact .mi_boa.mi_list_grp .mi_list > li {
+	margin-left: 16px;
+	margin-bottom: 5px;
 }
 
-.mi_distribution .mi_lab_bm .mi_vtic_line_div {
-	height: 12px;
-	margin-bottom: 2px;
+.mi_contact .mi_hrzt_line {
+	background-color: rgb(76, 76, 76);
 }
 
-.mi_distribution .mi_vtic_line {
-	left: 50%;	/*水平居中，由于inline-block会产生奇怪的向下偏移，所以改用绝对定位！*/
-	top: 0px;
-	height: 100%;
-	background-color: rgb(200, 200, 200);
+.mi_contact .mi_boa.mi_adrs .mi_col {
+	width: 50%;
 }
 
-.mi_distribution .mi_brc_upwd {
-	height: 12px;
-	border-radius: 12px 12px 0px 0px;
-	border: 1px solid rgb(200, 200, 200);
-	border-bottom: none;
+.mi_contact .mi_boa.mi_adrs .mi_col.mi_lt .mi_link {
+	margin-right: 20px;
 }
 
-.mi_distribution .mi_lab_tp .mi_cptn {
-	margin-bottom: 2px;
-	font-weight: bold;
+.mi_contact .mi_boa.mi_adrs .mi_col.mi_rt .mi_link {
+	margin-left: 20px;
 }
 
-.mi_distribution .mi_lab_tp.mi_hlgt .mi_cptn {
-	color: rgb(242, 18, 102);
-}
-
-.mi_distribution .mi_lab_bm .mi_dot {
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
-	border: 2px solid rgb(200, 200, 200);
-	background-color: rgb(9, 144, 228);
-}
-
-.mi_distribution .mi_lab_bm.mi_hlgt .mi_dot {
-	background-color: rgb(242, 18, 102);
-}
-
-.mi_distribution .mi_bkgd {
-	height: 803px;
-	background-image: url("../images/Home/map.jpg");
-}
-
-.mi_distribution .mi_bkgd .mi_text {
-	width: 186px;
-	overflow-wrap: break-word;
-}
-
-.mi_distribution .mi_btn_div {
-	bottom: 20px;
-}
-
-.mi_distribution .mi_btn_div .mi_btn {
-	padding: 15px 45px;
-	border: 2px solid rgb(0, 89, 152);
-	background-color: rgb(7, 135, 223);
-	background-image: -webkit-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
-	background-image: -moz-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
-	background-image: -ms-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
-	background-image: -o-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
-	background-image: linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
-}
+/***** 页脚 *****/
 
 .mi_footer {
-	background-color: rgb(53, 53, 53);
-	height: 300px;
+	padding-top: 40px;
+	padding-bottom: 30px;
+	background-color: rgb(11, 11, 11);
+	color: rgb(181, 181, 181);
+}
+
+.mi_footer .mi_cprt_div {
+	margin-bottom: 15px;
+}
+
+.mi_footer .mi_link {
+	margin: 0px 5px;
 }
 
 /*********************************************************************** Over ***********************************************************************/

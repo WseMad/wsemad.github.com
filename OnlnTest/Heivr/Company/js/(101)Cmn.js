@@ -63,7 +63,7 @@
 
 		//--------------------- 禁用浏览器拖选文字？
 
-		//	$(document).bind("selectstart", function () { return false; });
+		$(document).bind("selectstart", function () { return false; });
 
 		//--------------------- 按钮（3D）
 
@@ -97,20 +97,72 @@
 		function fEsn_PrbItp(a_Scl) {
 			return nWse.stNumUtil.cPrbItp(0, 1, a_Scl, false);
 		}
+		nApp.fEsn_PrbItp = fEsn_PrbItp;
+
+		// 计算页面区域
+		nApp.fCalcPageSara = function (a_DomElmt) {
+			var l_Rst = new nWse.tSara();
+			nWse.tSara.scInit$DomBcr(l_Rst, a_DomElmt);
+			l_Rst.c_X += (window.scrollX || 0) + document.documentElement.scrollLeft;	// IE使用后一项
+			l_Rst.c_Y += (window.scrollY || 0) + document.documentElement.scrollTop;	// IE使用后一项
+			return l_Rst;
+		};
 
 		//===================================================== 首页
 
 		if ($("body").hasClass("mi_page_home")) {
 			(function () {
 
+				//-------- 导航链接
+
+				(function () {
+
+					$(".mi_nav a").click(function (a_Evt) {
+						// 提取元素ID
+						var l_EvtTgt = a_Evt.target;
+						var l_Href = l_EvtTgt.href;
+						var i_Rgx = /#.+$/;
+						var l_Mch = l_Href.match(i_Rgx);
+						if (! l_Mch)
+						{ return; }
+
+						var l_ElmtId = l_Mch[0].slice(1, l_Mch[0].length);
+					//	console.log(l_ElmtId);
+						var l_DomElmt = document.getElementById(l_ElmtId);
+						if (! l_DomElmt)
+						{ return; }
+
+						// 计算页面区域，滚动到那里
+						var l_PageSara = nApp.fCalcPageSara(l_DomElmt);
+						nWse.stDomUtil.cAnmtPpty(window,
+							{
+								"scrollY": l_PageSara.c_Y
+							},
+							{
+								c_Dur: 0.5
+								,c_fEsn: fEsn_PrbItp
+							});
+
+						// 取消默认动作
+						return false;
+					});
+
+				})();
+
+
 				//-------- 案例展示里的标签页
+
+				nApp.g_ShowTabPageIdx_CaseShow = -1; // 当前索引，初始-1
 
 				nApp.fShowTabPage_CaseShow = function (a_Idx) {
 					var l_QryStr = ".mi_case_show .mi_tab_page";
 					var l_$TabPages = $(l_QryStr);
 					var l_TabPages = l_$TabPages.get();
-					if ((a_Idx < 0) || (l_TabPages.length <= a_Idx))
-					{ return false; }
+
+					// 环绕索引
+					while (a_Idx < 0)
+					{ a_Idx += l_TabPages.length; }
+					a_Idx = a_Idx % l_TabPages.length;
 
 					// 首次运行，设置z-index
 					if (!l_TabPages[0].style.zIndex) {
@@ -137,6 +189,9 @@
 							}
 						});
 
+					// 记录当前索引
+					nApp.g_ShowTabPageIdx_CaseShow = a_Idx;
+
 					//【注意】下面这部分是可选的，作个动画
 					l_NewTab.style.opacity = "0";
 					nWse.stCssUtil.cAnmt(l_NewTab,
@@ -159,12 +214,31 @@
 
 					nApp.fShowTabPage_CaseShow(0); // 一开始显示0页
 
+					var i_SwchFrpc = 2; // 每过一段时间自动换页
+					var l_TmrId = null;
+					function fSttTmr() {
+						l_TmrId = window.setTimeout(function () {
+							nApp.fShowTabPage_CaseShow(nApp.g_ShowTabPageIdx_CaseShow + 1);
+							fSttTmr();	// 继续
+						}, i_SwchFrpc * 1000);
+					}
+					function fClrTmr() {
+						if (l_TmrId) {
+							window.clearTimeout(l_TmrId);
+							l_TmrId = null;
+						}
+					}
+					fSttTmr();
+
 					l_$CirBtns.click(function (a_Evt) {
 						// 找到索引，显示
 						var l_EvtTgt = a_Evt.target;
 						var l_Idx = l_CirBtns.indexOf(l_EvtTgt) % l_TagPageAmt; // 对数量求余
 						nApp.fShowTabPage_CaseShow(l_Idx);
-						//	console.log(l_Idx);	// 218, 164
+
+						// 重新开始计时
+						fClrTmr();
+						fSttTmr();
 					});
 				})();
 
@@ -394,6 +468,11 @@
 						});
 					//*/
 
+				})();
+
+				//-------- 公司分布节
+
+				(function () {
 				})();
 
 			})(); // if { ... }
