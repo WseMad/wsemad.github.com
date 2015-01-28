@@ -94,18 +94,26 @@
 		//--------------------- 实用函数
 
 		// 松弛函数
-		function fEsn_PrbItp(a_Scl) {
-			return nWse.stNumUtil.cPrbItp(0, 1, a_Scl, false);
-		}
+		fEsn_PrbItp = nWse.stNumUtil.cEsn_FastToSlow;
 		nApp.fEsn_PrbItp = fEsn_PrbItp;
 
 		// 计算页面区域
 		nApp.fCalcPageSara = function (a_DomElmt) {
 			var l_Rst = new nWse.tSara();
 			nWse.tSara.scInit$DomBcr(l_Rst, a_DomElmt);
-			l_Rst.c_X += (window.scrollX || 0) + document.documentElement.scrollLeft;	// IE使用后一项
-			l_Rst.c_Y += (window.scrollY || 0) + document.documentElement.scrollTop;	// IE使用后一项
+			l_Rst.c_X += nWse.stDomUtil.cGetScrlX();
+			l_Rst.c_Y += nWse.stDomUtil.cGetScrlY();
 			return l_Rst;
+		};
+
+		// 评估显示比例（仅垂直方向）
+		nApp.fEstmShowPptn_VticOnly = function (a_PageSara) {
+			var l_ScrlY = nWse.stDomUtil.cGetScrlY(), l_VwptH = nWse.stDomUtil.cGetVwptH();
+			if ((a_PageSara.c_Y + a_PageSara.c_H < l_ScrlY) || (l_ScrlY + l_VwptH < a_PageSara.c_Y))
+			{ return 0; }
+
+			var l_ShowH = Math.min(l_ScrlY + l_VwptH - a_PageSara.c_Y, a_PageSara.c_H);
+			return l_ShowH / a_PageSara.c_H;
 		};
 		
 		//===================================================== 首页
@@ -139,8 +147,8 @@
 								"scrollY": l_PageSara.c_Y
 							},
 							{
-								c_Dur: 0.5
-								,c_fEsn: fEsn_PrbItp
+								c_Dur: 0.6
+								,c_fEsn: nWse.stNumUtil.cEsn_SlowToFastToSlow
 							});
 
 						// 取消默认动作
@@ -155,6 +163,9 @@
 				nApp.g_ShowTabPageIdx_CaseShow = -1; // 当前索引，初始-1
 
 				nApp.fShowTabPage_CaseShow = function (a_Idx) {
+					if (nApp.g_ShowTabPageIdx_CaseShow == a_Idx) // 防止重复点击
+					{ return; }
+					
 					var l_QryStr = ".mi_case_show .mi_tab_page";
 					var l_$TabPages = $(l_QryStr);
 					var l_TabPages = l_$TabPages.get();
@@ -214,13 +225,14 @@
 
 					nApp.fShowTabPage_CaseShow(0); // 一开始显示0页
 
-					var i_SwchFrpc = 2; // 每过一段时间自动换页
+					var l_SwchFrqc = 2; // 每过一段时间自动换页
 					var l_TmrId = null;
-					function fSttTmr() {
+					function fSttTmr(a_Frqc) {
+						l_SwchFrqc = a_Frqc || 2; // 默认2秒
 						l_TmrId = window.setTimeout(function () {
 							nApp.fShowTabPage_CaseShow(nApp.g_ShowTabPageIdx_CaseShow + 1);
 							fSttTmr();	// 继续
-						}, i_SwchFrpc * 1000);
+						}, l_SwchFrqc * 1000);
 					}
 					function fClrTmr() {
 						if (l_TmrId) {
@@ -238,7 +250,7 @@
 
 						// 重新开始计时
 						fClrTmr();
-						fSttTmr();
+						fSttTmr(10);	// 单击后等10秒
 					});
 				})();
 
