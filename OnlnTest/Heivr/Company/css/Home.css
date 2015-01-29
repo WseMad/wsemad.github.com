@@ -443,12 +443,12 @@
 			float: left;
 			width: 266px;
 			margin: 0px 9px;
+			overflow: hidden;
 		}
 
 			.mi_solution .mi_sld_slot .mi_cell .mi_cir_div {
 				padding-top: 22px;
 				text-align: center;
-				z-index: 0;
 			}
 
 			.mi_solution .mi_sld_slot .mi_cell .mi_cir {
@@ -457,7 +457,7 @@
 				border-radius: 83px;
 			}
 
-				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_blue {
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_blue .mi_base {
 					background-color: rgb(0, 139, 237);
 					background-image: -webkit-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
 					background-image: -moz-linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);
@@ -466,7 +466,7 @@
 					/*background-image: linear-gradient(135deg, rgba(0, 76, 183, 0.5) 0%, rgba(32, 210, 249, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
 				}
 
-				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_orange {
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_orange .mi_base {
 					background-color: rgb(249, 140, 30);
 					background-image: -webkit-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
 					background-image: -moz-linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);
@@ -475,7 +475,7 @@
 					/*background-image: linear-gradient(135deg, rgba(192, 50, 31, 0.5) 0%, rgba(249, 140, 30, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
 				}
 
-				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_red {
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_red .mi_base {
 					background-color: rgb(242, 18, 102);
 					background-image: -webkit-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
 					background-image: -moz-linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);
@@ -484,7 +484,7 @@
 					/*background-image: linear-gradient(135deg, rgba(171, 0, 47, 0.5) 0%, rgba(251, 70, 135, 0.5) 100%);*/ /*【注意】Chrome不会忽略，但角度应设为-45deg，奇怪*/
 				}
 
-				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_green {
+				.mi_solution .mi_sld_slot .mi_cell .mi_cir.mi_green .mi_base {
 					background-color: rgb(157, 211, 41);
 					background-image: -webkit-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);
 					background-image: -moz-linear-gradient(135deg, rgba(67, 131, 0, 0.5) 0%, rgba(186, 237, 56, 0.5) 100%);

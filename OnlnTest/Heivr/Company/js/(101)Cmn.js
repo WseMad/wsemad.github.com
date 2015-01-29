@@ -471,10 +471,10 @@
 
 					nApp.fShowSltnCell(0);	// 一上来显示[0]
 
-					var l_SwchFrqc = 3; // 每过一段时间自动换页
+					var l_SwchFrqc = 5; // 每过一段时间自动换页
 					var l_TmrId = null;
 					function fSttTmr(a_Frqc) {
-						l_SwchFrqc = a_Frqc || 3; // 默认3秒
+						l_SwchFrqc = a_Frqc || 5; // 默认5秒
 						l_TmrId = window.setTimeout(function () {
 							nApp.fShowSltnCell(nApp.g_SltnCellOfstIdx + 1, true);
 							fSttTmr();	// 继续
@@ -487,6 +487,65 @@
 						}
 					}
 					fSttTmr();
+
+					// 图标的基底和形状动画
+					(function () {
+						var l_All = nWse.stDomUtil.cQryAll(".mi_base, .mi_shp");
+
+						function fRstAnmtData() {
+							nWse.stAryUtil.cFor(l_All,
+								function (a_All, a_Idx, a_One) {
+									nWse.stCssUtil.cFnshAnmt(a_One, false, false);
+									nWse.stCssUtil.cSetPos(a_One, 0, 0);
+								});
+						}
+
+						function fIsuAnmt() {
+							if (0 != nApp.g_EntAnmtSta_Solution) // 检查状态机
+							{ return; }
+
+							fRstAnmtData(); // 复位动画数据，然后动画
+							var i_Dur = 1;
+							nWse.stAryUtil.cFor(l_All,
+								function (a_All, a_Idx, a_One) {
+									var l_IsBase = nWse.stCssUtil.cHasCssc(a_One, "mi_base");
+									var l_X = l_IsBase ? (-a_One.offsetWidth) : a_One.offsetWidth;
+									var l_Y = l_IsBase ? (-a_One.offsetHeight) : a_One.offsetHeight;
+									nWse.stCssUtil.cSetPos(a_One, l_X, l_Y);
+									nWse.stCssUtil.cAnmt(a_One,
+										{
+											"left": "0px",
+											"top": "0px"
+										},
+										{
+											c_Dur: i_Dur
+											//	,c_Tot: -1
+											//	,c_EvenCntRvs: true
+											, c_fEsn: fEsn_PrbItp
+											, c_fOnEnd: (a_Idx == l_All.length - 1) ? function () { nApp.g_EntAnmtSta_Solution = 2; } : null // 最后一个负责更新状态机
+										});
+								});
+
+							nApp.g_EntAnmtSta_Solution = 1; // 更新状态机
+						}
+
+						function fTryIsu() {
+							var l_DomElmt = document.getElementById("k_Solution");
+							var l_AnmtIsud = (0 != nApp.g_EntAnmtSta_Solution); // 动画已发出？发出后降低评估要求，未发出则增加
+							if (nApp.fIsuEntAnmt(l_DomElmt, (l_AnmtIsud ? 0.3 : 0.7))) {
+								fIsuAnmt();
+							}
+							else
+								if (l_AnmtIsud) {
+									nApp.g_EntAnmtSta_Solution = 0;	// 复位状态机
+									fRstAnmtData();	// 复位动画数据
+								}
+						}
+
+						nApp.g_EntAnmtSta_Solution = 0; // 使用简单状态机跟踪动画状态
+						//fTryIsu(); //【一开始不用，因为这里是文档就绪，样式表可能还未就位，所以位置计算可能不正确！】
+						nWse.stDomUtil.cAddEvtHdlr_WndScrl(fTryIsu, i_SrsEvtHdlFrqc);
+					})();
 				})();
 
 				// 圆点
@@ -537,8 +596,8 @@
 										, c_Dur: i_Dur
 										//	,c_Tot: -1
 										//	,c_EvenCntRvs: true
-									//	, c_fEsn: fEsn_PrbItp
-										, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.5, a_Scl, false); }
+										//	, c_fEsn: fEsn_PrbItp
+										, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.2, a_Scl, false); }
 										, c_fOnEnd: (a_Idx == l_Flags.length - 1) ? function () { nApp.g_EntAnmtSta_Hardware = 2; } : null // 最后一个负责更新状态机
 									});
 							});
@@ -604,7 +663,7 @@
 										//	,c_Tot: -1
 										//	,c_EvenCntRvs: true
 										, c_fEsn: fEsn_PrbItp
-									//	, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.2, a_Scl, false); }
+										//	, c_fEsn: function (a_Scl) { return nWse.stNumUtil.cPrbItp$Ovfl(0, 1, 1.2, a_Scl, false); }
 										, c_fOnEnd: (a_Idx == l_Labs.length - 1) ? function () { nApp.g_EntAnmtSta_Distribution = 2; } : null // 最后一个负责更新状态机
 									});
 							});

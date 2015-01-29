@@ -161,6 +161,14 @@ body, .mi_std_font_fam {
 	background-color: rgb(246, 246, 246);
 }
 
+
+/* 全局缩放界限 */
+#k_GlbSclBnd {
+	/*确保超出的部分仍可见，否则会被裁减掉一部分页面！*/
+	/*overflow-x: visible;
+	overflow-y: visible;*/
+}
+
 /* 布局环境和居中宽度 */
 .mi_cen_wid, .mi_lot_env {
 	width: 1260px;
