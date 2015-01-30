@@ -10,5 +10,16 @@
 	color: rgb(6, 83, 157);
 }
 
+.cnApp_Env.cnApp_PC .mi_product_itro .mi_hdn {
+	margin-bottom: 5px;
+}
+
+.cnApp_Env.cnApp_PC .mi_product_itro .mi_num_clo {
+	color: rgb(255, 58, 0);
+}
+
+.cnApp_Env.cnApp_PC .mi_product_itro .mi_text_clo {
+	color: rgb(80, 80, 80);
+}
 
 /*********************************************************************** Over ***********************************************************************/

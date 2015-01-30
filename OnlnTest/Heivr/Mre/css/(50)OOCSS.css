@@ -142,8 +142,16 @@ li > a {
 	margin: 10px;
 }
 
+.mi_mgn_l1h {
+	margin: 15px;
+}
+
 .mi_mgn_l2 {
 	margin: 20px;
+}
+
+.mi_mgn_l2h {
+	margin: 25px;
 }
 
 .mi_mgn_l3 {
@@ -158,8 +166,16 @@ li > a {
 	margin-left: 10px;
 }
 
+.mi_mgn_lt_l1h {
+	margin-left: 15px;
+}
+
 .mi_mgn_lt_l2 {
 	margin-left: 20px;
+}
+
+.mi_mgn_lt_l2h {
+	margin-left: 25px;
 }
 
 .mi_mgn_lt_l3 {
@@ -174,8 +190,16 @@ li > a {
 	margin-right: 10px;
 }
 
+.mi_mgn_rt_l1h {
+	margin-right: 15px;
+}
+
 .mi_mgn_rt_l2 {
 	margin-right: 20px;
+}
+
+.mi_mgn_rt_l2h {
+	margin-right: 25px;
 }
 
 .mi_mgn_rt_l3 {
@@ -190,8 +214,16 @@ li > a {
 	margin-top: 10px;
 }
 
+.mi_mgn_tp_l1h {
+	margin-top: 15px;
+}
+
 .mi_mgn_tp_l2 {
 	margin-top: 20px;
+}
+
+.mi_mgn_tp_l2h {
+	margin-top: 25px;
 }
 
 .mi_mgn_tp_l3 {
@@ -206,8 +238,20 @@ li > a {
 	margin-bottom: 10px;
 }
 
+.mi_mgn_bm_l1h {
+	margin-bottom: 10px;
+}
+
+.mi_mgn_bm_l1h {
+	margin-bottom: 15px;
+}
+
 .mi_mgn_bm_l2 {
 	margin-bottom: 20px;
+}
+
+.mi_mgn_bm_l2h {
+	margin-bottom: 25px;
 }
 
 .mi_mgn_bm_l3 {
@@ -262,8 +306,16 @@ li > a {
 	padding: 10px;
 }
 
+.mi_pad_l1h {
+	padding: 15px;
+}
+
 .mi_pad_l2 {
 	padding: 20px;
+}
+
+.mi_pad_l2h {
+	padding: 25px;
 }
 
 .mi_pad_l3 {
@@ -278,8 +330,16 @@ li > a {
 	padding-left: 10px;
 }
 
+.mi_pad_lt_l1h {
+	padding-left: 15px;
+}
+
 .mi_pad_lt_l2 {
 	padding-left: 20px;
+}
+
+.mi_pad_lt_l2h {
+	padding-left: 25px;
 }
 
 .mi_pad_lt_l3 {
@@ -294,8 +354,16 @@ li > a {
 	padding-right: 10px;
 }
 
+.mi_pad_rt_l1h {
+	padding-right: 15px;
+}
+
 .mi_pad_rt_l2 {
 	padding-right: 20px;
+}
+
+.mi_pad_rt_l2h {
+	padding-right: 25px;
 }
 
 .mi_pad_rt_l3 {
@@ -310,8 +378,16 @@ li > a {
 	padding-top: 10px;
 }
 
+.mi_pad_tp_l1h {
+	padding-top: 15px;
+}
+
 .mi_pad_tp_l2 {
 	padding-top: 20px;
+}
+
+.mi_pad_tp_l2h {
+	padding-top: 25px;
 }
 
 .mi_pad_tp_l3 {
@@ -326,8 +402,16 @@ li > a {
 	padding-bottom: 10px;
 }
 
+.mi_pad_bm_l1h {
+	padding-bottom: 15px;
+}
+
 .mi_pad_bm_l2 {
 	padding-bottom: 20px;
+}
+
+.mi_pad_bm_l2h {
+	padding-bottom: 25px;
 }
 
 .mi_pad_bm_l3 {
