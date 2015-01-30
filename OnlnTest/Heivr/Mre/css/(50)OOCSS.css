@@ -583,7 +583,15 @@ li > a {
 		position: relative;
 		left: 0px;
 		top: -8px;
+		-webkit-transition-property: top, box-shadow;
+		-moz-transition-property: top, box-shadow;
+		-ms-transition-property: top, box-shadow;
+		-o-transition-property: top, box-shadow;
 		transition-property: top, box-shadow;
+		-webkit-transition-duration: 0.3s;
+		-moz-transition-duration: 0.3s;
+		-ms-transition-duration: 0.3s;
+		-o-transition-duration: 0.3s;
 		transition-duration: 0.3s;
 	}
 
