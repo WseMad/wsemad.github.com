@@ -10,105 +10,247 @@
 	color: rgb(6, 83, 157);
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_hdn {
-	margin-bottom: 5px;
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_hdn {
+		margin-bottom: 5px;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_num_clo {
+		color: rgb(255, 58, 0);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_text_clo {
+		color: rgb(80, 80, 80);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details {
+	}
+
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_0,
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_col.mi_0 {
+			width: 500px;
+		}
+
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1,
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_col.mi_1 {
+			width: 240px;
+			padding-left: 20px;
+			color: rgb(80, 80, 80);
+		}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_btn.mi_arw {
+		font-size: 35px;
+		color: gray;
+		vertical-align: top;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_sldr_slot {
+		width: 400px; /* 4×（5＋90＋5） */
+		height: 50px;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_sldr_spc {
+		width: 2000px; /*先大一点*/
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_item {
+		width: 90px;
+		height: 50px;
+		margin: 0px 5px;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_num.mi_hlgt {
+		font-size: 30px;
+		color: rgb(255, 58, 0);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_clo_gold {
+		color: rgb(232, 147, 19);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_clo_gray {
+		color: rgb(80, 80, 80);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_para {
+		margin-bottom: 16px;
+	}
+
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_para.mi_last {
+			margin-bottom: 24px;
+		}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_btn.mi_rsrv {
+		padding: 10px 30px;
+		background-color: rgb(232, 147, 19);
+		color: rgb(238, 238, 238);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow {
+	}
+
+		.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow {
+			margin-top: 28px;
+			border-left: 1px solid rgb(6, 83, 157);
+		}
+
+			.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_hdn {
+				padding: 15px 60px;
+				background-color: rgb(6, 83, 157);
+				font-size: 20px;
+			}
+
+			.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_steps {
+				padding: 20px 0px 20px 20px;
+			}
+
+				.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_steps .mi_lab {
+					background-color: rgb(6, 83, 157);
+					margin-right: 1em;
+					padding: 5px 10px;
+					padding-left: 5px;
+					border-radius: 5px;
+					border-top-right-radius: 30px 20px;
+					border-bottom-right-radius: 30px 20px;
+					color: white;
+				}
+
+				.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_steps .mi_text {
+					font-size: 16px;
+					font-weight: bold;
+					color: rgb(8, 66, 147);
+				}
+
+.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_tit_div {
+	height: 46px;
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_num_clo {
-	color: rgb(255, 58, 0);
+#k_FltTit {
+	border-bottom: 2px solid rgb(6, 83, 157);
+	z-index: 1000;
+	background-color: white;
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_text_clo {
-	color: rgb(80, 80, 80);
+	#k_FltTit .mi_lab {
+		float: left;
+		padding: 10px;
+		border-left: 2px solid rgb(203, 203, 203);
+	}
+
+		#k_FltTit .mi_lab.mi_crnt {
+			border-left-color: rgb(6, 83, 157);
+			background-color: rgb(6, 83, 157);
+			color: rgb(238, 238, 238);
+		}
+
+		#k_FltTit .mi_lab.mi_rsrv {
+			padding: 0px;
+		}
+
+			#k_FltTit .mi_lab.mi_rsrv .mi_btn {
+				margin: 5px 40px;
+				padding: 5px 20px;
+				background-color: rgb(232, 147, 19);
+				color: white;
+			}
+
+.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sects {
+	padding: 25px 30px;
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details {
-
+.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect {
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_0,
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_col.mi_0 {
-	width: 500px;
+	.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect > .mi_hdn {
+		border-bottom: 2px solid rgb(6, 83, 157);
+		margin-bottom: 20px;
+	}
+
+		.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect > .mi_hdn .mi_text {
+			padding: 0px 20px;
+			padding-top: 1px;
+			border-radius: 4px 0px 0px 0px;
+			background-color: rgb(6, 83, 157);
+			color: rgb(238, 238, 238);
+		}
+
+.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect {
+	margin-bottom: 25px;
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1,
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_col.mi_1 {
-	width: 240px;
-	padding-left: 20px;
-	color: rgb(80, 80, 80);
+	.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect > .mi_hdn .mi_icon_img {
+		width: 14px;
+		height: 25px;
+		vertical-align: bottom;
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect p {
+		font-size: 16px;
+		color: rgb(80, 80, 80);
+	}
+
+	.cnApp_Env.cnApp_PC .mi_product_ctnt .mi_sect .mi_item_cptn {
+		color: rgb(6, 83, 157);
+		font-weight: bold;
+	}
+
+.cnApp_Env.cnApp_PC .mi_route_info {
 }
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_btn.mi_arw {
-	font-size: 40px;
-	color: gray;
-	vertical-align: top;
-}
+	.cnApp_Env.cnApp_PC .mi_route_info .mi_list {
+		margin-left: 130px;
+	}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_sldr_slot {
-	width: 400px;	/* 4×（5＋90＋5） */
-	height: 50px;
-}
+		.cnApp_Env.cnApp_PC .mi_route_info .mi_list > li {
+			margin-bottom: 15px;
+		}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_sldr_spc {
-	width: 2000px;	/*先大一点*/
-}
+			.cnApp_Env.cnApp_PC .mi_route_info .mi_list > li .mi_hdn {
+				margin-bottom: 10px;
+				font-size: 16px;
+				color: rgb(6, 83, 157);
+			}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_sldr_div .mi_item {
-	width: 90px;
-	height: 50px;
-	margin: 0px 5px;
-}
+			.cnApp_Env.cnApp_PC .mi_route_info .mi_list > li .mi_icon {
+				width: 30px;
+				height: 30px;
+				margin-right: 10px;
+				vertical-align: top;
+				background-image: url("../images/LvYouXianLu/Slice_3.png");
+				background-repeat: no-repeat;
+				padding-top: 2px;
+				font-size: 12px;
+				text-align: center;
+				vertical-align: middle;
+				color: white;
+			}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_num.mi_hlgt {
-	font-size: 30px;
-	color: rgb(255, 58, 0);
-}
+			.cnApp_Env.cnApp_PC .mi_route_info .mi_list > li p {
+				font-size: 14px;
+				color: rgb(80, 80, 80);
+			}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_clo_gold {
-	color: rgb(232, 147, 19);
-}
+			.cnApp_Env.cnApp_PC .mi_route_info .mi_list > li .mi_fig {
+				float: left;
+				margin-right: 15px;
+				margin-bottom: 15px;
+				width: 250px;
+			}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_para {
-	margin-bottom: 16px;
-}
+	.cnApp_Env.cnApp_PC .mi_route_info .mi_day_list {
+		top: 50px;
+	}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_para.mi_last {
-	margin-bottom: 24px;
-}
+		.cnApp_Env.cnApp_PC .mi_route_info .mi_day_list .mi_day {
+			display: block;
+			margin-bottom: 5px;
+			padding: 5px;
+			text-align: center;
+			background-color: rgb(204, 204, 204);
+			color: white;
+		}
 
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_details .mi_col.mi_1 .mi_btn.mi_rsrv {
-	padding: 10px 30px;
-	background-color: rgb(232, 147, 19);
-	color: rgb(238, 238, 238);
-}
-
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow {
-	
-}
-
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow {
-	margin-top: 28px;
-	border-left: 1px solid rgb(6, 83, 157);
-}
-
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_hdn {
-	padding: 15px 60px;
-	background-color: rgb(6, 83, 157);
-	font-size: 20px;
-}
-
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_steps {
-	padding: 20px 0px 20px 20px;
-}
-
-.cnApp_Env.cnApp_PC .mi_product_itro .mi_boa.mi_date_flow .mi_flow .mi_steps .mi_lab {
-	background-color: rgb(6, 83, 157);
-	margin-right: 1em;
-	padding: 5px 10px;
-	border-radius: 5px;
-	border-top-right-radius: 30px 15px;
-	border-bottom-right-radius: 30px 15px;
-	color: white;
-}
+			.cnApp_Env.cnApp_PC .mi_route_info .mi_day_list .mi_day.mi_crnt {
+				background-color: rgb(6, 83, 157);
+			}
 
 /*********************************************************************** Over ***********************************************************************/

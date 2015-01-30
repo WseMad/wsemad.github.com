@@ -119,8 +119,11 @@
 			if ((a_PageSara.c_Y + a_PageSara.c_H < l_ScrlY) || (l_ScrlY + l_VwptH < a_PageSara.c_Y))
 			{ return 0; }
 
+			if (a_PageSara.c_H >= l_VwptH)
+			{ return 1; }
+
 			var l_TotH = Math.min(a_PageSara.c_H, l_VwptH);
-			var l_ShowH = Math.min(l_ScrlY + l_VwptH - a_PageSara.c_Y, l_TotH);
+			var l_ShowH = Math.max(0, Math.min(a_PageSara.c_Y + a_PageSara.c_H - l_ScrlY, l_ScrlY + l_VwptH - a_PageSara.c_Y, l_TotH));
 			return l_ShowH / l_TotH;
 		};
 
