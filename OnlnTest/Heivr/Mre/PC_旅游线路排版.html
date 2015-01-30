@@ -340,18 +340,18 @@
 				<div class="mi_product_ctnt">
 					<div class="mi_tit_div">
 						<div id="k_FltTit" class="cnWse_ClearFix">
-							<div class="mi_lab mi_crnt">产品特色</div>
-							<div class="mi_lab">航班/酒店</div>
-							<div class="mi_lab">行程信息</div>
-							<div class="mi_lab">费用说明</div>
-							<div class="mi_lab">预订须知</div>
-							<div class="mi_lab">签证信息</div>
-							<div class="mi_lab">附加信息</div>
+							<a href="#k_产品特色" class="mi_lab mi_crnt">产品特色</a>
+							<a href="#k_航班/酒店" class="mi_lab">航班/酒店</a>
+							<a href="#k_RouteInfo" class="mi_lab">行程信息</a>
+							<a href="#k_费用说明" class="mi_lab">费用说明</a>
+							<a href="#k_预订须知" class="mi_lab">预订须知</a>
+							<a href="#k_签证信息" class="mi_lab">签证信息</a>
+							<a href="#k_附加信息" class="mi_lab">附加信息</a>
 							<div class="mi_lab mi_rsrv mi_text_aln_ct"><span class="mi_dspl_inln_blk mi_btn">立即预订</span></div>
 						</div>
 					</div>
 					<div class="mi_sects">
-						<div class="mi_sect">
+						<div id="k_产品特色" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">产品特色</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<p>2015年我们在原先线路的基础上全新升级，带给你全新的体验！</p>
 							<p>★升级少女峰，登临阿尔卑斯最美山峰；</p>
@@ -365,7 +365,7 @@
 							<p>瑞士深度，少女峰，销量冠军升级版 （点击可查看）﻿﻿﻿</p>
 							<p>团期：3月20日、3月26日、4月16日</p>
 						</div>
-						<div class="mi_sect">
+						<div id="k_航班/酒店" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">航班/酒店</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<p>江苏银行途牛联名卡会员享受散客</p>
 							<p>跟团线路与出境自助游线路98折优惠</p>
@@ -452,7 +452,7 @@
 								</li>
 							</ol>
 						</div>
-						<div class="mi_sect">
+						<div id="k_费用说明" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">费用说明</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<ul>
 								<li class="mi_mgn_bm_l3">
@@ -480,7 +480,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="mi_sect">
+						<div id="k_预订须知" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">预订须知</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<ul>
 								<li class="mi_mgn_bm_l3">
@@ -507,7 +507,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="mi_sect">
+						<div id="k_签证信息" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">签证信息</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<ul>
 								<li class="mi_mgn_bm_l3">
@@ -521,7 +521,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="mi_sect">
+						<div id="k_附加信息" class="mi_sect">
 							<h3 class="mi_hdn"><span class="mi_dspl_inln_blk mi_text">附加信息</span><img src="images/LvYouXianLu/Slice_2.png" class="mi_icon_img" /></h3>
 							<ul>
 								<li class="mi_mgn_bm_l3">
@@ -578,7 +578,7 @@
 								var l_ScrlY = nWse.stDomUtil.cGetScrlY();
 								var l_VwptH = nWse.stDomUtil.cGetVwptHgt();
 								var l_PageSara = a_PageSara;
-								if (l_ScrlY <= l_PageSara.c_Y) {
+								if (l_ScrlY <= l_PageSara.c_Y - a_Dta) {
 									nApp.fRsetPos(a_DomElmt);
 									return;
 								}
