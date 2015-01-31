@@ -138,6 +138,10 @@ li > a {
 	margin: 0px;
 }
 
+.mi_mgn_l0h {
+	margin: 5px;
+}
+
 .mi_mgn_l1 {
 	margin: 10px;
 }
@@ -160,6 +164,10 @@ li > a {
 
 .mi_mgn_lt_l0 {
 	margin-left: 0px;
+}
+
+.mi_mgn_lt_l0h {
+	margin-left: 5px;
 }
 
 .mi_mgn_lt_l1 {
@@ -186,6 +194,10 @@ li > a {
 	margin-right: 0px;
 }
 
+.mi_mgn_rt_l0h {
+	margin-right: 5px;
+}
+
 .mi_mgn_rt_l1 {
 	margin-right: 10px;
 }
@@ -210,6 +222,10 @@ li > a {
 	margin-top: 0px;
 }
 
+.mi_mgn_tp_l0h {
+	margin-top: 5px;
+}
+
 .mi_mgn_tp_l1 {
 	margin-top: 10px;
 }
@@ -232,6 +248,10 @@ li > a {
 
 .mi_mgn_bm_l0 {
 	margin-bottom: 0px;
+}
+
+.mi_mgn_bm_l0h {
+	margin-bottom: 5px;
 }
 
 .mi_mgn_bm_l1 {
@@ -302,6 +322,10 @@ li > a {
 	padding: 0px;
 }
 
+.mi_pad_l0h {
+	padding: 5px;
+}
+
 .mi_pad_l1 {
 	padding: 10px;
 }
@@ -326,6 +350,10 @@ li > a {
 	padding-left: 0px;
 }
 
+.mi_pad_lt_l0h {
+	padding-left: 5px;
+}
+
 .mi_pad_lt_l1 {
 	padding-left: 10px;
 }
@@ -346,8 +374,12 @@ li > a {
 	padding-left: 30px;
 }
 
-.mi_padrt_l0 {
+.mi_pad_rt_l0 {
 	padding-right: 0px;
+}
+
+.mi_pad_rt_l0h {
+	padding-right: 5px;
 }
 
 .mi_pad_rt_l1 {
@@ -374,6 +406,10 @@ li > a {
 	padding-top: 0px;
 }
 
+.mi_pad_tp_l0h {
+	padding-top: 5px;
+}
+
 .mi_pad_tp_l1 {
 	padding-top: 10px;
 }
@@ -398,6 +434,10 @@ li > a {
 	padding-bottom: 0px;
 }
 
+.mi_pad_bm_l0h {
+	padding-bottom: 5px;
+}
+
 .mi_pad_bm_l1 {
 	padding-bottom: 10px;
 }
@@ -419,6 +459,46 @@ li > a {
 }
 
 /******************************** 边框 ********************************/
+
+.mi_bdr_none {
+	border: none;
+}
+
+.mi_bdr_lt_none {
+	border-left: none;
+}
+
+.mi_bdr_rt_none {
+	border-right: none;
+}
+
+.mi_bdr_tp_none {
+	border-top: none;
+}
+
+.mi_bdr_bm_none {
+	border-bottom: none;
+}
+
+.mi_bdr_thk_1px {
+	border-width: 1px;
+}
+
+.mi_bdr_thk_2px {
+	border-width: 2px;
+}
+
+.mi_bdr_stl_sld {
+	border-style: solid;
+}
+
+.mi_bdr_stl_dash {
+	border-style: dashed;
+}
+
+.mi_bdr_stl_dot {
+	border-style: dotted;
+}
 
 .mi_bdr_rds_ihrt {
 	border-radius: inherit;
@@ -569,6 +649,14 @@ li > a {
 
 .mi_text_aln_rt {
 	text-align: right;
+}
+
+.mi_text_dcor_udln, a.mi_text_dcor_udln {
+	text-decoration: underline;
+}
+
+.mi_clo_ihrt {
+	color: inherit;
 }
 
 .mi_clo_black {
