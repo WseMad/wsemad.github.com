@@ -659,7 +659,6 @@
 			//stApp.e_SheepShdwDiv.style.visibility = "visible"; // 显示阴影
 
 		//	/*
-
 			// 先离开
 			nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
 				{
@@ -689,7 +688,7 @@
 					{
 						c_Dur: i_Dur
 					//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-					//	,c_fDplc: fDplc
+						,c_fDplc: fDplc
 						,c_fOnEnd: function ()
 						{
 							// 动画期间可能屏幕朝向改变，重新校准
