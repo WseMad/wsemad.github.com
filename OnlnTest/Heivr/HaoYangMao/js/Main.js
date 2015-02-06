@@ -667,7 +667,7 @@
 				{
 					c_Dur: i_Dur
 				//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-					,c_fDplc: fDplc
+				//	,c_fDplc: fDplc
 					,c_fOnEnd: fOnLea
 				});
 
@@ -688,7 +688,7 @@
 					{
 						c_Dur: i_Dur
 					//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-						,c_fDplc: fDplc
+					//	,c_fDplc: fDplc
 						,c_fOnEnd: function ()
 						{
 							// 动画期间可能屏幕朝向改变，重新校准
