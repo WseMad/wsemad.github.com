@@ -660,14 +660,11 @@
 
 		//	/*
 
-			var l_Str = (-l_This.e_SheepDiv.offsetWidth) + "px";
-			alert(l_Str);
-
 			// 先离开
 			nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
 				{
-				//	"left": (-l_This.e_SheepDiv.offsetWidth) + "px"
-					"left": "-187px"
+					"left": (-l_This.e_SheepDiv.offsetWidth) + "px"
+				//	"left": "-187px"
 				},
 				{
 					c_Dur: i_Dur
