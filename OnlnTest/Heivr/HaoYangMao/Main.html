@@ -333,23 +333,26 @@
 		}
 
 		.mi_spri_sheep.mi_fur_A, .mi_spri_sheep.mi_fur_B, .mi_spri_sheep.mi_fur_C {
-			background-position-x: -767.5px;	/* -1535 */
+			/*background-position-x: -767.5px;	*//* -1535 */
 		}
 
+		/* 【警告】Opera浏览器好像不支持把background-position分开写！ */
 		.mi_spri_sheep.mi_fur_A {
 			width: 74px;	/* 148 */
 			height: 52px; /* 103 */
 			background-size: 1139% 337%;	/* 1685/148, 347/103 */
-			background-position-x: -768px;	/* x=(1535/1685)*(74 * 11.39) */
-			background-position-y: 0px;
+			/*background-position-x: -768px;	*//* x=(1535/1685)*(74 * 11.39) */
+			/*background-position-y: 0px;*/
+			background-position: -768px 0px;
 		}
 
 		.mi_spri_sheep.mi_fur_B {
 			width: 63px;	/* 126 */
 			height: 57px; /* 113 */
 			background-size: 1337% 307%;	/* 1685/126, 347/113 */
-			background-position-x: -769px;	/* x=(1535/1685)*(63 * 13.37)=767，但是看到直边了 */
-			background-position-y: -52px;	/* -104 */
+			/*background-position-x: -769px;	*//* x=(1535/1685)*(63 * 13.37)=767，但是看到直边了 */
+			/*background-position-y: -52px;	*//* -104 */
+			background-position: -769px -52px;
 		}
 
 		.mi_spri_sheep.mi_fur_C {
