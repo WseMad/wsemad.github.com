@@ -52,7 +52,7 @@
 <body>
 	<div id="k_PrstTgt">
 
-		<button id="k_Btn" style="width:200px;height:100px;">播放</button>
+		<button id="k_Btn" style="width:200px;height:100px; background-color:greenyellow;">播放</button>
 
 		<div id="k_Dplc" class="mi_spri_sheep mi_body">
 
@@ -65,10 +65,12 @@
 			console.log("window.onload");
 
 			var l_Btn = document.getElementById("k_Btn");
-			var e_Mp3_Baa = new nWse.nAud.tAudRsrc();
-			e_Mp3_Baa.cLoadFromUrl("./media/Baa.mp3");
-			l_Btn.onclick = function ()
-			{
+			var e_Mp3_Baa = null;
+			l_Btn.onclick = function () {
+				if (!e_Mp3_Baa) {
+					e_Mp3_Baa = new nWse.nAud.tAudRsrc();
+					e_Mp3_Baa.cLoadFromUrl("./media/Baa.mp3");
+				}
 				e_Mp3_Baa.cStop().cPlay();
 			};
 
