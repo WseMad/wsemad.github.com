@@ -16,7 +16,7 @@
 	// 播放声音
 	function fPlayMp3(a_Mp3)
 	{
-		a_Mp3.cStop().cPlay();
+	//	a_Mp3.cStop().cPlay();
 	}
 
 	// 文档就绪
