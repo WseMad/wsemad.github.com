@@ -52,6 +52,8 @@
 <body>
 	<div id="k_PrstTgt">
 
+		<button id="k_Btn" style="width:200px;height:100px;">播放</button>
+
 		<div id="k_Dplc" class="mi_spri_sheep mi_body">
 
 		</div>
@@ -61,6 +63,14 @@
 	<script type="text/javascript">
 		window.onload = function () {
 			console.log("window.onload");
+
+			var l_Btn = document.getElementById("k_Btn");
+			var e_Mp3_Baa = new nWse.nAud.tAudRsrc();
+			e_Mp3_Baa.cLoadFromUrl("./media/Baa.mp3");
+			l_Btn.onclick = function ()
+			{
+				e_Mp3_Baa.cStop().cPlay();
+			};
 
 			var g_SheepDiv = document.getElementById("k_Dplc");
 
