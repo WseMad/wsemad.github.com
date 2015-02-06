@@ -664,13 +664,12 @@
 			nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
 				{
 					"left": (-l_This.e_SheepDiv.offsetWidth) + "px"
-				//	"left": "-187px"
 				},
 				{
 					c_Dur: i_Dur
 				//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
 				//	,c_fDplc: fDplc
-				//	,c_fOnEnd: fOnLea
+					,c_fOnEnd: fOnLea
 				});
 
 			stApp.e_SheepShdwDiv.style.visibility = "hidden"; // 隐藏阴影
