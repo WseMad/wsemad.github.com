@@ -16,7 +16,14 @@
 	// 播放声音
 	function fPlayMp3(a_Mp3)
 	{
-	//	a_Mp3.cStop().cPlay();
+		// 可能会抛出异常
+		try
+		{
+			a_Mp3.cStop().cPlay();
+		}
+		catch (a_Exc)
+		{
+		}
 	}
 
 	// 文档就绪
@@ -44,13 +51,13 @@
 			stApp.e_AudSupt = true;
 
 			// 开始游戏倒计时（秒），∈整数[0, 5]
-			stApp.e_CntDn = 0;
+			stApp.e_CntDn = 5;
 
 			// 游戏时长（秒），∈整数[0, 99]
 			stApp.e_PlayDur = 10;
 
 			// 时间到时结束游戏？
-			stApp.e_GameOver = false;
+			stApp.e_GameOver = true;
 
 			// 当剩余多少羊毛时，羊头变成难过，∈整数[1, 9]
 			stApp.e_RmnForSad = 6;
@@ -178,10 +185,11 @@
 			if (! stApp.e_AudSupt)
 			{ return; }
 
+			//【注意】由于H5 Audio在移动浏览器上的限制，只播放一种声音，选择羊叫。
 			stApp.e_Mp3_Baa = new nWse.nAud.tAudRsrc();
 			stApp.e_Mp3_Baa.cLoadFromUrl("./media/Baa.mp3");
 			stApp.e_Mp3_Coin = new nWse.nAud.tAudRsrc();
-			stApp.e_Mp3_Coin.cLoadFromUrl("./media/Coin.mp3");
+		//	stApp.e_Mp3_Coin.cLoadFromUrl("./media/Coin.mp3");	//【不再播放】
 		};
 
 		// 随机产生不同的整数路径
