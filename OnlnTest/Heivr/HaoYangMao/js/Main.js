@@ -659,6 +659,10 @@
 			//stApp.e_SheepShdwDiv.style.visibility = "visible"; // 显示阴影
 
 		//	/*
+
+			var l_Str = (-l_This.e_SheepDiv.offsetWidth) + "px";
+			alert(l_Str);
+
 			// 先离开
 			nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
 				{
