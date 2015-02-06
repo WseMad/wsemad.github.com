@@ -668,7 +668,7 @@
 				{
 					c_Dur: i_Dur
 				//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-				//	,c_fDplc: fDplc
+					,c_fDplc: fDplc
 					,c_fOnEnd: fOnLea
 				});
 
