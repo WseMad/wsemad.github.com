@@ -2,470 +2,89 @@
 
 <html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
 	<title>薅羊毛</title>
 
-	<link rel="stylesheet" type="text/css" href="css/(0)Rset.css" />
+	<link rel="stylesheet" type="text/css" href="css/(0)Rset.css"/>
 
 	<script type="text/javascript" src="./js/(0)Seed.js"></script>
-	<script type="text/javascript" src="./js/(10)WSE_nWse_Simp.js"></script>
+	<!--<script type="text/javascript" src="./js/(10)WSE_nWse_Simp.js"></script>-->
 	<!--<script type="text/javascript" src="./js/(10)WSE_nWse.js"></script>-->
-	<!--<script type="text/javascript" src="./js/(49)WSE_All.js"></script>-->
+	<script type="text/javascript" src="./js/(49)WSE_All.js"></script>
 	<script type="text/javascript" src="./js/Main.js"></script>
 
 	<style type="text/css">
+
 		html, body, #k_PrstTgt, .mi_full_dim {
 			width: 100%;
 			height: 100%;
 		}
 
-		#k_GlbSclDiv {
-			width: 750px;
-			height: 1334px;
-		}
-
-		a, a:link {
-			text-decoration: none;
-		}
-
-		.mi_full_wid {
-			width: 100%;
-		}
-
-		.mi_dspl_none {
-			display: none;
-		}
-
-		.mi_dspl_inln_blk {
+		.mi_dspl_inln_blk
+		{
 			display: inline-block;
 		}
 
-		.mi_dspl_blk {
-			display: block;
-		}
-
-		.mi_pstn_rel {
-			position: relative;
-		}
-
-		.mi_pstn_abs {
-			position: absolute;
-		}
-
-		.mi_pstn_abs_lt_tp {
+		.mi_dspl_pstn_abs_lt_tp
+		{
 			position: absolute;
 			left: 0px;
 			top: 0px;
-		}
-
-		.mi_pstn_abs_rt_bm {
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
-		}
-
-		.mi_vsblt_hide {
-			visibility: hidden;
-		}
-
-		.mi_text_aln_ct {
-			text-align: center;
-		}
-
-		.mi_rot_for_vs {
-			/*-webkit-transform: rotate(90deg);*/
-			/*-moz-transform: rotate(90deg);*/
-			/*-ms-transform: rotate(90deg);*/
-			/*-o-transform: rotate(90deg);*/
-			/*transform: rotate(90deg);*/
-		}
-
-		.mi_tsfm_scl_half {
-			-webkit-transform: scale(0.5);
-			-moz-transform: scale(0.5);
-			-ms-transform: scale(0.5);
-			-o-transform: scale(0.5);
-			transform: scale(0.5);
-		}
-
-		.mi_tsfm_org_lt_tp {
-			-webkit-transform-origin: left top;
-			-moz-transform-origin: left top;
-			-ms-transform-origin: left top;
-			-o-transform-origin: left top;
-			transform-origin: left top;
-		}
-
-		.mi_tsfm_org_ct_bm {
-			-webkit-transform-origin: center bottom;
-			-moz-transform-origin: center bottom;
-			-ms-transform-origin: center bottom;
-			-o-transform-origin: center bottom;
-			transform-origin: center bottom;
-		}
-
-		body {
-			font-family: 微软雅黑;
 		}
 
 		#k_PrstTgt {
-			position: relative;
-			left: 0px;
-			top: 0px;
 			background-image: url("./media/Bkgd.jpg");
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
-			overflow: hidden; /* 不准溢出 */
+			overflow: hidden;
 		}
 
-		.mi_scrn {
+		.mi_lyr_canv
+		{
+			z-index: 100;
 		}
 
-		.mi_spc_plchd {
-			visibility: hidden;
-			height: 10%;
+		.mi_lyr_ui
+		{
+			z-index: 1000;
 		}
 
-		.mi_scrn.mi_Run .mi_spc_plchd {
-			height: 32%;
+		#k_2dCanv {
+
 		}
 
 		.mi_logo_div {
 			padding: 10px 0px 0px 15px;
 		}
 
-		.mi_logo_wrap {
+		.mi_logo_ctnt_div {
 			width: 170px;
 			height: 29px;
-		}
-
-		.mi_coin_cntr_div {
-			padding: 0px 15px 10px 0px;
-		}
-
-		.mi_coin_cntr_wrap {
-			width: 96px;
-			height: 41px;
-		}
-
-		#k_CoinCntr {
-			left: 24px;
-			top: 14px;
-			color: white;
-			font-size: 16px;
-		}
-
-
-
-		/*.mi_clk_to_hao*/
-		/*{*/
-		/*padding: 10px 20px;*/
-		/*border-radius: 8px;*/
-		/*color: white;*/
-		/*background-color: rgb(103, 175, 15);*/
-		/*box-shadow: 0px 5px 0px rgb(75, 134, 5);*/
-		/*}*/
-
-		.mi_icon_cnt_dn {
-			display: inline-block;
-			background-image: url("./media/CountDown.png");
-			background-repeat: no-repeat;
-			width: 60px;
-			height: 80px;
-		}
-
-			.mi_icon_cnt_dn.mi_5 {
-				background-position: 0px 0px;
-			}
-
-			.mi_icon_cnt_dn.mi_4 {
-				background-position: -60px 0px;
-			}
-
-			.mi_icon_cnt_dn.mi_3 {
-				background-position: -120px 0px;
-			}
-
-			.mi_icon_cnt_dn.mi_2 {
-				background-position: -180px 0px;
-			}
-
-			.mi_icon_cnt_dn.mi_1 {
-				background-position: -240px 0px;
-			}
-
-		.mi_icon_time_line {
-			display: inline-block;
-			background-image: url("./media/TimeLine.png");
-			background-repeat: no-repeat;
-			width: 12px; /* 24 */
-			height: 18px; /* 36 */
-			background-size: 1367% 100%; /* 328/24 */
-		}
-
-			.mi_icon_time_line.mi_time_cln {
-				background-position: 0px 0px;
-				width: 44px; /* 88 */
-				background-size: 372% 100%; /* 328/88 */
-			}
-
-			.mi_icon_time_line.mi_0 {
-				background-position: -44px 0px; /* -88 */
-			}
-
-			.mi_icon_time_line.mi_1 {
-				background-position: -56px 0px; /* -112 */
-			}
-
-			.mi_icon_time_line.mi_2 {
-				background-position: -68px 0px; /* -136 */
-			}
-
-			.mi_icon_time_line.mi_3 {
-				background-position: -80px 0px; /* -160 */
-			}
-
-			.mi_icon_time_line.mi_4 {
-				background-position: -92px 0px; /* -184 */
-			}
-
-			.mi_icon_time_line.mi_5 {
-				background-position: -104px 0px; /* -208 */
-			}
-
-			.mi_icon_time_line.mi_6 {
-				background-position: -116px 0px; /* -232 */
-			}
-
-			.mi_icon_time_line.mi_7 {
-				background-position: -128px 0px; /* -128 */
-			}
-
-			.mi_icon_time_line.mi_8 {
-				background-position: -140px 0px; /* -280 */
-			}
-
-			.mi_icon_time_line.mi_9 {
-				background-position: -152px 0px; /* -304 */
-			}
-
-		.mi_line_div {
-			background-color: transparent;
-			vertical-align: text-top;
-		}
-
-			.mi_line_div .mi_sph, .mi_line_div .mi_pgrs {
-				background-color: rgb(246, 118, 27);
-			}
-
-				.mi_line_div .mi_sph.mi_emt, .mi_line_div .mi_bar {
-					background-color: rgb(255, 255, 255);
-				}
-
-			.mi_line_div .mi_sph {
-				width: 12px;
-				height: 12px;
-				border-radius: 6px;
-			}
-
-			.mi_line_div .mi_bar {
-				position: relative;
-				top: -3px;
-				left: -1px;
-				width: 160px;
-				height: 6px;
-			}
-
-			.mi_line_div .mi_pgrs {
-				width: 100%; /* 将由JS修改 */
-				height: 100%;
-			}
-
-		.mi_sheep_div {
-			width: 100%;
-			z-index: 100;
-		}
-
-		.mi_z_idx_ui_lyr {
-			z-index: 1000;
-		}
-
-		.mi_spri_sheep {
-			display: inline-block;
-			background-image: url("./media/Sheep.png");
-			background-repeat: no-repeat;
-		}
-
-			.mi_spri_sheep.mi_body {
-				background-position: 0px 0px;
-				width: 187px; /* 373 */
-				height: 168px; /* 336 */
-				background-size: 451% 103%; /* 1685/373, 347/336 */
-			}
-
-			.mi_spri_sheep.mi_head_smile, .mi_spri_sheep.mi_head_sad, .mi_spri_sheep.mi_head_cry {
-				width: 193px; /* 386 */
-				height: 173px; /* 346 */
-				background-size: 436% 100%; /* 1685/386, 347/346 */
-				left: -3px;
-				top: -150px;
-				z-index: 31; /* 高于羊毛 */
-			}
-
-			.mi_spri_sheep.mi_head_smile {
-				background-position: -187px 0px; /* -374 */
-			}
-
-			.mi_spri_sheep.mi_head_sad {
-				background-position: -380.5px 0px; /* -761 */
-			}
-
-			.mi_spri_sheep.mi_head_cry {
-				background-position: -574px 0px; /* -1148 */
-			}
-
-			.mi_spri_sheep.mi_fur_A, .mi_spri_sheep.mi_fur_B, .mi_spri_sheep.mi_fur_C {
-				/*background-position-x: -767.5px;	*/ /* -1535 */
-			}
-
-			/* 【警告】Opera浏览器好像不支持把background-position分开写！ */
-			.mi_spri_sheep.mi_fur_A {
-				width: 74px; /* 148 */
-				height: 52px; /* 103 */
-				background-size: 1139% 337%; /* 1685/148, 347/103 */
-				/*background-position-x: -768px;	*/ /* x=(1535/1685)*(74 * 11.39) */
-				/*background-position-y: 0px;*/
-				background-position: -768px 0px;
-			}
-
-			.mi_spri_sheep.mi_fur_B {
-				width: 63px; /* 126 */
-				height: 57px; /* 113 */
-				background-size: 1337% 307%; /* 1685/126, 347/113 */
-				/*background-position-x: -769px;	*/ /* x=(1535/1685)*(63 * 13.37)=767，但是看到直边了 */
-				/*background-position-y: -52px;	*/ /* -104 */
-				background-position: -769px -52px;
-			}
-
-			.mi_spri_sheep.mi_fur_C {
-				width: 59px; /* 117 */
-				height: 41px; /* 82 */
-				background-size: 1440% 423%; /* 1685/117, 347/82 */
-				background-position: -774px -109px; /* 1535 -218; x=(1535/1685)*(59 * 14.4)，【由截断误差引起！使用这个公式更准确！】 */
-			}
-
-		.mi_acp_prz {
-			left: 122px;
-			top: 160px;
-			padding: 8px 24px;
-			border-radius: 8px;
-			background-color: rgb(249, 121, 30);
-			box-shadow: 0px 5px 0px rgb(193, 69, 7);
-			font-size: 16px;
-			color: rgb(255, 255, 255);
 		}
 	</style>
 </head>
 <body>
-	<div id="k_PrstTgt">
-		<!--<canvas id="k_2dCanv">-->
-		<!--抱歉，您的浏览器不支持HTML5 Canvas！-->
-		<!--</canvas>-->
+<!-- 呈现目标 -->
+<div id="k_PrstTgt">
+	<canvas id="k_2dCanv" class="mi_lyr_canv">
+		抱歉，您的浏览器不支持HTML5 Canvas！
+	</canvas>
 
-		<div id="k_GlbSclDiv" class="mi_full_dim mi_tsfm_org_lt_tp">
-			<div class="mi_logo_div" style="">
-				<div class="mi_dspl_inln_blk mi_logo_wrap" style=""><img src="./media/Logo.png" class="mi_full_wid" /></div>
-			</div>
-
-			<!-- 初始屏 -->
-			<div class="mi_scrn mi_Init mi_pstn_abs_lt_tp mi_full_dim">
-				<div class="mi_pstn_abs_lt_tp mi_full_wid mi_text_aln_ct" style="top: 80px;">
-					<div class="mi_dspl_inln_blk mi_pstn_rel mi_z_idx_ui_lyr" style="width:308px;">
-						<img src="./media/PopupInit.png" class="mi_full_wid" />
-						<div id="k_CntDnNum" class="mi_pstn_abs mi_text_aln_ct mi_icon_cnt_dn mi_tsfm_scl_half"
-							 style="left: 124px; top: 124px;"></div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 第二屏 -->
-			<div class="mi_scrn mi_Run mi_pstn_abs_lt_tp mi_full_dim mi_dspl_none">
-
-				<!-- 时间 -->
-				<div class="mi_pstn_abs_lt_tp mi_full_wid mi_text_aln_ct" style="top: 215px">
-					<div class="mi_dspl_inln_blk mi_icon_time_line mi_time_cln"></div>
-					<div id="k_TimeLine_TensPlc" class="mi_dspl_inln_blk mi_icon_time_line mi_1"></div>
-					<div id="k_TimeLine_OnesPlc" class="mi_dspl_inln_blk mi_icon_time_line mi_0"></div>
-					<div class="mi_dspl_inln_blk mi_line_div">
-						<!-- 【注意】必须写在一行上！ -->
-						<div id="k_TimeSph" class="mi_dspl_inln_blk mi_sph"></div><div class="mi_dspl_inln_blk mi_pstn_rel mi_bar"><div id="k_TimePgrs" class="mi_dspl_inln_blk mi_pstn_abs_lt_tp mi_pgrs"></div></div>
-					</div>
-				</div>
-
-				<!--阴影-->
-				<div id="k_SheepShdwDiv" class="mi_pstn_abs_lt_tp mi_full_wid mi_text_aln_ct" style="top:585px;">
-					<img src="./media/SheepShdw.png" class="mi_full_dim" style="width:141px; height: 24px;" />
-				</div>
-
-				<!-- 金币 -->
-				<div id="k_CoinCntrDiv" class="mi_pstn_abs_rt_bm mi_coin_cntr_div">
-					<div class="mi_dspl_inln_blk mi_coin_cntr_wrap mi_pstn_rel" style="">
-						<img data-wse_src="./media/CoinCntr.png" class="mi_full_wid" />
-						<span id="k_CoinCntr" class="mi_pstn_abs_lt_tp">00</span>
-					</div>
-				</div>
-			</div>
-
-			<!-- 完成屏 -->
-			<div class="mi_scrn mi_Cplt mi_pstn_abs_lt_tp mi_full_dim mi_dspl_none">
-				<div class="mi_spc_plchd"></div>
-				<div class="mi_pstn_abs_lt_tp mi_full_wid mi_text_aln_ct" style="top: 80px;">
-					<div class="mi_dspl_inln_blk mi_pstn_rel" style="width:356px;">
-						<img data-wse_src="./media/PopupCplt.png" class="mi_full_wid" />
-						<a href="#" id="k_AcpPrz" class="mi_btn_div mi_dspl_blk mi_pstn_abs_lt_tp mi_acp_prz">
-							<span>去领红包</span>
-						</a>
-					</div>
-				</div>
-
-			</div>
-
-			<!-- 页面仓库 -->
-			<div class="mi_page_repo mi_dspl_none">
-				<!-- 羊 -->
-				<div id="k_SheepDiv" class="mi_sheep_div mi_pstn_abs_lt_tp mi_text_aln_ct" style="top: 434px;">
-					<div id="k_SheepBody" class="mi_spri_sheep mi_body mi_pstn_rel">
-						<!--头-->
-						<div class="mi_spri_sheep mi_head mi_head_smile mi_pstn_abs_lt_tp"></div>
-						<div class="mi_spri_sheep mi_head mi_head_sad mi_pstn_abs_lt_tp"></div>
-						<div class="mi_spri_sheep mi_head mi_head_cry mi_pstn_abs_lt_tp"></div>
-						<!--毛-->
-						<div class="mi_spri_sheep mi_fur mi_fur_B mi_pstn_abs_lt_tp" data-x="27" data-y="45"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_A mi_pstn_abs_lt_tp" data-x="132" data-y="6"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_A mi_pstn_abs_lt_tp" data-x="134" data-y="115"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_A mi_pstn_abs_lt_tp" data-x="192" data-y="53"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_B mi_pstn_abs_lt_tp" data-x="74" data-y="142"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_B mi_pstn_abs_lt_tp" data-x="164" data-y="142"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_B mi_pstn_abs_lt_tp" data-x="206" data-y="99"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_A mi_pstn_abs_lt_tp" data-x="29" data-y="121"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_C mi_pstn_abs_lt_tp" data-x="122" data-y="61"></div>
-						<div class="mi_spri_sheep mi_fur mi_fur_C mi_pstn_abs_lt_tp" data-x="74" data-y="8"></div>
-						<!--话-->
-						<div class="mi_pstn_abs_lt_tp mi_tsfm_scl_half"
-							 data-odd_x="-80" data-even-x="50"
-							 style="left:0px; top: -210px;">
-							<img id="k_WordsImg" />
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-
+	<!-- logo -->
+	<div class="mi_logo_div mi_dspl_pstn_abs_lt_tp" style="">
+		<div class="mi_dspl_inln_blk mi_logo_ctnt_div" style=""><img src="./media/Logo.png" class="mi_full_dim" /></div>
 	</div>
+</div>
+<!-- 呈现来源 -->
+<div id="k_PrstSrc" style="display: none;">
+	<!-- 程序一开始就需要的图片 -->
+	<img src="media/PopupRdy.png" />
+	<img src="media/CountDown.png" />
+	<img src="media/Sheep.png" />
+</div>
 </body>
 </html>

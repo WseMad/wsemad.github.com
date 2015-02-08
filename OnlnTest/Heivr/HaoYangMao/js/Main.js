@@ -1,743 +1,921 @@
-﻿/*
-*
-*/
+﻿(function ()
+{
+	//========================================================= 配置
 
+	// 设计宽高，iPhone6
+	var i_DsnWid = 750, i_DsnHgt = 1334;
 
-(function () {
+	// 声音支持？
+	var i_AudSupt = true;
 
-	// 常用类型
-	var stNumUtil = nWse.stNumUtil;
-	var stStrUtil = nWse.stStrUtil;
-	var stDomUtil = nWse.stDomUtil;
-	var stCssUtil = nWse.stCssUtil;
-	var tPntIpt = nWse.tPntIptTrkr.tPntIpt;
-	var tPntIptKind = tPntIpt.tKind;
+	// 开始游戏倒计时（秒），∈整数[0, 5]
+	var i_CntDn = 0;
 
-	// 播放声音
-	function fPlayMp3(a_Mp3)
-	{
-		// 可能会抛出异常
-		try
-		{
-			a_Mp3.cStop().cPlay();
-		}
-		catch (a_Exc)
-		{
-		}
-	}
+	// 游戏时长（秒），∈整数[0, 99]
+	var i_PlayDur = 10;
 
-	// 文档就绪
+	// 时间到时结束游戏？
+	var i_GameOver = false;
+
+	// 当剩余多少羊毛时，羊头变成难过，∈整数[1, 9]
+	var i_RmnForSad = 6;
+
+	// 当剩余多少羊毛时，羊头变成大哭，∈整数[0, i_RmnForSad - 1]
+	var i_RmnForCry = 2;
+
+	// 羊毛动画时长（秒）
+	var i_FurAnmtDur = 0.2;
+
+	// 羊跳动画时长（秒）
+	var i_SheepJumpAnmtDur = 0.8;
+
+	// 羊跳动随机速率范围（像素）
+	var i_SheepJumpRandSpdRge = 20;
+
+	// 羊跳振幅（像素）
+	var i_SheepJumpAmp = 50;
+
+	// 话总数，∈[0, 8]整数
+	var i_WordsTot = 8;
+
+	// 随机产生几句？
+	var i_RandWordsAmt = 3;
+
+	//========================================================= 启动
+
 	nWse.stPageInit.cAddEvtHdlr_DocRdy(function ()
 	{
-		// 应用程序
-		var stApp;
-		(function ()
-		{
-			/// 应用程序
-			stApp = function () { };
-			nApp.stApp = stApp;
-			stApp.oc_nHost = nApp;
-			stApp.oc_FullName = nApp.ocBldFullName("stApp");
-
-			/// 构建全名
-			stApp.ocBldFullName = function (a_Name)
-			{
-				return stApp.oc_FullName + "." + a_Name;
-			};
-
-			//======== 初值设定
-
-			// 声音支持？
-			stApp.e_AudSupt = true;
-
-			// 开始游戏倒计时（秒），∈整数[0, 5]
-			stApp.e_CntDn = 5;
-
-			// 游戏时长（秒），∈整数[0, 99]
-			stApp.e_PlayDur = 10;
-
-			// 时间到时结束游戏？
-			stApp.e_GameOver = true;
-
-			// 当剩余多少羊毛时，羊头变成难过，∈整数[1, 9]
-			stApp.e_RmnForSad = 6;
-
-			// 当剩余多少羊毛时，羊头变成大哭，∈整数[0, stApp.e_RmnForSad - 1]
-			stApp.e_RmnForCry = 2;
-
-			// 羊毛动画时长（秒）
-			stApp.e_FurAnmtDur = 0.2;
-
-			// 羊跳动画时长（秒）
-			stApp.e_SheepJumpAnmtDur = 0.5;
-
-			// 羊跳振幅（像素）
-			stApp.e_SheepJumpAmp = 40;
-
-			// 话总数，∈[0, 8]整数
-			stApp.e_WordsTot = 8;
-
-			// 随机产生几句？
-			stApp.e_RandWordsAmt = 3;
-		})();
-
-		// 呈现目标
-		stApp.c_PrstTgt = document.getElementById("k_PrstTgt");
-
-		//===================================================== stApp
-
-		// 游戏状态
-		nWse.fEnum(stApp,
-			function tGameSta() {},
-			null,
-			"i_Init",
-			"i_Run",
-			"i_Cplt"
-		);
-		stApp.e_GameSta = stApp.tGameSta.i_Init; // 初始状态
-
-		// 更新全局缩放
-		var i_DvcPxlRat = 2;//window.devicePixelRatio;	// 像素率，【固定2】
-		stApp.e_GlbSclDiv = document.getElementById("k_GlbSclDiv");
-		stApp.i_DsnWid = stApp.e_GlbSclDiv.offsetWidth;		// 设计宽度，iPhone6的宽度
-		stApp.i_DsnHgt = stApp.e_GlbSclDiv.offsetHeight;	// 设计高度，iPhone6的高度
-		console.log("设计宽高 = " + stApp.i_DsnWid + ", " + stApp.i_DsnHgt);
-
-		nWse.stCssUtil.cSetDim(stApp.e_GlbSclDiv,
-			Math.round(stApp.i_DsnWid / i_DvcPxlRat),
-			Math.round(stApp.i_DsnHgt / i_DvcPxlRat));
-
-		stApp.eUpdGlbScl = function (){
-			var i_GlbSclX = nWse.stDomUtil.cGetVwptWid() * i_DvcPxlRat / stApp.i_DsnWid;	// 全局缩放X
-			var i_GlbSclY = nWse.stDomUtil.cGetVwptHgt() * i_DvcPxlRat / stApp.i_DsnHgt;	// 全局缩放Y
-			stApp.i_GlbSclX = i_GlbSclX;
-			stApp.i_GlbSclY = i_GlbSclY;
-			console.log("全局缩放 = " + i_GlbSclX + ", " + i_GlbSclY);
-
-			// 应用！
-			var l_Tsfm;
-			l_Tsfm = nWse.stCssUtil.cAcsExtdAnmt_2dTsfm(stApp.e_GlbSclDiv);
-			l_Tsfm.c_Scl.x = i_GlbSclX;
-			l_Tsfm.c_Scl.y = i_GlbSclY;
-			nWse.stCssUtil.cUpdExtdAnmt_2dTsfm(stApp.e_GlbSclDiv);
-		};
-
-		// 调整尺寸
-		stApp.cOnWndRsz = function ()
-		{
-		//	console.log("肖像画 = " + stDomUtil.cMaybePtraMode());
-
-			// 更新全局缩放
-			stApp.eUpdGlbScl();
-
-			// 羊动画立即结束，跳到最后，执行回调
-			if (stApp.e_SheepDiv)
-			{
-				nWse.stCssUtil.cFnshAnmt(stApp.e_SheepDiv, true, true);
-			}
-		};
-		stApp.cOnWndRsz();	// 一开始先调用一次
-		stDomUtil.cAddEvtHdlr(window, "resize", nWse.stFctnUtil.cBindThis(stApp, stApp.cOnWndRsz));
-
-		// 初始化
-		stApp.cInit = function ()
-		{
-			var l_This = this;
-
-			// 点输入追踪器
-			l_This.e_PIT = new nWse.tPntIptTrkr();
-			l_This.e_PIT.cInit({
-				c_HdlMode: 1
-			});
-			l_This.e_PIT.cSetImdtHdlr(nWse.stFctnUtil.cBindThis(l_This, l_This.eHdlIpt));
-
-			// 倒计时
-			stApp.eCntDn();
-
-			// 延迟加载资源
-			nWse.stDfrdLoad.cAsnSrcPpty("[data-wse_src]");
-
-			// 随机下载三句话
-			if (stApp.e_WordsTot > 0)
-			{
-				stApp.e_WrodsImg = document.getElementById("k_WordsImg");
-
-				stApp.e_RandWordsNums = fRandDiffIntNums(null, stApp.e_RandWordsAmt, 1, stApp.e_WordsTot);
-				stApp.e_RandWordsImgs = new Array(stApp.e_RandWordsAmt);
-				nWse.stAryUtil.cFor(stApp.e_RandWordsNums,
-					function (a_Nums, a_Idx, a_Num)
-					{
-						var l_Img = new Image();
-						l_Img.src = "./media/Words/" + a_Num + ".png";
-						stApp.e_RandWordsImgs[a_Idx] = l_Img;
-					});
-			}
-
-			// 加载声音
-			if (stApp.e_AudSupt)
-			{
-				stApp.eLoadAud();
-			}
-		};
-
-		stApp.eLoadAud = function ()
-		{
-			if (! stApp.e_AudSupt)
-			{ return; }
-
-			//【注意】由于H5 Audio在移动浏览器上的限制，只播放一种声音，选择羊叫。
-			stApp.e_Mp3_Baa = new nWse.nAud.tAudRsrc();
-			stApp.e_Mp3_Baa.cLoadFromUrl("./media/Baa.mp3");
-			stApp.e_Mp3_Coin = new nWse.nAud.tAudRsrc();
-		//	stApp.e_Mp3_Coin.cLoadFromUrl("./media/Coin.mp3");	//【不再播放】
-		};
-
-		// 随机产生不同的整数路径
-		function fRandDiffIntNums(a_Rst, a_Amt, a_Min, a_Max)
-		{
-			if (! a_Rst)
-			{ a_Rst = []; }
-
-			var l_Tot = a_Max - a_Min + 1;
-			if (a_Amt > l_Tot)
-			{ throw new Error("a_Amt大于(a_Max - a_Min + 1)！"); }
-
-			var i, n, l_LoopCnt = 0;
-			for (i = 0; i<a_Amt; ++i)
-			{
-				do
-				{
-					n = nWse.stNumUtil.cRandInt(a_Min, a_Max);
-					++ l_LoopCnt;
-				} while ((a_Rst.indexOf(n) >= 0) && (l_LoopCnt < 100)); // 小心长时间跳不出
-				a_Rst.push(n);
-			}
-			return a_Rst;
-		}
-
-		stApp.eObtnScrn = function (a_Name)
-		{
-			return stDomUtil.cQryOne(".mi_scrn.mi_" + a_Name);
-		};
-
-		stApp.eShowHideScrnBySta = function (a_Sta, a_Show)
-		{
-			var l_Name = a_Sta.toString();
-			l_Name = l_Name.slice(2, l_Name.length);
-			var l_Scrn = stApp.eObtnScrn(l_Name);
-			l_Scrn.style.display = a_Show ? "block" : "none";
-		};
-
-		// 羊毛状态
-		nWse.fEnum(stApp,
-			function tFurSta() {},
-			null,
-			"i_Atch",
-			"i_Fly",
-			"i_Dspr"
-		);
-
-		// 羊div，加入到第一屏，并将宽度改成auto，然后自动计算XY
-		stApp.e_SheepDiv = document.getElementById("k_SheepDiv");
-		stApp.e_SheepDiv.style.width = "auto";
-		stApp.eObtnScrn("Init").appendChild(stApp.e_SheepDiv);
-		stApp.e_SheepDivOrigY = stApp.e_SheepDiv.offsetTop;
-
-		stApp.e_SheepShdwDiv = document.getElementById("k_SheepShdwDiv");
-
-		stApp.eSheepPutCen = function ()
-		{
-			nWse.stCssUtil.cSetPos(stApp.e_SheepDiv,
-				(stApp.i_DsnWid / i_DvcPxlRat - stApp.e_SheepDiv.offsetWidth) / 2,
-			//	(stApp.e_SheepDiv.parentNode.offsetWidth - stApp.e_SheepDiv.offsetWidth) / 2,
-				stApp.e_SheepDivOrigY);
-		};
-		stApp.eSheepPutCen(); // 羊居中
-
-		// 初始化羊的各个部分
-		stApp.e_SheepBody = document.getElementById("k_SheepBody");
-		stApp.e_SheepHeads = nWse.stDomUtil.cQryAll(".mi_head");
-		stApp.e_SheepFurs = nWse.stDomUtil.cQryAll(".mi_fur");
-		nWse.stAryUtil.cFor(stApp.e_SheepFurs,
-			function (a_Ary, a_Idx, a_Fur) // 计算坐标，注意缩放比例
-			{
-				a_Fur.App_Data = { };
-				a_Fur.App_Data.App_Sta = stApp.tFurSta.i_Atch;
-				a_Fur.App_Data.App_X = parseFloat(a_Fur.getAttribute("data-x")) / 2;
-				a_Fur.App_Data.App_Y = parseFloat(a_Fur.getAttribute("data-y")) / 2;
-
-				a_Fur.style.zIndex = (a_Ary.length - a_Idx) + 20;	// 21-30
-			});
-
-		stApp.eShowSheepHeadByCssc = function (a_Cssc)
-		{
-			nWse.stAryUtil.cFor(stApp.e_SheepHeads,
-				function (a_Ary, a_Idx, a_Head) // 显示微笑
-				{
-					if (nWse.stCssUtil.cHasCssc(a_Head, a_Cssc))
-					{
-						a_Head.style.display = "block";
-					}
-					else
-					{
-						a_Head.style.display = "none";
-					}
-				});
-		};
-
-		stApp.eGetAtchFurAmt = function ()
-		{
-			var l_Rst = 0;
-			nWse.stAryUtil.cFor(stApp.e_SheepFurs,
-				function (a_Ary, a_Idx, a_Fur)
-				{
-					if (a_Fur.App_Data.App_Sta == stApp.tFurSta.i_Atch)
-					{ ++l_Rst; }
-				});
-			return l_Rst;
-		};
-
-		// 复位羊各个部分
-		stApp.eRsetSheepParts = function ()
-		{
-			// 复位头
-			stApp.eShowSheepHeadByCssc("mi_head_smile");
-
-			// 复位羊
-			nWse.stAryUtil.cFor(stApp.e_SheepFurs,
-				function (a_Ary, a_Idx, a_Fur)
-				{
-					// 如果在动画里，先结束动画
-					nWse.stCssUtil.cFnshAnmt(a_Fur, true, true);
-
-					a_Fur.style.position = "absolute";	// 绝对定位
-					a_Fur.style.display = "block";		// 显示出来
-					a_Fur.style.opacity = "1";			// 复位不透明度
-					nWse.stCssUtil.cSetPos(a_Fur, a_Fur.App_Data.App_X, a_Fur.App_Data.App_Y); // 位置还原
-					a_Fur.App_Data.App_Sta = stApp.tFurSta.i_Atch;	// 还原状态
-				});
-		};
-		stApp.eRsetSheepParts();
-
-		// 金币
-		stApp.e_CoinCnt = 0;
-		stApp.e_CoinCntrDiv = document.getElementById("k_CoinCntrDiv");
-		stApp.e_CoinCntr = document.getElementById("k_CoinCntr");
-
-		stApp.eCntDn = function ()
-		{
-			function fTsitSta_Next()
-			{
-				l_This.eShowHideScrnBySta(l_This.e_GameSta, false);	// 隐藏第一屏
-				l_This.eSttGame();
-			}
-
-			var l_This = this;
-			if (l_This.e_CntDn <= 0)
-			{
-				fTsitSta_Next();
-				return;
-			}
-
-			// 设置初始CSS
-			l_This.e_CntDnNum = document.getElementById("k_CntDnNum");
-			stCssUtil.cAddCssc(l_This.e_CntDnNum, ("mi_" + l_This.e_CntDn));
-
-			function fCntDn()
-			{
-				if (l_This.e_CntDn > 0) // 递减计数
-				{ --l_This.e_CntDn;	}
-
-				if (l_This.e_CntDn <= 0) // 倒计时完成，开始游戏
-				{
-					fTsitSta_Next();
-				}
-				else
-				{
-					stCssUtil.cRmvCssc(l_This.e_CntDnNum, ("mi_" + (l_This.e_CntDn + 1)));
-					stCssUtil.cAddCssc(l_This.e_CntDnNum, ("mi_" + l_This.e_CntDn));
-					window.setTimeout(fCntDn, 1000); // 继续
-				}
-			}
-
-			window.setTimeout(fCntDn, 1000);
-		};
-
-		stApp.eTsitStaToCplt = function()
-		{
-			var l_This = this;
-			l_This.eShowHideScrnBySta(l_This.e_GameSta, false);	// 隐藏运行屏
-			l_This.e_GameSta = stApp.tGameSta.i_Cplt; // 跳转状态
-			l_This.eShowHideScrnBySta(l_This.e_GameSta, true);	// 显示完成瓶
-
-			l_This.eObtnScrn("Cplt").appendChild(stApp.e_CoinCntrDiv);	// 金币加入到完成屏
-
-			l_This.e_AcpPrz = document.getElementById("k_AcpPrz");
-		};
-
-		stApp.eSttGame = function ()
-		{
-			var l_This = this;
-			l_This.e_GameSta = stApp.tGameSta.i_Run; // 跳转状态
-			l_This.eShowHideScrnBySta(l_This.e_GameSta, true);		// 显示运行屏
-			l_This.eTsitSta_RunEnt();	// 进入
-
-			if (l_This.eIsGameTimeUp()) // 继续跳转
-			{
-				l_This.eTsitStaToCplt();
-			}
-		};
-
-		stApp.eTsitSta_RunEnt = function ()
-		{
-			var l_This = this;
-
-			// 羊加入到第二屏
-			stApp.eObtnScrn("Run").appendChild(stApp.e_SheepDiv);
-
-			l_This.e_PlayTmr = l_This.e_PlayDur; // 复位倒计时计时器
-			if (l_This.eIsGameTimeUp()) // 立即跳转？
-			{ return; }
-
-			// 取得UI相关元素
-			l_This.e_TimeLine_TensPlc = document.getElementById("k_TimeLine_TensPlc");
-			l_This.e_TimeLine_OnesPlc = document.getElementById("k_TimeLine_OnesPlc");
-			l_This.e_TimePgrs = document.getElementById("k_TimePgrs");
-			l_This.e_TimeSph = document.getElementById("k_TimeSph");
-
-			// 更新CSS类，以匹配JS逻辑
-			if (10 != l_This.e_PlayTmr)
-			{
-				stCssUtil.cRmvCssc(l_This.e_TimeLine_TensPlc, "mi_1");
-				stCssUtil.cRmvCssc(l_This.e_TimeLine_OnesPlc, "mi_0");
-				l_This.eUpdGameRunUi(true);
-			}
-
-			// 倒计时
-			function fPlayCntDn()
-			{
-				if (l_This.e_PlayTmr > 0) // 递减计数
-				{ --l_This.e_PlayTmr;	}
-
-				l_This.eUpdGameRunUi(false);
-
-				if (l_This.eIsGameTimeUp()) // 倒计时完成
-				{
-					// 1秒后再跳转
-					window.setTimeout(
-						function ()
-						{
-							// 跳转到完成
-							if (stApp.e_GameOver)
-							{
-								l_This.eTsitStaToCplt();
-							}
-						}, 1000);
-				}
-				else
-				{
-					window.setTimeout(fPlayCntDn, 1000); // 继续
-				}
-			}
-
-			window.setTimeout(fPlayCntDn, 1000);
-		};
-
-		stApp.eRmvCssc_NumRge = function (a_DomElmt, a_Bgn, a_End)
-		{
-			var l_Num, l_Cssc;
-			for (l_Num = a_Bgn; l_Num <= a_End; ++ l_Num)
-			{
-				l_Cssc = "mi_" + l_Num;
-				if (stCssUtil.cHasCssc(a_DomElmt, l_Cssc))
-				{
-					stCssUtil.cRmvCssc(a_DomElmt, l_Cssc);
-					break;
-				}
-			}
-		};
-
-		stApp.eUpdGameRunUi = function (a_WriteOnly)
-		{
-			var l_This = this;
-
-			if (! a_WriteOnly)
-			{
-				stApp.eRmvCssc_NumRge(l_This.e_TimeLine_TensPlc, 0, 9);
-				stApp.eRmvCssc_NumRge(l_This.e_TimeLine_OnesPlc, 0, 9);
-			}
-
-			var l_TensNum = 0, l_OnesNum = 0;
-			if (l_This.e_PlayTmr >= 10)
-			{
-				l_TensNum = Math.floor(l_This.e_PlayTmr / 10);
-				stCssUtil.cAddCssc(l_This.e_TimeLine_TensPlc, ("mi_" + l_TensNum));
-
-			}
-			else
-			{
-				l_TensNum = 0;
-				if (! stCssUtil.cHasCssc(l_This.e_TimeLine_TensPlc, ("mi_0")))
-				{ stCssUtil.cAddCssc(l_This.e_TimeLine_TensPlc, ("mi_0")); }
-			}
-
-			l_OnesNum = l_This.e_PlayTmr - l_TensNum * 10;
-			stCssUtil.cAddCssc(l_This.e_TimeLine_OnesPlc, ("mi_" + l_OnesNum));
-
-			// 更改进度条宽度
-			var l_Pct = Math.round(l_This.e_PlayTmr / l_This.e_PlayDur * 100);
-			l_This.e_TimePgrs.style.width = l_Pct + "%";
-
-			// 如果没有时间了，把进度条的球也换成白底
-			if (l_This.eIsGameTimeUp())
-			{
-				stCssUtil.cAddCssc(l_This.e_TimeSph, "mi_emt");
-			}
-
-			// 更新话，从第二秒开始
-			var l_EachWordsDur, l_CrntWordsIdx, l_PathNum, l_WordsX;
-			if (stApp.e_RandWordsAmt > 0)
-			{
-				l_EachWordsDur = Math.round((stApp.e_PlayDur - 1) / stApp.e_RandWordsAmt);
-				l_CrntWordsIdx = Math.floor((stApp.e_PlayDur - 1 - l_This.e_PlayTmr) / l_EachWordsDur);
-				if ((l_CrntWordsIdx < stApp.e_RandWordsImgs.length) &&
-					(stApp.e_WrodsImg.src != stApp.e_RandWordsImgs[l_CrntWordsIdx].src))
-				{
-					stApp.e_WrodsImg.src = stApp.e_RandWordsImgs[l_CrntWordsIdx].src;
-
-					l_PathNum = stApp.e_RandWordsNums[l_CrntWordsIdx];
-					l_WordsX = parseFloat(stApp.e_WrodsImg.parentNode.getAttribute(
-						(l_PathNum % 2) ? "data-odd_x" : "data-even-x"));
-					stApp.e_WrodsImg.parentNode.style.left = l_WordsX + "px";
-				}
-			}
-		};
-
-		stApp.eIsGameTimeUp = function ()
-		{
-			return (this.e_PlayTmr <= 0);
-		};
-
-		stApp.eHdlIpt = function (a_Ipt)
-		{
-			var l_This = this;
-
-			var l_DmntTch = a_Ipt.c_Tchs[0];
-		//	console.log(l_DmntTch.c_Kind.toString());
-			var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
-
-			// 运行状态
-			if (stApp.tGameSta.i_Run == l_This.e_GameSta)
-			{
-				l_This.eHdlIpt_StaRun(a_Ipt);
-			}
-			else // 完成状态
-			if (stApp.tGameSta.i_Cplt == l_This.e_GameSta)
-			{
-				l_This.eHdlIpt_StaCplt(a_Ipt);
-			}
-
-			// 不要再继续处理
-			nWse.stAryUtil.cFor(a_Ipt.c_Tchs,
-			function (a_Tchs, a_Idx, a_Tch)
-			{
-				a_Tch.c_Hdld = true;
-			});
-			return false;
-		};
-
-		stApp.eHdlIpt_StaRun = function (a_Ipt)
-		{
-			var l_This = this;
-			var l_Tchs = a_Ipt.c_Tchs;
-
-			// 对每个触点
-			nWse.stAryUtil.cFor(l_Tchs,
-				function (a_Tchs, a_TchIdx, a_Tch)
-				{
-					// 只处理i_TchBgn
-					if (tPntIptKind.i_TchBgn != a_Tch.c_Kind)
-					{ return; }
-
-					// 如果点中羊毛
-					var l_EvtTgt = a_Tch.cAcsEvtTgt();
-					var l_FurIdx = l_This.e_SheepFurs.indexOf(l_EvtTgt);
-					if (l_FurIdx >= 0)
-					{
-					//	console.log("羊毛");
-						stApp.eHdlIpt_Fur(l_FurIdx);
-					}
-				});
-		};
-
-		stApp.eHdlIpt_Fur = function (a_FurIdx)
-		{
-			var l_This = this;
-			var l_Fur = l_This.e_SheepFurs[a_FurIdx];
-
-			// 非附着状态不处理！
-			if (l_Fur.App_Data.App_Sta != stApp.tFurSta.i_Atch)
-			{
-				return;
-			}
-
-			// 更新金币
-			++ stApp.e_CoinCnt;
-			nWse.stDomUtil.cSetTextCtnt(stApp.e_CoinCntr,
-				(((stApp.e_CoinCnt < 10) ? "0" : "") + stApp.e_CoinCnt.toString()));
-
-			// 羊毛渐隐动画
-		//	l_Fur.style.display = "none";
-		//	l_Fur.App_Data.App_Sta = stApp.tFurSta.i_Dspr;	// 消失
-			l_Fur.App_Data.App_Sta = stApp.tFurSta.i_Fly;	// 飞行
-			nWse.stCssUtil.cAnmt(l_Fur,
-				{
-					"opacity": 0
-				},
-				{
-					c_Dur: stApp.e_FurAnmtDur
-				//	,c_fEsn: stNumUtil.cEsn_FastToSlow
-					,c_fOnEnd: function (a_Fur)
-					{
-						// 复位样式
-						l_Fur.style.display = "none";
-						l_Fur.style.opacity = "1";
-						l_Fur.App_Data.App_Sta = stApp.tFurSta.i_Dspr;	// 消失
-					}
-				});
-
-			//// 复位样式
-			//l_Fur.style.display = "none";
-			//l_Fur.style.opacity = "1";
-			//l_Fur.App_Data.App_Sta = stApp.tFurSta.i_Dspr;	// 消失
-
-			// 更新羊头表情
-			var l_RmnFurAmt = stApp.eGetAtchFurAmt();
-			if (l_RmnFurAmt <= stApp.e_RmnForCry)
-			{
-				stApp.eShowSheepHeadByCssc("mi_head_cry");
-
-				// 播放羊叫
-				if (l_RmnFurAmt == stApp.e_RmnForCry)
-				{
-					fPlayMp3(stApp.e_Mp3_Baa);
-				}
-			}
-			else
-			if (l_RmnFurAmt <= stApp.e_RmnForSad)
-			{
-				stApp.eShowSheepHeadByCssc("mi_head_sad");
-
-				// 播放羊叫
-				if (l_RmnFurAmt == stApp.e_RmnForSad)
-				{
-					fPlayMp3(stApp.e_Mp3_Baa);
-				}
-			}
-
-			// 播放金币
-			fPlayMp3(stApp.e_Mp3_Coin);
-
-			// 如果一片毛不剩
-			if (0 == l_RmnFurAmt)
-			{
-				// 换羊
-				l_This.eChgSheep();
-			}
-		};
-
-		stApp.eChgSheep = function ()
-		{
-			var l_This = this;
-
-			var i_Dur = stApp.e_SheepJumpAnmtDur;
-
-			function fDplc(a_Rst, a_DomElmt, a_Bgn, a_End,
-						   a_NmlScl, a_EsnScl, a_FrmTime, a_FrmItvl, a_FrmNum)
-			{
-				// w = 2π/T，加绝对值成π/T，若要过程含两个周期，则再×2，得π/T * 2
-				var l_Omg = Math.PI / i_Dur * 2;
-				var l_DtaY = -stApp.e_SheepJumpAmp * Math.abs(Math.sin(l_Omg * a_FrmTime));
-				a_Rst.y += l_DtaY;
-			}
-
-			// 动画期间可能屏幕朝向改变，重新校准
-			//l_This.eRsetSheepParts(); // 复位羊各个部分
-			//stApp.eSheepPutCen(); // 羊居中;
-			//stApp.e_SheepShdwDiv.style.visibility = "visible"; // 显示阴影
-
-		//	/*
-			// 先离开
-			nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
-				{
-					"left": (-l_This.e_SheepDiv.offsetWidth) + "px"
-				},
-				{
-					c_Dur: i_Dur
-				//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-					,c_fDplc: fDplc
-					,c_fOnEnd: fOnLea
-				});
-
-			stApp.e_SheepShdwDiv.style.visibility = "hidden"; // 隐藏阴影
-
-			// 后进入
-			function fOnLea()
-			{
-				l_This.eRsetSheepParts(); // 复位羊各个部分
-
-				nWse.stCssUtil.cSetPos(l_This.e_SheepDiv, stApp.i_DsnWid / i_DvcPxlRat, stApp.e_SheepDivOrigY);
-				var l_CtX = (stApp.i_DsnWid / i_DvcPxlRat - stApp.e_SheepDiv.offsetWidth) / 2;
-
-				nWse.stCssUtil.cAnmt(l_This.e_SheepDiv,
-					{
-						"left": (l_CtX) + "px"
-					},
-					{
-						c_Dur: i_Dur
-					//	,c_fEsn: nWse.stNumUtil.cEsn_SlowToFast
-						,c_fDplc: fDplc
-						,c_fOnEnd: function ()
-						{
-							// 动画期间可能屏幕朝向改变，重新校准
-							stApp.eSheepPutCen(); // 羊居中;
-							stApp.e_SheepShdwDiv.style.visibility = "visible"; // 显示阴影
-						}
-					});
-			}
-			//*/
-		};
-
-		stApp.eHdlIpt_StaCplt = function (a_Ipt)
-		{
-			var l_This = this;
-
-			var l_DmntTch = a_Ipt.c_Tchs[0];
-			var l_EvtTgt = l_DmntTch.cAcsEvtTgt();
-
-			// 只处理i_TchBgn
-			if (tPntIptKind.i_TchBgn != l_DmntTch.c_Kind)
-			{
-				return false;
-			}
-
-			// 去领红包？
-			if (l_This.e_AcpPrz && stDomUtil.cIsSelfOrAcst(l_This.e_AcpPrz, l_EvtTgt))
-			{
-				console.log("去领红包！");
-			}
-		};
 	});
 
-	// 窗口加载
 	nWse.stPageInit.cAddEvtHdlr_WndLoad(function ()
 	{
 		console.log("window.onload");
 
-		// 初始化
-		nApp.stApp.cInit();
+		// 开始
+		nApp.g_RltmAfx = new nWse.tRltmAfx();
+		nApp.g_RltmAfx.cInit({
+			c_PrstSrc: "k_PrstSrc"
+			,c_PrstTgt: "k_PrstTgt"
+			,c_AdpMode: nWse.tRltmAfx.tAdpMode.i_FullScrn
+			,c_App: new nApp.tApp()
+		});
+
+		nApp.g_RltmAfx.cRun();
 	});
 
-})();
+	//========================================================= tApp
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 常用
+	var stNumUtil = nWse.stNumUtil;
+	var stAryUtil = nWse.stAryUtil;
+	var stDomUtil = nWse.stDomUtil;
+	var tPntIptKind = nWse.tPntIptTrkr.tPntIpt.tKind;
+
+	// 应用程序
+	nWse.fClass(nApp,
+		function tApp()
+		{
+			tApp.oc_tBase.call(this);
+
+			var l_This = this;
+		},
+		nWse.tRltmAfx.atApp,
+		{
+			/// 当初始化时
+			vdOnInit: function ()
+			{
+				var l_This = this;
+
+				// 有限状态机
+				l_This.e_Fsm = new nWse.tFsm();
+				l_This.e_Fsm.cRegSta(new nApp.tApp.tGameSta_Rdy(l_This));
+				l_This.e_Fsm.cRegSta(new nApp.tApp.tGameSta_Run(l_This));
+				l_This.e_Fsm.cRegSta(new nApp.tApp.tGameSta_Cplt(l_This));
+				l_This.e_Fsm.cTsit(l_This.e_Fsm.cAcsStaAry()[0].cGetName());	// 进入首个状态
+
+				// 画布和图形设备
+				l_This.e_Dom_Canv = document.getElementById("k_2dCanv");
+				l_This.e_GpuDvc = new nWse.nGpu.tGpuDvc();
+				l_This.e_GpuDvc.cBindCanv(l_This.e_Dom_Canv);
+				l_This.e_2dDvcCtxt = l_This.e_GpuDvc.cCrt2dDvcCtxt(null);
+
+				// 点输入追踪器
+				l_This.e_PIT = new nWse.tPntIptTrkr();
+				l_This.e_PIT.cInit({
+					c_HdlMode: 1
+				});
+				l_This.e_PIT.cSetImdtHdlr(nWse.stFctnUtil.cBindThis(l_This, l_This.eHdlIpt));
+			}
+			,
+			/// 当退出时
+			vdOnExit: function ()
+			{
+			}
+			,
+			/// 当呈现目标重置时
+			vdOnPrstTgtRset: function ()
+			{
+				var l_This = this;
+				l_This.e_GlbScl = nWse.fCalcGlbScl(l_This.e_GlbScl, i_DsnWid, i_DsnHgt);
+				nApp.g_GlbScl = l_This.e_GlbScl;
+				console.log("e_GlbScl.c_CtanScl = " + l_This.e_GlbScl.c_CtanScl);
+
+				// 校准画布尺寸
+				var l_PrstTgt = nApp.g_RltmAfx.cAcsPrstTgt();
+				l_This.e_GpuDvc.cSetCanvDim(l_PrstTgt.offsetWidth, l_PrstTgt.offsetHeight);
+
+				// 将所有非跳离的羊摆放到屏幕中央，注意这里不需要锁定
+				if (l_This.e_SheepAry)
+				{
+					stAryUtil.cFor(l_This.e_SheepAry.cAcsAry(),
+						function (a_SheepAry, a_SheepIdx, a_Sheep)
+						{
+							if (2 == a_Sheep.e_Sta)
+							{ return; }
+
+							a_Sheep.cCenPut(true);
+						});
+				}
+			}
+			,
+			/// 当呈现目标丢失时
+			vdOnPrstTgtLost: function ()
+			{
+			}
+			,
+			/// 当更新时
+			vdOnUpd: function ()
+			{
+				var l_This = this;
+				l_This.e_Fsm.cUpd();
+			}
+			,
+			/// 当更新到渲染时
+			vdOnUpdToRnd: function ()
+			{
+				var l_This = this;
+				l_This.e_Fsm.cUpdToRnd();
+			}
+			,
+			/// 当渲染时
+			vdOnRnd: function ()
+			{
+				var l_This = this;
+				l_This.e_Fsm.cRnd();
+			}
+			,
+			eHdlIpt : function (a_Ipt)
+			{
+				var l_This = this;
+
+				// 交给状态处理
+				if (l_This.e_Fsm.cAcsSta())
+				{
+					l_This.e_Fsm.cAcsSta().vcHdlIpt(a_Ipt);
+				}
+
+				// 不要再继续处理
+				stAryUtil.cFor(a_Ipt.c_Tchs,
+					function (a_Tchs, a_Idx, a_Tch)
+					{
+						a_Tch.c_Hdld = true;
+					});
+				return false;
+			}
+			,
+			eAddSheep: function ()
+			{
+				var l_This = this;
+				var l_Sheep = new nApp.tApp.tSheep(l_This);
+				l_This.e_SheepAry.cReg(l_Sheep);
+				console.log("注册一只羊");
+				return l_Sheep;
+			}
+			,
+			eOnSheepOver: function (a_Sheep)
+			{
+				var l_This = this;
+
+				// 跳离
+				a_Sheep.cJumpOut();
+
+				// 添加一只新羊，跳入
+				var l_NewSheep = l_This.eAddSheep();
+				l_NewSheep.cJumpIn();
+			}
+		});
+
+	// 游戏状态
+	nWse.fClass(nApp.tApp,
+		function tGameSta(a_App, a_Name)
+		{
+			tGameSta.oc_tBase.call(this, a_Name);
+
+			var l_This = this;
+			l_This.d_App = a_App;
+		},
+		nWse.tFsm.atSta,
+		{
+			vcHdlIpt: function (a_Ipt)
+			{
+				// 派生类实现
+			}
+			,
+			dGetCtanScl: function ()
+			{
+				return this.d_App.e_GlbScl.c_CtanScl;
+			}
+			,
+			dClrCanv: function ()
+			{
+				// 清空画布
+				//【必须清，否则可能产生锯齿？！
+				// 因为其中包含透明，重复叠加会产生色块！】
+				this.d_App.e_2dDvcCtxt.cClr();
+			}
+			,
+			dAcs2dDvcCtxt: function ()
+			{
+				return this.d_App.e_2dDvcCtxt;
+			}
+			,
+			dMapWithCenScl : function (a_Y, a_Img, a_SrcSara)
+			{
+				var l_DvcCtxt = this.dAcs2dDvcCtxt();
+				var l_DstSara = l_DvcCtxt.c_MapDstSara;
+				l_DstSara.c_Y = a_Y;
+				l_DstSara.c_W = a_SrcSara ? a_SrcSara.c_W : a_Img.width;
+				l_DstSara.c_H = a_SrcSara ? a_SrcSara.c_H : a_Img.height;
+				nApp.fCenSclSara(l_DstSara);
+				l_DvcCtxt.cMap(l_DstSara, a_Img, a_SrcSara);
+			}
+			,
+			dUpdSheep: function ()
+			{
+				var l_This = this;
+
+				// 这里需要锁定遍历，因为cUpd可能会修改e_SheepAry
+				var l_LockAry = l_This.d_App.e_SheepAry;
+				l_LockAry.cFor(function (a_Ary)
+				{
+					var i;
+					for (i = 0; i<a_Ary.length; ++i)
+					{
+						a_Ary[i].cUpd();
+
+						// 如果已经消失，注销
+						if (-1 == a_Ary[i].e_Sta)
+						{
+							l_LockAry.cUrg(a_Ary[i]);
+							console.log("注销一只羊");
+						}
+					}
+				});
+			}
+			,
+			dRndSheep: function ()
+			{
+				var l_This = this;
+
+				// 这里需要锁定遍历，因为cUpd可能会修改e_SheepAry
+				var l_LockAry = l_This.d_App.e_SheepAry;
+				var l_Ary = l_LockAry.cAcsAry();
+				var i;
+				for (i = 0; i<l_Ary.length; ++i)
+				{
+					l_Ary[i].cRnd();
+				}
+			}
+			,
+			dPickSheepAndFur: function (a_Rst, a_X, a_Y)
+			{
+				a_Rst.c_SheepIdx = -1;
+				a_Rst.c_FurIdx = -1;
+
+				var l_This = this;
+
+				// 下面的遍历，只查询，故不用锁定（成员函数cFor）
+				var l_LockAry = l_This.d_App.e_SheepAry;
+				var l_Ary = l_LockAry.cAcsAry();
+				var i, l_Sheep, l_FurIdx;
+				for (i = 0; i<l_Ary.length; ++i)
+				{
+					l_Sheep = l_Ary[i];
+					if (2 == l_Sheep.e_Sta) // 跳过正在离开的羊
+					{ continue; }
+
+					l_FurIdx = l_Sheep.cPickFur(a_X, a_Y);
+					if (l_FurIdx >= 0)
+					{
+						a_Rst.c_SheepIdx = i;
+						a_Rst.c_FurIdx = l_FurIdx;
+						break;
+					}
+				}
+				return a_Rst;
+			}
+		});
+
+	// 准备
+	nWse.fClass(nApp.tApp,
+		function tGameSta_Rdy(a_App)
+		{
+			tGameSta_Rdy.oc_tBase.call(this, a_App, "Rdy");
+
+			var l_This = this;
+			l_This.e_CntDnTmr = new nWse.tFxdItvlTmr();
+			l_This.e_CntDnTmr.cInit({
+				c_TotDur: i_CntDn
+				,c_ItvlDur: 1
+				,c_CntDn: true
+				,c_fOnStep: nWse.stFctnUtil.cBindThis(l_This, l_This.eOnCntDnStep)
+				,c_fOnCplt: nWse.stFctnUtil.cBindThis(l_This, l_This.eOnCntDnCplt)
+			});
+		},
+		nApp.tApp.tGameSta,
+		{
+			/// 进入
+			/// a_Prev：atSta，前一个状态
+			vcEnt : function (a_Prev)
+			{
+				var l_This = this;
+
+				// 载入图像
+				l_This.e_Img_PopupRdy = new Image();
+				l_This.e_Img_PopupRdy.src = "media/PopupRdy.png";
+				l_This.e_Img_CntDn = new Image();
+				l_This.e_Img_CntDn.src = "media/CountDown.png";
+
+				// 羊数组，使用带锁数组
+				nApp.tApp.tSheep.scInit();
+				l_This.d_App.e_SheepAry = new nWse.tLockAry(null, null,
+					function fFor(a_Ary, a_Agms)
+					{
+						a_Agms[0](a_Ary); // 再次回调
+					});
+				l_This.d_App.eAddSheep();	// 添加羊
+
+				// 开始倒计时
+				l_This.e_CntDnTmr.cRun();
+			}
+			,
+			/// 离开
+			/// a_Next：atSta，后一个状态
+			vcLea : function (a_Next)
+			{
+				//
+			}
+			,
+			/// 更新
+			vcUpd : function ()
+			{
+				//
+			}
+			,
+			/// 更新到渲染
+			vcUpdToRnd: function ()
+			{
+				//
+			}
+			,
+			/// 渲染
+			vcRnd : function ()
+			{
+				var l_This = this;
+			//	console.log("vcRnd");
+
+				// 清空画布
+				l_This.dClrCanv();
+
+				// 贴图
+				if (nWse.nGpu.fIsImgAvlb(l_This.e_Img_PopupRdy))
+				{
+					l_This.dMapWithCenScl(160, l_This.e_Img_PopupRdy);
+				}
+
+				if (nWse.nGpu.fIsImgAvlb(l_This.e_Img_CntDn))
+				{
+					l_This.dAcs2dDvcCtxt().c_MapSrcSara.cInit(
+						60 * (l_This.e_CntDnTmr.cGetCrntTime() - 1), 0,
+						60, l_This.e_Img_CntDn.height);
+					l_This.dMapWithCenScl(446, l_This.e_Img_CntDn, l_This.dAcs2dDvcCtxt().c_MapSrcSara);
+				}
+
+				// 羊
+				l_This.dRndSheep();
+			}
+			,
+			eOnCntDnStep: function (a_Tmr)
+			{
+
+			}
+			,
+			eOnCntDnCplt: function (a_Tmr)
+			{
+				var l_This = this;
+
+				// 跳转状态
+				l_This.d_App.e_Fsm.cTsit("Run");
+			}
+		});
+
+	// 运行
+	nWse.fClass(nApp.tApp,
+		function tGameSta_Run(a_App)
+		{
+			tGameSta_Run.oc_tBase.call(this, a_App, "Run");
+
+			var l_This = this;
+		},
+		nApp.tApp.tGameSta,
+		{
+			/// 进入
+			/// a_Prev：atSta，前一个状态
+			vcEnt : function (a_Prev)
+			{
+				//
+			}
+			,
+			/// 离开
+			/// a_Next：atSta，后一个状态
+			vcLea : function (a_Next)
+			{
+				//
+			}
+			,
+			/// 更新
+			vcUpd : function ()
+			{
+				var l_This = this;
+
+				// 羊
+				l_This.dUpdSheep();
+			}
+			,
+			/// 更新到渲染
+			vcUpdToRnd: function ()
+			{
+				//
+			}
+			,
+			/// 渲染
+			vcRnd : function ()
+			{
+				var l_This = this;
+
+				// 清空画布
+				l_This.dClrCanv();
+
+				// 羊
+				l_This.dRndSheep();
+			}
+			,
+			vcHdlIpt: function (a_Ipt)
+			{
+				var l_This = this;
+
+				l_PickRst = {};
+
+				// 对每个触点
+				stAryUtil.cFor(a_Ipt.c_Tchs,
+					function (a_Tchs, a_TchIdx, a_Tch)
+					{
+						// 拾取羊
+						l_This.dPickSheepAndFur(l_PickRst, a_Tch.c_X, a_Tch.c_Y);
+						if (l_PickRst.c_SheepIdx < 0)
+						{ return; }
+
+					//	console.log(l_PickRst.c_FurIdx);
+
+						// 处理羊毛
+						l_This.d_App.e_SheepAry.cAcsElmt(l_PickRst.c_SheepIdx).cHaoFur(l_PickRst.c_FurIdx, a_Tch);
+					});
+
+			//	console.log(a_Ipt.c_Tchs[0].c_Kind.toString());
+			}
+		});
+
+	// 完成
+	nWse.fClass(nApp.tApp,
+		function tGameSta_Cplt(a_App)
+		{
+			tGameSta_Cplt.oc_tBase.call(this, a_App, "Cplt");
+
+			var l_This = this;
+		},
+		nApp.tApp.tGameSta,
+		{
+			/// 进入
+			/// a_Prev：atSta，前一个状态
+			vcEnt : function (a_Prev)
+			{
+				//
+			}
+			,
+			/// 离开
+			/// a_Next：atSta，后一个状态
+			vcLea : function (a_Next)
+			{
+				//
+			}
+			,
+			/// 更新
+			vcUpd : function ()
+			{
+				//
+			}
+			,
+			/// 更新到渲染
+			vcUpdToRnd: function ()
+			{
+				//
+			}
+			,
+			/// 渲染
+			vcRnd : function ()
+			{
+				//
+			}
+		});
+
+	// 羊
+	nWse.fClass(nApp.tApp,
+		function tSheep(a_App)
+		{
+			this.e_App = a_App;
+
+			// 状态：0=居中，1=进入，2=离开，-1=消失
+			this.e_Sta = 0;
+			this.e_JumpSpd = 0;		// 跳动速率
+			this.e_JumpTmr = 0;
+
+			// e_Pos相对于画布
+			this.e_Pos = new nWse.nGpu.t4dVct(0, 0);
+			this.cCenPut(true);
+
+			// 羊身
+			this.e_BodyWid = 373;
+			this.e_BodyHgt = 336;
+			this.e_PosRelToImgOfstX = -this.e_BodyWid / 2;	// e_Pos相对于图像左上角的偏移
+			this.e_PosRelToImgOfstY = -this.e_BodyHgt;
+
+			// 羊头
+			this.e_HeadWid = 386;
+			this.e_HeadHgt = 346;
+			this.e_HeadAry = new Array(3);
+			this.e_HeadIdx = 0;
+			var l_HeadDstX = (this.e_BodyWid - this.e_HeadWid) / 2, l_HeadDstY = -301;
+			this.e_HeadAry[0] = { c_DstX : l_HeadDstX, c_DstY : l_HeadDstY, c_SrcSara: new nWse.tSara(374, 0, this.e_HeadWid, this.e_HeadHgt) };
+			this.e_HeadAry[1] = { c_DstX : l_HeadDstX, c_DstY : l_HeadDstY, c_SrcSara: new nWse.tSara(761, 0, this.e_HeadWid, this.e_HeadHgt) };
+			this.e_HeadAry[2] = { c_DstX : l_HeadDstX, c_DstY : l_HeadDstY, c_SrcSara: new nWse.tSara(1148, 0, this.e_HeadWid, this.e_HeadHgt) };
+
+			// 羊毛
+			var l_FurABCSrcX = 1535;
+			var l_FurASrcY = 0, l_FurBSrcY = 104, l_FurCSrcY = 218;
+			var l_FurAWid = 148, l_FurBWid = 126, l_FurCWid = 117;
+			var l_FurAHgt = 103, l_FurBHgt = 113, l_FurCHgt = 82;
+			this.e_FurAry = new Array(10);
+			this.e_FurAry[0] = { c_DstX : 27, c_DstY : 45, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurBSrcY, l_FurBWid, l_FurBHgt) };
+			this.e_FurAry[1] = { c_DstX : 132, c_DstY : 6, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurASrcY, l_FurAWid, l_FurAHgt) };
+			this.e_FurAry[2] = { c_DstX : 134, c_DstY : 115, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurASrcY, l_FurAWid, l_FurAHgt) };
+			this.e_FurAry[3] = { c_DstX : 192, c_DstY : 53, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurASrcY, l_FurAWid, l_FurAHgt) };
+			this.e_FurAry[4] = { c_DstX : 74, c_DstY : 142, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurBSrcY, l_FurBWid, l_FurBHgt) };
+			this.e_FurAry[5] = { c_DstX : 164, c_DstY : 142, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurBSrcY, l_FurBWid, l_FurBHgt) };
+			this.e_FurAry[6] = { c_DstX : 206, c_DstY : 99, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurBSrcY, l_FurBWid, l_FurBHgt) };
+			this.e_FurAry[7] = { c_DstX : 29, c_DstY : 121, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurASrcY, l_FurAWid, l_FurAHgt) };
+			this.e_FurAry[8] = { c_DstX : 122, c_DstY : 61, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurCSrcY, l_FurCWid, l_FurCHgt) };
+			this.e_FurAry[9] = { c_DstX : 74, c_DstY : 8, c_SrcSara: new nWse.tSara(l_FurABCSrcX, l_FurCSrcY, l_FurCWid, l_FurCHgt) };
+			stAryUtil.cFor(this.e_FurAry,
+				function (a_FurAry, a_FurIdx, a_Fur)
+				{
+					a_Fur.c_Sta = 0;
+					a_Fur.c_Tmr = 0;
+				});
+
+			// 其他
+			this.e_TempSara = new nWse.tSara();
+		},
+		null,
+		{
+			cCenPut: function (a_BslnY)
+			{
+				this.e_Pos.x = stDomUtil.cGetVwptWid() / 2;
+				if (a_BslnY)
+				{
+					this.e_Pos.y = this.cCalcBslnY();
+				}
+				return this;
+			}
+			,
+			cCalcBslnY : function ()
+			{
+				return 1200 * nApp.g_GlbScl.c_CtanScl;
+			}
+			,
+			eRandJumpSpd: function ()
+			{
+				// 随机跳动速率，约(半屏宽+半羊宽)/i_SheepJumpAnmtDur（像素/秒）
+				var l_This = this;
+				var l_JumpStdSpd = (stDomUtil.cGetVwptWid() / 2 + l_This.e_BodyWid * nApp.g_GlbScl.c_CtanScl / 2) / i_SheepJumpAnmtDur;
+				l_This.e_JumpSpd = l_JumpStdSpd + stNumUtil.cRandInt(-i_SheepJumpRandSpdRge, +i_SheepJumpRandSpdRge);
+			}
+			,
+			cJumpOut: function ()
+			{
+				var l_This = this;
+
+				l_This.e_Sta = 2;	// 跳转状态
+				l_This.e_JumpTmr = 0;
+				l_This.eRandJumpSpd();
+			}
+			,
+			cJumpIn: function ()
+			{
+				var l_This = this;
+
+				l_This.e_Sta = 1;	// 跳转状态
+				l_This.e_JumpTmr = stNumUtil.cRand(0, i_SheepJumpAnmtDur);	// 来一个随机时间偏移，避免和跳离的羊同步跳！
+				l_This.eRandJumpSpd();
+
+				// 摆到屏幕右侧
+				l_This.e_Pos.x = stDomUtil.cGetVwptWid() + l_This.e_BodyWid * nApp.g_GlbScl.c_CtanScl / 2;
+			}
+			,
+			eCalcJumpDtaY : function ()
+			{
+				// w = 2π/T
+				var l_Omg = 2 * Math.PI / i_SheepJumpAnmtDur;
+				var l_DtaY = -i_SheepJumpAmp * Math.abs(Math.sin(l_Omg * this.e_JumpTmr));
+				return l_DtaY;
+			}
+			,
+			cUpd: function ()
+			{
+				var l_This = this;
+
+				var l_FrmItvl = nApp.g_RltmAfx.cGetFrmItvl();
+
+				// 更新羊身
+				if (1 == l_This.e_Sta) // 正在进入
+				{
+					(function ()
+					{
+						l_This.e_Pos.x -= l_This.e_JumpSpd * l_FrmItvl;
+						l_This.e_JumpTmr += l_FrmItvl;
+						var l_BslnY = l_This.cCalcBslnY();
+						l_This.e_Pos.y = l_BslnY + l_This.eCalcJumpDtaY();
+
+						// 已经居中？注意脚必须落地，误差的设置很关键！
+						var l_AVW = stDomUtil.cGetVwptWid() / 2;
+						var l_ABW = l_This.e_BodyWid * nApp.g_GlbScl.c_CtanScl / 2;
+						if (((l_This.e_Pos.x < l_AVW + l_ABW / 2) &&	// 在偏左一点
+							stNumUtil.cEq(l_This.e_Pos.y, l_BslnY, 10)) ||
+							(l_This.e_Pos.x < l_ABW))	// 跳到这里必须停下，防止跳出去！
+						{
+							l_This.e_Sta = 0;
+							l_This.e_Pos.y = l_BslnY;	// 强制
+						}
+					})();
+				}
+				else
+				if (2 == l_This.e_Sta) // 正在离开
+				{
+					(function ()
+					{
+						l_This.e_Pos.x -= l_This.e_JumpSpd * l_FrmItvl;
+						l_This.e_JumpTmr += l_FrmItvl;
+						l_This.e_Pos.y = l_This.cCalcBslnY() + l_This.eCalcJumpDtaY();
+
+						// 已经消失？
+						if (l_This.e_Pos.x + l_This.e_BodyWid * nApp.g_GlbScl.c_CtanScl / 2 < 0)
+						{
+							l_This.e_Sta = -1;
+						}
+					})();
+				}
+
+				if (-1 == l_This.e_Sta) // 已经消失？
+				{
+					return;
+				}
+
+				// 更新羊毛，注意反向遍历，与图层顺序保持一致
+				stAryUtil.cRvsFor(l_This.e_FurAry,
+					function (a_FurAry, a_FurIdx, a_Fur)
+					{
+						var l_Fur = a_Fur;
+						if (2 == l_Fur.c_Sta) // 跳过消失的羊毛
+						{ return; }
+
+						if (1 == l_Fur.c_Sta) // 更新计时器
+						{
+							l_Fur.c_Tmr += l_FrmItvl;
+							if (l_Fur.c_Tmr >= i_FurAnmtDur) // 超时，跳转状态
+							{
+								l_Fur.c_Sta = 2; // 消失
+							}
+						//	return;
+						}
+						// 附着状态
+					});
+			}
+			,
+			cRnd: function ()
+			{
+				var l_This = this;
+
+				var l_DvcCtxt = l_This.e_App.e_2dDvcCtxt;
+				var l_MapDstSara = l_DvcCtxt.c_MapDstSara;
+				var l_MapSrcSara = l_DvcCtxt.c_MapSrcSara;
+
+				// 渲染羊身
+				l_MapDstSara.cInit(l_This.eFromRelToBodyX(0), l_This.eFromRelToBodyY(0), l_This.e_BodyWid, l_This.e_BodyHgt);
+				l_This.eSclAndTslt(l_MapDstSara);
+				l_MapSrcSara.cInit(0, 0, l_This.e_BodyWid, l_This.e_BodyHgt);
+
+			//	l_DvcCtxt.cCastShdw(0, 10, 10, nWse.tClo.i_Black);
+				l_DvcCtxt.cMap(l_MapDstSara, l_This.constructor.se_SpriImg, l_MapSrcSara);
+			//	l_DvcCtxt.cZeroShdw();
+
+				// 渲染羊毛，注意反向遍历，与图层顺序保持一致
+				stAryUtil.cRvsFor(l_This.e_FurAry,
+					function (a_FurAry, a_FurIdx, a_Fur)
+					{
+						var l_Fur = a_Fur;
+						if (2 == l_Fur.c_Sta) // 跳过消失的羊毛
+						{ return; }
+
+						// 调整透明度
+						var l_Aph = 1;
+						if (1 == l_Fur.c_Sta)
+						{
+							l_Aph = 1 - (l_Fur.c_Tmr / i_FurAnmtDur);
+						}
+						l_DvcCtxt.cSetAph(l_Aph);
+
+						l_This.eCalcFurDstSara(l_MapDstSara, l_Fur);
+						l_DvcCtxt.cMap(l_MapDstSara, l_This.constructor.se_SpriImg, l_Fur.c_SrcSara);
+					});
+
+				l_DvcCtxt.cRsetAph();	// 复位
+
+				// 渲染羊头
+				var l_Head = l_This.e_HeadAry[l_This.e_HeadIdx];
+				l_MapDstSara.cInit(l_This.eFromRelToBodyX(l_Head.c_DstX), l_This.eFromRelToBodyY(l_Head.c_DstY),
+					l_Head.c_SrcSara.c_W, l_Head.c_SrcSara.c_H);
+				l_This.eSclAndTslt(l_MapDstSara);
+				l_DvcCtxt.cMap(l_MapDstSara, l_This.constructor.se_SpriImg, l_Head.c_SrcSara);
+				return this;
+			}
+			,
+			cPickFur: function (a_X, a_Y)
+			{
+				// 遍历羊毛，注意反向遍历，与图层顺序保持一致
+				var l_This = this;
+				var l_Idx = stAryUtil.cRvsFind(l_This.e_FurAry,
+					function (a_FurAry, a_FurIdx, a_Fur)
+					{
+						var l_Fur = a_Fur;
+						if (0 != l_Fur.c_Sta) // 跳过非附着状态的羊毛
+						{ return; }
+
+						l_This.eCalcFurDstSara(l_This.e_TempSara, l_Fur);
+						return nWse.tSara.scCtan$Xy(l_This.e_TempSara, a_X, a_Y);
+					});
+				return l_Idx;
+			}
+			,
+			cHaoFur: function (a_FurIdx, a_Tch)
+			{
+				// 只处理i_TchBgn
+				if (tPntIptKind.i_TchBgn != a_Tch.c_Kind)
+				{ return; }
+
+				var l_This = this;
+				var l_Fur = l_This.e_FurAry[a_FurIdx];
+
+				// 羊毛状态机：0=附着，1=掉落，2=消失
+				if (0 != l_Fur.c_Sta) // 跳过非附着状态的羊毛
+				{
+					return;
+				}
+
+				l_Fur.c_Sta = 1;	// 开始掉落
+				l_Fur.c_Tmr = 0;	// 复位计时器
+
+				// 统计剩余羊毛，更换羊头
+				var l_RmnFurAmt = l_This.eCalcRmnAtchFur();
+
+				if (l_RmnFurAmt <= i_RmnForCry)
+				{
+					l_This.e_HeadIdx = 2;
+				}
+				else
+				if (l_RmnFurAmt <= i_RmnForSad)
+				{
+					l_This.e_HeadIdx = 1;
+				}
+
+				// 如果没有毛了
+				if (0 == l_RmnFurAmt)
+				{
+					// 通知应用程序
+					l_This.e_App.eOnSheepOver(l_This);
+				}
+			}
+			,
+			eHasAtchFur: function ()
+			{
+				var l_This = this;
+				return (stAryUtil.cFind(l_This.e_FurAry,
+					function (a_FurAry, a_FurIdx, a_Fur)
+					{
+						return (0 == a_Fur.c_Sta);
+					}) >= 0);
+			}
+			,
+			eCalcRmnAtchFur: function ()
+			{
+				var l_This = this;
+				var l_Rst = 0;
+				stAryUtil.cFind(l_This.e_FurAry,
+					function (a_FurAry, a_FurIdx, a_Fur)
+					{
+						if (0 == a_Fur.c_Sta)
+						{ ++ l_Rst; }
+					});
+				return l_Rst;
+			}
+			,
+			eFromRelToBodyX: function (a_X)
+			{
+				return this.e_PosRelToImgOfstX + a_X;
+			}
+			,
+			eFromRelToBodyY: function (a_Y)
+			{
+				return this.e_PosRelToImgOfstY + a_Y;
+			}
+			,
+			eSclAndTslt: function (a_Sara)
+			{
+				nApp.fSclSara(a_Sara);
+				a_Sara.c_X += this.e_Pos.x;
+				a_Sara.c_Y += this.e_Pos.y;
+				return a_Sara;
+			}
+			,
+			eCalcFurDstSara: function (a_Rst, a_Fur)
+			{
+				a_Rst.cInit(this.eFromRelToBodyX(a_Fur.c_DstX), this.eFromRelToBodyY(a_Fur.c_DstY),
+					a_Fur.c_SrcSara.c_W, a_Fur.c_SrcSara.c_H);
+				this.eSclAndTslt(a_Rst);
+				return a_Rst;
+			}
+		},
+		{
+			se_SpriImg: null
+			,
+			scInit: function ()
+			{
+				this.se_SpriImg = new Image();
+				this.se_SpriImg.src = "media/Sheep.png";
+			}
+		});
+
+	//========================================================= 实用函数
+
+	// 缩放
+	nApp.fSclSara = function (a_Sara)
+	{
+		nWse.tSara.scScl(a_Sara, nApp.g_GlbScl.c_CtanScl);
+		return a_Sara;
+	};
+
+	// 居中缩放
+	nApp.fCenSclSara = function (a_Sara)
+	{
+		nApp.fSclSara(a_Sara);
+		a_Sara.c_X = (stDomUtil.cGetVwptWid() - a_Sara.c_W) / 2;
+		return a_Sara;
+	};
+
+	// 播放mp3
+	nApp.fPlayMp3 = function (a_Mp3)
+	{
+		try
+		{
+			a_Mp3.cStop().cPlay()
+		}
+		catch (a_Exc)
+		{
+
+		}
+	};
+
+	 //// FTP测试账号
+	 //115.28.57.71 huangmeng yellow
+	 //http://wx.heivr.com/
+	 ///tpl/Home/Hisense/HaoYangMao/
+	 //http://wx.heivr.com/tpl/Home/Hisense/HaoYangMao/Main.html
+})();
