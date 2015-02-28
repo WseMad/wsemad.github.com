@@ -115,7 +115,7 @@
 
 		// 评估显示比例（仅垂直方向）
 		nApp.fEstmShowPptn_VticOnly = function (a_PageSara) {
-			var l_ScrlY = nWse.stDomUtil.cGetScrlY(), l_VwptH = nWse.stDomUtil.cGetVwptHgt();
+			var l_ScrlY = nWse.stDomUtil.cGetScrlY(), l_VwptH = nWse.fGetVwptHgt();
 			if ((a_PageSara.c_Y + a_PageSara.c_H < l_ScrlY) || (l_ScrlY + l_VwptH < a_PageSara.c_Y))
 			{ return 0; }
 
