@@ -111,6 +111,18 @@
 		height: 24px;
 	}
 
+	.mi_icon.mi_icon_nav_expd {
+		background-position: -283px 0px;
+		width: 32px;
+		height: 28px;
+	}
+
+	.mi_icon.mi_icon_nav_cls {
+		background-position: -316px 0px;
+		width: 32px;
+		height: 28px;
+	}
+
 /******************************** 本项目的OOCSS ********************************/
 
 /* html */
@@ -175,12 +187,24 @@ body, .mi_std_font_fam {
 	min-width: 1260px;
 }
 
+.mi_phone .mi_cen_wid, .mi_phone .mi_lot_env {
+	width: 640px;
+	min-width: 640px;
+}
+
 .mi_cen_wid {
 	/* 全局缩放后，防止内容紧贴屏幕两侧，内容宽度仍然保持1240px */
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.mi_phone .mi_cen_wid {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .mi_lot_env {
@@ -192,7 +216,228 @@ body, .mi_std_font_fam {
 	transform-origin: left top;
 }
 
+/* 层的堆叠顺序 */
+
+.mi_lyr_ovlp {
+	z-index: 100;
+}
+
+.mi_lyr_popup {
+	z-index: 1000;
+}
+
+/* 滑动面板 */
+
+.mi_sld_boa .mi_sld_slot {
+	width: 10000px; /*一开始大一些，后来将用JS修正*/
+}
+
+.mi_sld_boa > .mi_col {
+	height: 100%;
+}
+
+.mi_sld_boa .mi_col.mi_0, .mi_sld_boa .mi_col.mi_2 {
+}
+
+.mi_sld_boa .mi_col.mi_1 {
+	overflow: hidden;
+}
+
+.mi_sld_boa .mi_btn.mi_arw {
+	width: 44px;
+	height: 44px;
+	border-radius: 22px;
+	font-size: 32px;
+	text-align: center;
+	background-color: rgb(219, 219, 219);
+	color: white;
+}
+
+.mi_phone .mi_sld_boa .mi_btn.mi_arw {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	font-size: 45px;
+}
+
 
 /******************************** 共同 ********************************/
+
+/***** 公共 *****/
+
+.mi_bkgd_clo_blue {
+	background-color: rgb(13, 127, 208);
+}
+
+.mi_bkgd_clo_blue2 {
+	background-color: rgb(7, 135, 223);
+}
+
+.mi_btn.mi_bkgd_clo_blue, .mi_btn.mi_bkgd_clo_blue2 {
+	padding: 15px 65px;
+	border-radius: 5px;
+	color: white;
+}
+
+.mi_btn_div .mi_btn {
+	width: 206px;
+	padding: 15px 0px;
+	border: 2px solid rgb(0, 89, 152);
+	background-color: rgb(7, 135, 223);
+	background-image: -webkit-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	background-image: -o-linear-gradient(bottom, rgba(4, 99, 187, 1) 0%, rgba(0, 165, 245, 1) 98%, rgba(0, 165, 245, 1) 100%);
+	color: white;
+}
+
+.mi_phone .mi_btn_div .mi_btn {
+	width: 406px;
+}
+
+/***** logo节 *****/
+
+.mi_sect.mi_logo {
+	padding-top: 72px;
+	padding-bottom: 110px;
+}
+
+.mi_phone .mi_sect.mi_logo {
+	padding-top: 50px;
+	padding-bottom: 56px;
+}
+
+.mi_icon.mi_icon_logo {
+	margin-right: 8px;
+}
+
+.mi_phone .mi_icon.mi_icon_logo {
+	margin-left: 26px;
+	margin-right: 0px;
+}
+
+.mi_phone #k_NavBtn {
+	right: 56px;
+	top: 56px;
+}
+
+.mi_phone .mi_sect.mi_logo .mi_list_div {
+	top: 155px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+	.mi_phone .mi_sect.mi_logo .mi_list_div .mi_list {
+		width: 10000px; /*JS将会修正*/
+	}
+
+		.mi_phone .mi_sect.mi_logo .mi_list_div .mi_list > li {
+			float: left;
+			padding: 30px;
+			color: white;
+		}
+
+			.mi_phone .mi_sect.mi_logo .mi_list_div .mi_list > li.mi_crnt {
+				color: rgb(228, 0, 19);
+			}
+
+/***** 导航节 *****/
+
+.mi_sect.mi_nav {
+}
+
+	.mi_sect.mi_nav .mi_list {
+	}
+
+		.mi_sect.mi_nav .mi_list > li {
+			float: left;
+			margin-right: 2em;
+		}
+
+			.mi_sect.mi_nav .mi_list > li > a {
+				color: black;
+			}
+
+				.mi_sect.mi_nav .mi_list > li > a:hover {
+					color: rgb(228, 0, 19);
+				}
+
+	.mi_sect.mi_nav .mi_col.mi_0 {
+		width: 80%;
+	}
+
+	.mi_sect.mi_nav .mi_col.mi_1 {
+		width: 20%;
+	}
+
+		.mi_sect.mi_nav .mi_col.mi_1 .mi_text {
+			padding-left: 12px;
+			border-left: 1px solid rgb(167, 167, 167);
+		}
+
+/***** 联系节 *****/
+
+.mi_bkgd_clo_contact {
+	background-color: rgb(53, 53, 53);
+}
+
+.mi_contact {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: rgb(171, 171, 171);
+}
+
+	.mi_contact .mi_boa.mi_list_grp {
+		margin-bottom: 50px;
+	}
+
+		.mi_contact .mi_boa.mi_list_grp .mi_col {
+			width: 162px;
+		}
+
+			.mi_contact .mi_boa.mi_list_grp .mi_col.mi_last {
+				width: 106px;
+			}
+
+		.mi_contact .mi_boa.mi_list_grp .mi_list {
+			list-style-type: square;
+		}
+
+			.mi_contact .mi_boa.mi_list_grp .mi_list > li {
+				margin-left: 16px;
+				margin-bottom: 5px;
+			}
+
+	.mi_contact .mi_hrzt_line {
+		background-color: rgb(76, 76, 76);
+	}
+
+	.mi_contact .mi_boa.mi_adrs .mi_col {
+		width: 50%;
+	}
+
+		.mi_contact .mi_boa.mi_adrs .mi_col.mi_lt .mi_link {
+			margin-right: 20px;
+		}
+
+		.mi_contact .mi_boa.mi_adrs .mi_col.mi_rt .mi_link {
+			margin-left: 20px;
+		}
+
+/***** 页脚 *****/
+
+.mi_footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	background-color: rgb(11, 11, 11);
+	color: rgb(181, 181, 181);
+}
+
+	.mi_footer .mi_cprt_div {
+		margin-bottom: 15px;
+	}
+
+	.mi_footer .mi_link {
+		margin: 0px 2px;
+	}
 
 /*********************************************************************** Over ***********************************************************************/

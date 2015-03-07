@@ -40,12 +40,16 @@ li > a {
 	*display: inline;
 }
 
-.mi_vsblt_hdn {
+.mi_vsblt_hide {
 	visibility: hidden;
 }
 
 .mi_vsblt_vsbl {
 	visibility: visible;
+}
+
+.mi_ovfl_auto {
+	overflow: auto;
 }
 
 .mi_ovfl_hide {
@@ -754,7 +758,7 @@ li > a {
 	.mi_btn.mi_3d {
 		position: relative;
 		left: 0px;
-		top: -8px;
+		top: -5px;
 		-webkit-transition-property: top, box-shadow;
 		-moz-transition-property: top, box-shadow;
 		-ms-transition-property: top, box-shadow;

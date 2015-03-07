@@ -12,13 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="css/(101)Cmn.css" />
 	<link rel="stylesheet" type="text/css" href="css/Home.css" />
 
-	<script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="./js/(0)Seed.js"></script>
-	<script type="text/javascript" src="./js/(10)WSE_nWse_Simp.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/(0)Seed.js"></script>
+	<script type="text/javascript" src="js/(10)WSE_nWse_Simp.js"></script>
 	<script type="text/javascript" src="js/(101)Cmn.js"></script>
+	<script type="text/javascript" src="js/Home.js"></script>
 
 </head>
-<body class="mi_page_home">
+<body class="mi_com mi_page_home">
 
 	<!-- 全局缩放界限 -->
 	<div id="k_GlbSclBnd" class="mi_full_wid mi_ovfl_hide">
@@ -27,16 +28,18 @@
 		<div id="k_LotEnv" class="mi_lot_env">
 
 			<!-- Logo节 -->
-			<h1 class="mi_sect mi_logo mi_cen_wid mi_text_aln_lt">
-				<i class="mi_icon mi_icon_logo"></i><span class="mi_dspl_inln_blk"><span class="mi_font_size_14 mi_clo_gray">3D互动营销专家</span><br /><span class="mi_font_size_12 mi_clo_gray">3D Interactive marketing experts</span></span>
-			</h1>
+			<div class="mi_sect mi_logo mi_cen_wid mi_text_aln_lt">
+				<h1>
+					<i class="mi_icon mi_icon_logo"></i><span class="mi_dspl_inln_blk"><span class="mi_font_size_14 mi_clo_gray">3D互动营销专家</span><br /><span class="mi_font_size_12 mi_clo_gray">3D Interactive marketing experts</span></span>
+				</h1>
+			</div>
 
 			<!-- 导航节 -->
 			<div class="mi_sect mi_nav mi_cen_wid mi_clo_black mi_mgn_bm_l2">
 				<div class="mi_boa cnWse_ClearFix">
 					<div class="mi_col mi_0 mi_text_aln_lt">
 						<ul class="mi_list cnWse_ClearFix">
-							<li><a href="javascript:;">黑晶首页</a></li>
+							<li class="mi_crnt"><a href="javascript:;">黑晶首页</a></li>
 							<li><a href="#k_CaseShow">案例展示</a></li>
 							<li><a href="#k_ProductHierarchy">产品体系</a></li>
 							<li><a href="#k_Solution">解决方案</a></li>
@@ -55,33 +58,8 @@
 			<!-- 横幅节 -->
 			<div class="mi_sect mi_banner">
 				<div class="mi_bkgd">
-					<div class="mi_pane mi_cen_wid mi_clo_white mi_text_aln_lt">
-						<h2 class="mi_hn"><span class="mi_font_wgt_lgtr">TOP STAR PRODUCT LIST</span><br /><span class="mi_font_wgt_bold">黑晶</span><br /><span class="mi_font_wgt_bold">明星产品TOP榜</span></h2>
-						<ol class="mi_list">
-							<li>
-								<h3 class="mi_cptn">1&nbsp;iPad3D售楼系统</h3>
-								<div class="mi_boa cnWse_ClearFix">
-									<div class="mi_col mi_0">多信息展示你的数字化“售楼处”</div>
-									<div class="mi_col mi_1"><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i></div>
-								</div>
-							</li>
-							<li>
-								<h3 class="mi_cptn">2&nbsp;AR互动展示系统</h3>
-								<div class="mi_boa cnWse_ClearFix">
-									<div class="mi_col mi_0">最真正的虚实无缝结合</div>
-									<div class="mi_col mi_1"><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_half"></i></div>
-								</div>
-							</li>
-							<li>
-								<h3 class="mi_cptn">3&nbsp;S1微信3D售楼系统</h3>
-								<div class="mi_boa cnWse_ClearFix">
-									<div class="mi_col mi_0">潜藏在客户手机里的“售楼处”</div>
-									<div class="mi_col mi_1"><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_full"></i><i class="mi_icon mi_icon_red_star_emt"></i></div>
-								</div>
-							</li>
-						</ol>
-
-						<div class="mi_btn_base">
+					<div class="mi_pane mi_cen_wid mi_full_hgt mi_pstn_rel mi_clo_white mi_text_aln_lt">
+						<div class="mi_btn_base mi_pstn_abs_lt_tp">
 							<div id="k_MoreStuff" class="mi_btn mi_3d mi_full_dim mi_text_aln_ct mi_font_size_18 mi_font_stl_itlc">更多猛料&nbsp;点击了解</div>
 						</div>
 					</div>
@@ -104,8 +82,8 @@
 						<div class="mi_ctnt_grad_mask"></div>
 					</div>
 					<p class="mi_font_size_22 mi_clo_black mi_mgn_bm_l2">我们深知，科技与心力的结合方是解决问题之道</p>
-					<p class="mi_font_size_14 mi_clo_gray mi_mgn_bm_l1">黑晶——服务过上海世博会、海军、世园会等政府机构，与万科、龙湖等有过深度合作，合作企业涉及近百家地产公司。</p>
-					<p class="mi_font_size_14 mi_clo_gray mi_mgn_bm_l1">实践广度，不断延伸！深耕房地产领域，不断拓展合作广度！</p>
+					<p class="mi_font_size_14 mi_clo_gray3 mi_mgn_bm_l1">黑晶——服务过上海世博会、海军、世园会等政府机构，与万科、龙湖等有过深度合作，合作企业涉及近百家地产公司。</p>
+					<p class="mi_font_size_14 mi_clo_gray3 mi_mgn_bm_l1">实践广度，不断延伸！深耕房地产领域，不断拓展合作广度！</p>
 				</div>
 				<div class="mi_boa cnWse_ClearFix">
 					<div class="mi_col mi_0 mi_pstn_rel mi_ovfl_hide">
@@ -227,7 +205,7 @@
 				<div class="mi_btn_div mi_text_aln_ct">
 					<a href="javascript:;" class="mi_dspl_inln_blk mi_btn mi_bkgd_clo_blue">更多案例</a>
 				</div>
-			</div>
+			</div> <!-- 案例展示节 -->
 
 			<!-- 产品体系节 -->
 			<div class="mi_bkgd_clo_gray">
@@ -454,7 +432,7 @@
 					</div>
 				</div>
 
-				<div class="mi_cen_wid mi_boa cnWse_ClearFix">
+				<div class="mi_cen_wid mi_sld_boa mi_boa cnWse_ClearFix">
 					<div class="mi_col mi_0 mi_text_aln_lt">
 						<div class="mi_btn mi_arw mi_lt mi_dspl_inln_blk">＜</div>
 					</div>
@@ -672,7 +650,7 @@
 							<div class="mi_dot mi_bkgd_clo_blue2 mi_dspl_inln_blk"></div>
 							<div class="mi_flag mi_text_aln_lt mi_pstn_abs mi_tsfm_orig_lt_bm">
 								<a href="javascript:;" class="mi_lab mi_dspl_blk mi_pstn_rel">
-									<span class="mi_mdl mi_dspl_inln_blk mi_bkgd_clo_blue2 mi_clo_white">H5</span><span class="mi_cptn mi_dspl_inln_blk mi_clo_black">体感游戏（H）</span>
+									<span class="mi_mdl mi_dspl_inln_blk mi_bkgd_clo_blue2 mi_clo_white">H5</span><span class="mi_cptn mi_dspl_inln_blk mi_clo_black">体感游戏(H)</span>
 								</a>
 								<div class="mi_vtic_line mi_bkgd_clo_blue2 mi_pstn_abs"></div>
 							</div>
@@ -699,7 +677,7 @@
 							<div class="mi_dot mi_bkgd_clo_blue2 mi_dspl_inln_blk"></div>
 							<div class="mi_flag mi_text_aln_lt mi_pstn_abs mi_tsfm_orig_lt_bm">
 								<a href="javascript:;" class="mi_lab mi_dspl_blk mi_pstn_rel">
-									<span class="mi_mdl mi_dspl_inln_blk mi_bkgd_clo_blue2 mi_clo_white">H8</span><span class="mi_cptn mi_dspl_inln_blk mi_clo_black">虚拟头盔户型体验（H）</span>
+									<span class="mi_mdl mi_dspl_inln_blk mi_bkgd_clo_blue2 mi_clo_white">H8</span><span class="mi_cptn mi_dspl_inln_blk mi_clo_black">虚拟头盔户型体验(H)</span>
 								</a>
 								<div class="mi_vtic_line mi_bkgd_clo_blue2 mi_pstn_abs"></div>
 							</div>
